@@ -26,21 +26,24 @@
           <div class="headerBar"></div>
          <ion-scroll ng-controller="PopupCtrl" class="form" min-zoom="1" max-zoom="3" zooming="true" direction="xy" has-bouncing="false">
               <img class="image" src="img/page1.PNG"/>
-               <button on-double-tap="showAlert()" class="overlayButton button-block" id="PPEAssessment">
+                <div on-double-tap="showAlert()" class="overlayButton" id="JSATitle">
+                   JSA Entry
+               </div>
+               <div on-double-tap="showAlert()" class="overlayButton" id="PPEAssessment">
                    PPE Entry
-               </button>
-               <button on-double-tap="showAlert()" class="overlayButton button-block" id="TaskOne">
+               </div>
+               <div on-double-tap="showAlert()" class="overlayButton" id="TaskOne">
                    Task One Entry
-               </button>
-               <button on-double-tap="showAlert()" class="overlayButton button-block" id="TaskTwo">
+             </div>
+               <div on-double-tap="showAlert()" class="overlayButton" id="TaskTwo">
                    Task Two Entry
-               </button>
-               <button on-double-tap="showAlert()" class="overlayButton button-block" id="TaskThree">
+               </div>
+               <div on-double-tap="showAlert()" class="overlayButton" id="TaskThree">
                    Task Three Entry
-               </button>
-               <button on-double-tap="showAlert()" class="overlayButton button-block" id="TaskFour">
+               </div>
+               <div on-double-tap="showAlert()" class="overlayButton" id="TaskFour">
                    Task Four Entry
-               </button>
+               </div>
          </ion-scroll>
       </ion-view>
       
