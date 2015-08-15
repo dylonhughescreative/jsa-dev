@@ -24,7 +24,7 @@
   <body ng-app="starter">
       <ion-view title="Home" hide-nav-bar="true" ng-controller="ModalCtrl">
           <div class="headerBar"></div>
-         <ion-scroll class="form" min-zoom="1" max-zoom="3" zooming="true" direction="xy" has-bouncing="false">
+         <ion-scroll class="form" min-zoom="1" max-zoom="3" zooming="true" direction="xy">
               <img class="image" src="img/page1.PNG"/>
                 <div on-double-tap="openModal()" class="overlayButton" id="JSATitle">
                    Double-Tap To Edit
@@ -51,8 +51,10 @@
           <ion-modal-view>
                 <ion-header-bar>
                     <h1 class="title">Basic Information</h1>
+                    <button class="button button-clear button-positive" ng-click:"closeNewTask()">Cancel</button>
                 </ion-header-bar>
               <ion-content direction="y">
+                <form ng-submit="submitData()">  
                 <div class="list">
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Project Name</span>
@@ -82,7 +84,8 @@
                         <span class="input-label">Job Scope</span>
                         <input type="text" placeholder="Job Scope">
                     </label>
-                </div>      
+                </div>
+                </form>
             </ion-scroll>
           </ion-modal-view>
       </script>
