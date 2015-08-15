@@ -1,3 +1,4 @@
+/* Classes */
 .headerBar{
     height: 3.5%;
     width: 100%;
@@ -23,6 +24,12 @@
     left: 0;
     right: 0;
 }
+
+.input-label {
+    color: rgba(96,96,96,0.80);
+}
+
+/* Portrait IDs */
 
 #JSATitle {
     top:0%;
@@ -54,6 +61,7 @@
     bottom: 1%;
 }
 
+/* Landscape-specific code */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .headerBar {
         height: 7%;

@@ -22,31 +22,70 @@
     <script src="js/app.js"></script>
   </head>
   <body ng-app="starter">
-      <ion-view title="Home" hide-nav-bar="true">
+      <ion-view title="Home" hide-nav-bar="true" ng-controller="ModalCtrl">
           <div class="headerBar"></div>
-         <ion-scroll ng-controller="PopupCtrl" class="form" min-zoom="1" max-zoom="3" zooming="true" direction="xy" has-bouncing="false">
+         <ion-scroll class="form" min-zoom="1" max-zoom="3" zooming="true" direction="xy" has-bouncing="false">
               <img class="image" src="img/page1.PNG"/>
-                <div on-double-tap="showAlert()" class="overlayButton" id="JSATitle">
+                <div on-double-tap="openModal()" class="overlayButton" id="JSATitle">
                    JSA Entry
                </div>
-               <div on-double-tap="showAlert()" class="overlayButton" id="PPEAssessment">
+               <div on-double-tap="openModal()" class="overlayButton" id="PPEAssessment">
                    PPE Entry
                </div>
-               <div on-double-tap="showAlert()" class="overlayButton" id="TaskOne">
+               <div on-double-tap="openModal()" class="overlayButton" id="TaskOne">
                    Task One Entry
              </div>
-               <div on-double-tap="showAlert()" class="overlayButton" id="TaskTwo">
+               <div on-double-tap="openModal()" class="overlayButton" id="TaskTwo">
                    Task Two Entry
                </div>
-               <div on-double-tap="showAlert()" class="overlayButton" id="TaskThree">
+               <div on-double-tap="openModal()" class="overlayButton" id="TaskThree">
                    Task Three Entry
                </div>
-               <div on-double-tap="showAlert()" class="overlayButton" id="TaskFour">
+               <div on-double-tap="openModal()" class="overlayButton" id="TaskFour">
                    Task Four Entry
                </div>
          </ion-scroll>
       </ion-view>
       
+      <script id="my-modal.html" type="text/ng-template">
+          <ion-modal-view>
+                <ion-header-bar>
+                    <h1 class="title">Basic Information</h1>
+                </ion-header-bar>
+              <ion-content direction="y">
+                <div class="list">
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Project Name</span>
+                        <input type="text" placeholder="Project Name">
+                    </label>  
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Date</span>
+                        <input type="text" placeholder="Date">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Subcontractor</span>
+                        <input type="text" placeholder="Subcontractor">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">General Contractor</span>
+                        <input type="text" placeholder="General Contractor">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Crew Leader</span>
+                        <input type="text" placeholder="Crew Leader">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Site Superintendent</span>
+                        <input type="text" placeholder="Site Superintendent">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Job Scope</span>
+                        <input type="text" placeholder="Job Scope">
+                    </label>
+                </div>      
+            </ion-scroll>
+          </ion-modal-view>
+      </script>
       <!--<div class="checkboxlist">
          <ul class="list">         
              <li class="item item-checkbox">
