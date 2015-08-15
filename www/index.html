@@ -23,34 +23,71 @@
   </head>
   <body ng-app="starter">
       <ion-view title="Home" hide-nav-bar="true" ng-controller="ModalCtrl">
-          <div class="bar bar-header bar-dark">
-          </div>        
+          <div class="headerBar"></div>       
           
           <ion-scroll class="Form" min-zoom="1" max-zoom="3" zooming="true" direction="xy">
                 <img class="Image" src="img/page1.PNG"/>
-                <button ng-click="openModal()"  class="button-block OverlayButton" id="PPEAssessment">
-                        Overlay
-                </button>
+				<div on-double-tap="openModal()" class="overlayButton" id="JSATitle">
+                   Double-Tap To Edit
+               </div>
+               <div on-double-tap="openModal()" class="overlayButton" id="PPEAssessment">
+                   Double-Tap To Edit
+               </div>
+               <div on-double-tap="openModal()" class="overlayButton" id="TaskOne">
+                   Double-Tap To Edit
+               </div>
+               <div on-double-tap="openModal()" class="overlayButton" id="TaskTwo">
+                   Double-Tap To Edit
+               </div>
+               <div on-double-tap="openModal()" class="overlayButton" id="TaskThree">
+                   Double-Tap To Edit
+               </div>
+               <div on-double-tap="openModal()" class="overlayButton" id="TaskFour">
+                   Double-Tap To Edit
+               </div>
          </ion-scroll>
       </ion-view>
       
       <script id="my-modal.html" type="text/ng-template">
           <ion-modal-view>
-              <ion-header-bar>
-                  <h1 class="title">My Modal title</h1>
-              </ion-header-bar>
-              <ion-content>
-                <div class="checkboxlist">
-                    <ul class="list">         
-                        <li class="item item-checkbox">
-                            <label class="checkbox">
-                                <input type="checkbox">
-                            </label>
-                            My First Checkbox
-                        </li>
-                    </ul>
-                </div>           
-            </ion-content>
+                <ion-header-bar>
+                    <h1 class="title">Basic Information</h1>
+                    <button class="button button-clear button-positive" ng-click="closeModal()">Cancel</button>
+                </ion-header-bar>
+              <ion-content direction="y">
+                <form ng-submit="submitData()">  
+                <div class="list">
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Project Name</span>
+                        <input type="text" placeholder="Project Name">
+                    </label>  
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Date</span>
+                        <input type="date" placeholder="Date">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Subcontractor</span>
+                        <input type="text" placeholder="Subcontractor">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">General Contractor</span>
+                        <input type="text" placeholder="General Contractor">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Crew Leader</span>
+                        <input type="text" placeholder="Crew Leader">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Site Superintendent</span>
+                        <input type="text" placeholder="Site Superintendent">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Job Scope</span>
+                        <input type="text" placeholder="Job Scope">
+                    </label>
+                </div>
+                </form>
+            </ion-scroll>
           </ion-modal-view>
       </script>
       

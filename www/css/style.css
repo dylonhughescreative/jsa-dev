@@ -1,11 +1,12 @@
-.bar.bar-header.bar-dark{
-    height: 5%;
+/* Classes */
+.headerBar{
+    height: 3.5%;
     width: 100%;
+    background-color: darkgrey;
 }
 
 .Form{
     position: relative;
-    top: 5%;
     height: auto;
     width: 100%;
  }
@@ -15,27 +16,59 @@
     height: auto;
 }
 
-.OverlayButton{
+.overlayButton{
     position: absolute;
-    background-color: rgba(96,96,96,0.85);
+    width: 100%;
+    background-color: rgba(96,96,96,0.20);
+    color: rgba(255,255,255,0.00);
     text-align: center;
-    color: white; 
+    color: transparent; 
+}
+
+.input-label {
+    color: rgba(96,96,96,0.80);
+}
+
+/* Portrait IDs */
+
+#JSATitle {
+    top:0%;
+    bottom: 88.75%;
 }
 
 #PPEAssessment{
-    top: 11%;
-    bottom: 75%;    
+    top: 11.25%;
+    bottom: 75%;
 }
 
-.Testbutton{
-    
+#TaskOne {
+    top: 25%;
+    bottom: 57.2%;
 }
 
+#TaskTwo {
+    top: 42.8%;
+    bottom: 39.5%;
+}
+
+#TaskThree {
+    top: 60.5%;
+    bottom: 21.5%;
+}
+
+#TaskFour {
+    top: 78.5%;
+    bottom: 1%;
+}
+
+/* Landscape-specific code */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .headerBar {
+        height: 7%;
+    }
     .Form{
         position: relative;
-        top: 5%;
-        height: 95%;
+        height: 93%;
         width: 100%;
     }
 }
