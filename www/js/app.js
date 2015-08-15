@@ -19,7 +19,7 @@ app.run(function($ionicPlatform) {
 })
 
 app.controller('ModalCtrl',function($scope, $ionicModal) {
-  $ionicModal.fromTemplateUrl('my-modal.html', {
+  $ionicModal.fromTemplateUrl('./templates/BasicInfoModal.html', {
     scope: $scope,
     animation: 'slide-in-up',
     backdropClickToClose: true

@@ -1,0 +1,40 @@
+          <ion-modal-view>
+                <ion-header-bar>
+                    <h1 class="title">Basic Information</h1>
+                    <button class="button button-clear button-positive" ng-click="closeModal()">Cancel</button>
+                </ion-header-bar>
+              <ion-content direction="y">
+                <form ng-submit="submitData()">  
+                <div class="list">
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Project Name</span>
+                        <input type="text" placeholder="Project Name">
+                    </label>  
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Date</span>
+                        <input type="date" placeholder="Date">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Subcontractor</span>
+                        <input type="text" placeholder="Subcontractor">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">General Contractor</span>
+                        <input type="text" placeholder="General Contractor">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Crew Leader</span>
+                        <input type="text" placeholder="Crew Leader">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Site Superintendent</span>
+                        <input type="text" placeholder="Site Superintendent">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Job Scope</span>
+                        <input type="text" placeholder="Job Scope">
+                    </label>
+                </div>
+                </form>
+            </ion-scroll>
+          </ion-modal-view>
