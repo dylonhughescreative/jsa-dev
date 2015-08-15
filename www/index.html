@@ -23,19 +23,24 @@
   </head>
   <body ng-app="starter">
       <ion-view title="Home" hide-nav-bar="true">
-         <div class="bar bar-header bar-dark">
-         </div>
-          
-         <ion-scroll class="form" min-zoom="1" max-zoom="3" zooming="true" direction="xy">
-           <div id="ImageContainer" ng-controller="PopupCtrl">
+          <div class="headerBar"></div>
+         <ion-scroll ng-controller="PopupCtrl" class="form" min-zoom="1" max-zoom="3" zooming="true" direction="xy" has-bouncing="false">
               <img class="image" src="img/page1.PNG"/>
-               <button ng-click="showAlert()" class="PPEAssessment button button-full">
-                   Overlay
+               <button on-double-tap="showAlert()" class="overlayButton button-block" id="PPEAssessment">
+                   PPE Entry
                </button>
-               <script id="popup-template.html" type="text/ng-template">
-                   <input ng-model="data.wifi" type="text" placeholder="Password">
-               </script>
-           </div>
+               <button on-double-tap="showAlert()" class="overlayButton button-block" id="TaskOne">
+                   Task One Entry
+               </button>
+               <button on-double-tap="showAlert()" class="overlayButton button-block" id="TaskTwo">
+                   Task Two Entry
+               </button>
+               <button on-double-tap="showAlert()" class="overlayButton button-block" id="TaskThree">
+                   Task Three Entry
+               </button>
+               <button on-double-tap="showAlert()" class="overlayButton button-block" id="TaskFour">
+                   Task Four Entry
+               </button>
          </ion-scroll>
       </ion-view>
       
