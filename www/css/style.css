@@ -15,7 +15,7 @@
 
 .overlayButton {
     position: absolute;
-    background-color: rgba(96,96,96,0.85);
+    background-color: rgba(96,96,96,0.00);
     color: white;
     text-align: center;
     padding: 0;
