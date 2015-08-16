@@ -1,0 +1,28 @@
+.baseinfotext {
+    position: absolute;
+    color: black;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 1.2vw;
+    line-height: 120%;
+}
+
+#subcontractor {
+    top: 39%;
+    bottom: 45%;
+    left: 10.25%;
+    right: 65%;
+}
+
+#crewleader {
+    top: 39%;
+    bottom: 45%;
+    left: 44%;
+    right: 33%;
+}
+
+#projectname {
+    top: 39%;
+    bottom: 45%;
+    left: 76.5%;
+    right: 1%;
+}

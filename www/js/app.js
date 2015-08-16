@@ -18,30 +18,60 @@ app.run(function($ionicPlatform) {
   });
 })
 
-app.controller('ModalCtrl',function($scope, $ionicModal) {
-  $ionicModal.fromTemplateUrl('./templates/BasicInfoModal.html', {
-    scope: $scope,
-    animation: 'slide-in-up',
-    backdropClickToClose: true
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-  $scope.openModal = function() {
-    $scope.modal.show();
-  };
-  $scope.closeModal = function() {
-    $scope.modal.hide();
-  };
-  //Cleanup the modal when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
-  });
-  // Execute action on hide modal
-  $scope.$on('modal.hidden', function() {
-    // Execute action
-  });
-  // Execute action on remove modal
-  $scope.$on('modal.removed', function() {
-    // Execute action
-  });
+// basicinfo
+// ppeassess
+// ctrlmethod1
+// ctrlmethod2
+// ctrlmethod3
+// ctrlmethod4
+//
+//app.config(function($stateProvider, $urlRouterProvider) {
+//    $stateProvider
+//        .state('basicinfo', {
+//            url: "/basicinfo",
+//            templateUrl: "BasicInfoModel.html",
+//            controller:
+
+
+app.controller('ModalCtrl', function($scope, $ionicModal) {
+    $scope.blank = {};
+    $scope.master = {};
+    
+    $ionicModal.fromTemplateUrl('./templates/BasicInfoModal.html', {
+      scope: $scope,
+      animation: 'slide-in-up',
+      backdropClickToClose: true
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+    
+    $scope.submitData = function(user) {
+        $scope.master = angular.copy($scope.user);
+    }
+    
+    $scope.reset = function() {
+        $scope.master = angular.copy($scope.blank);
+        $scope.user = angular.copy($scope.blank);
+    }
+    
+    $scope.reset();
+    
+    $scope.openModal = function() {
+      $scope.modal.show();
+    };
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
 });

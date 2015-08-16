@@ -1,40 +1,42 @@
           <ion-modal-view>
                 <ion-header-bar>
                     <h1 class="title">Basic Information</h1>
+                    <button class="button button-clear button-positive" ng-click="reset()">Clear</button>
                     <button class="button button-clear button-positive" ng-click="closeModal()">Cancel</button>
                 </ion-header-bar>
               <ion-content direction="y">
-                <form ng-submit="submitData()">  
+                <form ng-submit="submitData(user); closeModal();">
                 <div class="list">
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Project Name</span>
-                        <input type="text" placeholder="Project Name">
+                        <input type="text" ng-model="user.projectname" placeholder="Project Name">
                     </label>  
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Date</span>
-                        <input type="date" placeholder="Date">
+                        <input type="date" ng-model="user.date" placeholder="Date">
                     </label>
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Subcontractor</span>
-                        <input type="text" placeholder="Subcontractor">
+                        <input type="text" ng-model="user.subcontractor" placeholder="Subcontractor">
                     </label>
                     <label class="item item-input item-floating-label">
                         <span class="input-label">General Contractor</span>
-                        <input type="text" placeholder="General Contractor">
+                        <input type="text" ng-model="user.gc" placeholder="General Contractor">
                     </label>
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Crew Leader</span>
-                        <input type="text" placeholder="Crew Leader">
+                        <input type="text" ng-model="user.crewleader" placeholder="Crew Leader">
                     </label>
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Site Superintendent</span>
-                        <input type="text" placeholder="Site Superintendent">
+                        <input type="text" ng-model="user.ssuper" placeholder="Site Superintendent">
                     </label>
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Job Scope</span>
-                        <input type="text" placeholder="Job Scope">
+                        <input type="text" ng-mdoel="user.jscope" placeholder="Job Scope">
                     </label>
                 </div>
+                <button type="submit" class="button button-full button-positive">Submit</button>
                 </form>
-            </ion-scroll>
+            </ion-content>
           </ion-modal-view>
