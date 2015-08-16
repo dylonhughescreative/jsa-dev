@@ -3,6 +3,10 @@
     bottom: 75%;
 }
 
+.Textbox{
+    font-weight: bold;
+}
+
 #ModalForm{
    bottom: 60px; 
 }

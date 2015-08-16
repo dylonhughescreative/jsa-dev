@@ -36,6 +36,7 @@
     font-size: 1.2vw;
     line-height: 150%;
     text-align: left;
+    overflow: hidden;
 }
 
 /* Portrait IDs */

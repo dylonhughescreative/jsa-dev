@@ -22,6 +22,12 @@ app.controller('ModalCtrl',function($scope, $ionicModal) {
   $scope.master = {
   }
   $scope.elements = {
+      cb_RespiratorType: 'N/A',
+      cb_GlovesType: 'N/A',
+      cb_Clothing: 'N/A',
+      cb_HearingProtection: 'N/A',
+      cb_ChemClothing: 'N/A',
+      cm_RespiratorType: false,
   }
     
   $ionicModal.fromTemplateUrl('./templates/PPEModal.html', {
@@ -75,6 +81,37 @@ app.controller('ModalCtrl',function($scope, $ionicModal) {
     
   //--------------Custom Modal Methods-----------------//
   $scope.submitModal = function(form){
+      if($scope.elements.cb_RespiratorType != "N/A") 
+          $scope.elements.cm_RespiratorType = true;
+      else
+          $scope.elements.cm_RespiratorType = false;
+      
+      if($scope.elements.cb_GlovesType != "N/A") 
+          $scope.elements.cm_GlovesType = true;
+      else
+          $scope.elements.cm_GlovesType = false;
+      
+      if($scope.elements.cb_Clothing != "N/A") 
+          $scope.elements.cm_Clothing = true;
+      else
+          $scope.elements.cm_Clothing = false;
+      
+      if($scope.elements.cb_HearingProtection != "N/A") 
+          $scope.elements.cm_HearingProtection = true;
+      else
+          $scope.elements.cm_HearingProtection = false;
+      
+      if($scope.elements.cb_ChemClothing != "N/A") 
+          $scope.elements.cm_ChemClothing = true;
+      else
+          $scope.elements.cm_ChemClothing = false;
+      
+      if($scope.elements.tb_Other != "N/A") 
+          $scope.elements.cm_Other = true;
+      else
+          $scope.elements.cm_Other = false;
+      
+      
       //update the master form with the modal elements
       $scope.master = $scope.elements;
       $scope.closeModal(form)
