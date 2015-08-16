@@ -29,6 +29,16 @@
     color: rgba(96,96,96,0.80);
 }
 
+.Textbox{
+    position: absolute;
+    color: black;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 1.2vw;
+    line-height: 150%;
+    text-align: left;
+    overflow: hidden;
+}
+
 /* Portrait IDs */
 
 #JSATitle {
