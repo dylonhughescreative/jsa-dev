@@ -19,22 +19,50 @@ app.run(function($ionicPlatform) {
 })
 
 app.controller('ModalCtrl',function($scope, $ionicModal) {
-  $ionicModal.fromTemplateUrl('my-modal.html', {
+  $scope.master = {
+  }
+  $scope.elements = {
+  }
+    
+  $ionicModal.fromTemplateUrl('./templates/PPEModal.html', {
     scope: $scope,
     animation: 'slide-in-up',
-    backdropClickToClose: true
+    backdropClickToClose: true,
   }).then(function(modal) {
-    $scope.modal = modal;
+    $scope.PPEmodal = modal;
   });
-  $scope.openModal = function() {
-    $scope.modal.show();
+    
+  $ionicModal.fromTemplateUrl('./templates/BasicInfoModal.html', {
+    scope: $scope,
+    animation: 'slide-in-up',
+    backdropClickToClose: true,
+  }).then(function(modal) {
+    $scope.BasicInfomodal = modal;
+  });
+    
+  $ionicModal.fromTemplateUrl('./templates/Task1Modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up',
+    backdropClickToClose: true,
+  }).then(function(modal) {
+    $scope.Task1modal = modal;
+  });       
+    
+  $scope.openModal = function(form) {
+    if(form == "PPE") $scope.PPEmodal.show();
+    else if(form == "BasicInfo") $scope.BasicInfomodal.show();
+    else if(form == "Task1") $scope.Task1modal.show();
   };
-  $scope.closeModal = function() {
-    $scope.modal.hide();
+  $scope.closeModal = function(form) {
+    if(form == "PPE") $scope.PPEmodal.hide();
+    else if(form == "BasicInfo") $scope.BasicInfomodal.hide();
+    else if(form == "Task1") $scope.Task1modal.hide();
   };
   //Cleanup the modal when we're done with it!
   $scope.$on('$destroy', function() {
-    $scope.modal.remove();
+    $scope.PPEmodal.remove();
+    $scope.BasicInfomodal.remove();
+    $scope.Task1modal.remove();
   });
   // Execute action on hide modal
   $scope.$on('modal.hidden', function() {
@@ -44,4 +72,13 @@ app.controller('ModalCtrl',function($scope, $ionicModal) {
   $scope.$on('modal.removed', function() {
     // Execute action
   });
+    
+  //--------------Custom Modal Methods-----------------//
+  $scope.submitModal = function(form){
+      //update the master form with the modal elements
+      $scope.master = $scope.elements;
+      $scope.closeModal(form)
+  };
 });
+
+//app.controller('

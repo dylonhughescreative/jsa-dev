@@ -29,16 +29,20 @@
     color: rgba(96,96,96,0.80);
 }
 
+.Textbox{
+    position: absolute;
+    color: black;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 1.2vw;
+    line-height: 150%;
+    text-align: left;
+}
+
 /* Portrait IDs */
 
 #JSATitle {
     top:0%;
     bottom: 88.75%;
-}
-
-#PPEAssessment{
-    top: 11.25%;
-    bottom: 75%;
 }
 
 #TaskOne {

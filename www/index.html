@@ -7,6 +7,7 @@
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/PPE_Assessment.css" rel="stylesheet">
       
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -16,24 +17,42 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
+    <!--<script src="cordova.js"></script>-->
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
   </head>
-  <body ng-app="starter">
-      <ion-view title="Home" hide-nav-bar="true" ng-controller="ModalCtrl">
+  <body ng-app="starter" ng-controller="ModalCtrl">
+      <ion-view title="Home" hide-nav-bar="true">
           <div class="headerBar"></div>       
           
           <ion-scroll class="Form" min-zoom="1" max-zoom="3" zooming="true" direction="xy">
-                <img class="Image" src="img/page1.PNG"/>
-				<div on-double-tap="openModal()" class="overlayButton" id="JSATitle">
+              <img class="Image" src="img/page1.PNG"/>
+              <div on-double-tap="openModal('BasicInfo')" class="overlayButton" id="JSATitle">
                    Double-Tap To Edit
-               </div>
-               <div on-double-tap="openModal()" class="overlayButton" id="PPEAssessment">
+              </div>
+              <div on-double-tap="openModal('PPE')" class="overlayButton" id="PPEAssessment">
                    Double-Tap To Edit
+                   <i ng-show="master.cm_EyeProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_EyeProtection"></i>
+                   <i ng-show="master.cm_ChemGoggles" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemGoggles"></i>
+                   <i ng-show="master.cm_HardHat" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HardHat"></i>
+                   <i ng-show="master.cm_RespiratorType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_RespiratorType"></i>
+                   <div class="Textbox" id="tb_RespiratorType">{{master.tb_respiratortype}}</div>
+                   <i ng-show="master.cm_GlovesType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_GlovesType"></i>
+                   <div class="Textbox" id="tb_GlovesType">{{master.tb_glovestype}}</div>
+                   <i ng-show="master.cm_Clothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Clothing"></i>
+                   <div class="Textbox" id="tb_Clothing">{{master.tb_clothing}}</div>
+                   <i ng-show="master.cm_ProtectiveToe" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ProtectiveToe"></i>
+                   <i ng-show="master.cm_HearingProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HearingProtection"></i>
+                   <div class="Textbox" id="tb_HearingProtection">{{master.tb_hearingprotection}}</div>
+                   <i ng-show="master.cm_ChemClothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemClothing"></i>
+                   <div class="Textbox" id="tb_ChemClothing">{{master.tb_chemclothing}}</div>
+                   <i ng-show="master.cm_HarnessLanyard" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HarnessLanyard"></i>
+                   <i ng-show="master.cm_FaceShield" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_FaceShield"></i>
+                   <i ng-show="master.cm_Other" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Other"></i>
+                   <div class="Textbox" id="tb_Other">{{master.tb_other}}</div>
                </div>
-               <div on-double-tap="openModal()" class="overlayButton" id="TaskOne">
+               <div on-double-tap="openModal('Task1')" class="overlayButton" id="TaskOne">
                    Double-Tap To Edit
                </div>
                <div on-double-tap="openModal()" class="overlayButton" id="TaskTwo">
@@ -47,78 +66,6 @@
                </div>
          </ion-scroll>
       </ion-view>
-      
-      <script id="my-modal.html" type="text/ng-template">
-          <ion-modal-view>
-                <ion-header-bar>
-                    <h1 class="title">Basic Information</h1>
-                    <button class="button button-clear button-positive" ng-click="closeModal()">Cancel</button>
-                </ion-header-bar>
-              <ion-content direction="y">
-                <form ng-submit="submitData()">  
-                <div class="list">
-                    <label class="item item-input item-floating-label">
-                        <span class="input-label">Project Name</span>
-                        <input type="text" placeholder="Project Name">
-                    </label>  
-                    <label class="item item-input item-floating-label">
-                        <span class="input-label">Date</span>
-                        <input type="date" placeholder="Date">
-                    </label>
-                    <label class="item item-input item-floating-label">
-                        <span class="input-label">Subcontractor</span>
-                        <input type="text" placeholder="Subcontractor">
-                    </label>
-                    <label class="item item-input item-floating-label">
-                        <span class="input-label">General Contractor</span>
-                        <input type="text" placeholder="General Contractor">
-                    </label>
-                    <label class="item item-input item-floating-label">
-                        <span class="input-label">Crew Leader</span>
-                        <input type="text" placeholder="Crew Leader">
-                    </label>
-                    <label class="item item-input item-floating-label">
-                        <span class="input-label">Site Superintendent</span>
-                        <input type="text" placeholder="Site Superintendent">
-                    </label>
-                    <label class="item item-input item-floating-label">
-                        <span class="input-label">Job Scope</span>
-                        <input type="text" placeholder="Job Scope">
-                    </label>
-                </div>
-                </form>
-            </ion-scroll>
-          </ion-modal-view>
-      </script>
-      
-      <!--<div class="checkboxlist">
-         <ul class="list">         
-             <li class="item item-checkbox">
-                 <label class="checkbox">
-                     <input type="checkbox">
-                 </label>
-                 My First Checkbox
-             </li>
-             <li class="item item-checkbox">
-                 <label class="checkbox">
-                     <input type="checkbox">
-                 </label>
-                 My Second Checkbox
-             </li>
-             <li class="item item-checkbox">
-                 <label class="checkbox">
-                     <input type="checkbox">
-                 </label>
-                 My Third Checkbox
-             </li>
-             <li class="item item-checkbox">
-                 <label class="checkbox">
-                     <input type="checkbox">
-                 </label>
-                 My Fourth Checkbox
-             </li>
-         </ul>
-      </div>-->
       
   </body>
 </html>

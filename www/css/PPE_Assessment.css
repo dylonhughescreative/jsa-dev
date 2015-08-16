@@ -1,0 +1,129 @@
+#PPEAssessment{
+    top: 11.25%;
+    bottom: 75%;
+}
+
+#ModalForm{
+   bottom: 60px; 
+}
+
+#b_Submit{
+    position: fixed;
+    width: 98%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 1%;
+    padding: 0;
+}
+
+.PPE_Checkmark{
+    position: absolute;
+    color: green;
+    font-size: 1.25vw;
+    width:1.6%;
+    height: 17%;
+    line-height: 120%;
+}
+
+#cm_EyeProtection{
+    top: 25%;
+    left: 0.5%;
+}
+
+#cm_ChemGoggles{
+    top: 42%;
+    left: 0.5%;
+}
+
+#cm_HardHat{
+    top: 58%;
+    left: 0.5%;
+}
+
+#cm_RespiratorType{
+    top: 25%;
+    left: 18.8%;
+}
+
+#tb_RespiratorType{
+    top: 25%;
+    left: 31%;
+    width: 16.3%;
+    height: 17%;
+}
+
+#cm_GlovesType{
+    top: 42%;
+    left: 18.8%;
+}
+
+#tb_GlovesType{
+    top: 42%;
+    left: 31%;
+    width: 16.3%;
+    height: 17%;
+}
+
+#cm_Clothing{
+    top: 58%;
+    left: 18.8%;
+}
+
+#tb_Clothing{
+    top: 58%;
+    left: 31%;
+    width: 16.3%;
+    height: 17%;
+}
+
+#cm_ProtectiveToe{
+    top: 25%;
+    left: 47.3%;
+}
+
+#cm_HearingProtection{
+    top: 42%;
+    left: 47.3%;
+}
+
+#tb_HearingProtection{
+    top: 42%;
+    left: 61%;
+    width: 14.7%;
+    height: 17%;
+}
+
+#cm_ChemClothing{
+    top: 58%;
+    left: 47.3%;
+}
+
+#tb_ChemClothing{
+    top: 58%;
+    left: 61%;
+    width: 14.7%;
+    height: 17%;
+}
+
+#cm_HarnessLanyard{
+    top: 25%;
+    left: 75.8%;
+}
+
+#cm_FaceShield{
+    top: 42%;
+    left: 75.8%;
+}
+
+#cm_Other{
+    top: 58%;
+    left: 75.8%;
+}
+
+#tb_Other{
+    top: 58%;
+    left: 82%;
+    width: 17.4%;
+    height: 17%;
+}
