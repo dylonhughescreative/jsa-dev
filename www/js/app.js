@@ -31,9 +31,47 @@ app.run(function($ionicPlatform) {
 //            url: "/basicinfo",
 //            templateUrl: "BasicInfoModel.html",
 //            controller:
+app.config(function($stateProvider, $urlRouterProvider) {
 
+ // Ionic uses AngularUI Router which uses the concept of states
+ // Learn more here: https://github.com/angular-ui/ui-router
+ // Set up the various states which the app can be in.
+ // Each state's controller can be found in controllers.js
+ $stateProvider
 
-app.controller('ModalCtrl',function($scope, $ionicModal) {
+ // Each tab has its own nav history stack:
+.state('landscape', {
+      url: '/landscape',
+      templateUrl: 'landscape.html',
+      controller: 'ModalCtrl'
+   })   
+   .state('portrait', {
+       url: '/portrait',
+       templateUrl: 'portrait.html',
+       controller: 'ModalCtrl'
+   });
+
+ // if none of the above states are matched, use this as the fallback
+ $urlRouterProvider.otherwise('/landscape');
+});
+
+app.directive("breakpoint", function () {
+    return function (scope, element, attrs, ctrl) {
+        var breakpoint = attrs.breakpoint;
+        var mql = window.matchMedia( breakpoint );
+        var mqlHandler = function (mql) {
+            scope.matches = mql.matches;
+            console.log = "Function Called!";
+            if(!scope.$$phase) { //prevents it from unnecessarily calling $scope.$apply when the page first runs
+                scope.$apply();
+            }
+        };
+        mql.addListener(mqlHandler);
+        mqlHandler(mql);
+    };
+});
+
+app.controller('ModalCtrl',function($scope, $ionicModal, $state) {
   $scope.blank = {}
   $scope.basicinfo = {}
   $scope.ppeinfo = {}
@@ -144,5 +182,16 @@ app.controller('ModalCtrl',function($scope, $ionicModal) {
       $scope.basicinfo = angular.copy($scope.blank);
       $scope.user = angular.copy($scope.blank);
       $scope.ppeinfo = angular.copy($scope.blank);
-  }
+  };
+  
+    
+     function tellAngular() {
+     if(window.innerWidth > window.innerHeight)
+         $state.go('landscape');
+     else
+         $state.go('portrait');
+     }
+  
+  //calling tellAngular on resize event
+  window.onresize = tellAngular;
 });
