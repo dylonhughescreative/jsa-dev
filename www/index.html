@@ -1,71 +1,36 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
-
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/PPE_Assessment.css" rel="stylesheet">
-      
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
-
-    <!-- cordova script (this will be a 404 during development) -->
-    <!--<script src="cordova.js"></script>-->
-
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
-  </head>
-  <body ng-app="starter" ng-controller="ModalCtrl">
-      <ion-view title="Home" hide-nav-bar="true">
-          <div class="headerBar"></div>       
+<html ng-app="starter">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title></title>
+    
+        <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/basicInfo.css" rel="stylesheet">
+        <link href="css/PPE_Assessment.css" rel="stylesheet">
           
-          <ion-scroll class="Form" min-zoom="1" max-zoom="3" zooming="true" direction="xy">
-              <img class="Image" src="img/page1.PNG"/>
-              <div on-double-tap="openModal('BasicInfo')" class="overlayButton" id="JSATitle">
-                   Double-Tap To Edit
-              </div>
-              <div on-double-tap="openModal('PPE')" class="overlayButton" id="PPEAssessment">
-                   Double-Tap To Edit
-                   <i ng-show="master.cm_EyeProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_EyeProtection"></i>
-                   <i ng-show="master.cm_ChemGoggles" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemGoggles"></i>
-                   <i ng-show="master.cm_HardHat" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HardHat"></i>
-                   <i ng-show="master.cm_RespiratorType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_RespiratorType"></i>
-                   <div class="Textbox" id="tb_RespiratorType">{{master.cb_RespiratorType}}</div>
-                   <i ng-show="master.cm_GlovesType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_GlovesType"></i>
-                   <div class="Textbox" id="tb_GlovesType">{{master.cb_GlovesType}}</div>
-                   <i ng-show="master.cm_Clothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Clothing"></i>
-                   <div class="Textbox" id="tb_Clothing">{{master.cb_Clothing}}</div>
-                   <i ng-show="master.cm_ProtectiveToe" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ProtectiveToe"></i>
-                   <i ng-show="master.cm_HearingProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HearingProtection"></i>
-                   <div class="Textbox" id="tb_HearingProtection">{{master.cb_HearingProtection}}</div>
-                   <i ng-show="master.cm_ChemClothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemClothing"></i>
-                   <div class="Textbox" id="tb_ChemClothing">{{master.cb_ChemClothing}}</div>
-                   <i ng-show="master.cm_HarnessLanyard" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HarnessLanyard"></i>
-                   <i ng-show="master.cm_FaceShield" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_FaceShield"></i>
-                   <i ng-show="master.cm_Other" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Other"></i>
-                   <div class="Textbox" id="tb_Other">{{master.tb_Other}}</div>
-               </div>
-               <div on-double-tap="openModal('Task1')" class="overlayButton" id="TaskOne">
-                   Double-Tap To Edit
-               </div>
-               <div on-double-tap="openModal()" class="overlayButton" id="TaskTwo">
-                   Double-Tap To Edit
-               </div>
-               <div on-double-tap="openModal()" class="overlayButton" id="TaskThree">
-                   Double-Tap To Edit
-               </div>
-               <div on-double-tap="openModal()" class="overlayButton" id="TaskFour">
-                   Double-Tap To Edit
-               </div>
-         </ion-scroll>
-      </ion-view>
-      
-  </body>
+        <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+        <link href="css/ionic.app.css" rel="stylesheet">
+        -->
+    
+        <!-- ionic/angularjs js -->
+        <script src="lib/ionic/js/ionic.bundle.js"></script>
+    
+        <!-- cordova script (this will be a 404 during development) -->
+        <script src="cordova.js"></script>
+    
+      <!-- your app's js -->
+      <script src="js/app.js"></script>
+    </head>
+    <body ng-controller="ModalCtrl" breakpoint="screen and (min-aspect-ratio: 1/1) and (min-width:400px)">
+        
+        <div ng-show="!matches">
+            <ion-nav-view name="portrait"></ion-nav-view>
+        </div>
+        <div ng-show="matches">
+            <ion-nav-view name="landscape"></ion-nav-view>
+        </div>
+        
+    </body>
 </html>

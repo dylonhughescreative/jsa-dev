@@ -18,16 +18,59 @@ app.run(function($ionicPlatform) {
   });
 })
 
-app.controller('ModalCtrl',function($scope, $ionicModal) {
-  $scope.master = {
-  }
+app.config(function($stateProvider, $urlRouterProvider) {
+
+ // Ionic uses AngularUI Router which uses the concept of states
+ // Learn more here: https://github.com/angular-ui/ui-router
+ // Set up the various states which the app can be in.
+ // Each state's controller can be found in controllers.js
+ $stateProvider
+
+ // Each tab has its own nav history stack:
+.state('entry', {
+      url: '/formentry',
+      views: {
+          landscape: {
+              templateUrl: 'templates/Landscape.html',
+          },
+          portrait: {
+              templateUrl: 'templates/Portrait.html',   
+          }
+      }
+   })
+
+ // if none of the above states are matched, use this as the fallback
+ $urlRouterProvider.otherwise('/formentry');
+});
+
+app.directive("breakpoint", function () {
+    return function (scope, element, attrs, ctrl) {
+        var breakpoint = attrs.breakpoint;
+        var mql = window.matchMedia( breakpoint );
+        var mqlHandler = function (mql) {
+            scope.matches = mql.matches;
+            console.log = "Function Called!";
+            if(!scope.$$phase) { //prevents it from unnecessarily calling $scope.$apply when the page first runs
+                scope.$apply();
+            }
+        };
+        mql.addListener(mqlHandler);
+        mqlHandler(mql);
+    };
+});
+
+app.controller('ModalCtrl',function($scope, $ionicModal, $state) {
+  $scope.blank = {}
+  $scope.basicinfo = {}
+  $scope.ppeinfo = {}
+  $scope.user = {}
   $scope.elements = {
       cb_RespiratorType: 'N/A',
       cb_GlovesType: 'N/A',
       cb_Clothing: 'N/A',
       cb_HearingProtection: 'N/A',
       cb_ChemClothing: 'N/A',
-      cm_RespiratorType: false,
+      tb_Other: ''
   }
     
   $ionicModal.fromTemplateUrl('./templates/PPEModal.html', {
@@ -81,41 +124,51 @@ app.controller('ModalCtrl',function($scope, $ionicModal) {
     
   //--------------Custom Modal Methods-----------------//
   $scope.submitModal = function(form){
-      if($scope.elements.cb_RespiratorType != "N/A") 
-          $scope.elements.cm_RespiratorType = true;
-      else
-          $scope.elements.cm_RespiratorType = false;
-      
-      if($scope.elements.cb_GlovesType != "N/A") 
-          $scope.elements.cm_GlovesType = true;
-      else
-          $scope.elements.cm_GlovesType = false;
-      
-      if($scope.elements.cb_Clothing != "N/A") 
-          $scope.elements.cm_Clothing = true;
-      else
-          $scope.elements.cm_Clothing = false;
-      
-      if($scope.elements.cb_HearingProtection != "N/A") 
-          $scope.elements.cm_HearingProtection = true;
-      else
-          $scope.elements.cm_HearingProtection = false;
-      
-      if($scope.elements.cb_ChemClothing != "N/A") 
-          $scope.elements.cm_ChemClothing = true;
-      else
-          $scope.elements.cm_ChemClothing = false;
-      
-      if($scope.elements.tb_Other != "N/A") 
-          $scope.elements.cm_Other = true;
-      else
-          $scope.elements.cm_Other = false;
-      
+      if(form == "PPE")
+      {
+          if($scope.elements.cb_RespiratorType != "N/A") 
+              $scope.elements.cm_RespiratorType = true;
+          else
+              $scope.elements.cm_RespiratorType = false;
+          
+          if($scope.elements.cb_GlovesType != "N/A") 
+              $scope.elements.cm_GlovesType = true;
+          else
+              $scope.elements.cm_GlovesType = false;
+          
+          if($scope.elements.cb_Clothing != "N/A") 
+              $scope.elements.cm_Clothing = true;
+          else
+              $scope.elements.cm_Clothing = false;
+          
+          if($scope.elements.cb_HearingProtection != "N/A") 
+              $scope.elements.cm_HearingProtection = true;
+          else
+              $scope.elements.cm_HearingProtection = false;
+          
+          if($scope.elements.cb_ChemClothing != "N/A") 
+              $scope.elements.cm_ChemClothing = true;
+          else
+              $scope.elements.cm_ChemClothing = false;
+          
+          if($scope.elements.tb_Other != "") 
+              $scope.elements.cm_Other = true;
+          else
+              $scope.elements.cm_Other = false;
+          $scope.ppeinfo = angular.copy($scope.elements);
+      }
       
       //update the master form with the modal elements
-      $scope.master = $scope.elements;
-      $scope.closeModal(form)
+      else if (form == "BasicInfo")
+      {
+          $scope.basicinfo = angular.copy($scope.user);
+      }
+      $scope.closeModal(form);
+  };
+    
+  $scope.reset = function() {
+      $scope.basicinfo = angular.copy($scope.blank);
+      $scope.user = angular.copy($scope.blank);
+      $scope.ppeinfo = angular.copy($scope.blank);
   };
 });
-
-//app.controller('

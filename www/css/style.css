@@ -4,10 +4,8 @@
     width: 100%;
     background-color: darkgrey;
 }
-
 .Form{
-    position: relative;
-    height: auto;
+    height: 96.5%;
     width: 100%;
  }
 
@@ -16,13 +14,14 @@
     height: auto;
 }
 
-.overlayButton{
+.overlayButton {
     position: absolute;
     width: 100%;
-    background-color: rgba(96,96,96,0.20);
-    color: rgba(255,255,255,0.00);
-    text-align: center;
-    color: transparent; 
+    color: transparent;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    right: 0;
 }
 
 .input-label {
@@ -71,9 +70,7 @@
     .headerBar {
         height: 7%;
     }
-    .Form{
-        position: relative;
+    .Form {
         height: 93%;
-        width: 100%;
     }
 }

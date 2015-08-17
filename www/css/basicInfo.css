@@ -1,0 +1,72 @@
+.baseinfotext {
+    position: absolute;
+    color: black;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 1.2vw;
+    font-weight: normal;
+    line-height: 120%;
+    overflow: hidden;
+}
+
+#BasicInfoForm {
+    bottom: 60px;
+}
+
+#basicinfosubmit {
+    position: fixed;
+    width: 98%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 1%;
+    padding: 0;
+}
+
+#subcontractor {
+    top: 38%;
+    bottom: 43%;
+    left: 10.25%;
+    right: 65%;
+}
+
+#crewleader {
+    top: 38%;
+    bottom: 43%;
+    left: 44%;
+    right: 33%;
+}
+
+#projectname {
+    top: 38%;
+    bottom: 43%;
+    left: 76.5%;
+    right: 1%;
+}
+
+#generalcontractor {
+    top: 59.5%;
+    bottom: 22.5%;
+    left: 13.5%;
+    right: 65%;
+}
+
+#sitesuperintendent {
+    top: 59.5%;
+    bottom: 22.5%;
+    left: 48%;
+    right: 33%;
+}
+
+#basicinfodate {
+    top: 59.5%;
+    bottom: 22.5%;
+    left: 71.25%;
+    right: 1%;
+}
+
+#jobscope {
+    top: 80.5%;
+    bottom: 1%;
+    left: 8%;
+    right: 1%;
+}
