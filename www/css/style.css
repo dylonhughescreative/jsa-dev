@@ -1,4 +1,15 @@
 /* Classes */
+/* Taken directly from docs.angularjs.org/guide/animations */
+.show-hide {
+    -webkit-transition: all linear 1s;
+    transition: all linear 1s;
+}
+
+.show-hide.ng-hide {
+    opacity: 0;
+}
+/*End docs.angular.js*/
+
 .headerBar{
     height: 3.5%;
     width: 100%;

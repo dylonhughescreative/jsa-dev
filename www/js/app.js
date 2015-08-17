@@ -179,9 +179,16 @@ app.controller('ModalCtrl',function($scope, $ionicModal, $state) {
       $scope.closeModal(form);
   };
     
-  $scope.reset = function() {
-      $scope.basicinfo = angular.copy($scope.blank);
-      $scope.user = angular.copy($scope.blank);
-      $scope.ppeinfo = angular.copy($scope.blank);
+  $scope.reset = function(form) {
+      if(form == "BasicInfo")
+      {
+        $scope.basicinfo = angular.copy($scope.blank);
+        $scope.user = angular.copy($scope.blank);
+      }
+      else if (form == "PPE")
+      {
+        $scope.ppeinfo = angular.copy($scope.blank);
+        $scope.elements = angular.copy($scope.blank);
+      }
   };
 });
