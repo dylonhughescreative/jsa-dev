@@ -40,19 +40,20 @@ app.config(function($stateProvider, $urlRouterProvider) {
  $stateProvider
 
  // Each tab has its own nav history stack:
-.state('landscape', {
-      url: '/landscape',
-      templateUrl: 'landscape.html',
-      controller: 'ModalCtrl'
-   })   
-   .state('portrait', {
-       url: '/portrait',
-       templateUrl: 'portrait.html',
-       controller: 'ModalCtrl'
-   });
+.state('entry', {
+      url: '/formentry',
+      views: {
+          landscape: {
+              templateUrl: 'landscape.html',
+          },
+          portrait: {
+              templateUrl: 'portrait.html',
+          }
+      }
+   })
 
  // if none of the above states are matched, use this as the fallback
- $urlRouterProvider.otherwise('/landscape');
+ $urlRouterProvider.otherwise('/formentry');
 });
 
 app.directive("breakpoint", function () {
@@ -183,15 +184,4 @@ app.controller('ModalCtrl',function($scope, $ionicModal, $state) {
       $scope.user = angular.copy($scope.blank);
       $scope.ppeinfo = angular.copy($scope.blank);
   };
-  
-    
-     function tellAngular() {
-     if(window.innerWidth > window.innerHeight)
-         $state.go('landscape');
-     else
-         $state.go('portrait');
-     }
-  
-  //calling tellAngular on resize event
-  window.onresize = tellAngular;
 });
