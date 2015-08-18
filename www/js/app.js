@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('starter', ['ionic'])
 
-app.run(function($ionicPlatform) {
+app.run(function($ionicPlatform, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -16,6 +16,17 @@ app.run(function($ionicPlatform) {
       StatusBar.styleDefault();
     }
   });
+  function OnScreenSizeChange() {
+   if(window.innerWidth > window.innerHeight)
+       $state.go('landscape');
+   else
+       $state.go('portrait');
+   }
+   
+   OnScreenSizeChange();
+   
+   //calling tellAngular on resize event
+   window.onresize = OnScreenSizeChange;
 })
 
 // basicinfo
@@ -40,20 +51,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
  $stateProvider
 
  // Each tab has its own nav history stack:
-.state('entry', {
-      url: '/formentry',
-      views: {
-          landscape: {
-              templateUrl: 'landscape.html',
-          },
-          portrait: {
-              templateUrl: 'portrait.html',
-          }
-      }
+.state('landscape', {
+      url: '/landscape',
+      templateUrl: 'landscape.html',
    })
+.state('portrait', {
+      url: '/portrait',
+      templateUrl: 'portrait.html',
+ })
 
  // if none of the above states are matched, use this as the fallback
- $urlRouterProvider.otherwise('/formentry');
+ $urlRouterProvider.otherwise('/landscape');
 });
 
 app.directive("breakpoint", function () {
