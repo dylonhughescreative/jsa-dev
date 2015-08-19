@@ -68,7 +68,8 @@ app.factory('FormService', function () {
             tb_Other: ''
         },
         users = {},
-        FormComplete = {
+        complete,
+        completedElements = {
             GenInfo: false,
             PPEAssess: false,
             TaskStep1: false,
