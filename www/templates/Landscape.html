@@ -2,9 +2,29 @@
 
 <ion-scroll class="Form" min-zoom="1" max-zoom="3" zooming="true" direction="xy">
      <img class="Image" src="img/page1.PNG"/>
-     <div on-double-tap="openModal('BasicInfo')" class="overlayButton" id="JSATitle">
-          Double-Tap To Edit
-     </div>
+                <div on-double-tap="openModal('BasicInfo')" class="overlayButton" id="JSATitle">
+                    <div class="baseinfotext" id="subcontractor">
+                        {{basicinfo.subcontractor}}
+                    </div>
+                    <div class="baseinfotext" id="crewleader">
+                        {{basicinfo.crewleader}}
+                    </div>
+                    <div class="baseinfotext" id="projectname">
+                        {{basicinfo.projectname}}
+                    </div>
+                    <div class="baseinfotext" id="generalcontractor">
+                        {{basicinfo.generalcontractor}}
+                    </div>
+                    <div class="baseinfotext" id="sitesuperintendent">
+                        {{basicinfo.sitesuperintendent}}
+                    </div>
+                    <div class="baseinfotext" id="basicinfodate">
+                        {{basicinfo.basicinfodate | date:"MM/dd/yyyy"}}
+                    </div>
+                    <div class="baseinfotext" id="jobscope">
+                        {{basicinfo.jobscope}}
+                    </div>
+               </div>
      <div on-double-tap="openModal('PPE')" class="overlayButton" id="PPEAssessment">
           Double-Tap To Edit
           <i ng-show="ppeinfo.cm_EyeProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_EyeProtection"></i>
@@ -26,7 +46,7 @@
           <i ng-show="ppeinfo.cm_Other" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Other"></i>
           <div class="Textbox" id="tb_Other">{{ppeinfo.tb_Other}}</div>
       </div>
-      <div on-double-tap="openModal('Task1')" class="overlayButton" id="TaskOne">
+      <div on-double-tap="openModal()" class="overlayButton" id="TaskOne">
           Double-Tap To Edit
       </div>
       <div on-double-tap="openModal()" class="overlayButton" id="TaskTwo">

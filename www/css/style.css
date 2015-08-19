@@ -14,10 +14,16 @@
     height: auto;
 }
 
-.overlayButton {
+.VertForm {
     position: absolute;
     width: 100%;
-    color: transparent;
+    height: 96.5%;
+}
+.overlayButton {
+    position: absolute;
+    background-color: rgba(96,96,96,0.00);
+    color: rgba(255,255,255,0.00);
+    text-align: left;
     padding: 0;
     margin: 0;
     left: 0;
@@ -33,7 +39,7 @@
     color: black;
     font-family: "Helvetica Neue", sans-serif;
     font-size: 1.2vw;
-    line-height: 150%;
+    line-height: 120%;
     text-align: left;
     overflow: hidden;
 }
@@ -43,6 +49,11 @@
 #JSATitle {
     top:0%;
     bottom: 88.75%;
+}
+
+#PPEAssessment{
+    top: 11.25%;
+    bottom: 75%;
 }
 
 #TaskOne {

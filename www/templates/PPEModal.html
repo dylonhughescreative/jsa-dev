@@ -1,7 +1,7 @@
 <ion-modal-view>
     <ion-header-bar>
         <h1 class="title">PPE Assessment</h1>
-        <button class="button button-clear button-positive" ng-click="reset()">Clear</button>
+        <button class="button button-clear button-positive" ng-click="reset('PPE')">Clear</button>
         <button class="button button-clear button-positive" ng-click="closeModal('PPE')">Cancel</button>
     </ion-header-bar>
     <ion-content direction="y" id="ModalForm">
@@ -61,16 +61,9 @@
                     <ion-checkbox class="item item-checkbox-right" ng-model="elements.cm_ProtectiveToe">
                         Protective Toe
                     </ion-checkbox>
-                    <label class="item item-input item-select">
-                        <div class="input-label">
-                            Hearing Protection
-                        </div>
-                        <select ng-model="elements.cb_HearingProtection">
-                            <option selected>N/A</option>
-                            <option>Ear Plugs</option>
-                            <option>Ear Muffs</option>
-                        </select>
-                    </label>
+                    <ion-checkbox class="item item-checkbox-right" ng-model="elements.cm_HearingProtection">
+                        Hearing Protection
+                    </ion-checkbox>
                     <label class="item item-input item-select">
                         <div class="input-label">
                             Chem. Clothing

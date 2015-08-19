@@ -64,11 +64,18 @@ app.factory('FormService', function () {
             cb_RespiratorType: 'N/A',
             cb_GlovesType: 'N/A',
             cb_Clothing: 'N/A',
-            cb_HearingProtection: 'N/A',
             cb_ChemClothing: 'N/A',
             tb_Other: ''
         },
-        users = {};
+        users = {},
+        FormComplete = {
+            GenInfo: false,
+            PPEAssess: false,
+            TaskStep1: false,
+            TaskStep2: false,
+            TaskStep3: false,
+            TaskStep4: false
+        };
     
     service.getelements = function () {
         return elements;
@@ -142,45 +149,44 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, Form
     });
     
     //--------------Custom Modal Methods-----------------//
+    
+    function formatPPE() {
+        if ($scope.elements.cb_RespiratorType !== "N/A") {
+            $scope.elements.cm_RespiratorType = true;
+        } else {
+            $scope.elements.cm_RespiratorType = false;
+        }
+        
+        if ($scope.elements.cb_GlovesType !== "N/A") {
+            $scope.elements.cm_GlovesType = true;
+        } else {
+            $scope.elements.cm_GlovesType = false;
+        }
+        
+        if ($scope.elements.cb_Clothing !== "N/A") {
+            $scope.elements.cm_Clothing = true;
+        } else {
+            $scope.elements.cm_Clothing = false;
+        }
+        
+        if ($scope.elements.cb_ChemClothing !== "N/A") {
+            $scope.elements.cm_ChemClothing = true;
+        } else {
+            $scope.elements.cm_ChemClothing = false;
+        }
+        
+        if ($scope.elements.tb_Other !== "") {
+            $scope.elements.cm_Other = true;
+        } else {
+            $scope.elements.cm_Other = false;
+        }
+        
+        $scope.ppeinfo = angular.copy($scope.elements);
+    }
+    
     $scope.submitModal = function (form) {
         if (form === "PPE") {
-            if ($scope.elements.cb_RespiratorType !== "N/A") {
-                $scope.elements.cm_RespiratorType = true;
-            } else {
-                $scope.elements.cm_RespiratorType = false;
-            }
-          
-            if ($scope.elements.cb_GlovesType !== "N/A") {
-                $scope.elements.cm_GlovesType = true;
-            } else {
-                $scope.elements.cm_GlovesType = false;
-            }
-            
-            if ($scope.elements.cb_Clothing !== "N/A") {
-                $scope.elements.cm_Clothing = true;
-            } else {
-                $scope.elements.cm_Clothing = false;
-            }
-            
-            if ($scope.elements.cb_HearingProtection !== "N/A") {
-                $scope.elements.cm_HearingProtection = true;
-            } else {
-                $scope.elements.cm_HearingProtection = false;
-            }
-            
-            if ($scope.elements.cb_ChemClothing !== "N/A") {
-                $scope.elements.cm_ChemClothing = true;
-            } else {
-                $scope.elements.cm_ChemClothing = false;
-            }
-            
-            if ($scope.elements.tb_Other !== "") {
-                $scope.elements.cm_Other = true;
-            } else {
-                $scope.elements.cm_Other = false;
-            }
-            
-            $scope.ppeinfo = angular.copy($scope.elements);
+            formatPPE();
         } else if (form === "BasicInfo") {
             $scope.basicinfo = angular.copy($scope.user);
         }
@@ -193,10 +199,10 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, Form
         $scope.ppeinfo = angular.copy($scope.blank);
     };
     
-    function Refresh() {
+    function refresh() {
         $scope.ppeinfo = angular.copy($scope.elements);
         $scope.basicinfo = angular.copy($scope.user);
         //$scope.$apply();
     }
-    angular.element($window).bind('resize', Refresh);
+    angular.element($window).bind('resize', refresh);
 });

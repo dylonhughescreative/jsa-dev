@@ -2,27 +2,33 @@
 
 <ion-scroll class="VertForm" zooming="false" direction="y">
      <a ng-click="openModal('BasicInfo')" class="item item-icon-left">
-         <i class="icon ion-email"></i>
+         <i ng-show="!FormService.PPEAssess" class="icon ion-close"></i>
+         <i ng-show="FormService.PPEAssess" class="icon ion-checkmark"></i>
          General Information
      </a>
      <a ng-click="openModal('PPE')" class="item item-icon-left">
-         <i class="icon ion-email"></i>
+         <i ng-show="!FormService.PPEAssess" class="icon ion-close"></i>
+         <i ng-show="FormService.PPEAssess" class="icon ion-checkmark"></i>
          PPE Assessment
      </a>
-     <a class="item item-icon-left" href="#">
-         <i class="icon ion-email"></i>
+     <a class="item item-icon-left">
+         <i ng-show="FormService.PPEAssess" class="icon ion-close"></i>
+         <i ng-show="!FormService.PPEAssess" class="icon ion-checkmark"></i>
          Task Step #1
      </a>
-     <a class="item item-icon-left" href="#">
-         <i class="icon ion-email"></i>
+     <a class="item item-icon-left">
+         <i ng-show="!FormService.PPEAssess" class="icon ion-close"></i>
+         <i ng-show="FormService.PPEAssess" class="icon ion-checkmark"></i>
          Task Step #2
      </a>
-     <a class="item item-icon-left" href="#">
-         <i class="icon ion-email"></i>
+     <a class="item item-icon-left">
+         <i ng-show="!FormService.PPEAssess" class="icon ion-close"></i>
+         <i ng-show="FormService.PPEAssess" class="icon ion-checkmark"></i>
          Task Step #3
      </a>
-     <a class="item item-icon-left" href="#">
-         <i class="icon ion-email"></i>
+     <a class="item item-icon-left">
+         <i ng-show="!FormService.PPEAssess" class="icon ion-close"></i>
+         <i ng-show="FormService.PPEAssess" class="icon ion-checkmark"></i>
          Task Step #4
      </a>
 </ion-scroll>
