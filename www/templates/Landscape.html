@@ -27,23 +27,23 @@
                </div>
      <div on-double-tap="openModal('PPE')" class="overlayButton" id="PPEAssessment">
           Double-Tap To Edit
-          <i ng-cloak ng-show="ppeinfo.cm_EyeProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_EyeProtection"></i>
-          <i ng-cloak ng-show="ppeinfo.cm_ChemGoggles" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemGoggles"></i>
-          <i ng-cloak ng-show="ppeinfo.cm_HardHat" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HardHat"></i>
-          <i ng-cloak ng-show="ppeinfo.cm_RespiratorType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_RespiratorType"></i>
+          <i ng-cloak data-ng-if="ppeinfo.cm_EyeProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_EyeProtection"></i>
+          <i ng-cloak data-ng-if="ppeinfo.cm_ChemGoggles" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemGoggles"></i>
+          <i ng-cloak data-ng-if="ppeinfo.cm_HardHat" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HardHat"></i>
+          <i ng-cloak data-ng-if="ppeinfo.cm_RespiratorType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_RespiratorType"></i>
           <div class="Textbox" id="tb_RespiratorType">{{ppeinfo.cb_RespiratorType}}</div>
-          <i ng-cloak ng-show="ppeinfo.cm_GlovesType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_GlovesType"></i>
+          <i ng-cloak data-ng-if="ppeinfo.cm_GlovesType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_GlovesType"></i>
           <div class="Textbox" id="tb_GlovesType">{{ppeinfo.cb_GlovesType}}</div>
-          <i ng-cloak ng-show="ppeinfo.cm_Clothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Clothing"></i>
+          <i ng-cloak data-ng-if="ppeinfo.cm_Clothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Clothing"></i>
           <div class="Textbox" id="tb_Clothing">{{ppeinfo.cb_Clothing}}</div>
-          <i ng-cloak ng-show="ppeinfo.cm_ProtectiveToe" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ProtectiveToe"></i>
-          <i ng-cloak ng-show="ppeinfo.cm_HearingProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HearingProtection"></i>
+          <i ng-cloak data-ng-if="ppeinfo.cm_ProtectiveToe" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ProtectiveToe"></i>
+          <i ng-cloak data-ng-if="ppeinfo.cm_HearingProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HearingProtection"></i>
           <div class="Textbox" id="tb_HearingProtection">{{ppeinfo.cb_HearingProtection}}</div>
-          <i ng-cloak ng-show="ppeinfo.cm_ChemClothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemClothing"></i>
+          <i ng-cloak data-ng-if="ppeinfo.cm_ChemClothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemClothing"></i>
           <div class="Textbox" id="tb_ChemClothing">{{ppeinfo.cb_ChemClothing}}</div>
-          <i ng-cloak ng-show="ppeinfo.cm_HarnessLanyard" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HarnessLanyard"></i>
-          <i ng-cloak ng-show="ppeinfo.cm_FaceShield" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_FaceShield"></i>
-          <i ng-cloak ng-show="ppeinfo.cm_Other" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Other"></i>
+          <i ng-cloak data-ng-if="ppeinfo.cm_HarnessLanyard" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HarnessLanyard"></i>
+          <i ng-cloak data-ng-if="ppeinfo.cm_FaceShield" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_FaceShield"></i>
+          <i ng-cloak data-ng-if="ppeinfo.cm_Other" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Other"></i>
           <div class="Textbox" id="tb_Other">{{ppeinfo.tb_Other}}</div>
       </div>
       <div on-double-tap="openModal()" class="overlayButton" id="TaskOne">

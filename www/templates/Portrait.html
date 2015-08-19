@@ -2,35 +2,35 @@
 
 <ion-scroll class="VertForm" zooming="false" direction="y">
      <a ng-click="openModal('BasicInfo')" class="item item-icon-left">
-         <i ng-show="!FormService.PPEAssess" class="icon ion-close incompleteicon ng-cloak"></i>
-         <i ng-cloak ng-show="FormService.PPEAssess" class="icon ion-checkmark completeicon ng-cloak"></i>
+         <i data-ng-if="!FormService.PPEAssess" class="icon ion-close incompleteicon ng-cloak"></i>
+         <i ng-cloak data-ng-if="FormService.PPEAssess" class="icon ion-checkmark completeicon ng-cloak"></i>
          General Information
      </a>
      <a ng-click="openModal('PPE')" class="item item-icon-left">
-         <i ng-show="!FormService.PPEAssess" class="icon ion-close incompleteicon ng-cloak"></i>
-         <i ng-cloak ng-show="FormService.PPEAssess" class="icon ion-checkmark completeicon ng-cloak"></i>
+         <i data-ng-if="!FormService.PPEAssess" class="icon ion-close incompleteicon ng-cloak"></i>
+         <i ng-cloak data-ng-if="FormService.PPEAssess" class="icon ion-checkmark completeicon ng-cloak"></i>
          PPE Assessment
      </a>
      <a class="item item-icon-left">
-         <i ng-show="!FormService.PPEAssess" class="icon ion-close incompleteicon ng-cloak"></i>
-         <i ng-cloak ng-show="FormService.PPEAssess" class="icon ion-checkmark completeicon ng-cloak"></i>
+         <i data-ng-if="!FormService.PPEAssess" class="icon ion-close incompleteicon ng-cloak"></i>
+         <i ng-cloak data-ng-if="FormService.PPEAssess" class="icon ion-checkmark completeicon ng-cloak"></i>
          Task Step #1
      </a>
      <a class="item item-icon-left">
-         <i ng-show="!FormService.PPEAssess" class="icon ion-close incompleteicon ng-cloak"></i>
-         <i ng-cloak ng-show="FormService.PPEAssess" class="icon ion-checkmark completeicon ng-cloak"></i>
+         <i data-ng-if="!FormService.PPEAssess" class="icon ion-close incompleteicon ng-cloak"></i>
+         <i ng-cloak data-ng-if="FormService.PPEAssess" class="icon ion-checkmark completeicon ng-cloak"></i>
          Task Step #2
      </a>
      <a class="item item-icon-left">
-         <i ng-show="!FormService.PPEAssess" class="icon ion-close incompleteicon ng-cloak"></i>
-         <i ng-cloak ng-show="FormService.PPEAssess" class="icon ion-checkmark completeicon ng-cloak"></i>
+         <i data-ng-if="!FormService.PPEAssess" class="icon ion-close incompleteicon ng-cloak"></i>
+         <i ng-cloak data-ng-if="FormService.PPEAssess" class="icon ion-checkmark completeicon ng-cloak"></i>
          Task Step #3
      </a>
      <a class="item item-icon-left">
-         <i ng-show="!FormService.PPEAssess" class="icon ion-close incompleteicon ng-cloak"></i>
-         <i ng-show="FormService.PPEAssess" class="icon ion-checkmark completeicon ng-cloak"></i>
+         <i data-ng-if="!FormService.PPEAssess" class="icon ion-close incompleteicon ng-cloak"></i>
+         <i data-ng-if="FormService.PPEAssess" class="icon ion-checkmark completeicon ng-cloak"></i>
          Task Step #4
      </a>
 </ion-scroll>
 
-<button ng-show="FormService.complete" class="button button-block button-positive ng-cloak" id = "b_Submit" ng-click="submitModal('PPE')">Submit</button>
+<button data-ng-if="FormService.complete" class="button button-block button-positive ng-cloak" id = "b_Submit" ng-click="submitModal('PPE')">Submit</button>
