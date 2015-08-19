@@ -20,7 +20,7 @@ app.run(function ($ionicPlatform, $state, $window) {
         }
     });
     
-    function OnScreenSizeChange() {
+    function onScreenSizeChange() {
         if (window.innerWidth > window.innerHeight) {
             $state.go('landscape');
         } else {
@@ -28,10 +28,7 @@ app.run(function ($ionicPlatform, $state, $window) {
         }
     }
     
-    angular.element($window).bind('resize', OnScreenSizeChange);
-    
-    //calling tellAngular on resize event
-    //window.onresize = OnScreenSizeChange;
+    angular.element($window).bind('resize', onScreenSizeChange);
 });
 
 app.config(function ($stateProvider, $urlRouterProvider) {
@@ -42,34 +39,35 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     // Each state's controller can be found in controllers.js
     'use strict';
     $stateProvider
-
-        // Each tab has its own nav history stack:
+    
+        //Each tab has its own nav history stack:
+        .state('portrait', {
+            url: '/portrait',
+            templateUrl: 'templates/Portrait.html'
+            //controller: 'ModalCtrl'
+        })
         .state('landscape', {
             url: '/landscape',
-            templateUrl: 'templates/Landscape.html',
-            controller: 'ModalCtrl'
-        })
-         .state('portrait', {
-            url: '/portrait',
-            templateUrl: 'templates/Portrait.html',
-            controller: 'ModalCtrl'
+            templateUrl: 'templates/Landscape.html'
+            //controller: 'ModalCtrl'
         });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/landscape');
+    $urlRouterProvider.otherwise('/portrait');
 });
 
 app.factory('FormService', function () {
     'use strict';
-    var service, user = {};
-    var elements = {
-        cb_RespiratorType: 'N/A',
-        cb_GlovesType: 'N/A',
-        cb_Clothing: 'N/A',
-        cb_HearingProtection: 'N/A',
-        cb_ChemClothing: 'N/A',
-        tb_Other: ''
-    };
+    var service = {},
+        elements = {
+            cb_RespiratorType: 'N/A',
+            cb_GlovesType: 'N/A',
+            cb_Clothing: 'N/A',
+            cb_HearingProtection: 'N/A',
+            cb_ChemClothing: 'N/A',
+            tb_Other: ''
+        },
+        users = {};
     
     service.getelements = function () {
         return elements;
@@ -197,7 +195,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, Form
     function Refresh() {
         $scope.ppeinfo = angular.copy($scope.elements);
         $scope.basicinfo = angular.copy($scope.user);
-        $scope.$apply();
+        //$scope.$apply();
     }
     angular.element($window).bind('resize', Refresh);
 });
