@@ -95,7 +95,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, Form
     $ionicModal.fromTemplateUrl('./templates/PPEModal.html', {
         scope: $scope,
         animation: 'slide-in-up',
-        backdropClickToClose: true
+        backdropClickToClose: false
     }).then(function (modal) {
         $scope.PPEmodal = modal;
     });
@@ -103,7 +103,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, Form
     $ionicModal.fromTemplateUrl('./templates/BasicInfoModal.html', {
         scope: $scope,
         animation: 'slide-in-up',
-        backdropClickToClose: true
+        backdropClickToClose: false
     }).then(function (modal) {
         $scope.BasicInfomodal = modal;
     });
@@ -111,7 +111,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, Form
     $ionicModal.fromTemplateUrl('./templates/Task1Modal.html', {
         scope: $scope,
         animation: 'slide-in-up',
-        backdropClickToClose: true
+        backdropClickToClose: false
     }).then(function (modal) {
         $scope.Task1modal = modal;
     });
