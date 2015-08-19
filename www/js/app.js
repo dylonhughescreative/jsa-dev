@@ -28,6 +28,7 @@ app.run(function ($ionicPlatform, $state, $window) {
     }
     
     angular.element($window).bind('resize', OnScreenSizeChange);
+    angular.element($window).bind('load', OnScreenSizeChange);
     
     //calling tellAngular on resize event
     //window.onresize = OnScreenSizeChange;
@@ -46,12 +47,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('landscape', {
             url: '/landscape',
             templateUrl: 'landscape.html',
-            controller: 'ModalCtrl'
         })
          .state('portrait', {
             url: '/portrait',
             templateUrl: 'portrait.html',
-            controller: 'ModalCtrl'
         });
 
     // if none of the above states are matched, use this as the fallback
