@@ -15,6 +15,8 @@ app.run(function($ionicPlatform, $state) {
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+      
+    OnScreenSizeChange();
   });
   function OnScreenSizeChange() {
    if(window.innerWidth > window.innerHeight)
