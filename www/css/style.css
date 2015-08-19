@@ -25,6 +25,12 @@
     height: auto;
 }
 
+.VertForm {
+    position: absolute;
+    width: 100%;
+    height: 96.5%;
+}
+
 .overlayButton {
     position: absolute;
     background-color: rgba(96,96,96,0.00);
