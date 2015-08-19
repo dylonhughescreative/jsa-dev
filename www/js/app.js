@@ -29,6 +29,7 @@ app.run(function ($ionicPlatform, $state, $window) {
     }
     
     angular.element($window).bind('resize', onScreenSizeChange);
+    angular.element($window).bind('load', onScreenSizeChange);
 });
 
 app.config(function ($stateProvider, $urlRouterProvider) {
