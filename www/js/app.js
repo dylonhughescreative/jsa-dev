@@ -16,7 +16,10 @@ app.run(function($ionicPlatform, $state) {
       StatusBar.styleDefault();
     }
       
-    OnScreenSizeChange();
+    if(window.innerWidth > window.innerHeight)
+       $state.go("landscape");
+    else
+       $state.go("portrait");
   });
   function OnScreenSizeChange() {
    if(window.innerWidth > window.innerHeight)
