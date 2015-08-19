@@ -21,10 +21,11 @@ app.run(function ($ionicPlatform, $state, $window) {
     });
     
     function OnScreenSizeChange() {
-        if (window.innerWidth > window.innerHeight)
+        if (window.innerWidth > window.innerHeight) {
             $state.go('landscape');
-        else
+        } else {
             $state.go('portrait');
+        }
     }
     
     angular.element($window).bind('resize', OnScreenSizeChange);
@@ -58,18 +59,23 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/landscape');
 });
 
-app.factory('FormService', function() {
+app.factory('FormService', function () {
     'use strict';
+    var service, user = {};
     var elements = {
-            cb_RespiratorType: 'N/A',
-            cb_GlovesType: 'N/A',
-            cb_Clothing: 'N/A',
-            cb_HearingProtection: 'N/A',
-            cb_ChemClothing: 'N/A',
-            tb_Other: ''
+        cb_RespiratorType: 'N/A',
+        cb_GlovesType: 'N/A',
+        cb_Clothing: 'N/A',
+        cb_HearingProtection: 'N/A',
+        cb_ChemClothing: 'N/A',
+        tb_Other: ''
     };
     
-    return elements;
+    service.getelements = function () {
+        return elements;
+    };
+    
+    return service;
 });
 
 app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, FormService) {
@@ -78,7 +84,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, Form
     $scope.basicinfo = {};
     $scope.ppeinfo = {};
     $scope.user = {};
-    $scope.elements = FormService;
+    $scope.elements = FormService.getelements();
     
     $ionicModal.fromTemplateUrl('./templates/PPEModal.html', {
         scope: $scope,
@@ -104,82 +110,91 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, Form
         $scope.Task1modal = modal;
     });
     $scope.openModal = function (form) {
-        if (form === "PPE") { $scope.PPEmodal.show(); } 
-        else if (form === "BasicInfo") { $scope.BasicInfomodal.show(); }
-        else if (form === "Task1") { $scope.Task1modal.show(); }
+        if (form === "PPE") {
+            $scope.PPEmodal.show();
+        } else if (form === "BasicInfo") {
+            $scope.BasicInfomodal.show();
+        } else if (form === "Task1") {
+            $scope.Task1modal.show();
+        }
     };
-    $scope.closeModal = function(form) {
-      if (form === "PPE") $scope.PPEmodal.hide();
-      else if (form === "BasicInfo") $scope.BasicInfomodal.hide();
-      else if (form === "Task1") $scope.Task1modal.hide();
+    $scope.closeModal = function (form) {
+        if (form === "PPE") {
+            $scope.PPEmodal.hide();
+        } else if (form === "BasicInfo") {
+            $scope.BasicInfomodal.hide();
+        } else if (form === "Task1") {
+            $scope.Task1modal.hide();
+        }
     };
     //Cleanup the modal when we're done with it!
-    $scope.$on('$destroy', function() {
-      $scope.PPEmodal.remove();
-      $scope.BasicInfomodal.remove();
-      $scope.Task1modal.remove();
+    $scope.$on('$destroy', function () {
+        $scope.PPEmodal.remove();
+        $scope.BasicInfomodal.remove();
+        $scope.Task1modal.remove();
     });
     // Execute action on hide modal
-    $scope.$on('modal.hidden', function() {
+    $scope.$on('modal.hidden', function () {
       // Execute action
     });
     // Execute action on remove modal
-    $scope.$on('modal.removed', function() {
+    $scope.$on('modal.removed', function () {
       // Execute action
     });
     
     //--------------Custom Modal Methods-----------------//
-    $scope.submitModal = function(form){
-        if(form == "PPE")
-        {
-          if($scope.elements.cb_RespiratorType != "N/A") 
-              $scope.elements.cm_RespiratorType = true;
-          else
-              $scope.elements.cm_RespiratorType = false;
+    $scope.submitModal = function (form) {
+        if (form === "PPE") {
+            if ($scope.elements.cb_RespiratorType !== "N/A") {
+                $scope.elements.cm_RespiratorType = true;
+            } else {
+                $scope.elements.cm_RespiratorType = false;
+            }
           
-          if($scope.elements.cb_GlovesType != "N/A") 
-              $scope.elements.cm_GlovesType = true;
-          else
-              $scope.elements.cm_GlovesType = false;
-          
-          if($scope.elements.cb_Clothing != "N/A") 
-              $scope.elements.cm_Clothing = true;
-          else
-              $scope.elements.cm_Clothing = false;
-          
-          if($scope.elements.cb_HearingProtection != "N/A") 
-              $scope.elements.cm_HearingProtection = true;
-          else
-              $scope.elements.cm_HearingProtection = false;
-          
-          if($scope.elements.cb_ChemClothing != "N/A") 
-              $scope.elements.cm_ChemClothing = true;
-          else
-              $scope.elements.cm_ChemClothing = false;
-          
-          if($scope.elements.tb_Other != "") 
-              $scope.elements.cm_Other = true;
-          else
-              $scope.elements.cm_Other = false;
-          $scope.ppeinfo = angular.copy($scope.elements);
-      }
-      
-        //update the master form with the modal elements
-        else if (form == "BasicInfo")
-        {
-          $scope.basicinfo = angular.copy($scope.user);
+            if ($scope.elements.cb_GlovesType !== "N/A") {
+                $scope.elements.cm_GlovesType = true;
+            } else {
+                $scope.elements.cm_GlovesType = false;
+            }
+            
+            if ($scope.elements.cb_Clothing !== "N/A") {
+                $scope.elements.cm_Clothing = true;
+            } else {
+                $scope.elements.cm_Clothing = false;
+            }
+            
+            if ($scope.elements.cb_HearingProtection !== "N/A") {
+                $scope.elements.cm_HearingProtection = true;
+            } else {
+                $scope.elements.cm_HearingProtection = false;
+            }
+            
+            if ($scope.elements.cb_ChemClothing !== "N/A") {
+                $scope.elements.cm_ChemClothing = true;
+            } else {
+                $scope.elements.cm_ChemClothing = false;
+            }
+            
+            if ($scope.elements.tb_Other !== "") {
+                $scope.elements.cm_Other = true;
+            } else {
+                $scope.elements.cm_Other = false;
+            }
+            
+            $scope.ppeinfo = angular.copy($scope.elements);
+        } else if (form === "BasicInfo") {
+            $scope.basicinfo = angular.copy($scope.user);
         }
         $scope.closeModal(form);
     };
     
-    $scope.reset = function() {
-      $scope.basicinfo = angular.copy($scope.blank);
-      $scope.user = angular.copy($scope.blank);
-      $scope.ppeinfo = angular.copy($scope.blank);
-  };
+    $scope.reset = function () {
+        $scope.basicinfo = angular.copy($scope.blank);
+        $scope.user = angular.copy($scope.blank);
+        $scope.ppeinfo = angular.copy($scope.blank);
+    };
     
-    function Refresh()
-    {
+    function Refresh() {
         $scope.ppeinfo = angular.copy($scope.elements);
         $scope.basicinfo = angular.copy($scope.user);
         $scope.$apply();
