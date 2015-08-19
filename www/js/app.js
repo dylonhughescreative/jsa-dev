@@ -20,7 +20,8 @@ app.run(function ($ionicPlatform, $state, $window) {
         }
     });
     
-    function onScreenSizeChange() {
+    var fontStyle;
+    function onScreenSizeChange() {    
         if (window.innerWidth > window.innerHeight) {
             $state.go('landscape');
         } else {
