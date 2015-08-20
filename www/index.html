@@ -23,12 +23,7 @@
       <!-- your app's js -->
       <script src="js/app.js"></script>
     </head>
-    <body ng-controller="ModalCtrl" breakpoint="screen and (min-aspect-ratio: 1/1) and (min-width:400px)">
-        <div ng-show="!matches">
-            <ion-nav-view name="portrait"></ion-nav-view>
-        </div>
-        <div ng-show="matches">
-            <ion-nav-view name="landscape"></ion-nav-view>
-        </div>
+    <body ng-controller="ModalCtrl">      
+        <ion-nav-view></ion-nav-view>       
     </body>
 </html>

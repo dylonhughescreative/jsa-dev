@@ -1,0 +1,38 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">Task 1 Modal</h1>
+        <button class="button button-clear button-positive" ng-click="closeModal('Task1')">Cancel</button>
+    </ion-header-bar>
+    <ion-content direction="y">
+        <form ng-submit="submitData()">  
+            <div class="checkboxlist">
+                <ul class="list">         
+                    <li class="item item-checkbox">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                        </label>
+                        My First Checkbox
+                    </li>
+                    <li class="item item-checkbox">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                        </label>
+                        My Second Checkbox
+                    </li>
+                    <li class="item item-checkbox">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                        </label>
+                        My Third Checkbox
+                    </li>
+                    <li class="item item-checkbox">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                        </label>
+                        My Fourth Checkbox
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

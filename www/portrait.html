@@ -2,15 +2,15 @@
     <div class="headerBar"></div>       
     
     <ion-scroll class="VertForm" zooming="false" direction="y">
-        <a ng-click="openModal('PPE')" class="item item-icon-left">
+        <a ng-click="openModal('BasicInfo')" class="item item-icon-left">
             <i class="icon ion-email"></i>
             General Information
         </a>
-        <a class="item item-icon-left" ui-sref="landscape">
+        <a ng-click="openModal('PPE')" class="item item-icon-left">
             <i class="icon ion-email"></i>
             PPE Assessment
         </a>
-        <a class="item item-icon-left" href="#">
+        <a ng-click="openModal('Task1')" class="item item-icon-left" href="#">
             <i class="icon ion-email"></i>
             Task Step #1
         </a>
