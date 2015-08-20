@@ -1,32 +1,32 @@
  <ion-scroll class="VertForm" zooming="false" direction="y">
      <a ng-click="openModal('PPE')" class="item item-icon-left">
-         <i data-ng-if="!FormService.PPEAssess" class="icon ion-close incompleteicon"></i>
-         <i data-ng-if="FormService.PPEAssess" class="icon ion-checkmark completeicon"></i>
+         <i data-ng-if="!completedElements.GenInfo" class="icon ion-close incompleteicon"></i>
+         <i data-ng-if="completedElements.GenInfo" class="icon ion-checkmark completeicon"></i>
          General Information
      </a>
      <a ng-click="openModal('PPE')" class="item item-icon-left">
-         <i data-ng-if="!FormService.PPEAssess" class="icon ion-close incompleteicon"></i>
-         <i data-ng-if="FormService.PPEAssess" class="icon ion-checkmark completeicon"></i>
+         <i data-ng-if="!completedElements.PPEAssess" class="icon ion-close incompleteicon"></i>
+         <i data-ng-if="completedElements.PPEAssess" class="icon ion-checkmark completeicon"></i>
          PPE Assessment
      </a>
      <a class="item item-icon-left">
-         <i data-ng-if="!FormService.PPEAssess" class="icon ion-close incompleteicon"></i>
-         <i data-ng-if="FormService.PPEAssess" class="icon ion-checkmark completeicon"></i>
+         <i data-ng-if="!completedElements.TaskStep1" class="icon ion-close incompleteicon"></i>
+         <i data-ng-if="completedElements.TaskStep1" class="icon ion-checkmark completeicon"></i>
          Task Step #1
      </a>
      <a class="item item-icon-left">
-         <i data-ng-if="!FormService.PPEAssess" class="icon ion-close incompleteicon"></i>
-         <i data-ng-if="FormService.PPEAssess" class="icon ion-checkmark completeicon"></i>
+         <i data-ng-if="!completedElements.TaskStep2" class="icon ion-close incompleteicon"></i>
+         <i data-ng-if="completedElements.TaskStep2" class="icon ion-checkmark completeicon"></i>
          Task Step #2
      </a>
      <a class="item item-icon-left">
-         <i data-ng-if="!completedElements.PPEAssess" class="icon ion-close incompleteicon"></i>
-         <i data-ng-if="completedElements.PPEAssess" class="icon ion-checkmark completeicon"></i>
+         <i data-ng-if="!completedElements.TaskStep3" class="icon ion-close incompleteicon"></i>
+         <i data-ng-if="completedElements.TaskStep3" class="icon ion-checkmark completeicon"></i>
          Task Step #3
      </a>
      <a class="item item-icon-left">
-         <i data-ng-if="!FormService.PPEAssess" class="icon ion-close incompleteicon"></i>
-         <i data-ng-if="FormService.PPEAssess" class="icon ion-checkmark completeicon"></i>
+         <i data-ng-if="!completedElements.TaskStep4" class="icon ion-close incompleteicon"></i>
+         <i data-ng-if="completedElements.TaskStep4" class="icon ion-checkmark completeicon"></i>
          Task Step #4
      </a>
 </ion-scroll>

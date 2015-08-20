@@ -44,13 +44,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         //Each tab has its own nav history stack:
         .state('portrait', {
             url: '/portrait',
-            templateUrl: 'templates/Portrait.html'
-            //controller: 'ModalCtrl'
+            templateUrl: 'templates/Portrait.html',
+            controller: 'ModalCtrl'
         })
         .state('landscape', {
             url: '/landscape',
-            templateUrl: 'templates/Landscape.html'
-            //controller: 'ModalCtrl'
+            templateUrl: 'templates/Landscape.html',
+            controller: 'ModalCtrl'
         });
 
     // if none of the above states are matched, use this as the fallback
