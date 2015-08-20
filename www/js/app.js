@@ -20,8 +20,7 @@ app.run(function ($ionicPlatform, $state, $window) {
         }
     });
     
-    var fontStyle;
-    function onScreenSizeChange() {    
+    function onScreenSizeChange() {
         if (window.innerWidth > window.innerHeight) {
             $state.go('landscape');
         } else {
@@ -151,6 +150,9 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, Form
     });
     
     //--------------Custom Modal Methods-----------------//
+    
+    var fontStyle;
+    fontStyle = { 'font-size': 1.2 * $window.innerWidth };
     
     function formatPPE() {
         if ($scope.elements.cb_RespiratorType !== "N/A") {
