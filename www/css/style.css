@@ -5,7 +5,8 @@
     background-color: darkgrey;
 }
 .Form{
-    height: 100%;
+    position: relative;
+    height: 96.5%;
     width: 100%;
  }
 
@@ -82,6 +83,7 @@
         height: 7%;
     }
     .Form {
-        height: 100%;
+        position: relative;
+        height: 93%;
     }
 }

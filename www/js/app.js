@@ -57,41 +57,27 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/portrait');
 });
 
-app.factory('FormService', function () {
-    'use strict';
-    var service = {},
-        elements = {
-            cb_RespiratorType: 'N/A',
-            cb_GlovesType: 'N/A',
-            cb_Clothing: 'N/A',
-            cb_ChemClothing: 'N/A',
-            tb_Other: ''
-        },
-        users = {},
-        complete,
-        completedElements = {
-            GenInfo: false,
-            PPEAssess: false,
-            TaskStep1: false,
-            TaskStep2: false,
-            TaskStep3: false,
-            TaskStep4: false
-        };
-    
-    service.getelements = function () {
-        return elements;
-    };
-    
-    return service;
-});
-
-app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, FormService) {
+app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     'use strict';
     $scope.blank = {};
     $scope.basicinfo = {};
     $scope.ppeinfo = {};
     $scope.user = {};
-    $scope.elements = FormService.getelements();
+    $scope.elements = {
+        cb_RespiratorType: 'N/A',
+        cb_GlovesType: 'N/A',
+        cb_Clothing: 'N/A',
+        cb_ChemClothing: 'N/A',
+        tb_Other: ''
+    };
+    $scope.completedElements = {
+        GenInfo: false,
+        PPEAssess: true,
+        TaskStep1: false,
+        TaskStep2: false,
+        TaskStep3: false,
+        TaskStep4: false
+    };
     
     $ionicModal.fromTemplateUrl('./templates/PPEModal.html', {
         scope: $scope,
