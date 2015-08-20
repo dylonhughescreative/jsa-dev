@@ -5,7 +5,9 @@
     background-color: darkgrey;
 }
 .Form{
-    height: 96.5%;
+    position: relative;
+
+    height: 100%;
     width: 100%;
  }
 
@@ -81,7 +83,5 @@
     .headerBar {
         height: 7%;
     }
-    .Form {
-        height: 93%;
-    }
+
 }
