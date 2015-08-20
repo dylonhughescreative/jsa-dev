@@ -1,13 +1,3 @@
-.baseinfotext {
-    position: absolute;
-    color: black;
-    font-family: "Helvetica Neue", sans-serif;
-    font-size: 1.2vw;
-    font-weight: normal;
-    line-height: 120%;
-    overflow: hidden;
-}
-
 #BasicInfoForm {
     bottom: 60px;
 }
