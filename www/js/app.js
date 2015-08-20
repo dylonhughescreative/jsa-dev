@@ -78,6 +78,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
         TaskStep3: false,
         TaskStep4: false
     };
+    var scrollheight;
     
     $ionicModal.fromTemplateUrl('./templates/PPEModal.html', {
         scope: $scope,
@@ -137,9 +138,6 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     
     //--------------Custom Modal Methods-----------------//
     
-    var fontStyle;
-    fontStyle = { 'font-size': 1.2 * $window.innerWidth };
-    
     function formatPPE() {
         if ($scope.elements.cb_RespiratorType !== "N/A") {
             $scope.elements.cm_RespiratorType = true;
@@ -190,6 +188,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     };
     
     function refresh() {
+        $scope.scrollheight = (1 - (40 / $window.innerHeight)) * 100;
         $scope.ppeinfo = angular.copy($scope.elements);
         $scope.basicinfo = angular.copy($scope.user);
         //$scope.$apply();
