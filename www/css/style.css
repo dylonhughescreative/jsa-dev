@@ -21,10 +21,16 @@
     height: auto;
 }
 
-.form{
-    height: 100%;
+.formViewer{
+    height: auto;
     width: 100%;
+    position: relative;
  }
+
+.form {
+    width: 100%;
+    height: auto;
+}
 
 .VertForm {
     width: 100%;
@@ -59,13 +65,12 @@
 /* Portrait IDs */
 
 #JSATitle {
-    top:0%;
-    bottom: 88.75%;
+    top: 0%;
+    bottom: 88.5%;
 }
-
 #PPEAssessment{
-    top: 11.25%;
-    bottom: 75%;
+    top: 17.5%;
+    bottom: 25%;
 }
 
 #TaskOne {
@@ -74,17 +79,17 @@
 }
 
 #TaskTwo {
-    top: 42.8%;
+    top: 42.5%;
     bottom: 39.5%;
 }
 
 #TaskThree {
-    top: 60.5%;
-    bottom: 21.5%;
+    top: 60.25%;
+    bottom: 22%;
 }
 
 #TaskFour {
-    top: 78.5%;
+    top: 78%;
     bottom: 1%;
 }
 
@@ -92,8 +97,5 @@
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .headerBar {
         height: 7%;
-    }
-    .form {
-        height: 100%;
     }
 }

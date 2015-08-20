@@ -1,8 +1,8 @@
       <ion-view title="Form Review" hide-nav-bar="false">
           <!--div class="headerBar"></div-->
-          <ion-content class="has-header">
-         <ion-scroll class="form" min-zoom="1" max-zoom="3" zooming="true" direction="xy">
-              <img class="image" src="img/page1.PNG"/>
+          <ion-content class="has-header formViewer" overflow-scroll="true">
+            <ion-scroll class="form" min-zoom="1" max-zoom="3" zooming="true" direction="xy">
+                <img class="image" src="img/page1.PNG"/>
                 <div on-double-tap="openModal('BasicInfo')" class="overlayButton" id="JSATitle">
                     <div class="baseinfotext" id="subcontractor">
                         {{basicinfo.subcontractor}}
@@ -25,39 +25,39 @@
                     <div class="baseinfotext" id="jobscope">
                         {{basicinfo.jobscope}}
                     </div>
-               </div>
-              <div on-double-tap="openModal('PPE')" class="overlayButton" id="PPEAssessment">
-                   <i ng-show="ppeinfo.cm_EyeProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_EyeProtection"></i>
-                   <i ng-show="ppeinfo.cm_ChemGoggles" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemGoggles"></i>
-                   <i ng-show="ppeinfo.cm_HardHat" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HardHat"></i>
-                   <i ng-show="ppeinfo.cm_RespiratorType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_RespiratorType"></i>
-                   <div class="Textbox" id="tb_RespiratorType">{{ppeinfo.cb_RespiratorType}}</div>
-                   <i ng-show="ppeinfo.cm_GlovesType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_GlovesType"></i>
-                   <div class="Textbox" id="tb_GlovesType">{{ppeinfo.cb_GlovesType}}</div>
-                   <i ng-show="ppeinfo.cm_Clothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Clothing"></i>
-                   <div class="Textbox" id="tb_Clothing">{{ppeinfo.cb_Clothing}}</div>
-                   <i ng-show="ppeinfo.cm_ProtectiveToe" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ProtectiveToe"></i>
-                   <i ng-show="ppeinfo.cm_HearingProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HearingProtection"></i>
-                   <div class="Textbox" id="tb_HearingProtection">{{ppeinfo.cb_HearingProtection}}</div>
-                   <i ng-show="ppeinfo.cm_ChemClothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemClothing"></i>
-                   <div class="Textbox" id="tb_ChemClothing">{{ppeinfo.cb_ChemClothing}}</div>
-                   <i ng-show="ppeinfo.cm_HarnessLanyard" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HarnessLanyard"></i>
-                   <i ng-show="ppeinfo.cm_FaceShield" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_FaceShield"></i>
-                   <i ng-show="ppeinfo.cm_Other" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Other"></i>
-                   <div class="Textbox" id="tb_Other">{{ppeinfo.tb_Other}}</div>
-               </div>
-               <div on-double-tap="openModal()" class="overlayButton" id="TaskOne">
-                   Double-Tap To Edit
-             </div>
-               <div on-double-tap="openModal()" class="overlayButton" id="TaskTwo">
-                   Double-Tap To Edit
-               </div>
-               <div on-double-tap="openModal()" class="overlayButton" id="TaskThree">
-                   Double-Tap To Edit
-               </div>
-               <div on-double-tap="openModal()" class="overlayButton" id="TaskFour">
-                   Double-Tap To Edit
-               </div>
-         </ion-scroll>
+                </div>
+                <div on-double-tap="openModal('PPE')" class="overlayButton" id="PPEAssessment">
+                    <i ng-show="ppeinfo.cm_EyeProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_EyeProtection"></i>
+                    <i ng-show="ppeinfo.cm_ChemGoggles" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemGoggles"></i>
+                    <i ng-show="ppeinfo.cm_HardHat" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HardHat"></i>
+                    <i ng-show="ppeinfo.cm_RespiratorType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_RespiratorType"></i>
+                    <div class="Textbox" id="tb_RespiratorType">{{ppeinfo.cb_RespiratorType}}</div>
+                    <i ng-show="ppeinfo.cm_GlovesType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_GlovesType"></i>
+                    <div class="Textbox" id="tb_GlovesType">{{ppeinfo.cb_GlovesType}}</div>
+                    <i ng-show="ppeinfo.cm_Clothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Clothing"></i>
+                    <div class="Textbox" id="tb_Clothing">{{ppeinfo.cb_Clothing}}</div>
+                    <i ng-show="ppeinfo.cm_ProtectiveToe" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ProtectiveToe"></i>
+                    <i ng-show="ppeinfo.cm_HearingProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HearingProtection"></i>
+                    <div class="Textbox" id="tb_HearingProtection">{{ppeinfo.cb_HearingProtection}}</div>
+                    <i ng-show="ppeinfo.cm_ChemClothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemClothing"></i>
+                    <div class="Textbox" id="tb_ChemClothing">{{ppeinfo.cb_ChemClothing}}</div>
+                    <i ng-show="ppeinfo.cm_HarnessLanyard" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HarnessLanyard"></i>
+                    <i ng-show="ppeinfo.cm_FaceShield" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_FaceShield"></i>
+                    <i ng-show="ppeinfo.cm_Other" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Other"></i>
+                    <div class="Textbox" id="tb_Other">{{ppeinfo.tb_Other}}</div>
+                </div>
+                <div on-double-tap="openModal()" class="overlayButton" id="TaskOne">
+                    Double-Tap To Edit
+                </div>
+                <div on-double-tap="openModal()" class="overlayButton" id="TaskTwo">
+                    Double-Tap To Edit
+                </div>
+                <div on-double-tap="openModal()" class="overlayButton" id="TaskThree">
+                    Double-Tap To Edit
+                </div>
+                <div on-double-tap="openModal()" class="overlayButton" id="TaskFour">
+                    Double-Tap To Edit
+                </div>
+            </ion-scroll>
           </ion-content>
       </ion-view>
