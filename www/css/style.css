@@ -15,20 +15,20 @@
     width: 100%;
     background-color: darkgrey;
 }
-.form{
-    height: 96.5%;
-    width: 100%;
- }
 
 .image{
     width: 100%;
     height: auto;
 }
 
-.VertForm {
-    position: absolute;
+.form{
+    height: 100%;
     width: 100%;
-    height: 96.5%;
+ }
+
+.VertForm {
+    width: 100%;
+    height: 100%;
 }
 
 .overlayButton {
@@ -94,6 +94,6 @@
         height: 7%;
     }
     .form {
-        height: 93%;
+        height: 100%;
     }
 }

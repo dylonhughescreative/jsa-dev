@@ -16,6 +16,7 @@ app.run(function ($ionicPlatform, $state, $window) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         }
         if (window.StatusBar) {
+            StatusBar.overlaysWebView(false);
             StatusBar.styleDefault();
         }
     });
