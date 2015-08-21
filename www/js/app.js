@@ -71,14 +71,14 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
         tb_Other: ''
     };
     $scope.completedElements = {
-        GenInfo: false,
-        PPEAssess: true,
+        BasicInfo: false,
+        PPEAssess: false,
         TaskStep1: false,
         TaskStep2: false,
         TaskStep3: false,
         TaskStep4: false
     };
-    var scrollheight;
+    $scope.submitComplete = false;
     
     $ionicModal.fromTemplateUrl('./templates/PPEModal.html', {
         scope: $scope,
@@ -138,6 +138,56 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     
     //--------------Custom Modal Methods-----------------//
     
+    var fontStyle, scrollheight;
+    function verifyBasicInfo() {
+        if ($scope.user.projectname === "") {
+            return false;
+        } else if (angular.isUndefined($scope.user.basicinfodate)) {
+            return false;
+        } else if ($scope.user.subcontractor === "") {
+            return false;
+        } else if ($scope.user.generalcontractor === "") {
+            return false;
+        } else if ($scope.user.crewleader === "") {
+            return false;
+        } else if ($scope.user.sitesuperintendent === "") {
+            return false;
+        } else if ($scope.user.jobscop === "") {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    function verifyPPE() {
+        if ($scope.elements.cm_EyeProtection === true) {
+            return true;
+        } else if ($scope.elements.cm_ChemGoggles === true) {
+            return true;
+        } else if ($scope.elements.cm_ChemGoggles === true) {
+            return true;
+        } else if ($scope.elements.cm_HardHat === true) {
+            return true;
+        } else if ($scope.elements.cb_RespiratorType !== "N/A") {
+            return true;
+        } else if ($scope.elements.cb_GlovesType !== "N/A") {
+            return true;
+        } else if ($scope.elements.cb_Clothing !== "N/A") {
+            return true;
+        } else if ($scope.elements.cm_ProtectiveToe === true) {
+            return true;
+        } else if ($scope.elements.cm_HearingProtection === true) {
+            return true;
+        } else if ($scope.elements.cm_HarnessLanyard === true) {
+            return true;
+        } else if ($scope.elements.cm_FaceShield === true) {
+            return true;
+        } else if ($scope.elements.tb_Other !== "") {
+            return true;
+        } else {
+            return false;
+        }
+    }
     function formatPPE() {
         if ($scope.elements.cb_RespiratorType !== "N/A") {
             $scope.elements.cm_RespiratorType = true;
@@ -174,9 +224,16 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     
     $scope.submitModal = function (form) {
         if (form === "PPE") {
+            $scope.completedElements.PPEAssess = verifyPPE();
             formatPPE();
         } else if (form === "BasicInfo") {
+            $scope.completedElements.BasicInfo = verifyBasicInfo();
             $scope.basicinfo = angular.copy($scope.user);
+        }
+        
+        if ($scope.completedElements.BasicInfo &&
+                $scope.completedElements.PPEAssess) {
+            $scope.submitComplete = true;
         }
         $scope.closeModal(form);
     };

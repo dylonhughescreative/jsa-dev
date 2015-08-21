@@ -1,8 +1,8 @@
 <ion-view title="Form Completion">
 <ion-scroll class="VertForm" zooming="false" direction="y" ng-style="{'height': scrollheight + '%'}">
      <a ng-click="openModal('BasicInfo')" class="item item-icon-left">
-         <i data-ng-if="!completedElements.GenInfo" class="icon ion-close incompleteicon"></i>
-         <i data-ng-if="completedElements.GenInfo" class="icon ion-checkmark completeicon"></i>
+         <i data-ng-if="!completedElements.BasicInfo" class="icon ion-close incompleteicon"></i>
+         <i data-ng-if="completedElements.BasicInfo" class="icon ion-checkmark completeicon"></i>
          General Information
      </a>
      <a ng-click="openModal('PPE')" class="item item-icon-left">
@@ -32,6 +32,6 @@
      </a>
 </ion-scroll>
 
-<button data-ng-if="FormService.complete" class="button button-block button-positive" id = "b_Submit" ng-click="submitModal('PPE')">Submit</button>
+<button data-ng-if="submitComplete" class="button button-block button-positive" id = "b_Submit" ng-click="submitModal('PPE')">Verify</button>
 
 </ion-view>
