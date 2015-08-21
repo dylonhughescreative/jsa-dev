@@ -106,11 +106,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     $scope.openModal = function (form) {
         if (form === "PPE") {
             $scope.PPEmodal.show();
-            var so = cordova.plugins.screenorientation;
-            so.setOrientation('landscape');
         } else if (form === "BasicInfo") {
-            var so = cordova.plugins.screenorientation;
-            so.setOrientation(so.Orientation.LANDSCAPE);
             $scope.BasicInfomodal.show();
         } else if (form === "Task1") {
             $scope.Task1modal.show();
@@ -240,6 +236,11 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
             $scope.submitComplete = true;
         }
         $scope.closeModal(form);
+    };
+    
+    $scope.verifyForm = function (form) {
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('landscape');
     };
     
     $scope.reset = function () {
