@@ -42,7 +42,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
     'use strict';
-    $ionicConfigProvider.views.maxCache(0);
+    $ionicConfigProvider.views.forwardCache(true);
     
     $stateProvider
     
