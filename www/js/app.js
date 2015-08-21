@@ -188,7 +188,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     };
     
     function refresh() {
-        $scope.scrollheight = (1 - (45 / $window.innerHeight)) * 100;
+        $scope.scrollheight = (1 - (64 / $window.innerHeight)) * 100;
         $scope.ppeinfo = angular.copy($scope.elements);
         $scope.basicinfo = angular.copy($scope.user);
         //$scope.$apply();

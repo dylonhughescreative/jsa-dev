@@ -7,7 +7,7 @@
 
 .Form{
     position: relative;
-    top: 45px;
+    top: 64px;
     height: 60%;
     width: 100%;
  }
@@ -20,6 +20,7 @@
 .VertForm {
     position: absolute;
     width: 100%;
+    top: 64px;
     height: 96.5%;
 }
 .overlayButton {
