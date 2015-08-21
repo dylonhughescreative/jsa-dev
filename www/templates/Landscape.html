@@ -1,33 +1,27 @@
-<link href="lib/ionic/css/ionic.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
-<link href="css/basicInfo.css" rel="stylesheet">
-<link href="css/PPE_Assessment.css" rel="stylesheet">
-<link href="css/Portrait.css" rel="stylesheet">
-
-<ion-view title="Form Verify">
+<ion-view cache-view="false" title="Form Verify">
     <ion-scroll class="Form" min-zoom="1" max-zoom="3" zooming="true" direction="xy">
      <img class="Image" src="img/page1.PNG"/>
                 <div on-double-tap="openModal('BasicInfo')" class="overlayButton" id="JSATitle">
                     <div class="Textbox" id="subcontractor">
-                        Hello {{basicinfo.subcontractor}}
+                        {{basicinfo.subcontractor}}
                     </div>
                     <div class="Textbox" id="crewleader">
-                        World {{basicinfo.crewleader}}
+                        {{basicinfo.crewleader}}
                     </div>
                     <div class="Textbox" id="projectname">
-                        Test {{basicinfo.projectname}}
+                        {{basicinfo.projectname}}
                     </div>
                     <div class="Textbox" id="generalcontractor">
-                        Divs {{basicinfo.generalcontractor}}
+                        {{basicinfo.generalcontractor}}
                     </div>
                     <div class="Textbox" id="sitesuperintendent">
-                        And {{basicinfo.sitesuperintendent}}
+                        {{basicinfo.sitesuperintendent}}
                     </div>
                     <div class="Textbox" id="basicinfodate">
-                        Such {{basicinfo.basicinfodate | date:"MM/dd/yyyy"}}
+                        {{basicinfo.basicinfodate | date:"MM/dd/yyyy"}}
                     </div>
                     <div class="Textbox" id="jobscope">
-                        !!! {{basicinfo.jobscope}}
+                        {{basicinfo.jobscope}}
                     </div>
                </div>
      <div on-double-tap="openModal('PPE')" class="overlayButton" id="PPEAssessment">
