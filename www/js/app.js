@@ -107,7 +107,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
         if (form === "PPE") {
             $scope.PPEmodal.show();
             var so = cordova.plugins.screenorientation;
-            so.setOrientation(so.Orientation.LANDSCAPE);
+            so.setOrientation(so.Orientation.landscape);
         } else if (form === "BasicInfo") {
             var so = cordova.plugins.screenorientation;
             so.setOrientation(so.Orientation.LANDSCAPE);
