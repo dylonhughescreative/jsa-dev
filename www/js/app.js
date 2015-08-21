@@ -107,6 +107,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
         if (form === "PPE") {
             $scope.PPEmodal.show();
         } else if (form === "BasicInfo") {
+            
             $scope.BasicInfomodal.show();
         } else if (form === "Task1") {
             $scope.Task1modal.show();

@@ -1,6 +1,6 @@
 <ion-view title="Form Completion">
 <ion-scroll class="VertForm" zooming="false" direction="y" ng-style="{'height': scrollheight + '%'}">
-     <a ng-click="openModal('BasicInfo')" class="item item-icon-left">
+     <a ng-click="screen.orientation.lock('landscape')" class="item item-icon-left">
          <i data-ng-if="!completedElements.BasicInfo" class="icon ion-close incompleteicon"></i>
          <i data-ng-if="completedElements.BasicInfo" class="icon ion-checkmark completeicon"></i>
          General Information

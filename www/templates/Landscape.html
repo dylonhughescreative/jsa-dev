@@ -33,7 +33,7 @@
           <div class="Textbox" id="tb_RespiratorType" ng-style="fontStyle()">{{ppeinfo.cb_RespiratorType}}</div>
           <i  data-ng-if="ppeinfo.cm_GlovesType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_GlovesType"></i>
           <div class="Textbox" id="tb_GlovesType">{{ppeinfo.cb_GlovesType}}</div>
-          <i  ng-hide="!ppeinfo.cm_Clothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Clothing"></i>
+          <i  data-ng-if="!ppeinfo.cm_Clothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Clothing"></i>
           <div class="Textbox" id="tb_Clothing">{{ppeinfo.cb_Clothing}}</div>
           <i  data-ng-if="ppeinfo.cm_ProtectiveToe" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ProtectiveToe"></i>
           <i  data-ng-if="ppeinfo.cm_HearingProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HearingProtection"></i>
