@@ -286,7 +286,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
         confirmPopup.then(function(res) {
             if(res) {
                 console.log('You are sure');
-                $state.go('portrait');
+                $window.location.href = "#/portrait";
                 $window.location.reload();
             } else {
                 console.log('You are not sure');
