@@ -9,7 +9,6 @@ var app = angular.module('starter', ['ionic']);
 app.run(function ($ionicPlatform, $state, $window) {
     'use strict';
     var cordova, StatusBar;
-    
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -22,18 +21,14 @@ app.run(function ($ionicPlatform, $state, $window) {
     });
     
     function onScreenSizeChange() {
-    //    if (window.innerWidth > window.innerHeight) {
-    //        $state.go('landscape');
-    //        $scope.apply();
-    //    } else {
-    //        $state.go('portrait');
-    //        $scope.$apply();
-          $scope.$apply();
+        if ($window.innerWidth > $window.innerHeight) {
+           $state.go('landscape'); 
+        } else {
+            $state.go('portrait');
+        }
     }
-    //}
-    //
     angular.element($window).bind('resize', onScreenSizeChange);
-    //angular.element($window).bind('load', onScreenSizeChange);
+    angular.element($window).bind('load', onScreenSizeChange);
 });
 
 app.config(function ($stateProvider, $urlRouterProvider) {
@@ -43,7 +38,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
     'use strict';
-    
     $stateProvider
     
         //Each tab has its own nav history stack:
@@ -111,7 +105,11 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     $scope.openModal = function (form) {
         if (form === "PPE") {
             $scope.PPEmodal.show();
+            var so = cordova.plugins.screenorientation;
+            so.setOrientation(so.Orientation.landscape);
         } else if (form === "BasicInfo") {
+            var so = cordova.plugins.screenorientation;
+            so.setOrientation(so.Orientation.LANDSCAPE);
             $scope.BasicInfomodal.show();
         } else if (form === "Task1") {
             $scope.Task1modal.show();
@@ -231,25 +229,16 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
         if (form === "PPE") {
             $scope.completedElements.PPEAssess = verifyPPE();
             formatPPE();
-            $state.go('portrait');
         } else if (form === "BasicInfo") {
             $scope.completedElements.BasicInfo = verifyBasicInfo();
             $scope.basicinfo = angular.copy($scope.user);
-            $state.go('landscape');
         }
         
         if ($scope.completedElements.BasicInfo &&
                 $scope.completedElements.PPEAssess) {
             $scope.submitComplete = true;
         }
-        
         $scope.closeModal(form);
-    };
-    
-    $scope.verifyForm = function (form) {
-        var so = cordova.plugins.screenorientation;
-        so.setOrientation('landscape');
-        $state.go('landscape');
     };
     
     $scope.reset = function () {
