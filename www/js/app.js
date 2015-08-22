@@ -239,8 +239,8 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
             $scope.basicinfo = angular.copy($scope.user);
         }
         
-        if ($scope.completedElements.BasicInfo &&
-                $scope.completedElements.PPEAssess) {
+        if ($scope.completedElements.BasicInfo === "valid" &&
+                $scope.completedElements.PPEAssess === "valid") {
             $scope.submitComplete = true;
         }
         else {
@@ -266,7 +266,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
     $scope.verify = function () {
         var so = cordova.plugins.screenorientation;
         so.setOrientation('landscape');
-        $state.go('landscape', {}, {reload: true});
+        $state.go('landscape');
     }
     
     $scope.cancelModal = function(form) {
@@ -280,16 +280,25 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
     
     $scope.sign = function(sign) {
         var confirmPopup = $ionicPopup.confirm({
-         title: 'Confirm Signature',
-         template: 'Are you sure you want to sign the form? Continuing will reset the app.'
-       });
-       confirmPopup.then(function(res) {
-         if(res) {
-           console.log('You are sure');
-         } else {
-           console.log('You are not sure');
-         }
-       });
+            title: 'Confirm Signature',
+            template: 'Are you sure you want to sign the form? Continuing will reset the app.'
+        });
+        confirmPopup.then(function(res) {
+            if(res) {
+                console.log('You are sure');
+                $state.go('portrait');
+                $window.location.reload();
+            } else {
+                console.log('You are not sure');
+            }
+        });
+    }
+    
+    $scope.notimplementedPopup = function() {
+        var confirmPopup = $ionicPopup.alert({
+            title: 'Function Not Implemented',
+            template: 'This function is still in development and will be implemented later.'
+        });
     }
     
     function refresh() {
