@@ -245,7 +245,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
         $scope.ppeinfo = angular.copy($scope.blank);
     };
     
-    function verify() {
+    $scope.verify = function () {
         var so = cordova.plugins.screenorientation;
         so.setOrientation('landscape');
         $scope.go('landscape');
