@@ -21,16 +21,16 @@ app.run(function ($ionicPlatform, $state, $window) {
         }
     });
     
-    //function onScreenSizeChange() {
-    //    if (window.innerWidth > window.innerHeight) {
-    //        $state.go('landscape');
-    //    } else {
-    //        $state.go('portrait');
-    //    }
-    //}
+    function onScreenSizeChange() {
+        if (window.innerWidth > window.innerHeight) {
+            $state.go('landscape');
+        } else {
+            $state.go('portrait');
+        }
+    }
     //
     //angular.element($window).bind('resize', onScreenSizeChange);
-    //angular.element($window).bind('load', onScreenSizeChange);
+    angular.element($window).bind('load', onScreenSizeChange);
 });
 
 app.config(function ($stateProvider, $urlRouterProvider) {
