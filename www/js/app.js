@@ -6,9 +6,9 @@
 var angular;
 var app = angular.module('starter', ['ionic']);
 
-app.run(function ($ionicPlatform, $state, $window) {
+app.run(function ($ionicPlatform, $state, $window, $scope) {
     'use strict';
-    var cordova, StatusBar; 
+    var cordova, StatusBar;
     
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -24,8 +24,10 @@ app.run(function ($ionicPlatform, $state, $window) {
     function onScreenSizeChange() {
         if (window.innerWidth > window.innerHeight) {
             $state.go('landscape');
+            $scope.apply();
         } else {
             $state.go('portrait');
+            $scope.$apply();
         }
     }
     
@@ -33,32 +35,31 @@ app.run(function ($ionicPlatform, $state, $window) {
     angular.element($window).bind('load', onScreenSizeChange);
 });
 
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
     'use strict';
+    $ionicConfigProvider.views.maxCache(0);
     
     $stateProvider
     
         //Each tab has its own nav history stack:
         .state('portrait', {
             url: '/portrait',
-            templateUrl: 'templates/Portrait.html',
-            cache: false
+            templateUrl: 'templates/Portrait.html'
             //controller: 'ModalCtrl'
         })
         .state('landscape', {
             url: '/landscape',
-            templateUrl: 'templates/Landscape.html',
-            cache: false
+            templateUrl: 'templates/Landscape.html'
             //controller: 'ModalCtrl'
         });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/landscape');
+    $urlRouterProvider.otherwise('/portrait');
 });
 
 app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
@@ -255,10 +256,9 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     };
     
     function refresh() {
+        $scope.scrollheight = (1 - (64 / $window.innerHeight)) * 100;
         $scope.ppeinfo = angular.copy($scope.elements);
         $scope.basicinfo = angular.copy($scope.user);
-        $scope.scrollheight = (1 - (64 / $window.innerHeight)) * 100;
-
         //$scope.$apply();
     }
     angular.element($window).bind('resize', refresh);
