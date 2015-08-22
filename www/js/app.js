@@ -23,10 +23,10 @@ app.run(function ($ionicPlatform, $state, $window) {
     function onScreenSizeChange() {
         if ($window.innerWidth > $window.innerHeight) {
             $state.go('landscape');
-            $scope.$apply();
+            //$scope.$apply();
         } else {
             $state.go('portrait');
-            $scope.$apply();
+            //$scope.$apply();
         }
     }
     angular.element($window).bind('resize', onScreenSizeChange);
