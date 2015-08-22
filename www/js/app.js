@@ -243,6 +243,9 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
         $scope.basicinfo = angular.copy($scope.blank);
         $scope.user = angular.copy($scope.blank);
         $scope.ppeinfo = angular.copy($scope.blank);
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('unlocked');
+        $state.go('portrait');
     };
     
     $scope.verify = function () {
