@@ -24,21 +24,22 @@
     width:1.6%;
     height: 17%;
     line-height: 120%;
+    padding-top: 0.3%;
 }
 
 #cm_EyeProtection{
     top: 25%;
-    left: 0.5%;
+    left: 0.59%;
 }
 
 #cm_ChemGoggles{
     top: 42%;
-    left: 0.5%;
+    left: 0.59%;
 }
 
 #cm_HardHat{
     top: 58%;
-    left: 0.5%;
+    left: 0.59%;
 }
 
 #cm_RespiratorType{
@@ -47,7 +48,7 @@
 }
 
 #tb_RespiratorType{
-    top: 25%;
+    top: 27%;
     left: 31%;
     width: 16.3%;
     height: 17%;
@@ -59,7 +60,7 @@
 }
 
 #tb_GlovesType{
-    top: 42%;
+    top: 43%;
     left: 31%;
     width: 16.3%;
     height: 17%;
@@ -71,7 +72,7 @@
 }
 
 #tb_Clothing{
-    top: 58%;
+    top: 60%;
     left: 31%;
     width: 16.3%;
     height: 17%;
@@ -87,20 +88,13 @@
     left: 47.3%;
 }
 
-#tb_HearingProtection{
-    top: 42%;
-    left: 61%;
-    width: 14.7%;
-    height: 17%;
-}
-
 #cm_ChemClothing{
     top: 58%;
     left: 47.3%;
 }
 
 #tb_ChemClothing{
-    top: 58%;
+    top: 60%;
     left: 61%;
     width: 14.7%;
     height: 17%;
@@ -122,7 +116,7 @@
 }
 
 #tb_Other{
-    top: 58%;
+    top: 60%;
     left: 82%;
     width: 17.4%;
     height: 17%;
