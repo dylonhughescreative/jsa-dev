@@ -248,7 +248,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     $scope.verify = function () {
         var so = cordova.plugins.screenorientation;
         so.setOrientation('landscape');
-        $scope.go('landscape');
+        $state.go('landscape');
     }
     
     function refresh() {
