@@ -248,10 +248,17 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
         $state.go('portrait');
     };
     
+    $scope.back = function () {
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('unlocked');
+        $state.go('portrait');
+    }
+    
     $scope.verify = function () {
         var so = cordova.plugins.screenorientation;
         so.setOrientation('landscape');
         $state.go('landscape');
+        $scope.$apply();
     }
     
     function refresh() {

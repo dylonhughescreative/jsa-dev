@@ -1,4 +1,9 @@
 <ion-view title="Form Verify">
+    <ion-nav-buttons side="left">
+        <button class="button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back" id="backButton"></i>
+        </button>
+    </ion-nav-buttons>
     <ion-scroll class="Form" min-zoom="1" max-zoom="3" zooming="true" direction="xy"  ng-style="{'height': scrollheight + '%'}">
      <img class="Image" src="img/page1.PNG"/>
      <div ng-click="openModal('BasicInfo')" class="overlayButton" id="JSATitle">

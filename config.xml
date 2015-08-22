@@ -1,5 +1,5 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.dylonhughescreative.jsadev" version="1.0.0">
-  <name>RAK Job Safety</name>
+  <name>RAK JSA</name>
   <description>An app interface for filling out Job Safety Analysis forms.</description>
   <author href="http://rakdivisons.com" email="info@rakdivisons.com">RAK Risk Management, LLC</author>
   <content src="index.html"/>
