@@ -20,17 +20,17 @@ app.run(function ($ionicPlatform, $state, $window) {
         }
     });
     
-    function onScreenSizeChange() {
-        if ($window.innerWidth > $window.innerHeight) {
-            $state.go('landscape');
-            //$scope.$apply();
-        } else {
-            $state.go('portrait');
-            //$scope.$apply();
-        }
-    }
-    angular.element($window).bind('resize', onScreenSizeChange);
-    angular.element($window).bind('load', onScreenSizeChange);
+    //function onScreenSizeChange() {
+    //    if ($window.innerWidth > $window.innerHeight) {
+    //        $state.go('landscape');
+    //        //$scope.$apply();
+    //    } else {
+    //        $state.go('portrait');
+    //        //$scope.$apply();
+    //    }
+    //}
+    //angular.element($window).bind('resize', onScreenSizeChange);
+    //angular.element($window).bind('load', onScreenSizeChange);
 });
 
 app.config(function ($stateProvider, $urlRouterProvider) {
@@ -141,19 +141,19 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     
     var fontStyle, scrollheight;
     function verifyBasicInfo() {
-        if ($scope.user.projectname === "") {
+        if (angular.isUndefined($scope.user.projectname)) {
             return false;
         } else if (angular.isUndefined($scope.user.basicinfodate)) {
             return false;
-        } else if ($scope.user.subcontractor === "") {
+        } else if (angular.isUndefined($scope.user.subcontractor)) {
             return false;
-        } else if ($scope.user.generalcontractor === "") {
+        } else if (angular.isUndefined($scope.user.generalcontractor)) {
             return false;
-        } else if ($scope.user.crewleader === "") {
+        } else if (angular.isUndefined($scope.user.crewleader)) {
             return false;
-        } else if ($scope.user.sitesuperintendent === "") {
+        } else if (angular.isUndefined($scope.user.sitesuperintendent)) {
             return false;
-        } else if ($scope.user.jobscop === "") {
+        } else if (angular.isUndefined($scope.user.jobscope)) {
             return false;
         } else {
             return true;
@@ -244,6 +244,12 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
         $scope.user = angular.copy($scope.blank);
         $scope.ppeinfo = angular.copy($scope.blank);
     };
+    
+    function verify() {
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('landscape');
+        $scope.go('landscape');
+    }
     
     function refresh() {
         $scope.scrollheight = (1 - (64 / $window.innerHeight)) * 100;
