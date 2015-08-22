@@ -6,7 +6,7 @@
 var angular;
 var app = angular.module('starter', ['ionic']);
 
-app.run(function ($ionicPlatform, $state, $window, $scope) {
+app.run(function ($ionicPlatform, $state, $window) {
     'use strict';
     var cordova, StatusBar;
     
@@ -21,28 +21,27 @@ app.run(function ($ionicPlatform, $state, $window, $scope) {
         }
     });
     
-    function onScreenSizeChange() {
-        if (window.innerWidth > window.innerHeight) {
-            $state.go('landscape');
-            $scope.apply();
-        } else {
-            $state.go('portrait');
-            $scope.$apply();
-        }
-    }
-    
-    angular.element($window).bind('resize', onScreenSizeChange);
-    angular.element($window).bind('load', onScreenSizeChange);
+    //function onScreenSizeChange() {
+    //    if (window.innerWidth > window.innerHeight) {
+    //        $state.go('landscape');
+    //        $scope.apply();
+    //    } else {
+    //        $state.go('portrait');
+    //        $scope.$apply();
+    //    }
+    //}
+    //
+    //angular.element($window).bind('resize', onScreenSizeChange);
+    //angular.element($window).bind('load', onScreenSizeChange);
 });
 
-app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+app.config(function ($stateProvider, $urlRouterProvider) {
 
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
     'use strict';
-    $ionicConfigProvider.views.maxCache(0);
     
     $stateProvider
     
@@ -231,15 +230,18 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
         if (form === "PPE") {
             $scope.completedElements.PPEAssess = verifyPPE();
             formatPPE();
+            $state.go('portrait');
         } else if (form === "BasicInfo") {
             $scope.completedElements.BasicInfo = verifyBasicInfo();
             $scope.basicinfo = angular.copy($scope.user);
+            $state.go('landscape');
         }
         
         if ($scope.completedElements.BasicInfo &&
                 $scope.completedElements.PPEAssess) {
             $scope.submitComplete = true;
         }
+        
         $scope.closeModal(form);
     };
     
