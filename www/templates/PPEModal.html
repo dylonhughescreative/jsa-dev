@@ -1,8 +1,8 @@
 <ion-modal-view>
     <ion-header-bar>
         <h1 class="title">PPE Assessment</h1>
-        <button class="button button-clear button-positive" ng-click="reset('PPE')">Clear</button>
-        <button class="button button-clear button-positive" ng-click="closeModal('PPE')">Cancel</button>
+        <button class="button button-clear button-positive" on-tap="reset('PPE')">Clear</button>
+        <button class="button button-clear button-positive" on-tap="closeModal('PPE')">Cancel</button>
     </ion-header-bar>
     <ion-content direction="y" id="ModalForm">
         <form>  
@@ -90,5 +90,5 @@
             </div>
         </form>
     </ion-content>
-    <button class="button button-block button-positive" id = "b_Submit" ng-click="submitModal('PPE')">Submit</button>
+    <button class="button button-block button-positive" id = "b_Submit" on-tap="submitModal('PPE')">Submit</button>
 </ion-modal-view>

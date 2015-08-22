@@ -1,11 +1,11 @@
 <ion-view title="Form Completion">
 <ion-scroll class="VertForm" zooming="false" direction="y">
-     <a ng-click="openModal('BasicInfo')" class="item item-icon-left">
+     <a on-tap="openModal('BasicInfo')" class="item item-icon-left">
          <i data-ng-if="!completedElements.BasicInfo" class="icon ion-close incompleteicon"></i>
          <i data-ng-if="completedElements.BasicInfo" class="icon ion-checkmark completeicon"></i>
          General Information
      </a>
-     <a ng-click="openModal('PPE')" class="item item-icon-left">
+     <a on-tap="openModal('PPE')" class="item item-icon-left">
          <i data-ng-if="!completedElements.PPEAssess" class="icon ion-close incompleteicon"></i>
          <i data-ng-if="completedElements.PPEAssess" class="icon ion-checkmark completeicon"></i>
          PPE Assessment
@@ -32,6 +32,6 @@
      </a>
 </ion-scroll>
 
-<button data-ng-if="submitComplete" class="button button-block button-positive" id = "b_Submit" ng-click="verify()">Verify</button>
+<button data-ng-if="submitComplete" class="button button-block button-positive" id = "b_Submit" on-tap="verify()">Verify</button>
 
 </ion-view>
