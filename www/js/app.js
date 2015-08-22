@@ -28,8 +28,8 @@ app.run(function ($ionicPlatform, $state, $window) {
             $state.go('portrait');
         }
     }
-    //
-    //angular.element($window).bind('resize', onScreenSizeChange);
+    
+    angular.element($window).bind('resize', onScreenSizeChange);
     angular.element($window).bind('load', onScreenSizeChange);
 });
 
@@ -255,9 +255,10 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     };
     
     function refresh() {
-        $scope.scrollheight = (1 - (64 / $window.innerHeight)) * 100;
         $scope.ppeinfo = angular.copy($scope.elements);
         $scope.basicinfo = angular.copy($scope.user);
+        $scope.scrollheight = (1 - (64 / $window.innerHeight)) * 100;
+
         //$scope.$apply();
     }
     angular.element($window).bind('resize', refresh);
