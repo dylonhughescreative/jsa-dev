@@ -6,9 +6,9 @@
 var angular;
 var app = angular.module('starter', ['ionic']);
 
-app.run(function ($ionicPlatform, $state, $window, $scope) {
+app.run(function ($ionicPlatform, $state, $window) {
     'use strict';
-    var cordova, StatusBar;
+    var cordova, StatusBar; 
     
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -21,45 +21,44 @@ app.run(function ($ionicPlatform, $state, $window, $scope) {
         }
     });
     
-    function onScreenSizeChange() {
-        if (window.innerWidth > window.innerHeight) {
-            $state.go('landscape');
-            $scope.apply();
-        } else {
-            $state.go('portrait');
-            $scope.$apply();
-        }
-    }
-    
-    angular.element($window).bind('resize', onScreenSizeChange);
-    angular.element($window).bind('load', onScreenSizeChange);
+    //function onScreenSizeChange() {
+    //    if (window.innerWidth > window.innerHeight) {
+    //        $state.go('landscape');
+    //    } else {
+    //        $state.go('portrait');
+    //    }
+    //}
+    //
+    //angular.element($window).bind('resize', onScreenSizeChange);
+    //angular.element($window).bind('load', onScreenSizeChange);
 });
 
-app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+app.config(function ($stateProvider, $urlRouterProvider) {
 
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
     'use strict';
-    $ionicConfigProvider.views.forwardCache(true);
     
     $stateProvider
     
         //Each tab has its own nav history stack:
         .state('portrait', {
             url: '/portrait',
-            templateUrl: 'templates/Portrait.html'
+            templateUrl: 'templates/Portrait.html',
+            cache: false
             //controller: 'ModalCtrl'
         })
         .state('landscape', {
             url: '/landscape',
-            templateUrl: 'templates/Landscape.html'
+            templateUrl: 'templates/Landscape.html',
+            cache: false
             //controller: 'ModalCtrl'
         });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/portrait');
+    $urlRouterProvider.otherwise('/landscape');
 });
 
 app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
