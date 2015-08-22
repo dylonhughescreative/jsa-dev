@@ -60,11 +60,18 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     'use strict';
-    $scope.blank = {};
+    var blank = {};
     $scope.basicinfo = {};
     $scope.ppeinfo = {};
     $scope.user = {};
     $scope.elements = {
+        cb_RespiratorType: 'N/A',
+        cb_GlovesType: 'N/A',
+        cb_Clothing: 'N/A',
+        cb_ChemClothing: 'N/A',
+        tb_Other: ''
+    };
+    var elementsBlank = {
         cb_RespiratorType: 'N/A',
         cb_GlovesType: 'N/A',
         cb_Clothing: 'N/A',
@@ -141,19 +148,19 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     
     var fontStyle, scrollheight;
     function verifyBasicInfo() {
-        if (angular.isUndefined($scope.user.projectname)) {
+        if (angular.isUndefined($scope.user.projectname) || $scope.user.projectname === "") {
             return false;
-        } else if (angular.isUndefined($scope.user.basicinfodate)) {
+        } else if (angular.isUndefined($scope.user.basicinfodate) || $scope.user.basicinfodate === "") {
             return false;
-        } else if (angular.isUndefined($scope.user.subcontractor)) {
+        } else if (angular.isUndefined($scope.user.subcontractor) || $scope.user.subcontractor === "") {
             return false;
-        } else if (angular.isUndefined($scope.user.generalcontractor)) {
+        } else if (angular.isUndefined($scope.user.generalcontractor) || $scope.user.generalcontractor === "") {
             return false;
-        } else if (angular.isUndefined($scope.user.crewleader)) {
+        } else if (angular.isUndefined($scope.user.crewleader) || $scope.user.crewleader === "") {
             return false;
-        } else if (angular.isUndefined($scope.user.sitesuperintendent)) {
+        } else if (angular.isUndefined($scope.user.sitesuperintendent) || $scope.user.sitesuperintendent === "") {
             return false;
-        } else if (angular.isUndefined($scope.user.jobscope)) {
+        } else if (angular.isUndefined($scope.user.jobscope) || $scope.user.jobscope === "") {
             return false;
         } else {
             return true;
@@ -236,16 +243,18 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
                 $scope.completedElements.PPEAssess) {
             $scope.submitComplete = true;
         }
+        else {
+            $scope.submitComplete = false;
+        }
         $scope.closeModal(form);
     };
     
-    $scope.reset = function () {
-        $scope.basicinfo = angular.copy($scope.blank);
-        $scope.user = angular.copy($scope.blank);
-        $scope.ppeinfo = angular.copy($scope.blank);
-        var so = cordova.plugins.screenorientation;
-        so.setOrientation('unlocked');
-        $state.go('portrait');
+    $scope.reset = function (form) {
+        if (form === "BasicInfo") {
+            $scope.user = angular.copy(blank);
+        } else if (form === "PPE") {
+            $scope.elements = angular.copy(elementsBlank);
+        }
     };
     
     $scope.back = function () {
@@ -258,7 +267,15 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
         var so = cordova.plugins.screenorientation;
         so.setOrientation('landscape');
         $state.go('landscape');
-        $scope.$apply();
+    }
+    
+    $scope.cancelModal = function(form) {
+        if (form === "BasicInfo") {
+            $scope.user = angular.copy($scope.basicinfo);
+        } else if (form === "PPE") {
+            $scope.elements = angular.copy($scope.ppeinfo);
+        }
+        $scope.closeModal(form);
     }
     
     function refresh() {
