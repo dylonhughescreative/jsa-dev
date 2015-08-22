@@ -1,28 +1,30 @@
-<ion-view title="Form Sections" hide-nav-bar="false"> 
-     <ion-content class="has-header VertForm" zooming="false" direction="y">
-            <a ng-click="openModal('BasicInfo')" class="item item-icon-left">
-                <i class="icon ion-email"></i>
-                General Information
-            </a>
-            <a ng-click="openModal('PPE')" class="item item-icon-left">
-                <i class="icon ion-email"></i>
-                PPE Assessment
-            </a>
-            <a ng-click="openModal('Task1')" class="item item-icon-left" href="#">
-                <i class="icon ion-email"></i>
-                Task Step #1
-            </a>
-            <a class="item item-icon-left" href="#">
-                <i class="icon ion-email"></i>
-                Task Step #2
-            </a>
-            <a class="item item-icon-left" href="#">
-                <i class="icon ion-email"></i>
-                Task Step #3
-            </a>
-            <a class="item item-icon-left" href="#">
-                <i class="icon ion-email"></i>
-                Task Step #4
-            </a>
-    </ion-content>
+<ion-view title="Home" hide-nav-bar="true">
+    <div class="headerBar"></div>       
+    
+    <ion-scroll class="VertForm" zooming="false" direction="y">
+        <a ng-click="openModal('PPE')" class="item item-icon-left">
+            <i class="icon ion-email"></i>
+            General Information
+        </a>
+        <a class="item item-icon-left" ui-sref="landscape">
+            <i class="icon ion-email"></i>
+            PPE Assessment
+        </a>
+        <a class="item item-icon-left" href="#">
+            <i class="icon ion-email"></i>
+            Task Step #1
+        </a>
+        <a class="item item-icon-left" href="#">
+            <i class="icon ion-email"></i>
+            Task Step #2
+        </a>
+        <a class="item item-icon-left" href="#">
+            <i class="icon ion-email"></i>
+            Task Step #3
+        </a>
+        <a class="item item-icon-left" href="#">
+            <i class="icon ion-email"></i>
+            Task Step #4
+        </a>
+   </ion-scroll>
 </ion-view>

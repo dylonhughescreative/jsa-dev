@@ -1,40 +1,17 @@
 /* Classes */
-/* Taken directly from docs.angularjs.org/guide/animations */
-.show-hide {
-    -webkit-transition: all linear 1s;
-    transition: all linear 1s;
-}
-
-.show-hide.ng-hide {
-    opacity: 0;
-}
-/*End docs.angular.js*/
-
 .headerBar{
     height: 3.5%;
     width: 100%;
     background-color: darkgrey;
 }
+.form{
+    height: 96.5%;
+    width: 100%;
+ }
 
 .image{
     width: 100%;
     height: auto;
-}
-
-.formViewer{
-    height: auto;
-    width: 100%;
-    position: relative;
- }
-
-.form {
-    width: 100%;
-    height: auto;
-}
-
-.VertForm {
-    width: 100%;
-    height: 100%;
 }
 
 .overlayButton {
@@ -57,7 +34,7 @@
     color: black;
     font-family: "Helvetica Neue", sans-serif;
     font-size: 1.2vw;
-    line-height: 120%;
+    line-height: 150%;
     text-align: left;
     overflow: hidden;
 }
@@ -65,12 +42,13 @@
 /* Portrait IDs */
 
 #JSATitle {
-    top: 0%;
-    bottom: 88.5%;
+    top:0%;
+    bottom: 88.75%;
 }
+
 #PPEAssessment{
-    top: 17.5%;
-    bottom: 25%;
+    top: 11.25%;
+    bottom: 75%;
 }
 
 #TaskOne {
@@ -79,17 +57,17 @@
 }
 
 #TaskTwo {
-    top: 42.5%;
+    top: 42.8%;
     bottom: 39.5%;
 }
 
 #TaskThree {
-    top: 60.25%;
-    bottom: 22%;
+    top: 60.5%;
+    bottom: 21.5%;
 }
 
 #TaskFour {
-    top: 78%;
+    top: 78.5%;
     bottom: 1%;
 }
 
@@ -97,5 +75,8 @@
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .headerBar {
         height: 7%;
+    }
+    .form {
+        height: 93%;
     }
 }
