@@ -58,7 +58,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/portrait');
 });
 
-app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
+app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ionicPopup) {
     'use strict';
     var blank = {};
     $scope.basicinfo = {};
@@ -79,12 +79,12 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
         tb_Other: ''
     };
     $scope.completedElements = {
-        BasicInfo: false,
-        PPEAssess: false,
-        TaskStep1: false,
-        TaskStep2: false,
-        TaskStep3: false,
-        TaskStep4: false
+        BasicInfo: "pending",
+        PPEAssess: "pending",
+        TaskStep1: "pending",
+        TaskStep2: "pending",
+        TaskStep3: "pending",
+        TaskStep4: "pending"
     };
     $scope.submitComplete = false;
     
@@ -149,51 +149,51 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     var fontStyle, scrollheight;
     function verifyBasicInfo() {
         if (angular.isUndefined($scope.user.projectname) || $scope.user.projectname === "") {
-            return false;
+            return "invalid";
         } else if (angular.isUndefined($scope.user.basicinfodate) || $scope.user.basicinfodate === "") {
-            return false;
+            return "invalid";
         } else if (angular.isUndefined($scope.user.subcontractor) || $scope.user.subcontractor === "") {
-            return false;
+            return "invalid";
         } else if (angular.isUndefined($scope.user.generalcontractor) || $scope.user.generalcontractor === "") {
-            return false;
+            return "invalid";
         } else if (angular.isUndefined($scope.user.crewleader) || $scope.user.crewleader === "") {
-            return false;
+            return "invalid";
         } else if (angular.isUndefined($scope.user.sitesuperintendent) || $scope.user.sitesuperintendent === "") {
-            return false;
+            return "invalid";
         } else if (angular.isUndefined($scope.user.jobscope) || $scope.user.jobscope === "") {
-            return false;
+            return "invalid";
         } else {
-            return true;
+            return "valid";
         }
     }
     
     function verifyPPE() {
         if ($scope.elements.cm_EyeProtection === true) {
-            return true;
+            return "valid";
         } else if ($scope.elements.cm_ChemGoggles === true) {
-            return true;
+            return "valid";
         } else if ($scope.elements.cm_ChemGoggles === true) {
-            return true;
+            return "valid";
         } else if ($scope.elements.cm_HardHat === true) {
-            return true;
+            return "valid";
         } else if ($scope.elements.cb_RespiratorType !== "N/A") {
-            return true;
+            return "valid";
         } else if ($scope.elements.cb_GlovesType !== "N/A") {
-            return true;
+            return "valid";
         } else if ($scope.elements.cb_Clothing !== "N/A") {
-            return true;
+            return "valid";
         } else if ($scope.elements.cm_ProtectiveToe === true) {
-            return true;
+            return "valid";
         } else if ($scope.elements.cm_HearingProtection === true) {
-            return true;
+            return "valid";
         } else if ($scope.elements.cm_HarnessLanyard === true) {
-            return true;
+            return "valid";
         } else if ($scope.elements.cm_FaceShield === true) {
-            return true;
+            return "valid";
         } else if ($scope.elements.tb_Other !== "") {
-            return true;
+            return "valid";
         } else {
-            return false;
+            return "invalid";
         }
     }
     function formatPPE() {
@@ -266,7 +266,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
     $scope.verify = function () {
         var so = cordova.plugins.screenorientation;
         so.setOrientation('landscape');
-        $state.go('landscape');
+        $state.go('landscape', {}, {reload: true});
     }
     
     $scope.cancelModal = function(form) {
@@ -276,6 +276,20 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window) {
             $scope.elements = angular.copy($scope.ppeinfo);
         }
         $scope.closeModal(form);
+    }
+    
+    $scope.sign = function(sign) {
+        var confirmPopup = $ionicPopup.confirm({
+         title: 'Confirm Signature',
+         template: 'Are you sure you want to sign the form? Continuing will reset the app.'
+       });
+       confirmPopup.then(function(res) {
+         if(res) {
+           console.log('You are sure');
+         } else {
+           console.log('You are not sure');
+         }
+       });
     }
     
     function refresh() {

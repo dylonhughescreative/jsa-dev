@@ -4,6 +4,11 @@
             <i class="icon ion-ios-arrow-back" id="backButton"></i>
         </button>
     </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-positive" on-tap="sign()" on-hold="sign()">
+            Sign
+        </button>
+    </ion-nav-buttons>
     <ion-scroll class="Form" min-zoom="1" max-zoom="3" zooming="true" direction="xy"  ng-style="{'height': scrollheight + '%'}">
      <img class="Image" src="img/page1.PNG"/>
      <div on-tap="openModal('BasicInfo')" class="overlayButton" id="JSATitle">
