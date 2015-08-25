@@ -88,6 +88,35 @@
   width: 25%;  
 }
 
+div.buttons.buttons-right{
+    width: 25%;
+}
+
+div.buttons.buttons-left{
+    width: 25%;
+}
+
+span.right-buttons{
+    width: 100%;
+}
+
+span.left-buttons{
+    width: 100%;
+}
+
+#backButton{
+    width: 100%;
+    offsetLeft: 100px;
+}
+
+#backButtonIcon.icon.ion-ios-arrow-back{
+    left: 0;
+}
+
+#signbutton{
+    width: 100%;
+}
+
 /* Landscape-specific code */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .headerBar {
