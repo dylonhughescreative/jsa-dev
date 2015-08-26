@@ -58,7 +58,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/portrait');
 });
 
-app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ionicPopup, pdfBuilder) {
+app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ionicPopup, pdfBuilder, jsPdfBuilder) {
     'use strict';
     var blank = {};
     $scope.basicinfo = {};
@@ -295,7 +295,8 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
     }
     
     $scope.notimplementedPopup = function() {
-        pdfBuilder.createPdf();
+        //pdfBuilder.createPdf();
+        jsPdfBuilder.createPdf();
         
         var confirmPopup = $ionicPopup.alert({
             title: 'Function Not Implemented',
