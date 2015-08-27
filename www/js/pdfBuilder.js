@@ -1,7 +1,7 @@
 app.factory('jsPdfBuilder', function ($ionicLoading) {
     var instance = {},
         doc = {},
-        pdfOutput = {},
+        pdfOutput = '',
         img64 = '';
     
     instance.createPdf = function () {
