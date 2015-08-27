@@ -58,6 +58,7 @@ app.factory('jsPdfBuilder', function($ionicLoading) {
                                 }, function(error) {
                                     console.log(error);
                                 });
+                                $ionicLoading.hide();
                             }, 
                             function() {
                                 $ionicLoading.hide();
