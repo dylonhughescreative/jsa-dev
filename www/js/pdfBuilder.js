@@ -1,5 +1,4 @@
 app.factory('jsPdfBuilder', function ($ionicLoading) {
-    'use strict';
     var instance = {},
         doc = {},
         pdfOutput = {},
