@@ -58,7 +58,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/portrait');
 });
 
-app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ionicPopup, pdfBuilder, jsPdfBuilder) {
+app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ionicPopup, jsPdfBuilder) {
     'use strict';
     var blank = {};
     $scope.basicinfo = {};
