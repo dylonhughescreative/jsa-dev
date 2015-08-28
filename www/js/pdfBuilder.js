@@ -85,7 +85,7 @@ app.factory('jsPdfBuilder', function ($ionicLoading) {
             }, 
             function gotFileEntry(fe) {
                 $ionicLoading.hide();
-                $scope.imgFile = fe.toURL();
+                //$scope.imgFile = fe.toURL();
             }, 
             function(error) {
                 $ionicLoading.hide();
