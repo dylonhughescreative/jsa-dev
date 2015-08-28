@@ -16,8 +16,8 @@ app.factory('jsPdfBuilder', function ($ionicLoading) {
         doc.text(35, 25, "This is our PDF");
         //doc.output('dataurlnewwindow');
         //var pdfOutput = doc.output();
-        doc.save("JSA_Form.pdf");
-        //save("temp/JSA_Form.pdf");
+        //doc.save("JSA_Form.pdf");
+        save("temp/JSA_Form.pdf");
     }
     
     function convertImage2Base64(url) {
@@ -38,37 +38,36 @@ app.factory('jsPdfBuilder', function ($ionicLoading) {
         img.src = url;
     }
     
-    //function save(filepath) {
-    //    $ionicLoading.show({
-    //        template: 'Saving...'
-    //    });
-    //    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
-    //        fs.root.getDirectory("temp", { create: true },
-    //                function (dirEntry) {
-    //                dirEntry.getFile("JSA_Form.pdf", { create: true, exclusive: false },
-    //                        function gotFileEntry(fe) {
-    //                        var fileEntry = fe.toURL();
-    //                        fileTransfer = new FileTransfer();
-    //                        fileTransfer.download(pdfOutput,
-    //                            fileEntry,
-    //                            function (entry) {
-    //                                $ionicLoading.hide();
-    //                                //$scope.imgFile = entry.toURL();
-    //                            },
-    //                            function(error) {
-    //                                $ionicLoading.hide();
-    //                                alert("Download Error Source -> " + error.source);
-    //                            },
-    //                            false,
-    //                            null
-    //                            );
-    //                                                        
-    //                    });
-    //            },
-    //            function () {
-    //                $ionicLoading.hide();
-    //                console.log("Request for filesystem failed");
-    //            });
-    //    });
-    //}
+    function save(filepath) {
+        //NEXT SAVE IT TO THE DEVICE'S LOCAL FILE SYSTEM
+        console.log("file system...");
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+            
+            console.log(fileSystem.name);
+            console.log(fileSystem.root.name);
+            console.log(fileSystem.root.fullPath);
+            
+            fileSystem.root.getFile("test.pdf", {create: true}, function(entry) {
+                var fileEntry = entry;
+                console.log(entry);
+                
+                entry.createWriter(function(writer) {
+                    writer.onwrite = function(evt) {
+                        console.log("write success");
+                    };
+                    
+                    console.log("writing to file");
+                    writer.write( pdfOutput );
+                }, function(error) {
+                    console.log(error);
+                });
+                
+            }, function(error){
+                console.log(error);
+            });
+        },
+        function(event){
+            console.log( evt.target.error.code );
+        });
+    }
 });
