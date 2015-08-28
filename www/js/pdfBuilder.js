@@ -7,6 +7,7 @@ app.factory('jsPdfBuilder', function ($ionicLoading) {
     instance.createPdf = function () {
         doc = new jsPDF('landscape', 'mm', 'a4');
         convertImage2Base64('./img/page1.PNG');
+        load();
     };
     return instance;
     
