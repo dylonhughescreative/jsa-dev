@@ -1,4 +1,4 @@
-app.factory('jsPdfBuilder', function ($ionicLoading) {
+app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
     var instance = {},
         doc = {},
         pdfOutput = '',
@@ -40,61 +40,12 @@ app.factory('jsPdfBuilder', function ($ionicLoading) {
     }
     
     function save(filepath) {
-        //NEXT SAVE IT TO THE DEVICE'S LOCAL FILE SYSTEM
-        console.log("file system...");
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-            
-            console.log(fileSystem.name);
-            console.log(fileSystem.root.name);
-            console.log(fileSystem.root.fullPath);
-            
-            fileSystem.root.getFile("test.pdf", {create: true}, function(entry) {
-                var fileEntry = entry;
-                console.log(entry);
-                
-                entry.createWriter(function(writer) {
-                    writer.onwrite = function(evt) {
-                        console.log("write success");
-                    };
-                    
-                    console.log("writing to file");
-                    writer.write( pdfOutput );
-                }, function(error) {
-                    console.log(error);
-                });
-                
-            }, function(error){
-                console.log(error);
-            });
-        },
-        function(event){
-            console.log( evt.target.error.code );
-        });
-    }
-    
-    function load() {
-        $ionicLoading.show({
-            template: 'Loading...'
-        });
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs) {
-            fs.root.getFile(
-            "test.pdf", 
-            {
-                create: false, 
-                exclusive: false
-            }, 
-            function gotFileEntry(fe) {
-                $ionicLoading.hide();
-                //$scope.imgFile = fe.toURL();
-            }, 
-            function(error) {
-                $ionicLoading.hide();
-                console.log("Error getting file");
-            });
-        },
-        function() {
-            $ionicLoading.hide();
-            console.log("Error requesting filesystem");
-        });
+        $cordovaFile.createFile(cordova.file.documentsDirectory, "Rick.pdf", true);
+        $cordovaFile.writeFile(cordova.file.documentsDirectory, "Rick.pdf", "some text", true)
+                               .then(function (success) {
+                                    console.log("works");
+                                }, function (error) {
+                                    console.log("doesnt work");
+                                });
     }
 });
