@@ -70,4 +70,30 @@ app.factory('jsPdfBuilder', function ($ionicLoading) {
             console.log( evt.target.error.code );
         });
     }
+    
+    function load() {
+        $ionicLoading.show({
+            template: 'Loading...'
+        });
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs) {
+            fs.root.getFile(
+            "test.pdf", 
+            {
+                create: false, 
+                exclusive: false
+            }, 
+            function gotFileEntry(fe) {
+                $ionicLoading.hide();
+                $scope.imgFile = fe.toURL();
+            }, 
+            function(error) {
+                $ionicLoading.hide();
+                console.log("Error getting file");
+            });
+        },
+        function() {
+            $ionicLoading.hide();
+            console.log("Error requesting filesystem");
+        });
+    }
 });
