@@ -1,7 +1,7 @@
 app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
     var instance = {},
         doc = {},
-        pdfOutput = '',
+        pdfOutput = {},
         img64 = '';
     
     instance.createPdf = function () {
@@ -15,7 +15,7 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
         doc.addImage(img64, 'JPEG', 10, 10, 279, 190);
         doc.text(35, 25, "This is our PDF");
         //doc.output('dataurlnewwindow');
-        pdfOutput = doc.output();
+        pdfOutput = doc.output('datauristring');
         //doc.save("JSA_Form.pdf");
         save("temp/JSA_Form.pdf");
     }
@@ -40,7 +40,7 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
     
     function save(filepath) {
         $cordovaFile.createFile(cordova.file.documentsDirectory, "JSA_Form.pdf", true);
-        $cordovaFile.writeFile(cordova.file.documentsDirectory, "JSA_Form.pdf", pdfOutput, true)
+        $cordovaFile.writeFile(cordova.file.documentsDirectory, "JSA_Form.pdf", pdfOutput.stream, true)
             .then(function (success) {
                 console.log("works");
             }, function (error) {
