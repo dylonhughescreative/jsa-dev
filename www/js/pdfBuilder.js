@@ -39,8 +39,8 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
     }
     
     function save(filepath) {
-        $cordovaFile.createFile(cordova.file.documentsDirectory, "Rick.pdf", true);
-        $cordovaFile.writeFile(cordova.file.documentsDirectory, "Rick.pdf", "some text", true)
+        $cordovaFile.createFile(cordova.file.documentsDirectory, "JSA_Form.pdf", true);
+        $cordovaFile.writeFile(cordova.file.documentsDirectory, "JSA_Form.pdf", pdfOutput, true)
             .then(function (success) {
                 console.log("works");
             }, function (error) {
