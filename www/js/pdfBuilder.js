@@ -15,8 +15,9 @@ app.factory('jsPdfBuilder', function ($ionicLoading) {
         doc.addImage(img64, 'JPEG', 10, 10, 279, 190);
         doc.text(35, 25, "This is our PDF");
         //doc.output('dataurlnewwindow');
-        var pdfOutput = doc.output();
-        save("temp/JSA_Form.pdf");
+        //var pdfOutput = doc.output();
+        doc.save("JSA_Form.pdf");
+        //save("temp/JSA_Form.pdf");
     }
     
     function convertImage2Base64(url) {
@@ -37,37 +38,37 @@ app.factory('jsPdfBuilder', function ($ionicLoading) {
         img.src = url;
     }
     
-    function save(filepath) {
-        $ionicLoading.show({
-            template: 'Saving...'
-        });
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
-            fs.root.getDirectory("temp", { create: true },
-                    function (dirEntry) {
-                    dirEntry.getFile("JSA_Form.pdf", { create: true, exclusive: false },
-                            function gotFileEntry(fe) {
-                            var fileEntry = fe.toURL();
-                            fileTransfer = new FileTransfer();
-                            fileTransfer.download(pdfOutput,
-                                fileEntry,
-                                function (entry) {
-                                    $ionicLoading.hide();
-                                    //$scope.imgFile = entry.toURL();
-                                },
-                                function(error) {
-                                    $ionicLoading.hide();
-                                    alert("Download Error Source -> " + error.source);
-                                },
-                                false,
-                                null
-                                );
-                                                            
-                        });
-                },
-                function () {
-                    $ionicLoading.hide();
-                    console.log("Request for filesystem failed");
-                });
-        });
-    }
+    //function save(filepath) {
+    //    $ionicLoading.show({
+    //        template: 'Saving...'
+    //    });
+    //    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+    //        fs.root.getDirectory("temp", { create: true },
+    //                function (dirEntry) {
+    //                dirEntry.getFile("JSA_Form.pdf", { create: true, exclusive: false },
+    //                        function gotFileEntry(fe) {
+    //                        var fileEntry = fe.toURL();
+    //                        fileTransfer = new FileTransfer();
+    //                        fileTransfer.download(pdfOutput,
+    //                            fileEntry,
+    //                            function (entry) {
+    //                                $ionicLoading.hide();
+    //                                //$scope.imgFile = entry.toURL();
+    //                            },
+    //                            function(error) {
+    //                                $ionicLoading.hide();
+    //                                alert("Download Error Source -> " + error.source);
+    //                            },
+    //                            false,
+    //                            null
+    //                            );
+    //                                                        
+    //                    });
+    //            },
+    //            function () {
+    //                $ionicLoading.hide();
+    //                console.log("Request for filesystem failed");
+    //            });
+    //    });
+    //}
 });
