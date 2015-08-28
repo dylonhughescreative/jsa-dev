@@ -42,10 +42,10 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
     function save(filepath) {
         $cordovaFile.createFile(cordova.file.documentsDirectory, "Rick.pdf", true);
         $cordovaFile.writeFile(cordova.file.documentsDirectory, "Rick.pdf", "some text", true)
-                               .then(function (success) {
-                                    console.log("works");
-                                }, function (error) {
-                                    console.log("doesnt work");
-                                });
+            .then(function (success) {
+                console.log("works");
+            }, function (error) {
+                console.log("doesnt work");
+            });
     }
 });
