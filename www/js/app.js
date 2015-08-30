@@ -309,7 +309,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
         };
         $cordovaFileTransfer.upload(url, targetPath, options).then(function(result) {
             console.log("SUCCESS: " + JSON.stringify(result.response));
-            alert("success");
+            alert("success" + targetPath);
             alert(JSON.stringify(result.response));
         }, function(err) {
             console.log("ERROR: " + JSON.stringify(err));
