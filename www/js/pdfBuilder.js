@@ -15,10 +15,10 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
         doc.setFontSize(40);
         doc.addImage(img64, 'JPEG', 10, 10, 279, 190);
         doc.text(35, 25, "This is our PDF");
-        //doc.output('dataurlnewwindow');
-        //var pdfOutput = doc.output();
-        doc.save("Rick.pdf");
-        //save("Rick.pdf");
+        doc.output('dataurlnewwindow');
+        var pdfOutput = doc.output();
+        //doc.save("Rick.pdf");
+        save("Rick.pdf");
     }
     
     function convertImage2Base64(url) {
@@ -41,7 +41,7 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
     
     function save(filepath) {
         $cordovaFile.createFile(cordova.file.documentsDirectory, filepath, true);
-        $cordovaFile.writeFile(cordova.file.documentsDirectory, filepath, "some text", true)
+        $cordovaFile.writeFile(cordova.file.documentsDirectory, filepath, pdfOutput, true)
             .then(function (success) {
                 console.log("works");
             }, function (error) {
