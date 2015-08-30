@@ -17,8 +17,8 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
         doc.text(35, 25, "This is our PDF");
         //doc.output('dataurlnewwindow');
         //var pdfOutput = doc.output();
-        //doc.save("JSA_Form.pdf");
-        save("Rick.pdf");
+        doc.save("Rick.pdf");
+        //save("Rick.pdf");
     }
     
     function convertImage2Base64(url) {
