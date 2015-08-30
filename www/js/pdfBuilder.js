@@ -7,7 +7,6 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
     instance.createPdf = function () {
         doc = new jsPDF('landscape', 'mm', 'a4');
         convertImage2Base64('./img/page1.PNG');
-        save();
     };
     return instance;
     
@@ -17,8 +16,8 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
         doc.text(35, 25, "This is our PDF");
         //doc.output('dataurlnewwindow');
         //var pdfOutput = doc.output();
-        //doc.save("JSA_Form.pdf");
-        save("temp/JSA_Form.pdf");
+        doc.save("Rick.pdf");
+        //save("Rick.pdf");
     }
     
     function convertImage2Base64(url) {
@@ -40,8 +39,8 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
     }
     
     function save(filepath) {
-        $cordovaFile.createFile(cordova.file.documentsDirectory, "Rick.pdf", true);
-        $cordovaFile.writeFile(cordova.file.documentsDirectory, "Rick.pdf", "some text", true)
+        $cordovaFile.createFile(cordova.file.documentsDirectory, filepath, true);
+        //$cordovaFile.writeFile(cordova.file.documentsDirectory, filepath, "some text", true)
             .then(function (success) {
                 console.log("works");
             }, function (error) {
