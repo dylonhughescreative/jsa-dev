@@ -305,7 +305,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
             fileKey: "file",
             fileName: filename,
             chunkedMode: false,
-            mimeType: "application/pdf"
+            mimeType: "text/plain"
         };
         $cordovaFileTransfer.upload(url, targetPath, options).then(function(result) {
             console.log("SUCCESS: " + JSON.stringify(result.response));
