@@ -297,13 +297,13 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
     $scope.uploadFile = function() {
      var url = "http://dylonhughes.com/uploads/upload.php";
      //target path may be local or url
-     var targetPath = "http://your_ip_address/images/my.jpg";
+     var targetPath = cordova.file.documentsDirectory + "Rick.pdf";
       var filename = targetPath.split("/").pop();
         var options = {
             fileKey: "file",
             fileName: filename,
             chunkedMode: false,
-            mimeType: "image/jpg"
+            mimeType: "application/pdf"
         };
         $cordovaFileTransfer.upload(url, targetPath, options).then(function(result) {
             console.log("SUCCESS: " + JSON.stringify(result.response));
