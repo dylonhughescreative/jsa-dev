@@ -18,7 +18,7 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
         //doc.output('dataurlnewwindow');
         pdfOutput = doc.output();
         //doc.save("Rick.pdf");
-        save("Rick.pdf");
+        save("Rick.pdf", pdfOutput);
     }
     
     function convertImage2Base64(url) {
@@ -39,9 +39,9 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
         img.src = url;
     }
     
-    function save(filepath) {
+    function save(filepath, pdfString) {
         $cordovaFile.createFile(cordova.file.documentsDirectory, filepath, true);
-        $cordovaFile.writeFile(cordova.file.documentsDirectory, filepath, pdfOutput, true)
+        $cordovaFile.writeFile(cordova.file.documentsDirectory, filepath, pdfString, true)
             .then(function (success) {
                 console.log("works");
             }, function (error) {
