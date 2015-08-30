@@ -314,11 +314,6 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
         }, function(err) {
             console.log("ERROR: " + JSON.stringify(err));
             alert(JSON.stringify(err));
-        }, function (progress) {
-            // constant progress updates
-            $timeout(function () {
-            $scope.downloadProgress = (progress.loaded / progress.total) * 100;
-          })
         });
     }
     
