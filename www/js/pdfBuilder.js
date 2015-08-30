@@ -7,7 +7,7 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
     instance.createPdf = function () {
         doc = new jsPDF('landscape', 'mm', 'a4');
         convertImage2Base64('./img/page1.PNG');
-        save();
+        save("Rick.pdf", pdfOutput);
     };
     return instance;
     
@@ -18,7 +18,7 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
         //doc.output('dataurlnewwindow');
         pdfOutput = doc.output();
         //doc.save("Rick.pdf");
-        save("Rick.pdf", pdfOutput);
+        //save("Rick.pdf", pdfOutput);
     }
     
     function convertImage2Base64(url) {
