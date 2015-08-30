@@ -58,7 +58,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/portrait');
 });
 
-app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ionicPopup, jsPdfBuilder) {
+app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ionicPopup, $cordovaFileTransfer, $cordovaFile, jsPdfBuilder) {
     'use strict';
     var blank = {};
     $scope.basicinfo = {};
@@ -291,6 +291,32 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
             } else {
                 console.log('You are not sure');
             }
+        });
+    }
+    
+    $scope.uploadFile = function() {
+     var url = "http://dylonhughes.com/uploads/upload.php";
+     //target path may be local or url
+     var targetPath = "http://your_ip_address/images/my.jpg";
+      var filename = targetPath.split("/").pop();
+        var options = {
+            fileKey: "file",
+            fileName: filename,
+            chunkedMode: false,
+            mimeType: "image/jpg"
+        };
+        $cordovaFileTransfer.upload(url, targetPath, options).then(function(result) {
+            console.log("SUCCESS: " + JSON.stringify(result.response));
+            alert("success");
+            alert(JSON.stringify(result.response));
+        }, function(err) {
+            console.log("ERROR: " + JSON.stringify(err));
+            alert(JSON.stringify(err));
+        }, function (progress) {
+            // constant progress updates
+            $timeout(function () {
+            $scope.downloadProgress = (progress.loaded / progress.total) * 100;
+          })
         });
     }
     
