@@ -297,8 +297,9 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
     $scope.uploadFile = function() {
      var url = "http://dylonhughes.com/uploads/upload.php";
      //target path may be local or url
-     var targetPath = cordova.file.documentsDirectory + "Rick.pdf";
-      var filename = targetPath.split("/").pop();
+     var filename = "Rick.pdf";
+     var targetPath = cordova.file.documentsDirectory.concat(filename);
+        //var filename = targetPath.split("/").pop();
         var options = {
             fileKey: "file",
             fileName: filename,
