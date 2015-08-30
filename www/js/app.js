@@ -295,6 +295,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
     }
     
     $scope.uploadFile = function() {
+     jsPdfBuilder.createPdf();
      var url = "http://dylonhughes.com/uploads/upload.php";
      //target path may be local or url
      var filename = "Rick.pdf";
