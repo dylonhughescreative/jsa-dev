@@ -13,9 +13,9 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
     
     function onLoaded() {
         doc.setFontSize(40);
-        doc.addImage(img64, 'JPEG', 10, 10, 100, 100);
+        doc.addImage(img64, 'JPEG', 10, 10, 275, 190);
         doc.text(35, 25, "New PDF");
-        //doc.output('dataurlnewwindow');
+        doc.output('dataurlnewwindow');
         pdfOutput = doc.output("blob");
         
         //doc.save("JSA_Form.pdf");
@@ -32,7 +32,7 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
             canvas.height = img.height;
             canvas.width = img.width;
             ctx.drawImage(img, 0, 0);
-            dataUrl = canvas.toDataURL("image/jpeg", 0.5);
+            dataUrl = canvas.toDataURL("image/jpeg", 0.8);
             img64 = dataUrl;
             canvas = null;
             onLoaded();
