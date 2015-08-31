@@ -308,7 +308,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
      jsPdfBuilder.createPdf();
      var url = "http://dylonhughes.com/uploads/upload.php";
      //target path may be local or url
-     var filename = "Rick.pdf";
+     var filename = "JSA_Form.pdf";
      var targetPath = cordova.file.documentsDirectory.concat(filename);
         //var filename = targetPath.split("/").pop();
         var options = {
