@@ -15,11 +15,11 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
         doc.setFontSize(40);
         doc.addImage(img64, 'JPEG', 10, 10, 100, 100);
         doc.text(35, 25, "New PDF");
-        doc.output('save');
-        //pdfOutput = doc.output();
+        //doc.output('dataurlnewwindow');
+        pdfOutput = doc.output("blob");
         
         //doc.save("JSA_Form.pdf");
-        //save("temp/JSA_Form.pdf");
+        save("temp/JSA_Form.pdf");
     }
     
     function convertImage2Base64(url) {
