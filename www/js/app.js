@@ -58,7 +58,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/portrait');
 });
 
-app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ionicPopup, $cordovaFileTransfer, $cordovaFile, jsPdfBuilder) {
+app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ionicPopup, jsPdfBuilder, $cordovaFileTransfer, $cordovaFile) {
     'use strict';
     var blank = {};
     $scope.basicinfo = {};
@@ -294,11 +294,21 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
         });
     }
     
+    $scope.notimplementedPopup = function() {
+        //pdfBuilder.createPdf();
+        jsPdfBuilder.createPdf();
+        
+        var confirmPopup = $ionicPopup.alert({
+            title: 'Function Not Implemented',
+            template: 'This function is still in development and will be implemented later.'
+        });
+    }
+    
     $scope.uploadFile = function() {
      jsPdfBuilder.createPdf();
      var url = "http://dylonhughes.com/uploads/upload.php";
      //target path may be local or url
-     var filename = "Rick.pdf";
+     var filename = "JSA_Form.pdf";
      var targetPath = cordova.file.documentsDirectory.concat(filename);
         //var filename = targetPath.split("/").pop();
         var options = {
@@ -314,16 +324,6 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
         }, function(err) {
             console.log("ERROR: " + JSON.stringify(err));
             alert(JSON.stringify(err));
-        });
-    }
-    
-    $scope.notimplementedPopup = function() {
-        //pdfBuilder.createPdf();
-        jsPdfBuilder.createPdf();
-        
-        var confirmPopup = $ionicPopup.alert({
-            title: 'Function Not Implemented',
-            template: 'This function is still in development and will be implemented later.'
         });
     }
     
