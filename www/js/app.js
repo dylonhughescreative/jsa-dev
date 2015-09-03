@@ -14,7 +14,7 @@ app.run(function ($ionicPlatform, $state, $window) {
         // for form inputs)
         if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            cordova.plugins.Keyboard.disableScroll(true);
+            //cordova.plugins.Keyboard.disableScroll(true);
         }
         if (window.StatusBar) {
             StatusBar.hide();
@@ -42,37 +42,217 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     // Each state's controller can be found in controllers.js
     'use strict';
     $stateProvider
-    
-        //Each tab has its own nav history stack:
+        .state('home', {
+            url: '/home',
+            templateUrl: 'templates/Home.html',
+            controller: 'HomeCtrl'
+        })
+        .state('formWizard', {
+            url: '/formWizard',
+            controller: 'FormWizardCtrl',
+            templateUrl: './templates/FormWizard.html'
+        })
+        .state('formWizard.GCorSub', {
+            url: '/GCorSub',
+            templateUrl: './templates/FormWizard/GCorSub.html',
+            controller: 'GCorSub'
+        })
+        .state('formWizard.GCinfo', {
+            url: '/GCinfo',
+            templateUrl: './templates/FormWizard/GCinfo.html',
+            controller: 'GCinfoCtrl'
+        })
+        .state('formWizard.Subinfo', {
+            url: '/Subinfo',
+            templateUrl: './templates/FormWizard/Subinfo.html',
+            controller: 'SubinfoCtrl'
+        })
+        .state('formWizard.PPE', {
+            url: '/PPE',
+            templateUrl: './templates/FormWizard/PPE.html',
+            controller: 'PPECtrl'
+        })
+        .state('formWizard.Task', {
+            url: '/Task',
+            templateUrl: './templates/FormWizard/Task.html',
+            controller: 'TaskCtrl'
+        })
+        .state('overview', {
+            url: '/overview',
+            templateUrl: 'templates/Overview.html',
+            controller: 'OverviewCtrl'
+        })
+        .state('verify', {
+            url: '/verify',
+            templateUrl: 'templates/Verify.html',
+            controller: 'VerifyCtrl'
+        })
         .state('portrait', {
             url: '/portrait',
             templateUrl: 'templates/Portrait.html'
-            //controller: 'ModalCtrl'
         })
         .state('landscape', {
             url: '/landscape',
             templateUrl: 'templates/Landscape.html'
-            //controller: 'ModalCtrl'
         });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/portrait');
+    $urlRouterProvider.otherwise('/formWizard/GCorSub');
 });
+
+app.controller('FormWizardCtrl', function ($scope, $state) {
+    'use strict';
+    $scope.next = function (state) {
+        $state.go(state);
+    };
+});
+
+app.factory('formInfo', function () {
+    'use strict';
+    var gcinfo = {},
+        subinfo = {},
+        ppeinfo = {
+            cm_EyeProtection: false,
+            cm_ChemGoggles: false,
+            cm_HardHat: false,
+            cb_RespiratorType: 'N/A',
+            cb_GlovesType: 'N/A',
+            cb_Clothing: 'N/A',
+            cm_ProtectiveToe: false,
+            cm_HearingProtection: false,
+            cb_ChemClothing: 'N/A',
+            cm_HarnessLanyard: false,
+            cm_FaceShield: false,
+            tb_Other: ''
+        },
+        taskinfo = {},
+        defaultPPE = {
+            cb_RespiratorType: 'N/A',
+            cb_GlovesType: 'N/A',
+            cb_Clothing: 'N/A',
+            cb_ChemClothing: 'N/A',
+            tb_Other: ''
+        },
+        completedElements = {
+            BasicInfo: "pending",
+            PPEAssess: "pending",
+            TaskStep1: "pending",
+            TaskStep2: "pending",
+            TaskStep3: "pending",
+            TaskStep4: "pending"
+        };
+        //submitComplete = false;
+    
+    return {
+        getppeinfo: function () {
+            return ppeinfo;
+        },       
+        getcompletedElements: function () {
+            return completedElements;
+        }
+    };
+});
+
+app.controller('GCorSub', function ($scope) {
+    'use strict';
+    $scope.check = function (state) {
+        $scope.next(state);
+    };
+});
+app.controller('GCinfoCtrl', function ($scope, formInfo) { 'use strict'; });
+app.controller('SubinfoCtrl', function ($scope, formInfo) { 'use strict'; });
+app.controller('PPECtrl', function ($scope, formInfo) {
+    'use strict';
+    function verify() {
+        if (formInfo.getppeinfo().cm_EyeProtection === true) {
+            return "valid";
+        } else if (formInfo.getppeinfo().cm_ChemGoggles === true) {
+            return "valid";
+        } else if (formInfo.getppeinfo().cm_HardHat === true) {
+            return "valid";
+        } else if (formInfo.getppeinfo().cb_RespiratorType !== "N/A") {
+            return "valid";
+        } else if (formInfo.getppeinfo().cb_GlovesType !== "N/A") {
+            return "valid";
+        } else if (formInfo.getppeinfo().cb_Clothing !== "N/A") {
+            return "valid";
+        } else if (formInfo.getppeinfo().cm_ProtectiveToe === true) {
+            return "valid";
+        } else if (formInfo.getppeinfo().cm_HearingProtection === true) {
+            return "valid";
+        } else if (formInfo.getppeinfo().cm_HarnessLanyard === true) {
+            return "valid";
+        } else if (formInfo.getppeinfo().cm_FaceShield === true) {
+            return "valid";
+        } else if (formInfo.getppeinfo().tb_Other !== "") {
+            return "valid";
+        } else {
+            return "invalid";
+        }
+    }
+    function format() {
+        if (formInfo.getppeinfo().cb_RespiratorType !== "N/A") {
+            formInfo.getppeinfo().cm_RespiratorType = true;
+        } else {
+            formInfo.getppeinfo().cm_RespiratorType = false;
+        }
+        
+        if (formInfo.getppeinfo().cb_GlovesType !== "N/A") {
+            formInfo.getppeinfo().cm_GlovesType = true;
+        } else {
+            formInfo.getppeinfo().cm_GlovesType = false;
+        }
+        
+        if (formInfo.getppeinfo().cb_Clothing !== "N/A") {
+            formInfo.getppeinfo().cm_Clothing = true;
+        } else {
+            formInfo.getppeinfo().cm_Clothing = false;
+        }
+        
+        if (formInfo.getppeinfo().cb_ChemClothing !== "N/A") {
+            formInfo.getppeinfo().cm_ChemClothing = true;
+        } else {
+            formInfo.getppeinfo().cm_ChemClothing = false;
+        }
+        
+        if (formInfo.getppeinfo().tb_Other !== "") {
+            formInfo.getppeinfo().cm_Other = true;
+        } else {
+            formInfo.getppeinfo().cm_Other = false;
+        }
+        
+        //$scope.ppeinfo = angular.copy($scope.elements);
+    }
+    
+    $scope.check = function (state) {
+        formInfo.getcompletedElements().PPEAssess = verify();
+        //if(!gooddata)
+        //  popup
+        //else
+        //  next
+        format();
+        $scope.next(state);
+    };
+    
+});
+app.controller('TaskCtrl', function ($scope, formInfo) { 'use strict'; });
 
 app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ionicPopup, jsPdfBuilder, $cordovaFileTransfer, $cordovaFile) {
     'use strict';
-    var blank = {};
+    var blank = {},
+        elementsBlank = {
+            cb_RespiratorType: 'N/A',
+            cb_GlovesType: 'N/A',
+            cb_Clothing: 'N/A',
+            cb_ChemClothing: 'N/A',
+            tb_Other: ''
+        },
+        fontStyle,
+        scrollheight;
     $scope.basicinfo = {};
     $scope.ppeinfo = {};
     $scope.user = {};
     $scope.elements = {
-        cb_RespiratorType: 'N/A',
-        cb_GlovesType: 'N/A',
-        cb_Clothing: 'N/A',
-        cb_ChemClothing: 'N/A',
-        tb_Other: ''
-    };
-    var elementsBlank = {
         cb_RespiratorType: 'N/A',
         cb_GlovesType: 'N/A',
         cb_Clothing: 'N/A',
@@ -146,8 +326,6 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
     });
     
     //--------------Custom Modal Methods-----------------//
-    
-    var fontStyle, scrollheight;
     function verifyBasicInfo() {
         if (angular.isUndefined($scope.user.projectname) || $scope.user.projectname === "") {
             return "invalid";
@@ -243,8 +421,7 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
         if ($scope.completedElements.BasicInfo === "valid" &&
                 $scope.completedElements.PPEAssess === "valid") {
             $scope.submitComplete = true;
-        }
-        else {
+        } else {
             $scope.submitComplete = false;
         }
         $scope.closeModal(form);
@@ -262,30 +439,30 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
         var so = cordova.plugins.screenorientation;
         so.setOrientation('unlocked');
         $state.go('portrait');
-    }
+    };
     
     $scope.verify = function () {
         var so = cordova.plugins.screenorientation;
         so.setOrientation('landscape');
         $state.go('landscape');
-    }
+    };
     
-    $scope.cancelModal = function(form) {
+    $scope.cancelModal = function (form) {
         if (form === "BasicInfo") {
             $scope.user = angular.copy($scope.basicinfo);
         } else if (form === "PPE") {
             $scope.elements = angular.copy($scope.ppeinfo);
         }
         $scope.closeModal(form);
-    }
+    };
     
-    $scope.sign = function(sign) {
+    $scope.sign = function (sign) {
         var confirmPopup = $ionicPopup.confirm({
             title: 'Confirm Signature',
             template: 'Are you sure you want to sign the form? Continuing will reset the app.'
         });
-        confirmPopup.then(function(res) {
-            if(res) {
+        confirmPopup.then(function (res) {
+            if (res) {
                 console.log('You are sure');
                 $window.location.href = "#/portrait";
                 $window.location.reload();
@@ -293,9 +470,9 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
                 console.log('You are not sure');
             }
         });
-    }
+    };
     
-    $scope.notimplementedPopup = function() {
+    $scope.notimplementedPopup = function () {
         //pdfBuilder.createPdf();
         jsPdfBuilder.createPdf();
         
@@ -303,14 +480,14 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
             title: 'Function Not Implemented',
             template: 'This function is still in development and will be implemented later.'
         });
-    }
+    };
     
-    $scope.uploadFile = function() {
-     jsPdfBuilder.createPdf();
-     var url = "http://dylonhughes.com/uploads/upload.php";
-     //target path may be local or url
-     var filename = "JSA_Form.pdf";
-     var targetPath = cordova.file.documentsDirectory.concat(filename);
+    $scope.uploadFile = function () {
+        jsPdfBuilder.createPdf();
+        var url = "http://dylonhughes.com/uploads/upload.php",
+         //target path may be local or url
+         filename = "JSA_Form.pdf",
+         targetPath = cordova.file.documentsDirectory.concat(filename);
         //var filename = targetPath.split("/").pop();
         var options = {
             fileKey: "file",
@@ -326,13 +503,13 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
             console.log("ERROR: " + JSON.stringify(err));
             alert(JSON.stringify(err));
         });
-    }
+    };
     
     function refresh() {
         $scope.scrollheight = (1 - (64 / $window.innerHeight)) * 100;
         $scope.ppeinfo = angular.copy($scope.elements);
         $scope.basicinfo = angular.copy($scope.user);
         //$scope.$apply();
-    }
+    };
     angular.element($window).bind('resize', refresh);
 });

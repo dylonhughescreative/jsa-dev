@@ -1,15 +1,19 @@
 app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
-    var instance = {},
-        doc = {},
+    'use strict';
+    var doc = {},
         pdfOutput = {},
         blob = {},
         img64 = '';
     
-    instance.createPdf = function () {
-        doc = new jsPDF('landscape', 'mm', 'a4');
-        convertImage2Base64('./img/Page1.jpg');
-    };
-    return instance;
+    function save(filepath) {
+        $cordovaFile.createFile(cordova.file.documentsDirectory, "JSA_Form.pdf", true);
+        $cordovaFile.writeFile(cordova.file.documentsDirectory, "JSA_Form.pdf", pdfOutput, true)
+            .then(function (success) {
+                console.log("works");
+            }, function (error) {
+                console.log("doesnt work");
+            });
+    }
     
     function onLoaded() {
         doc.setFontSize(40);
@@ -40,13 +44,11 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile) {
         img.src = url;
     }
     
-    function save(filepath) {
-        $cordovaFile.createFile(cordova.file.documentsDirectory, "JSA_Form.pdf", true);
-        $cordovaFile.writeFile(cordova.file.documentsDirectory, "JSA_Form.pdf", pdfOutput, true)
-            .then(function (success) {
-                console.log("works");
-            }, function (error) {
-                console.log("doesnt work");
-            });
-    }
+    return {
+        createPdf: function () {
+            doc = new jsPDF('landscape', 'mm', 'a4');
+            convertImage2Base64('./img/Page1.jpg');
+            return true;
+        }
+    };
 });
