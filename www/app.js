@@ -50,31 +50,31 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('formWizard', {
             url: '/formWizard',
             controller: 'FormWizardCtrl',
-            templateUrl: './templates/FormWizard.html'
+            templateUrl: './FormWizard/FormWizard.html'
         })
         .state('formWizard.GCorSub', {
             url: '/GCorSub',
-            templateUrl: './templates/FormWizard/GCorSub.html',
+            templateUrl: './FormWizard/GCorSub/GCorSub.html',
             controller: 'GCorSub'
         })
         .state('formWizard.GCinfo', {
             url: '/GCinfo',
-            templateUrl: './templates/FormWizard/GCinfo.html',
+            templateUrl: './FormWizard/GCinfo/GCinfo.html',
             controller: 'GCinfoCtrl'
         })
         .state('formWizard.Subinfo', {
             url: '/Subinfo',
-            templateUrl: './templates/FormWizard/Subinfo.html',
+            templateUrl: './FormWizard/Subinfo/Subinfo.html',
             controller: 'SubinfoCtrl'
         })
         .state('formWizard.PPE', {
             url: '/PPE',
-            templateUrl: './templates/FormWizard/PPE.html',
+            templateUrl: './FormWizard/PPE/PPE.html',
             controller: 'PPECtrl'
         })
         .state('formWizard.Task', {
             url: '/Task',
-            templateUrl: './templates/FormWizard/Task.html',
+            templateUrl: './FormWizard/Task/Task.html',
             controller: 'TaskCtrl'
         })
         .state('overview', {
@@ -162,12 +162,6 @@ app.factory('formInfo', function () {
     };
 });
 
-app.controller('GCorSub', function ($scope) {
-    'use strict';
-    $scope.check = function (state) {
-        $scope.next(state);
-    };
-});
 app.controller('SubinfoCtrl', function ($scope, formInfo) { 'use strict'; });
 app.controller('TaskCtrl', function ($scope, formInfo) { 'use strict'; });
 
