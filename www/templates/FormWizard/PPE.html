@@ -5,17 +5,17 @@
             <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.cm_EyeProtection">                        
                 Eye Protection
             </ion-checkbox>
-            <ion-checkbox class="item item-checkbox-right" ng-model="elements.cm_ChemGoggles">
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.cm_ChemGoggles">
                 Chem. Goggles
             </ion-checkbox>
-            <ion-checkbox class="item item-checkbox-right" ng-model="elements.cm_HardHat">
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.cm_HardHat">
                 Hard Hat
             </ion-checkbox>
             <label class="item item-input item-select">
                 <div class="input-label">
                     Respirator Type
                 </div>
-                <select ng-model="elements.cb_RespiratorType">
+                <select ng-model="tempPPEinfo.cb_RespiratorType">
                     <option selected>N/A</option>
                     <option>Mouth Bit Respirator</option>
                     <option>Quarter-Mask</option>
@@ -27,7 +27,7 @@
                 <div class="input-label">
                     Gloves Type
                 </div>
-                <select ng-model="elements.cb_GlovesType">
+                <select ng-model="tempPPEinfo.cb_GlovesType">
                     <option selected>N/A</option>
                     <option>Leather</option>
                     <option>Canvas</option>
@@ -44,7 +44,7 @@
                 <div class="input-label">
                     Clothing
                 </div>
-                <select ng-model="elements.cb_Clothing">
+                <select ng-model="tempPPEinfo.cb_Clothing">
                     <option selected>N/A</option>
                     <option>Level D (low)</option>
                     <option>Level C</option>
@@ -52,17 +52,17 @@
                     <option>Level A (high)</option>
                 </select>
             </label>
-            <ion-checkbox class="item item-checkbox-right" ng-model="elements.cm_ProtectiveToe">
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.cm_ProtectiveToe">
                 Protective Toe
             </ion-checkbox>
-            <ion-checkbox class="item item-checkbox-right" ng-model="elements.cm_HearingProtection">
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.cm_HearingProtection">
                 Hearing Protection
             </ion-checkbox>
             <label class="item item-input item-select">
                 <div class="input-label">
                     Chem. Clothing
                 </div>
-                <select ng-model="elements.cb_ChemClothing">
+                <select ng-model="tempPPEinfo.cb_ChemClothing">
                     <option selected>N/A</option>
                     <option>Level D (low)</option>
                     <option>Level C</option>
@@ -70,18 +70,18 @@
                     <option>Level A (high)</option>
                 </select>
             </label>
-            <ion-checkbox class="item item-checkbox-right" ng-model="elements.cm_HarnessLanyard">
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.cm_HarnessLanyard">
                 Harness/Lanyard
             </ion-checkbox>
-            <ion-checkbox class="item item-checkbox-right" ng-model="elements.cm_FaceShield">
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.cm_FaceShield">
                 Face Shield
             </ion-checkbox>
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Other</span>
-                <input type="text" placeholder="Enter any other PPE not include in this list." ng-model="elements.tb_Other">
+                <input type="text" placeholder="Enter any other PPE not include in this list." ng-model="tempPPEinfo.tb_Other">
             </label>
         </ul>
     </div>
 </form>
 </ion-content>
-<button class="button button-block button-positive" id = "b_Submit" on-tap="check('formWizard.GCorSub')" on-hold="check()">Next</button>
+<button class="button button-block button-positive" id = "b_Submit" on-tap="check('formWizard.GCinfo')" on-hold="check()">Next</button>

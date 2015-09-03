@@ -109,7 +109,7 @@ app.controller('FormWizardCtrl', function ($scope, $state) {
 
 app.factory('formInfo', function () {
     'use strict';
-    var gcinfo = {},
+    var gcinfo = { },
         subinfo = {},
         ppeinfo = {
             cm_EyeProtection: true,
@@ -150,6 +150,12 @@ app.factory('formInfo', function () {
         setppeinfo: function (tempPPEinfo) {
             ppeinfo = angular.copy(tempPPEinfo);
         },
+        getgcinfo: function () {
+            return gcinfo;
+        },
+        setgcinfo: function (tempGCinfo) {
+            gcinfo = angular.copy(tempGCinfo);
+        },
         getcompletedElements: function () {
             return completedElements;
         }
@@ -162,7 +168,42 @@ app.controller('GCorSub', function ($scope) {
         $scope.next(state);
     };
 });
-app.controller('GCinfoCtrl', function ($scope, formInfo) { 'use strict'; });
+app.controller('GCinfoCtrl', function ($scope, formInfo) { 
+    'use strict';
+    $scope.tempGCinfo = { };
+    
+    $scope.tempGCinfo = angular.copy(formInfo.getgcinfo());
+    
+    function verify() {
+        if (angular.isUndefined($scope.tempGCinfo.projectname) || $scope.tempGCinfo.projectname === "") {
+            return "invalid";
+        } else if (angular.isUndefined($scope.tempGCinfo.basicinfodate) || $scope.tempGCinfo.basicinfodate === "") {
+            return "invalid";
+        } else if (angular.isUndefined($scope.tempGCinfo.subcontractor) || $scope.tempGCinfo.subcontractor === "") {
+            return "invalid";
+        } else if (angular.isUndefined($scope.tempGCinfo.generalcontractor) || $scope.tempGCinfo.generalcontractor === "") {
+            return "invalid";
+        } else if (angular.isUndefined($scope.tempGCinfo.crewleader) || $scope.tempGCinfo.crewleader === "") {
+            return "invalid";
+        } else if (angular.isUndefined($scope.tempGCinfo.sitesuperintendent) || $scope.tempGCinfo.sitesuperintendent === "") {
+            return "invalid";
+        } else if (angular.isUndefined($scope.tempGCinfo.jobscope) || $scope.tempGCinfo.jobscope === "") {
+            return "invalid";
+        } else {
+            return "valid";
+        }
+    }
+    
+    $scope.check = function (state) {
+        formInfo.getcompletedElements().BasicInfo = verify();
+        //if(!gooddata)
+        //  popup
+        //else
+        //  next
+        formInfo.setgcinfo($scope.tempGCinfo);
+        $scope.next(state);
+    };
+});
 app.controller('SubinfoCtrl', function ($scope, formInfo) { 'use strict'; });
 app.controller('PPECtrl', function ($scope, formInfo) {
     'use strict';
@@ -184,64 +225,62 @@ app.controller('PPECtrl', function ($scope, formInfo) {
     $scope.tempPPEinfo = angular.copy(formInfo.getppeinfo());
     
     function verify() {
-        if (formInfo.getppeinfo().cm_EyeProtection === true) {
+        if ($scope.tempPPEinfo.cm_EyeProtection === true) {
             return "valid";
-        } else if (formInfo.getppeinfo().cm_ChemGoggles === true) {
+        } else if ($scope.tempPPEinfo.cm_ChemGoggles === true) {
             return "valid";
-        } else if (formInfo.getppeinfo().cm_HardHat === true) {
+        } else if ($scope.tempPPEinfo.cm_HardHat === true) {
             return "valid";
-        } else if (formInfo.getppeinfo().cb_RespiratorType !== "N/A") {
+        } else if ($scope.tempPPEinfo.cb_RespiratorType !== "N/A") {
             return "valid";
-        } else if (formInfo.getppeinfo().cb_GlovesType !== "N/A") {
+        } else if ($scope.tempPPEinfo.cb_GlovesType !== "N/A") {
             return "valid";
-        } else if (formInfo.getppeinfo().cb_Clothing !== "N/A") {
+        } else if ($scope.tempPPEinfo.cb_Clothing !== "N/A") {
             return "valid";
-        } else if (formInfo.getppeinfo().cm_ProtectiveToe === true) {
+        } else if ($scope.tempPPEinfo.cm_ProtectiveToe === true) {
             return "valid";
-        } else if (formInfo.getppeinfo().cm_HearingProtection === true) {
+        } else if ($scope.tempPPEinfo.cm_HearingProtection === true) {
             return "valid";
-        } else if (formInfo.getppeinfo().cm_HarnessLanyard === true) {
+        } else if ($scope.tempPPEinfo.cm_HarnessLanyard === true) {
             return "valid";
-        } else if (formInfo.getppeinfo().cm_FaceShield === true) {
+        } else if ($scope.tempPPEinfo.cm_FaceShield === true) {
             return "valid";
-        } else if (formInfo.getppeinfo().tb_Other !== "") {
+        } else if ($scope.tempPPEinfo.tb_Other !== "") {
             return "valid";
         } else {
             return "invalid";
         }
     }
     function format() {
-        if (formInfo.getppeinfo().cb_RespiratorType !== "N/A") {
-            formInfo.getppeinfo().cm_RespiratorType = true;
+        if ($scope.tempPPEinfo.cb_RespiratorType !== "N/A") {
+            $scope.tempPPEinfo.cm_RespiratorType = true;
         } else {
-            formInfo.getppeinfo().cm_RespiratorType = false;
+            $scope.tempPPEinfo.cm_RespiratorType = false;
         }
         
-        if (formInfo.getppeinfo().cb_GlovesType !== "N/A") {
-            formInfo.getppeinfo().cm_GlovesType = true;
+        if ($scope.tempPPEinfo.cb_GlovesType !== "N/A") {
+            $scope.tempPPEinfo.cm_GlovesType = true;
         } else {
-            formInfo.getppeinfo().cm_GlovesType = false;
+            $scope.tempPPEinfo.cm_GlovesType = false;
         }
         
-        if (formInfo.getppeinfo().cb_Clothing !== "N/A") {
-            formInfo.getppeinfo().cm_Clothing = true;
+        if ($scope.tempPPEinfo.cb_Clothing !== "N/A") {
+            $scope.tempPPEinfo.cm_Clothing = true;
         } else {
-            formInfo.getppeinfo().cm_Clothing = false;
+            $scope.tempPPEinfo.cm_Clothing = false;
         }
         
-        if (formInfo.getppeinfo().cb_ChemClothing !== "N/A") {
-            formInfo.getppeinfo().cm_ChemClothing = true;
+        if ($scope.tempPPEinfo.cb_ChemClothing !== "N/A") {
+            $scope.tempPPEinfo.cm_ChemClothing = true;
         } else {
-            formInfo.getppeinfo().cm_ChemClothing = false;
+            $scope.tempPPEinfo.cm_ChemClothing = false;
         }
         
-        if (formInfo.getppeinfo().tb_Other !== "") {
-            formInfo.getppeinfo().cm_Other = true;
+        if ($scope.tempPPEinfo.tb_Other !== "") {
+            $scope.tempPPEinfo.cm_Other = true;
         } else {
-            formInfo.getppeinfo().cm_Other = false;
+            $scope.tempPPEinfo.cm_Other = false;
         }
-        
-        //$scope.ppeinfo = angular.copy($scope.elements);
     }
     
     $scope.check = function (state) {
@@ -260,194 +299,7 @@ app.controller('TaskCtrl', function ($scope, formInfo) { 'use strict'; });
 
 app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ionicPopup, jsPdfBuilder, $cordovaFileTransfer, $cordovaFile) {
     'use strict';
-    var blank = {},
-        elementsBlank = {
-            cb_RespiratorType: 'N/A',
-            cb_GlovesType: 'N/A',
-            cb_Clothing: 'N/A',
-            cb_ChemClothing: 'N/A',
-            tb_Other: ''
-        },
-        fontStyle,
-        scrollheight;
-    $scope.basicinfo = {};
-    $scope.ppeinfo = {};
-    $scope.user = {};
-    $scope.elements = {
-        cb_RespiratorType: 'N/A',
-        cb_GlovesType: 'N/A',
-        cb_Clothing: 'N/A',
-        cb_ChemClothing: 'N/A',
-        tb_Other: ''
-    };
-    $scope.completedElements = {
-        BasicInfo: "pending",
-        PPEAssess: "pending",
-        TaskStep1: "pending",
-        TaskStep2: "pending",
-        TaskStep3: "pending",
-        TaskStep4: "pending"
-    };
-    $scope.submitComplete = false;
-    
-    $ionicModal.fromTemplateUrl('./templates/PPEModal.html', {
-        scope: $scope,
-        animation: 'slide-in-up',
-        backdropClickToClose: false
-    }).then(function (modal) {
-        $scope.PPEmodal = modal;
-    });
-    
-    $ionicModal.fromTemplateUrl('./templates/BasicInfoModal.html', {
-        scope: $scope,
-        animation: 'slide-in-up',
-        backdropClickToClose: false
-    }).then(function (modal) {
-        $scope.BasicInfomodal = modal;
-    });
-    
-    $ionicModal.fromTemplateUrl('./templates/Task1Modal.html', {
-        scope: $scope,
-        animation: 'slide-in-up',
-        backdropClickToClose: false
-    }).then(function (modal) {
-        $scope.Task1modal = modal;
-    });
-    $scope.openModal = function (form) {
-        if (form === "PPE") {
-            $scope.PPEmodal.show();
-        } else if (form === "BasicInfo") {
-            $scope.BasicInfomodal.show();
-        } else if (form === "Task1") {
-            $scope.Task1modal.show();
-        }
-    };
-    $scope.closeModal = function (form) {
-        if (form === "PPE") {
-            $scope.PPEmodal.hide();
-        } else if (form === "BasicInfo") {
-            $scope.BasicInfomodal.hide();
-        } else if (form === "Task1") {
-            $scope.Task1modal.hide();
-        }
-    };
-    //Cleanup the modal when we're done with it!
-    $scope.$on('$destroy', function () {
-        $scope.PPEmodal.remove();
-        $scope.BasicInfomodal.remove();
-        $scope.Task1modal.remove();
-    });
-    // Execute action on hide modal
-    $scope.$on('modal.hidden', function () {
-      // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('modal.removed', function () {
-      // Execute action
-    });
-    
     //--------------Custom Modal Methods-----------------//
-    function verifyBasicInfo() {
-        if (angular.isUndefined($scope.user.projectname) || $scope.user.projectname === "") {
-            return "invalid";
-        } else if (angular.isUndefined($scope.user.basicinfodate) || $scope.user.basicinfodate === "") {
-            return "invalid";
-        } else if (angular.isUndefined($scope.user.subcontractor) || $scope.user.subcontractor === "") {
-            return "invalid";
-        } else if (angular.isUndefined($scope.user.generalcontractor) || $scope.user.generalcontractor === "") {
-            return "invalid";
-        } else if (angular.isUndefined($scope.user.crewleader) || $scope.user.crewleader === "") {
-            return "invalid";
-        } else if (angular.isUndefined($scope.user.sitesuperintendent) || $scope.user.sitesuperintendent === "") {
-            return "invalid";
-        } else if (angular.isUndefined($scope.user.jobscope) || $scope.user.jobscope === "") {
-            return "invalid";
-        } else {
-            return "valid";
-        }
-    }
-    
-    function verifyPPE() {
-        if ($scope.elements.cm_EyeProtection === true) {
-            return "valid";
-        } else if ($scope.elements.cm_ChemGoggles === true) {
-            return "valid";
-        } else if ($scope.elements.cm_ChemGoggles === true) {
-            return "valid";
-        } else if ($scope.elements.cm_HardHat === true) {
-            return "valid";
-        } else if ($scope.elements.cb_RespiratorType !== "N/A") {
-            return "valid";
-        } else if ($scope.elements.cb_GlovesType !== "N/A") {
-            return "valid";
-        } else if ($scope.elements.cb_Clothing !== "N/A") {
-            return "valid";
-        } else if ($scope.elements.cm_ProtectiveToe === true) {
-            return "valid";
-        } else if ($scope.elements.cm_HearingProtection === true) {
-            return "valid";
-        } else if ($scope.elements.cm_HarnessLanyard === true) {
-            return "valid";
-        } else if ($scope.elements.cm_FaceShield === true) {
-            return "valid";
-        } else if ($scope.elements.tb_Other !== "") {
-            return "valid";
-        } else {
-            return "invalid";
-        }
-    }
-    function formatPPE() {
-        if ($scope.elements.cb_RespiratorType !== "N/A") {
-            $scope.elements.cm_RespiratorType = true;
-        } else {
-            $scope.elements.cm_RespiratorType = false;
-        }
-        
-        if ($scope.elements.cb_GlovesType !== "N/A") {
-            $scope.elements.cm_GlovesType = true;
-        } else {
-            $scope.elements.cm_GlovesType = false;
-        }
-        
-        if ($scope.elements.cb_Clothing !== "N/A") {
-            $scope.elements.cm_Clothing = true;
-        } else {
-            $scope.elements.cm_Clothing = false;
-        }
-        
-        if ($scope.elements.cb_ChemClothing !== "N/A") {
-            $scope.elements.cm_ChemClothing = true;
-        } else {
-            $scope.elements.cm_ChemClothing = false;
-        }
-        
-        if ($scope.elements.tb_Other !== "") {
-            $scope.elements.cm_Other = true;
-        } else {
-            $scope.elements.cm_Other = false;
-        }
-        
-        $scope.ppeinfo = angular.copy($scope.elements);
-    }
-    
-    $scope.submitModal = function (form) {
-        if (form === "PPE") {
-            $scope.completedElements.PPEAssess = verifyPPE();
-            formatPPE();
-        } else if (form === "BasicInfo") {
-            $scope.completedElements.BasicInfo = verifyBasicInfo();
-            $scope.basicinfo = angular.copy($scope.user);
-        }
-        
-        if ($scope.completedElements.BasicInfo === "valid" &&
-                $scope.completedElements.PPEAssess === "valid") {
-            $scope.submitComplete = true;
-        } else {
-            $scope.submitComplete = false;
-        }
-        $scope.closeModal(form);
-    };
-    
     $scope.reset = function (form) {
         if (form === "BasicInfo") {
             $scope.user = angular.copy(blank);
