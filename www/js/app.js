@@ -112,7 +112,7 @@ app.factory('formInfo', function () {
     var gcinfo = {},
         subinfo = {},
         ppeinfo = {
-            cm_EyeProtection: false,
+            cm_EyeProtection: true,
             cm_ChemGoggles: false,
             cm_HardHat: false,
             cb_RespiratorType: 'N/A',
@@ -146,7 +146,10 @@ app.factory('formInfo', function () {
     return {
         getppeinfo: function () {
             return ppeinfo;
-        },       
+        },
+        setppeinfo: function (tempPPEinfo) {
+            ppeinfo = angular.copy(tempPPEinfo);
+        },
         getcompletedElements: function () {
             return completedElements;
         }
@@ -163,6 +166,23 @@ app.controller('GCinfoCtrl', function ($scope, formInfo) { 'use strict'; });
 app.controller('SubinfoCtrl', function ($scope, formInfo) { 'use strict'; });
 app.controller('PPECtrl', function ($scope, formInfo) {
     'use strict';
+    $scope.tempPPEinfo = {
+        cm_EyeProtection: false,
+        cm_ChemGoggles: false,
+        cm_HardHat: false,
+        cb_RespiratorType: 'N/A',
+        cb_GlovesType: 'N/A',
+        cb_Clothing: 'N/A',
+        cm_ProtectiveToe: false,
+        cm_HearingProtection: false,
+        cb_ChemClothing: 'N/A',
+        cm_HarnessLanyard: false,
+        cm_FaceShield: false,
+        tb_Other: ''
+    };
+    
+    $scope.tempPPEinfo = angular.copy(formInfo.getppeinfo());
+    
     function verify() {
         if (formInfo.getppeinfo().cm_EyeProtection === true) {
             return "valid";
@@ -231,6 +251,7 @@ app.controller('PPECtrl', function ($scope, formInfo) {
         //else
         //  next
         format();
+        formInfo.setppeinfo($scope.tempPPEinfo);
         $scope.next(state);
     };
     
@@ -510,6 +531,6 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
         $scope.ppeinfo = angular.copy($scope.elements);
         $scope.basicinfo = angular.copy($scope.user);
         //$scope.$apply();
-    };
+    }
     angular.element($window).bind('resize', refresh);
 });
