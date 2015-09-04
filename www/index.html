@@ -26,6 +26,7 @@
         <script src="FormWizard/GCorSub/GCorSub.js"></script>
         <script src="FormWizard/GCInformation/GCController.js"></script>
         <script src="FormWizard/PPE/PPEController.js"></script>
+        <script src="PageControl/PageControl.js"></script>
         
         <!-----------IMPORTANT! PUT ALL NEW FILES BELOW THIS POINT------------>
         
@@ -36,8 +37,28 @@
         
     </head>
  
-    <body>
-        <ion-nav-bar class="bar-dark"></ion-nav-bar>
-        <ion-nav-view></ion-nav-view>       
+    <body ng-controller="PageCtrl">
+        <ion-side-menus>
+            <ion-side-menu side="left">
+                <ion-header-bar class="bar-dark">
+                    <h1 class="title">Projects</h1>
+                </ion-header-bar>
+                <ion-content scroll="false">
+                    <ion-list>
+                        <ion-item ng-repeat="step in wizardSteps">
+                          {{wizardSteps.step}}
+                        </ion-item>
+                    </ion-list>
+                </ion-content>
+            </ion-side-menu>
+            <ion-side-menu-content>
+            <ion-nav-bar class="bar-dark">
+                <ion-nav-buttons side="left">
+                    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+                </ion-nav-buttons>
+            </ion-nav-bar>
+            <ion-nav-view></ion-nav-view>
+            </ion-side-menu-content>
+        </ion-side-menus>
     </body>
 </html>
