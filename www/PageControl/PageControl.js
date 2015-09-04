@@ -1,10 +1,10 @@
 app.controller('PageCtrl', function($scope) {
     $scope.wizardSteps = [
-               {step: 'Contractor Type'},
-               {step: 'Basic Information'},
-               {step: 'PPE Assessment'},
-               {step: 'Tasks'},
-               {step: 'Verify'}
+               {title: 'Contractor Type'},
+               {title: 'Basic Information'},
+               {title: 'PPE Assessment'},
+               {title: 'Tasks'},
+               {title: 'Verify'}
     ];
                
 });
