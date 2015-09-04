@@ -74,7 +74,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('formWizard.Task', {
             url: '/Task',
-            templateUrl: './FormWizard/Task/Task.html',
+            templateUrl: './FormWizard/Tasks/Task.html',
             controller: 'TaskCtrl'
         })
         .state('overview', {
