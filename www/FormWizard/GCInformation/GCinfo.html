@@ -1,32 +1,33 @@
-<form>
-<div class="list">
-    <label class="item item-input item-stacked-label">
-        <span class="input-label">GCINFO</span>
-        <input type="text" ng-model="user.projectname" placeholder="Enter a project name">
-    </label>  
-    <label class="item item-input item-stacked-label">
-        <span class="input-label">Date</span>
-        <input type="date" ng-model="user.basicinfodate" placeholder="Pick a date">
-    </label>
-    <label class="item item-input item-stacked-label">
-        <span class="input-label">Subcontractor</span>
-        <input type="text" ng-model="user.subcontractor" placeholder="Subcontractor's Name">
-    </label>
-    <label class="item item-input item-stacked-label">
-        <span class="input-label">General Contractor</span>
-        <input type="text" ng-model="user.generalcontractor" placeholder="General Contractor's Name">
-    </label>
-    <label class="item item-input item-stacked-label">
-        <span class="input-label">Crew Leader</span>
-        <input type="text" ng-model="user.crewleader" placeholder="Crew Leader's Name">
-    </label>
-    <label class="item item-input item-stacked-label">
-        <span class="input-label">Site Superintendent</span>
-        <input type="text" ng-model="user.sitesuperintendent" placeholder="Site Superintendent's Name">
-    </label>
-    <label class="item item-input item-stacked-label">
-        <span class="input-label">Job Scope</span>
-        <input type="text" ng-model="user.jobscope" placeholder="Enter the job scope">
-    </label>
-</div>
-</form>
+<ion-content direction="y">
+    <div class="list">
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Project Name</span>
+            <input type="text" ng-model="user.projectname" placeholder="Enter a project name">
+        </label>  
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Date</span>
+            <input type="date" ng-model="user.basicinfodate" placeholder="Pick a date">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Subcontractor</span>
+            <input type="text" ng-model="user.subcontractor" placeholder="Subcontractor's Name">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">General Contractor</span>
+            <input type="text" ng-model="user.generalcontractor" placeholder="General Contractor's Name">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Crew Leader</span>
+            <input type="text" ng-model="user.crewleader" placeholder="Crew Leader's Name">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Site Superintendent</span>
+            <input type="text" ng-model="user.sitesuperintendent" placeholder="Site Superintendent's Name">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Job Scope</span>
+            <input type="text" ng-model="user.jobscope" placeholder="Enter the job scope">
+        </label>
+    </div>
+</ion-content>
+<button class="button button-block button-positive" id = "b_Submit" on-tap="check('formWizard.PPE')" on-hold="check('formWizard.PPE')">Next</button>

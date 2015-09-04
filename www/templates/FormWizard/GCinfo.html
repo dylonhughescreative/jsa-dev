@@ -1,35 +1,35 @@
-<ion-content>
-    <form>
-        <div class="list">
-            <label class="item item-input item-stacked-label">
-                <span class="input-label">Project Name</span>
-                <input type="text" ng-model="tempGCinfo.projectname" placeholder="Enter a project name">
-            </label>  
-            <label class="item item-input item-stacked-label">
-                <span class="input-label">Date</span>
-                <input type="date" ng-model="tempGCinfo.basicinfodate" placeholder="Pick a date">
-            </label>
-            <label class="item item-input item-stacked-label">
-                <span class="input-label">Subcontractor</span>
-                <input type="text" ng-model="tempGCinfo.subcontractor" placeholder="Subcontractor's Name">
-            </label>
-            <label class="item item-input item-stacked-label">
-                <span class="input-label">General Contractor</span>
-                <input type="text" ng-model="tempGCinfo.generalcontractor" placeholder="General Contractor's Name">
-            </label>
-            <label class="item item-input item-stacked-label">
-                <span class="input-label">Crew Leader</span>
-                <input type="text" ng-model="tempGCinfo.crewleader" placeholder="Crew Leader's Name">
-            </label>
-            <label class="item item-input item-stacked-label">
-                <span class="input-label">Site Superintendent</span>
-                <input type="text" ng-model="tempGCinfo.sitesuperintendent" placeholder="Site Superintendent's Name">
-            </label>
-            <label class="item item-input item-stacked-label">
-                <span class="input-label">Job Scope</span>
-                <input type="text" ng-model="tempGCinfo.jobscope" placeholder="Enter the job scope">
-            </label>
-        </div>
-    </form>
+<link href="css/basicInfo.css" rel="stylesheet">
+
+<ion-content direction="y">
+    <div class="list">
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Project Name</span>
+            <input type="text" ng-model="tempGCinfo.projectname" placeholder="Enter a project name">
+        </label>  
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Date</span>
+            <input type="date" ng-model="tempGCinfo.basicinfodate" placeholder="Pick a date">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Subcontractor</span>
+            <input type="text" ng-model="tempGCinfo.subcontractor" placeholder="Subcontractor's Name">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">General Contractor</span>
+            <input type="text" ng-model="tempGCinfo.generalcontractor" placeholder="General Contractor's Name">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Crew Leader</span>
+            <input type="text" ng-model="tempGCinfo.crewleader" placeholder="Crew Leader's Name">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Site Superintendent</span>
+            <input type="text" ng-model="tempGCinfo.sitesuperintendent" placeholder="Site Superintendent's Name">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Job Scope</span>
+            <input type="text" ng-model="tempGCinfo.jobscope" placeholder="Enter the job scope">
+        </label>
+    </div>
 </ion-content>
-<button class="button button-block button-positive" id = "b_Submit" on-tap="check('formWizard.GCorSub')" on-hold="check()">Next</button>
+<button class="button button-block button-positive" id = "basicinfosubmit" on-tap="check('formWizard.GCorSub')" on-hold="check()">Next</button>
