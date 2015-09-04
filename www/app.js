@@ -80,7 +80,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('overview', {
             url: '/overview',
             templateUrl: 'templates/Overview.html',
-            controller: 'OverviewCtrl',
+            controller: 'OverviewCtrl'
         })
         .state('verify', {
             url: '/verify',
@@ -140,8 +140,8 @@ app.factory('formInfo', function () {
             TaskStep2: "pending",
             TaskStep3: "pending",
             TaskStep4: "pending"
-        };
-        //submitComplete = false;
+        },
+        formComplete = false;
     
     return {
         getppeinfo: function () {
@@ -159,8 +159,29 @@ app.factory('formInfo', function () {
         getcompletedElements: function () {
             return completedElements;
         },
-        setPPEcomplete: function (PPEcomplete) {
-            completedElements.PPEAssess = PPEcomplete;
+        setGCinfocomplete: function (complete) {
+            completedElements.BasicInfo = complete;
+        },
+        setSubinfocomplete: function (complete) {
+            completedElements.BasicInfo = complete;
+        },
+        setPPEcomplete: function (complete) {
+            completedElements.PPEAssess = complete;
+        },
+        setTask1complete: function (complete) {
+            completedElements.TaskStep1 = complete;
+        },
+        setTask2complete: function (complete) {
+            completedElements.TaskStep2 = complete;
+        },
+        setTask3complete: function (complete) {
+            completedElements.TaskStep3 = complete;
+        },
+        setTask4complete: function (complete) {
+            completedElements.TaskStep4 = complete;
+        },
+        getformcomplete: function (complete) {
+            formcomplete = complete;
         }
     };
 });

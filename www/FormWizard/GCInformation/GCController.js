@@ -1,8 +1,12 @@
-app.controller('GCinfoCtrl', function ($scope, formInfo) { 
+app.controller('GCinfoCtrl', function ($rootScope, $scope, formInfo) { 
     'use strict';
     $scope.tempGCinfo = { };
     
     $scope.tempGCinfo = angular.copy(formInfo.getgcinfo());
+    
+    $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
+        $scope.completedElements = angular.copy(formInfo.getcompletedElements());
+    });
     
     function verify() {
         if (angular.isUndefined($scope.tempGCinfo.projectname) || $scope.tempGCinfo.projectname === "") {

@@ -1,4 +1,4 @@
-app.controller('PPECtrl', function ($scope, formInfo) {
+app.controller('PPECtrl', function ($rootScope, $scope, formInfo) {
     'use strict';
     $scope.tempPPEinfo = {
         cm_EyeProtection: false,
@@ -16,6 +16,10 @@ app.controller('PPECtrl', function ($scope, formInfo) {
     };
     
     $scope.tempPPEinfo = angular.copy(formInfo.getppeinfo());
+    
+    $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
+        $scope.tempPPEinfo = angular.copy(formInfo.getppeinfo());;
+    });
     
     function verify() {
         if ($scope.tempPPEinfo.cm_EyeProtection === true) {

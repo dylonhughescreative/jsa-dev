@@ -1,3 +1,5 @@
+<link href="FormWizard/Overview.css" rel="stylesheet">
+
 <ion-view title="Overview">
     <ion-content direction="y">
         <a on-tap="onclick('formWizard.GCinfo')" class="item item-icon-left">
@@ -37,5 +39,5 @@
             Task Step #4
         </a>
     </ion-content>  
-    <button data-ng-if="submitComplete" class="button button-block button-positive" id = "b_Submit" on-tap="verify()" on-hold="verify()">Verify</button>
+    <button data-ng-if="formcomplete" class="button button-block button-positive" id = "b_Verify" on-tap="verify()" on-hold="verify()">Verify</button>
 </ion-view>
