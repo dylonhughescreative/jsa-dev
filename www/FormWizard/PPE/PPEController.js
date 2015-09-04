@@ -77,7 +77,7 @@ app.controller('PPECtrl', function ($scope, formInfo) {
     }
     
     $scope.check = function (state) {
-        formInfo.getcompletedElements().PPEAssess = verify();
+        formInfo.setPPEcomplete(verify());
         //if(!gooddata)
         //  popup
         //else

@@ -1,0 +1,11 @@
+.incompleteicon{
+    color: red;
+}
+
+.completeicon{
+    color: green;
+}
+
+.pendingicon{
+    color: dodgerblue;
+}

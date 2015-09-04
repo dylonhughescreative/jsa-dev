@@ -80,7 +80,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('overview', {
             url: '/overview',
             templateUrl: 'templates/Overview.html',
-            controller: 'OverviewCtrl'
+            controller: 'OverviewCtrl',
         })
         .state('verify', {
             url: '/verify',
@@ -112,7 +112,7 @@ app.factory('formInfo', function () {
     var gcinfo = { },
         subinfo = {},
         ppeinfo = {
-            cm_EyeProtection: true,
+            cm_EyeProtection: false,
             cm_ChemGoggles: false,
             cm_HardHat: false,
             cb_RespiratorType: 'N/A',
@@ -158,6 +158,9 @@ app.factory('formInfo', function () {
         },
         getcompletedElements: function () {
             return completedElements;
+        },
+        setPPEcomplete: function (PPEcomplete) {
+            completedElements.PPEAssess = PPEcomplete;
         }
     };
 });
