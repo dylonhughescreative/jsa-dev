@@ -1,21 +1,59 @@
-/* Portrait-specific code */
-
 #b_General{
     position: absolute;
-    width: 96%; 
+    width: 98%;
     top: 0;
     bottom: 50%;
     margin: 2%;
+    margin-left: 1%;
     margin-bottom: 1%;
+    background-color: transparent;
+    color: black;
+    border: 2px solid transparent;
 }
 
 #b_Sub{
     position: absolute;
-    width: 96%;
+    width: 98%;
     top: 50%;
     bottom: 0;
     margin: 2%;
+    margin-left: 1%;
     margin-top: 1%;
+    background-color: transparent;
+    color: black;
+    border: 2px solid transparent;
+}
+
+.customButton {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#gcButton {
+    background-color: transparent;
+    color: black;
+    border: 2px solid transparent;
+}
+
+#subButton {
+    background-color: transparent;
+    color: black;
+    border: 2px solid transparent;
+}
+
+#gcIcon {
+    position: absolute;
+    top: 23%;
+    left: 42%;
+    font-size: 72px;
+}
+
+#subIcon {
+    position: absolute;
+    top: 23%;
+    right: 44%;
+    font-size: 72px;
 }
 
 /* Landscape-specific code */
@@ -27,6 +65,9 @@
         bottom: 0;
         margin: 2%;
         margin-right: 1%;
+        background-color: transparent;
+        color: black;
+        border: 2px solid transparent;
     }
     
     #b_Sub{
@@ -37,5 +78,16 @@
         left: 50%;
         margin: 2%;
         margin-left: 1%;
+        background-color: transparent;
+        color: black;
+        border: 2px solid transparent;
+    }
+
+    #gcIcon {
+        top: 35%;
+    }
+    
+    #subIcon {
+        top: 35%;
     }
 }
