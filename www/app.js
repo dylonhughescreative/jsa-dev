@@ -59,12 +59,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('formWizard.GCinfo', {
             url: '/GCinfo',
-            templateUrl: './FormWizard/GCinfo/GCinfo.html',
+            templateUrl: './FormWizard/GCInfo/GCinfo.html',
             controller: 'GCinfoCtrl'
         })
         .state('formWizard.Subinfo', {
             url: '/Subinfo',
-            templateUrl: './FormWizard/Subinfo/Subinfo.html',
+            templateUrl: './FormWizard/SubInfo/Subinfo.html',
             controller: 'SubinfoCtrl'
         })
         .state('formWizard.PPE', {
