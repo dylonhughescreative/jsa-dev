@@ -1,0 +1,43 @@
+  <div class="modal">
+
+    <!-- Modal header bar -->
+    <ion-header-bar class="bar-secondary">
+      <h1 class="title">New Task</h1>
+      <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
+    </ion-header-bar>
+
+    <!-- Modal content area -->
+    <ion-content>
+
+      <form ng-submit="createTask(task)">
+            <div class="list">
+                <label class="item item-input item-stacked-label">
+                  <span class="input-label">Task Title</span>
+                  <input type="text" placeholder="What do you need to do?" ng-model="task.title">
+                </label>
+                <ion-radio ng-repeat="item in numberList"
+                           ng-value="item.number"
+                           ng-model="task.number">
+                  {{ item.title }}
+                </ion-radio>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Task 1</span>
+                    <input type="text" ng-model="task.task1" placeholder="What do you need to do first?">
+                </label>
+                <label class="item item-input item-stacked-label" ng-show="item.number === '2' || item.number === '3'">
+                    <span class="input-label">Task 2</span>
+                    <input type="text" ng-model="task.task2" placeholder="What about after that?">
+                </label>
+                <label class="item item-input item-stacked-label" ng-show="item.number === '3'">
+                    <span class="input-label">Task 3</span>
+                    <input type="text" ng-model="task.task3" placeholder="And after that?">
+                </label>
+            </div>
+            <div class="padding">
+                <button type="submit" class="button button-block button-positive">Create Task</button>
+            </div>
+      </form>
+
+    </ion-content>
+
+  </div>

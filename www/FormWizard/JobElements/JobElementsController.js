@@ -1,25 +1,28 @@
 app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo) { 'use strict'; 
                                                                      
     // Create and load the Modal
-  $ionicModal.fromTemplateUrl('./FormWizard/NewElements/new-task.html', {
+  $ionicModal.fromTemplateUrl('./FormWizard/JobElements/new-job-element.html', {
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {
       $scope.taskModal = modal;
   });
                      
-    $scope.tasks = [];
+    $scope.numberList = [
+        {title: "One Task Required", number: 1},
+        {title: "Two Tasks Required", number: 2},
+        {title: "Three Tasks Required", number: 3},
+    ];
     // Called when the form is submitted
     $scope.createTask = function(task) {
       $scope.groups.push({
         name: task.title,
         items: []
       });
-      for (var j=1; j<4; j++) {
-        $scope.groups[$scope.groups.length - 1].items.push($scope.groups.length-1 + '-' + j);
+      for (var j=1; j<task.number+1; j++) {
+        $scope.groups[$scope.groups.length - 1].items.push($scope.groups.length-1 + '- Task #' + j);
       }
       $scope.taskModal.hide();
-      task.title = "";
     };
     
       // Open our new task modal

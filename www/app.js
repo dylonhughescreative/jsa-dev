@@ -77,11 +77,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: './FormWizard/JobElements/JobElements.html',
             controller: 'JobElementCtrl'
         })
-        .state('formWizard.NewElement', {
-            url: '/NewElement',
-            templateUrl: './FormWizard/NewElements/NewElement.html',
-            controller: 'NewElementCtrl'
-        })
         .state('overview', {
             url: '/overview',
             templateUrl: 'templates/Overview.html',
