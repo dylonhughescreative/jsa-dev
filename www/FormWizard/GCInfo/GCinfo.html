@@ -1,33 +1,38 @@
-<ion-content direction="y">
+<ion-view view-title="General Contractor Info">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-ios-list-outline"></button>
+    </ion-nav-buttons>
+    <ion-content direction="y">
     <div class="list">
         <label class="item item-input item-stacked-label">
-            <span class="input-label">Project Name</span>
-            <input type="text" ng-model="tempGCinfo.projectname" placeholder="Enter a project name">
+            <span class="input-label">Your Name</span>
+            <input type="text" ng-model="tempGCinfo.username" placeholder="What is your name?">
         </label>  
         <label class="item item-input item-stacked-label">
-            <span class="input-label">Date</span>
-            <input type="date" ng-model="tempGCinfo.basicinfodate" placeholder="Pick a date">
+            <span class="input-label">Project Name</span>
+            <input type="text" ng-model="tempGCinfo.projectname" placeholder="What is the project name?">
+        </label>  
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Work Beginning Date</span>
+            <input type="date" ng-model="tempGCinfo.basicinfostartdate" placeholder="When does work begin?">
         </label>
         <label class="item item-input item-stacked-label">
-            <span class="input-label">Subcontractor</span>
-            <input type="text" ng-model="tempGCinfo.subcontractor" placeholder="Subcontractor's Name">
+            <span class="input-label">Work Ending Date</span>
+            <input type="date" ng-model="tempGCinfo.basicinfoenddate" placeholder="When does work end?">
         </label>
         <label class="item item-input item-stacked-label">
-            <span class="input-label">General Contractor</span>
-            <input type="text" ng-model="tempGCinfo.generalcontractor" placeholder="General Contractor's Name">
-        </label>
-        <label class="item item-input item-stacked-label">
-            <span class="input-label">Crew Leader</span>
-            <input type="text" ng-model="tempGCinfo.crewleader" placeholder="Crew Leader's Name">
+            <span class="input-label">Company Name</span>
+            <input type="text" ng-model="tempGCinfo.generalcontractor" placeholder="What is your company name?">
         </label>
         <label class="item item-input item-stacked-label">
             <span class="input-label">Site Superintendent</span>
-            <input type="text" ng-model="tempGCinfo.sitesuperintendent" placeholder="Site Superintendent's Name">
+            <input type="text" ng-model="tempGCinfo.sitesuperintendent" placeholder="What's the acting Site Superintendent's name?">
         </label>
         <label class="item item-input item-stacked-label">
             <span class="input-label">Job Scope</span>
-            <input type="text" ng-model="tempGCinfo.jobscope" placeholder="Enter the job scope">
+            <input type="text" ng-model="tempGCinfo.jobscope" placeholder="What's the scope of this job?">
         </label>
     </div>
 </ion-content>
 <button class="button button-block button-positive" id = "b_Submit" on-tap="check('formWizard.PPE')" on-hold="check('formWizard.PPE')">Next</button>
+</ion-view>

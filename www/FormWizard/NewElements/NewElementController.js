@@ -1,7 +1,7 @@
-app.controller('TaskCtrl', function ($scope, $ionicModal, formInfo) { 'use strict'; 
+app.controller('NewElementCtrl', function ($scope, $ionicModal, formInfo) { 'use strict'; 
                                                                      
     // Create and load the Modal
-  $ionicModal.fromTemplateUrl('./FormWizard/Tasks/new-task.html', {
+  $ionicModal.fromTemplateUrl('./FormWizard/NewElements/new-task.html', {
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {

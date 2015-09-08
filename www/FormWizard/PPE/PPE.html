@@ -1,4 +1,8 @@
-<ion-content direction="y">  
+<ion-view view-title="PPE">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-ios-list-outline"></button>
+    </ion-nav-buttons>
+    <ion-content direction="y">  
     <div class="checkboxlist">
         <ul class="list">         
             <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.cm_EyeProtection">                        
@@ -82,4 +86,5 @@
         </ul>
     </div>
 </ion-content>
-<button class="button button-block button-positive" id = "b_Submit" on-tap="check('formWizard.Task')" on-hold="check('formWizard.Task')">Next</button>
+<button class="button button-block button-positive" id = "b_Submit" on-tap="check('formWizard.JobElements')" on-hold="check('formWizard.JobElements')">Next</button>
+</ion-view>

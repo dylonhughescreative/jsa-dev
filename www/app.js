@@ -72,10 +72,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: './FormWizard/PPE/PPE.html',
             controller: 'PPECtrl'
         })
-        .state('formWizard.Task', {
-            url: '/Task',
-            templateUrl: './FormWizard/Tasks/Task.html',
-            controller: 'TaskCtrl'
+        .state('formWizard.JobElements', {
+            url: '/JobElements',
+            templateUrl: './FormWizard/JobElements/JobElements.html',
+            controller: 'JobElementCtrl'
+        })
+        .state('formWizard.NewElement', {
+            url: '/NewElement',
+            templateUrl: './FormWizard/NewElements/NewElement.html',
+            controller: 'NewElementCtrl'
         })
         .state('overview', {
             url: '/overview',
