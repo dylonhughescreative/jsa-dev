@@ -2,42 +2,40 @@
 
     <!-- Modal header bar -->
     <ion-header-bar class="bar-secondary">
-      <h1 class="title">New Task</h1>
+      <h1 class="title">{{ModalHeaderText}}</h1>
       <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
     </ion-header-bar>
 
     <!-- Modal content area -->
     <ion-content>
 
-      <form ng-submit="createTask(task)">
+      <form ng-submit="createTask(jobElement)" id="NewJobElementForm">
             <div class="list">
                 <label class="item item-input item-stacked-label">
                   <span class="input-label">Task Title</span>
-                  <input type="text" placeholder="What do you need to do?" ng-model="task.title">
+                  <input type="text" placeholder="What do you need to do?" ng-model="jobElement.title">
                 </label>
                 <ion-radio ng-repeat="item in numberList"
                            ng-value="item.number"
-                           ng-model="task.number">
+                           ng-model="jobElement.number">
                   {{ item.title }}
                 </ion-radio>
-                <label class="item item-input item-stacked-label">
+                <label class="item item-input item-stacked-label" ng-show="jobElement.number > 0">
                     <span class="input-label">Task 1</span>
-                    <input type="text" ng-model="task.task1" placeholder="What do you need to do first?">
+                    <input type="text" ng-model="jobElement.task1" placeholder="What do you need to do first?">
                 </label>
-                <label class="item item-input item-stacked-label" ng-show="item.number === '2' || item.number === '3'">
+                <label class="item item-input item-stacked-label" ng-show="jobElement.number > 1">
                     <span class="input-label">Task 2</span>
-                    <input type="text" ng-model="task.task2" placeholder="What about after that?">
+                    <input type="text" ng-model="jobElement.task2" placeholder="What about after that?">
                 </label>
-                <label class="item item-input item-stacked-label" ng-show="item.number === '3'">
+                <label class="item item-input item-stacked-label" ng-show="jobElement.number > 2">
                     <span class="input-label">Task 3</span>
-                    <input type="text" ng-model="task.task3" placeholder="And after that?">
+                    <input type="text" ng-model="jobElement.task3" placeholder="And after that?">
                 </label>
-            </div>
-            <div class="padding">
-                <button type="submit" class="button button-block button-positive">Create Task</button>
             </div>
       </form>
-
     </ion-content>
-
+      <div>
+          <button type="submit" form="NewJobElementForm" class="button button-block button-positive" id="CreateTaskButton">{{ModalButtonText}}</button>
+      </div>
   </div>
