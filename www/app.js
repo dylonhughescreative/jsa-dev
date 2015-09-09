@@ -206,12 +206,6 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
         $state.go('portrait');
     };
     
-    $scope.verify = function () {
-        var so = cordova.plugins.screenorientation;
-        so.setOrientation('landscape');
-        $state.go('landscape');
-    };
-    
     $scope.cancelModal = function (form) {
         if (form === "BasicInfo") {
             $scope.user = angular.copy($scope.basicinfo);

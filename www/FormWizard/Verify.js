@@ -1,4 +1,4 @@
-app.controller('OverviewCtrl', function ($rootScope, $scope, $state, formInfo) {
+app.controller('VerifyCtrl', function ($rootScope, $scope, $state, formInfo) {
     'use strict';
     
     $scope.formcomplete; 
@@ -13,10 +13,4 @@ app.controller('OverviewCtrl', function ($rootScope, $scope, $state, formInfo) {
             $scope.formcomplete = false;
         }
     });
-    
-    $scope.verified = function () {
-        //var so = cordova.plugins.screenorientation;
-        //so.setOrientation('landscape');
-        $state.go('verify');
-    };
 });
