@@ -15,9 +15,9 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
     $scope.ModalHeaderText = "";
     $scope.ModalButtonText = "";
     $scope.numberList = [
-        {title: "One Task Required", number: 1},
-        {title: "Two Tasks Required", number: 2},
-        {title: "Three Tasks Required", number: 3},
+        {title: "1 Task ", number: 1},
+        {title: "2 Tasks", number: 2},
+        {title: "3 Tasks", number: 3},
     ];
     // Called when the form is submitted
     $scope.createTask = function(jobElement) {
@@ -50,12 +50,13 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
                     $scope.groups[$scope.groupIndex].items.push(jobElement.task3);
             }
         }
-        $scope.jobElement = {};
+        $scope.jobElement = {number: 1};
         $scope.editing = false;
         $scope.jobElementModal.hide();
     };
       // Open our new task modal
     $scope.newTask = function() {
+        $scope.jobElement = {number: 1};
         $scope.ModalHeaderText = "New Job Element";
         $scope.ModalButtonText = "Create Job Element";
         $scope.jobElementModal.show();
@@ -63,7 +64,10 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
   
     // Close the new task modal
     $scope.closeNewTask = function() {
-      $scope.jobElementModal.hide();
+        if (!$scope.editing)
+            $scope.jobElement = {number: 1};
+        $scope.jobElementModal.hide();
+        $scope.editing = false;
     };
                                                                                    
     function contains(a, obj) {
@@ -113,6 +117,7 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
     }
     
     $scope.deleteGroup = function(group) {
+        event.stopPropagation();
         var index = null;
         for(var i=0; i < $scope.groups.length; i++) {
             if ($scope.groups[i] === group)
@@ -126,6 +131,7 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
      * else, select the given group
      */
     $scope.toggleGroup = function(group) {
+        event.stopPropagation();
       if ($scope.isGroupShown(group)) {
         $scope.shownGroup = null;
       } else {

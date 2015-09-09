@@ -11,15 +11,24 @@
 
       <form ng-submit="createTask(jobElement)" id="NewJobElementForm">
             <div class="list">
+                <div class="item item-divider">
+                    Job Element Name
+                </div>
                 <label class="item item-input item-stacked-label">
-                  <span class="input-label">Task Title</span>
+                  <span class="input-label">Element Title</span>
                   <input type="text" placeholder="What do you need to do?" ng-model="jobElement.title">
                 </label>
-                <ion-radio ng-repeat="item in numberList"
-                           ng-value="item.number"
-                           ng-model="jobElement.number">
-                  {{ item.title }}
-                </ion-radio>
+                <div class="item item-divider">
+                    How Many Tasks Are Required?
+                </div>
+                <div class="button-bar">
+                    <a class="button button-light" 
+                       ng-repeat="item in numberList"
+                       ng-click="jobElement.number = item.number"
+                       ng-init="jobElement.number = 1">
+                        {{item.title}}
+                    </a>
+                </div>
                 <label class="item item-input item-stacked-label" ng-show="jobElement.number > 0">
                     <span class="input-label">Task 1</span>
                     <input type="text" ng-model="jobElement.task1" placeholder="What do you need to do first?">
