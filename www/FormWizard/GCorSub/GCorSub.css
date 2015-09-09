@@ -1,21 +1,23 @@
 #b_General{
     position: absolute;
-    width: 98%;
+    width: 100%;
     top: 0;
     bottom: 50%;
     background-color: transparent;
     color: black;
-    border: 2px solid transparent;
+    border:2px solid black;
+    border-botom: 1px solid black;
 }
 
 #b_Sub{
     position: absolute;
-    width: 98%;
+    width: 100%;
     top: 50%;
     bottom: 0;
     background-color: transparent;
     color: black;
-    border: 2px solid transparent;
+    border:2px solid black;
+    border-top: 1px solid black;
 }
 
 .customButton {
@@ -91,7 +93,8 @@
         bottom: 0;
         background-color: transparent;
         color: black;
-        border: 2px solid transparent;
+        border:2px solid black;
+        border-right: 1px solid black;
     }
     
     #b_Sub{
@@ -102,7 +105,8 @@
         left: 50%;
         background-color: transparent;
         color: black;
-        border: 2px solid transparent;
+        border:2px solid black;
+        border-left: 1px solid black;
     }
 
     #gcIcon {
