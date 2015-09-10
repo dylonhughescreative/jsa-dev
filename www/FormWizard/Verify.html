@@ -1,3 +1,4 @@
+<link href="FormWizard/Verify.css" rel="stylesheet">
 <ion-view title="Form Verify">
     <ion-nav-buttons side="left" id="navbuttonback">
         <button class="button-clear" on-tap="back()" id="backButton">
@@ -9,49 +10,90 @@
             Sign
         </button>
     </ion-nav-buttons>
-    <ion-scroll class="Form" min-zoom="1" max-zoom="3" zooming="true" direction="xy"  ng-style="{'height': scrollheight + '%'}">
-        <img class="Image" src="img/page1.PNG"/>
-        <div on-tap="openModal('BasicInfo')" class="overlayButton" id="JSATitle">
-            <div class="Textbox" id="subcontractor">{{basicinfo.subcontractor}}</div>
-            <div class="Textbox" id="crewleader">{{basicinfo.crewleader}}</div>
-            <div class="Textbox" id="projectname">{{basicinfo.projectname}}</div>
-            <div class="Textbox" id="generalcontractor">{{basicinfo.generalcontractor}}</div>
-            <div class="Textbox" id="sitesuperintendent">{{basicinfo.sitesuperintendent}}</div>
-            <div class="Textbox" id="basicinfodate">{{basicinfo.basicinfodate | date:"MM/dd/yyyy"}}</div>
-            <div class="Textbox" id="jobscope">{{basicinfo.jobscope}}</div>
-        </div>
-        <div on-tap="openModal('PPE')" class="overlayButton" id="PPEAssessment">
-            Double-Tap To Edit
-            <i  data-ng-if="ppeinfo.cm_EyeProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_EyeProtection"></i>
-            <i  data-ng-if="ppeinfo.cm_ChemGoggles" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemGoggles"></i>
-            <i  data-ng-if="ppeinfo.cm_HardHat" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HardHat"></i>
-            <i  data-ng-if="ppeinfo.cm_RespiratorType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_RespiratorType"></i>
-            <div class="Textbox" id="tb_RespiratorType" ng-style="fontStyle()">{{ppeinfo.cb_RespiratorType}}</div>
-            <i  data-ng-if="ppeinfo.cm_GlovesType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_GlovesType"></i>
-            <div class="Textbox" id="tb_GlovesType">{{ppeinfo.cb_GlovesType}}</div>
-            <i  data-ng-if="ppeinfo.cm_Clothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Clothing"></i>
-            <div class="Textbox" id="tb_Clothing">{{ppeinfo.cb_Clothing}}</div>
-            <i  data-ng-if="ppeinfo.cm_ProtectiveToe" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ProtectiveToe"></i>
-            <i  data-ng-if="ppeinfo.cm_HearingProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HearingProtection"></i>
-            <div class="Textbox" id="tb_HearingProtection">{{ppeinfo.cb_HearingProtection}}</div>
-            <i  data-ng-if="ppeinfo.cm_ChemClothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemClothing"></i>
-            <div class="Textbox" id="tb_ChemClothing">{{ppeinfo.cb_ChemClothing}}</div>
-            <i  data-ng-if="ppeinfo.cm_HarnessLanyard" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HarnessLanyard"></i>
-            <i  data-ng-if="ppeinfo.cm_FaceShield" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_FaceShield"></i>
-            <i  data-ng-if="ppeinfo.cm_Other" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Other"></i>
-            <div class="Textbox" id="tb_Other">{{ppeinfo.tb_Other}}</div>
-        </div>
-        <div on-tap="notimplementedPopup()" class="overlayButton" id="TaskOne">
-            Double-Tap To Edit
-        </div>
-        <div on-tap="notimplementedPopup()" class="overlayButton" id="TaskTwo">
-            Double-Tap To Edit
-        </div>
-        <div on-tap="notimplementedPopup()" class="overlayButton" id="TaskThree">
-            Double-Tap To Edit
-        </div>
-        <div on-tap="notimplementedPopup()" class="overlayButton" id="TaskFour">
-            Double-Tap To Edit
-        </div>
-    </ion-scroll>
+    <ion-content>
+        <ion-scroll min-zoom="1" max-zoom="3" zooming="true" direction="xy" id="Form">
+            <img src="img/page1.PNG" id="Image"/>
+            <div on-tap="openModal('BasicInfo')" class="overlayButton" id="BasicInfo">
+                <div class="Textbox" id="subcontractor">{{basicinfo.subcontractor}}</div>
+                <div class="Textbox" id="crewleader">{{basicinfo.crewleader}}</div>
+                <div class="Textbox" id="projectname">{{basicinfo.projectname}}</div>
+                <div class="Textbox" id="generalcontractor">{{basicinfo.generalcontractor}}</div>
+                <div class="Textbox" id="sitesuperintendent">{{basicinfo.sitesuperintendent}}</div>
+                <div class="Textbox" id="basicinfodate">{{basicinfo.basicinfodate | date:"MM/dd/yyyy"}}</div>
+                <div class="Textbox" id="jobscope">{{basicinfo.jobscope}}</div>
+            </div>
+            <div on-tap="openModal('PPE')" class="overlayButton" id="PPE">
+                Double-Tap To Edit
+                <i  data-ng-if="ppeinfo.cm_EyeProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_EyeProtection"></i>
+                <i  data-ng-if="ppeinfo.cm_ChemGoggles" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemGoggles"></i>
+                <i  data-ng-if="ppeinfo.cm_HardHat" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HardHat"></i>
+                <i  data-ng-if="ppeinfo.cm_RespiratorType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_RespiratorType"></i>
+                <div class="Textbox" id="tb_RespiratorType">{{ppeinfo.cb_RespiratorType}}</div>
+                <i  data-ng-if="ppeinfo.cm_GlovesType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_GlovesType"></i>
+                <div class="Textbox" id="tb_GlovesType">{{ppeinfo.cb_GlovesType}}</div>
+                <i  data-ng-if="ppeinfo.cm_Clothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Clothing"></i>
+                <div class="Textbox" id="tb_Clothing">{{ppeinfo.cb_Clothing}}</div>
+                <i  data-ng-if="ppeinfo.cm_ProtectiveToe" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ProtectiveToe"></i>
+                <i  data-ng-if="ppeinfo.cm_HearingProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HearingProtection"></i>
+                <i  data-ng-if="ppeinfo.cm_ChemClothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemClothing"></i>
+                <div class="Textbox" id="tb_ChemClothing">{{ppeinfo.cb_ChemClothing}}</div>
+                <i  data-ng-if="ppeinfo.cm_HarnessLanyard" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HarnessLanyard"></i>
+                <i  data-ng-if="ppeinfo.cm_FaceShield" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_FaceShield"></i>
+                <i  data-ng-if="ppeinfo.cm_Other" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Other"></i>
+                <div class="Textbox" id="tb_Other">{{ppeinfo.tb_Other}}</div>
+            </div>
+            <div class="overlayButton" id="StartEndDate">
+                <div class="Textbox" id="tb_StartDate">{{basicinfo.tb_StartDate}}</div>
+                <div class="Textbox" id="tb_EndDate">{{basicinfo.tb_EndDate}}</div>
+            </div>
+            <div on-tap="notimplementedPopup()" class="overlayButton" id="TaskOne">
+                <div class="Textbox JobElement" id="tb_JobElement">{{jobelement1.title}}</div>
+                <div class="Textbox Task"    id="tb_Task1">{{jobelement1.task1.title}}</div>
+                <div class="Textbox Hazard"  id="tb_Hazard1">{{jobelement1.task1.hazard}}</div>
+                <div class="Textbox Control" id="tb_Control1">{{jobelement1.task1.control}}</div>
+                <div class="Textbox Task"    id="tb_Task2">{{jobelement1.task2.title}}</div>
+                <div class="Textbox Hazard"  id="tb_Hazard2">{{jobelement1.task2.hazard}}</div>
+                <div class="Textbox Control" id="tb_Control2">{{jobelement1.task2.control}}</div>
+                <div class="Textbox Task"    id="tb_Task3">{{jobelement1.task3.title}}</div>
+                <div class="Textbox Hazard"  id="tb_Hazard3">{{jobelement1.task3.hazard}}</div>
+                <div class="Textbox Control" id="tb_Control3">{{jobelement1.task3.control}}</div>
+            </div>
+            <div on-tap="notimplementedPopup()" class="overlayButton" id="TaskTwo">
+                <div class="Textbox JobElement" id="tb_JobElement">{{jobelement2.title}}</div>
+                <div class="Textbox Task"    id="tb_Task1">{{jobelement2.task1.title}}</div>
+                <div class="Textbox Hazard"  id="tb_Hazard1">{{jobelement2.task1.hazard}}</div>
+                <div class="Textbox Control" id="tb_Control1">{{jobelement2.task1.control}}</div>
+                <div class="Textbox Task"    id="tb_Task2">{{jobelement2.task2.title}}</div>
+                <div class="Textbox Hazard"  id="tb_Hazard2">{{jobelement2.task2.hazard}}</div>
+                <div class="Textbox Control" id="tb_Control2">{{jobelement2.task2.control}}</div>
+                <div class="Textbox Task"    id="tb_Task3">{{jobelement2.task3.title}}</div>
+                <div class="Textbox Hazard"  id="tb_Hazard3">{{jobelement2.task3.hazard}}</div>
+                <div class="Textbox Control" id="tb_Control3">{{jobelement2.task3.control}}</div>
+            </div>
+            <div on-tap="notimplementedPopup()" class="overlayButton" id="TaskThree">
+                <div class="Textbox JobElement" id="tb_JobElement">{{jobelement3.title}}</div>
+                <div class="Textbox Task"    id="tb_Task1">{{jobelement3.task1.title}}</div>
+                <div class="Textbox Hazard"  id="tb_Hazard1">{{jobelement3.task1.hazard}}</div>
+                <div class="Textbox Control" id="tb_Control1">{{jobelement3.task1.control}}</div>
+                <div class="Textbox Task"    id="tb_Task2">{{jobelement3.task2.title}}</div>
+                <div class="Textbox Hazard"  id="tb_Hazard2">{{jobelement3.task2.hazard}}</div>
+                <div class="Textbox Control" id="tb_Control2">{{jobelement3.task2.control}}</div>
+                <div class="Textbox Task"    id="tb_Task3">{{jobelement3.task3.title}}</div>
+                <div class="Textbox Hazard"  id="tb_Hazard3">{{jobelement3.task3.hazard}}</div>
+                <div class="Textbox Control" id="tb_Control3">{{jobelement3.task3.control}}</div>
+            </div>
+            <div on-tap="notimplementedPopup()" class="overlayButton" id="TaskFour">
+                <div class="Textbox JobElement" id="tb_JobElement">{{jobelement4.title}}</div>
+                <div class="Textbox Task"    id="tb_Task1">{{jobelement4.task1.title}}</div>
+                <div class="Textbox Hazard"  id="tb_Hazard1">{{jobelement4.task1.hazard}}</div>
+                <div class="Textbox Control" id="tb_Control1">{{jobelement4.task1.control}}</div>
+                <div class="Textbox Task"    id="tb_Task2">{{jobelement4.task2.title}}</div>
+                <div class="Textbox Hazard"  id="tb_Hazard2">{{jobelement4.task2.hazard}}</div>
+                <div class="Textbox Control" id="tb_Control2">{{jobelement4.task2.control}}</div>
+                <div class="Textbox Task"    id="tb_Task3">{{jobelement4.task3.title}}</div>
+                <div class="Textbox Hazard"  id="tb_Hazard3">{{jobelement4.task3.hazard}}</div>
+                <div class="Textbox Control" id="tb_Control3">{{jobelement4.task3.control}}</div>
+            </div>
+        </ion-scroll>
+    </ion-content>
 </ion-view>

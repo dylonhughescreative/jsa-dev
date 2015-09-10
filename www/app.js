@@ -79,12 +79,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('overview', {
             url: '/overview',
-            templateUrl: 'templates/Overview.html',
+            templateUrl: './FormWizard/Overview.html',
             controller: 'OverviewCtrl'
         })
         .state('verify', {
             url: '/verify',
-            templateUrl: 'templates/Verify.html',
+            templateUrl: './FormWizard/Verify.html',
             controller: 'VerifyCtrl'
         })
         .state('portrait', {
