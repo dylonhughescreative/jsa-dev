@@ -1,33 +1,39 @@
-app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo) { 'use strict'; 
+app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo) {'use strict'; 
                                                                      
     // Create and load the Modal
     $ionicModal.fromTemplateUrl('./FormWizard/JobElements/new-job-element.html', {
-      id: "1",
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
+        id: "1",
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
         $scope.jobElementModal = modal;
     });
-    var jobElementDefault = {
-        number: 1
-    };
+    $ionicModal.fromTemplateUrl('./FormWizard/JobElements/new-task.html', {
+        id: "2",
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.TaskModal = modal;
+    });
     $scope.jobElement = {};
+    $scope.TempTask = {};
     $scope.groups = [];
     $scope.editing = false;
     $scope.groupIndex = 0;
+    $scope.TaskIndex = 0;
     $scope.ModalHeaderText = "";
     $scope.ModalButtonText = "";
     $scope.numberList = [
         {title: "1 Task ", number: 1},
         {title: "2 Tasks", number: 2},
-        {title: "3 Tasks", number: 3},
+        {title: "3 Tasks", number: 3}
     ];
     // Called when the form is submitted
-    $scope.createTask = function(jobElement) {
+    $scope.createTask = function (jobElement) {
         if (!$scope.editing) {
             $scope.groups.push({
-              name: jobElement.title,
-              items: []
+                name: jobElement.title,
+                items: []
             });
             for (var j=1; j<jobElement.number+1; j++) {
               //$scope.groups[$scope.groups.length - 1].items.push($scope.groups.length-1 + '- Task #' + j);
@@ -53,13 +59,17 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
                     $scope.groups[$scope.groupIndex].items.push(jobElement.task3);
             }
         }
-        $scope.jobElement = jobElementDefault;
+        $scope.jobElement = { number: 1 };
         $scope.editing = false;
         $scope.jobElementModal.hide();
+        if ($scope.editing)
+            $scope.toggleGroup($scope.groups[$scope.groupIndex]);
+        else
+            $scope.toggleGroup($scope.groups[$scope.groups.length - 1]);
     };
       // Open our new task modal
     $scope.newTask = function() {
-        $scope.jobElement = jobElementDefault;
+        $scope.jobElement = { number: 1 };
         $scope.ModalHeaderText = "New Job Element";
         $scope.ModalButtonText = "Create Job Element";
         $scope.jobElementModal.show();
@@ -68,21 +78,28 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
     // Close the new task modal
     $scope.closeNewTask = function() {
         if (!$scope.editing)
-            $scope.jobElement = jobElementDefault;
+            $scope.jobElement = { number: 1};
         $scope.jobElementModal.hide();
         $scope.editing = false;
     };
                                                                                    
     $scope.checkModal = function() {
         if (($scope.jobElement.title !== '' && $scope.jobElement.title != null) 
-                && ($scope.jobElement.task1 !== '' && $scope.jobElement.task1 != null)
-                && ($scope.jobElement.task1.control !== '' && $scope.jobElement.task1.control != null) 
-                && ($scope.jobElement.task1.hazards !== '' && $scope.jobElement.task1.hazards != null))
+                && ($scope.jobElement.task1 !== '' && $scope.jobElement.task1 != null))
+                //&& ($scope.jobElement.task1.control !== '' && $scope.jobElement.task1.control != null) 
+                //&& ($scope.jobElement.task1.hazards !== '' && $scope.jobElement.task1.hazards != null))
             return true;
         else
             return false;
     }
-                                                                                   
+    
+    $scope.checkTaskModal = function() {
+        if ($scope.TempTask != null && $scope.TempTask.title != null && $scope.TempTask.hazards != null && $scope.TempTask.control != null
+             && $scope.TempTask.title !== '' && $scope.TempTask.hazards !== '' && $scope.TempTask.control !== '')
+            return true;
+        else
+            return false;
+    }
     function contains(a, obj) {
         for (var i = 0; i < a.length; i++) {
             if (a[i] === obj) {
@@ -127,6 +144,28 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
         if (group.items.length > 2)
             $scope.jobElement.task3 = group.items[2];
         $scope.jobElementModal.show();
+    }
+    
+    $scope.openTaskModal = function(group, item) {
+        for (var j = 0; j < $scope.groups.length; j++) {
+            if (group === $scope.groups[j])
+                $scope.groupIndex = j;
+        }
+        for (var i = 0; i < $scope.groups[$scope.groupIndex].items.length; i++) {
+            if (item == $scope.groups[$scope.groupIndex].items[i])
+                $scope.TaskIndex = i;
+        }
+        $scope.TempTask = $scope.groups[$scope.groupIndex].items[$scope.TaskIndex];
+        $scope.TaskModal.show();
+    }
+    
+    $scope.closeTaskModal = function() {
+        $scope.TaskModal.hide();
+    }
+    
+    $scope.submitTaskChange = function() {
+        $scope.groups[$scope.groupIndex].items.splice($scope.TaskIndex, 1, $scope.TempTask);
+        $scope.TaskModal.hide();
     }
     
     $scope.deleteGroup = function(group) {

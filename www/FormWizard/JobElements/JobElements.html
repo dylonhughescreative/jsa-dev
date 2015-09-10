@@ -11,19 +11,24 @@
     <ion-list>
         <div ng-repeat="group in groups">
           <ion-item class="item-stable item-button-right"
-                    ng-click="openJobElement(group)"
+                    ng-click="toggleGroup(group)"
                     ng-class="{active: isGroupShown(group)}">
               <i class="button-positive" ng-class="isGroupShown(group) ? 'ion-chevron-up' : 'ion-chevron-down'" ng-click="toggleGroup(group); $event.stopPropagation()"></i>
             &nbsp;
             {{group.name}}
+            <div class="buttons">
               <button class="button button-assertive" ng-click="deleteGroup(group); $event.stopPropagation()">
                 <i class="icon ion-trash-a"></i>
               </button>
+              <button class="button button-positive" ng-click="openJobElement(group); $event.stopPropagation()">
+                <i class="icon ion-ios-compose-outline"></i>
+              </button>
+            </div>
           </ion-item>
           <ion-item class="item-accordion"
                     ng-repeat="item in group.items"
                     ng-show="isGroupShown(group)"
-                    ng-click="">
+                    ng-click="openTaskModal(group, item)">
             {{item.title}}
           </ion-item>
         </div>
