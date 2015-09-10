@@ -8,6 +8,9 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
     }).then(function(modal) {
         $scope.jobElementModal = modal;
     });
+    var jobElementDefault = {
+        number: 1
+    };
     $scope.jobElement = {};
     $scope.groups = [];
     $scope.editing = false;
@@ -50,13 +53,13 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
                     $scope.groups[$scope.groupIndex].items.push(jobElement.task3);
             }
         }
-        $scope.jobElement = {number: 1};
+        $scope.jobElement = jobElementDefault;
         $scope.editing = false;
         $scope.jobElementModal.hide();
     };
       // Open our new task modal
     $scope.newTask = function() {
-        $scope.jobElement = {number: 1};
+        $scope.jobElement = jobElementDefault;
         $scope.ModalHeaderText = "New Job Element";
         $scope.ModalButtonText = "Create Job Element";
         $scope.jobElementModal.show();
@@ -65,10 +68,20 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
     // Close the new task modal
     $scope.closeNewTask = function() {
         if (!$scope.editing)
-            $scope.jobElement = {number: 1};
+            $scope.jobElement = jobElementDefault;
         $scope.jobElementModal.hide();
         $scope.editing = false;
     };
+                                                                                   
+    $scope.checkModal = function() {
+        if (($scope.jobElement.title !== '' && $scope.jobElement.title != null) 
+                && ($scope.jobElement.task1 !== '' && $scope.jobElement.task1 != null)
+                && ($scope.jobElement.task1.control !== '' && $scope.jobElement.task1.control != null) 
+                && ($scope.jobElement.task1.hazards !== '' && $scope.jobElement.task1.hazards != null))
+            return true;
+        else
+            return false;
+    }
                                                                                    
     function contains(a, obj) {
         for (var i = 0; i < a.length; i++) {

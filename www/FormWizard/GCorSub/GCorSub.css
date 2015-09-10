@@ -40,7 +40,7 @@
 
 #gcIcon {
     position: absolute;
-    top: 40%;
+    top: 35%;
     left: 50%;
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
@@ -50,7 +50,7 @@
 
 #subIcon {
     position: absolute;
-    top: 40%;
+    top: 35%;
     left: 50%;
     /* bring your own prefixes */
     transform: translate(-50%, -50%);

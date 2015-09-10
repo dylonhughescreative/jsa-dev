@@ -1,3 +1,4 @@
+  <link href="FormWizard/JobElements/new-job-element.css" rel="stylesheet">
   <div class="modal">
 
     <!-- Modal header bar -->
@@ -29,15 +30,23 @@
                         {{item.title}}
                     </a>
                 </div>
-                <label class="item item-input item-stacked-label" ng-show="jobElement.number > 0">
+                <label class="item item-input item-stacked-label fader" ng-show="jobElement.number > 0">
                     <span class="input-label">Task 1</span>
-                    <input type="text" ng-model="jobElement.task1" placeholder="What do you need to do first?">
+                    <input type="text" ng-model="jobElement.task1.title" placeholder="What do you need to do first?">
                 </label>
-                <label class="item item-input item-stacked-label" ng-show="jobElement.number > 1">
+                <label class="item item-input item-stacked-label fader" ng-show="(jobElement.number > 0) && (jobElement.task1.title !== '' && jobElement.task1.title != null)">
+                    <span class="input-label">Potential Hazards</span>
+                    <input type="text" ng-model="jobElement.task1.hazards" placeholder="What are the hazards of this task?">
+                </label>
+                <label class="item item-input item-stacked-label fader" ng-show="(jobElement.number > 0) && (jobElement.task1.title !== '' && jobElement.task1.title != null)">
+                    <span class="input-label">Hazard Control Methods</span>
+                    <input type="text" ng-model="jobElement.task1.control" placeholder="How will you mitigate these hazards?">
+                </label>
+                <label class="item item-input item-stacked-label fader" ng-show="jobElement.number > 1">
                     <span class="input-label">Task 2</span>
                     <input type="text" ng-model="jobElement.task2" placeholder="What about after that?">
                 </label>
-                <label class="item item-input item-stacked-label" ng-show="jobElement.number > 2">
+                <label class="item item-input item-stacked-label fader" ng-show="jobElement.number > 2">
                     <span class="input-label">Task 3</span>
                     <input type="text" ng-model="jobElement.task3" placeholder="And after that?">
                 </label>
@@ -45,6 +54,13 @@
       </form>
     </ion-content>
       <div>
-          <button type="submit" form="NewJobElementForm" class="button button-block button-positive" id="CreateTaskButton">{{ModalButtonText}}</button>
+          <button type="submit" form="NewJobElementForm" class="button button-block button-positive fader" id="CreateTaskButton" ng-show="checkModal()">{{ModalButtonText}}</button>
+          <div id="HelpCard" class="fader" ng-hide="checkModal()">
+            <div class="card">
+                <div class="item item-text-wrap">
+                    You need at least one task and an element title to continue.
+                </div>
+            </div>
+          </div>
       </div>
   </div>
