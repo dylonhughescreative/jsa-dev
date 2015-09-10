@@ -1,16 +1,17 @@
 app.controller('VerifyCtrl', function ($rootScope, $scope, $state, formInfo) {
     'use strict';
     
-    $scope.formcomplete; 
-    $scope.completedElements = angular.copy(formInfo.getcompletedElements());
+    $scope.ppeinfo = angular.copy(formInfo.getppeinfo());
+    $scope.gcinfo = angular.copy(formInfo.getgcinfo());
+    $scope.subinfo = angular.copy(formInfo.getgcinfo());
+    $scope.jobelement1 = {};
+    $scope.jobelement2 = {};
+    $scope.jobelement3 = {};
+    $scope.jobelement4 = {};
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
-        $scope.completedElements = angular.copy(formInfo.getcompletedElements());
-        if($scope.completedElements.BasicInfo === "valid" && 
-           $scope.completedElements.PPEAssess === "valid") {
-            $scope.formcomplete = true;
-        } else {
-            $scope.formcomplete = false;
-        }
+        $scope.ppeinfo = angular.copy(formInfo.getppeinfo());
+        $scope.gcinfo = angular.copy(formInfo.getgcinfo());
+        $scope.subinfo = angular.copy(formInfo.getgcinfo());
     });
 });
