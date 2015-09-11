@@ -1,33 +1,50 @@
-<ion-content direction="y">
+<head>
+    <link href="FormWizard/Subinfo/Subinfo.css" rel="stylesheet">
+</head>
+
+<ion-view view-title="General Contractor Info">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-ios-list-outline"></button>
+    </ion-nav-buttons>
+    <ion-content direction="y" id="content">
     <div class="list">
         <label class="item item-input item-stacked-label">
+            <span class="input-label">Your Name</span>
+            <input type="text" ng-model="tempGCinfo.username" placeholder="What is your name?">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Company Name</span>
+            <input type="text" ng-model="tempGCinfo.subcontractor" placeholder="What is your company name?">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Site Supervisor</span>
+            <input type="text" ng-model="tempGCinfo.sitesupervisor" placeholder="What's the acting Site Supervisor's name?">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">General Contrator Company Name</span>
+            <input type="text" ng-model="tempGCinfo.generalcontractor" placeholder="What's is your General Contractor's company name?">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">General Contrator Site Superintendent</span>
+            <input type="text" ng-model="tempGCinfo.gcsuperintendent" placeholder="What's is your acting General Contractor Site Superintendant's name?">
+        </label>
+        <label class="item item-input item-stacked-label">
             <span class="input-label">Project Name</span>
-            <input type="text" ng-model="user.projectname" placeholder="Enter a project name">
+            <input type="text" ng-model="tempGCinfo.projectname" placeholder="What is the project name?">
         </label>  
         <label class="item item-input item-stacked-label">
-            <span class="input-label">Date</span>
-            <input type="date" ng-model="user.basicinfodate" placeholder="Pick a date">
+            <span class="input-label">Work Beginning Date</span>
+            <input type="date" ng-model="tempGCinfo.basicinfostartdate" placeholder="When does work begin?">
         </label>
         <label class="item item-input item-stacked-label">
-            <span class="input-label">Subcontractor</span>
-            <input type="text" ng-model="user.subcontractor" placeholder="Subcontractor's Name">
-        </label>
-        <label class="item item-input item-stacked-label">
-            <span class="input-label">General Contractor</span>
-            <input type="text" ng-model="user.generalcontractor" placeholder="General Contractor's Name">
-        </label>
-        <label class="item item-input item-stacked-label">
-            <span class="input-label">Crew Leader</span>
-            <input type="text" ng-model="user.crewleader" placeholder="Crew Leader's Name">
-        </label>
-        <label class="item item-input item-stacked-label">
-            <span class="input-label">Site Superintendent</span>
-            <input type="text" ng-model="user.sitesuperintendent" placeholder="Site Superintendent's Name">
+            <span class="input-label">Work Ending Date</span>
+            <input type="date" ng-model="tempGCinfo.basicinfoenddate" placeholder="When does work end?">
         </label>
         <label class="item item-input item-stacked-label">
             <span class="input-label">Job Scope</span>
-            <input type="text" ng-model="user.jobscope" placeholder="Enter the job scope">
+            <input type="text" ng-model="tempGCinfo.jobscope" placeholder="What's the scope of this job?">
         </label>
     </div>
 </ion-content>
-<button class="button button-block button-positive" id = "b_Submit" on-tap="check('formWizard.PPE')" on-hold="check('formWizard.PPE')">Next</button>
+    <button class="button button-block button-positive" id = "b_Submit" on-tap="check('formWizard.PPE')" on-hold="check('formWizard.PPE')">Next</button>
+</ion-view>

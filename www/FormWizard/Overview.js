@@ -14,6 +14,10 @@ app.controller('OverviewCtrl', function ($rootScope, $scope, $state, formInfo) {
         }
     });
     
+    $scope.onclick = function(state) {
+        $state.go(state);
+    };
+    
     $scope.verified = function () {
         //var so = cordova.plugins.screenorientation;
         //so.setOrientation('landscape');

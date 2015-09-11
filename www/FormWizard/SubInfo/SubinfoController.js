@@ -1,21 +1,29 @@
-app.controller('SubinfoCtrl', function ($scope, formInfo) { 
+app.controller('SubinfoCtrl', function ($rootScope, $scope, formInfo) { 
     'use strict';
     $scope.tempGCinfo = { };
     
     $scope.tempGCinfo = angular.copy(formInfo.getgcinfo());
     
+    $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
+        $scope.completedElements = angular.copy(formInfo.getcompletedElements());
+    });
+    
     function verify() {
-        if (angular.isUndefined($scope.tempGCinfo.projectname) || $scope.tempGCinfo.projectname === "") {
-            return "invalid";
-        } else if (angular.isUndefined($scope.tempGCinfo.basicinfodate) || $scope.tempGCinfo.basicinfodate === "") {
+        if (angular.isUndefined($scope.tempGCinfo.username) || $scope.tempGCinfo.username === "") {
             return "invalid";
         } else if (angular.isUndefined($scope.tempGCinfo.subcontractor) || $scope.tempGCinfo.subcontractor === "") {
             return "invalid";
+        } else if (angular.isUndefined($scope.tempGCinfo.sitesupervisor) || $scope.tempGCinfo.sitesupervisor === "") {
+            return "invalid";
         } else if (angular.isUndefined($scope.tempGCinfo.generalcontractor) || $scope.tempGCinfo.generalcontractor === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.tempGCinfo.crewleader) || $scope.tempGCinfo.crewleader === "") {
+        } else if (angular.isUndefined($scope.tempGCinfo.gcsuperintendent) || $scope.tempGCinfo.gcsuperintendent === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.tempGCinfo.sitesuperintendent) || $scope.tempGCinfo.sitesuperintendent === "") {
+        } else if (angular.isUndefined($scope.tempGCinfo.projectname) || $scope.tempGCinfo.projectname === "") {
+            return "invalid";
+        } else if (angular.isUndefined($scope.tempGCinfo.basicinfostartdate) || $scope.tempGCinfo.basicinfostartdate === "") {
+            return "invalid";
+        } else if (angular.isUndefined($scope.tempGCinfo.basicinfoenddate) || $scope.tempGCinfo.basicinfoenddate === "") {
             return "invalid";
         } else if (angular.isUndefined($scope.tempGCinfo.jobscope) || $scope.tempGCinfo.jobscope === "") {
             return "invalid";

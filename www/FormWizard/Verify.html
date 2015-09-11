@@ -1,4 +1,7 @@
-<link href="FormWizard/Verify.css" rel="stylesheet">
+<head>
+    <link href="FormWizard/Verify.css" rel="stylesheet">
+</head>
+
 <ion-view title="Form Verify">
     <ion-nav-buttons side="left" id="navbuttonback">
         <button class="button-clear" on-tap="back()" id="backButton">
@@ -18,7 +21,7 @@
                 <div class="Textbox" id="crewleader">{{gcinfo.username}}</div>
                 <div class="Textbox" id="projectname">{{gcinfo.projectname}}</div>
                 <div class="Textbox" id="generalcontractor">{{gcinfo.generalcontractor}}</div>
-                <div class="Textbox" id="sitesuperintendent">{{gcinfo.sitesuperintendent}}</div>
+                <div class="Textbox" id="sitesuperintendent">{{gcinfo.gcsuperintendent}}</div>
                 <div class="Textbox" id="basicinfodate">{{gcinfo.basicinfostartdate | date:"MM/dd/yyyy"}}</div>
                 <div class="Textbox" id="jobscope">{{gcinfo.jobscope}}</div>
             </div>

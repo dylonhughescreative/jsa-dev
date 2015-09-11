@@ -76,12 +76,18 @@
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    bottom: auto;
+    left: auto;
+    right: auto;
 }
 
 #generalContractor {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    bottom: auto;
+    left: auto;
+    right: auto;
 }
 
 /* Landscape-specific code */
