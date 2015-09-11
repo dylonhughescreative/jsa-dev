@@ -14,4 +14,10 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, formInfo) {
         $scope.gcinfo = angular.copy(formInfo.getgcinfo());
         $scope.subinfo = angular.copy(formInfo.getgcinfo());
     });
+    
+    $scope.back = function () {
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('unlocked');
+        $state.go('overview');
+    };
 });

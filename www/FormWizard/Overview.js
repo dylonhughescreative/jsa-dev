@@ -19,8 +19,8 @@ app.controller('OverviewCtrl', function ($rootScope, $scope, $state, formInfo) {
     };
     
     $scope.verified = function () {
-        //var so = cordova.plugins.screenorientation;
-        //so.setOrientation('landscape');
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('landscape');
         $state.go('verify');
     };
 });

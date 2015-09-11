@@ -200,12 +200,6 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
         }
     };
     
-    $scope.back = function () {
-        var so = cordova.plugins.screenorientation;
-        so.setOrientation('unlocked');
-        $state.go('portrait');
-    };
-    
     $scope.cancelModal = function (form) {
         if (form === "BasicInfo") {
             $scope.user = angular.copy($scope.basicinfo);
