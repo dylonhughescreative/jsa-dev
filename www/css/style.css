@@ -45,6 +45,11 @@
     width: 100%;
 }
 
+.submission-content {
+    bottom: 47px;
+    margin-bottom: 1%;
+}
+
 /* Landscape-specific code */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .headerBar {

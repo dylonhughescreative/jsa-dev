@@ -59,7 +59,9 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
                     $scope.groups[$scope.groupIndex].items.push(jobElement.task3);
             }
         }
-        $scope.jobElement = { number: 1 };
+        $scope.jobElement = { number: 1,
+                              task1: {}
+                            };
         $scope.editing = false;
         $scope.jobElementModal.hide();
         if ($scope.editing)
@@ -69,7 +71,8 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
     };
       // Open our new task modal
     $scope.newTask = function() {
-        $scope.jobElement = { number: 1 };
+        $scope.jobElement = { number: 1,
+                              task1: {} };
         $scope.ModalHeaderText = "New Job Element";
         $scope.ModalButtonText = "Create Job Element";
         $scope.jobElementModal.show();
@@ -78,7 +81,8 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
     // Close the new task modal
     $scope.closeNewTask = function() {
         if (!$scope.editing)
-            $scope.jobElement = { number: 1};
+            $scope.jobElement = { number: 1,
+                                  task1: {}};
         $scope.jobElementModal.hide();
         $scope.editing = false;
     };

@@ -44,7 +44,7 @@
     left: 50%;
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
-    font-size: 72px;
+    -webkit-tranform: translate(-50%, -50%);
     font-size: 72px;
 }
 
@@ -54,6 +54,7 @@
     left: 50%;
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
+    -webkit-tranform: translate(-50%, -50%);
     font-size: 72px;
 }
 

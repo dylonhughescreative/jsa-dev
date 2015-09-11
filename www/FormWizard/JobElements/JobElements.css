@@ -56,6 +56,11 @@
     margin-bottom: 1%;
 }
 
+.half-opacity {
+    opacity: 0.5;
+    text-align: center;
+}
+
 .list .item.item-accordion {
   line-height: 38px;
   padding-top: 0;
