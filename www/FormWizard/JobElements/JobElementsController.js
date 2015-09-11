@@ -84,8 +84,8 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
     };
                                                                                    
     $scope.checkModal = function() {
-        if (($scope.jobElement.title !== '' && $scope.jobElement.title != null) 
-                && ($scope.jobElement.task1 !== '' && $scope.jobElement.task1 != null))
+        if (($scope.jobElement.title !== "" && $scope.jobElement.title != null) 
+                && ($scope.jobElement.task1.title !== '' && $scope.jobElement.task1.title != null))
                 //&& ($scope.jobElement.task1.control !== '' && $scope.jobElement.task1.control != null) 
                 //&& ($scope.jobElement.task1.hazards !== '' && $scope.jobElement.task1.hazards != null))
             return true;
@@ -110,12 +110,6 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
     }
                                                                      
     $scope.check = function (state) {
-        //formInfo.getcompletedElements().TaskStep1 = verify();
-        //formInfo.getcompletedElements().TaskStep2 = verify();
-        //formInfo.getcompletedElements().TaskStep3 = verify();
-        //formInfo.getcompletedElements().TaskStep4 = verify();
-
-        //formInfo.setgcinfo($scope.tempGCinfo);
         $scope.next(state);
     };
     //for (var i=0; i<4; i++) {

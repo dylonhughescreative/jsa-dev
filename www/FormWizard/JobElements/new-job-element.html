@@ -8,28 +8,28 @@
     </ion-header-bar>
 
     <!-- Modal content area -->
-    <ion-content direction="y">
+    <ion-content direction="y" id="ModalContentJobElement">
 
       <form ng-submit="createTask(jobElement)" id="NewJobElementForm">
+            <div class="item item-divider">
+                Job Element Name
+            </div>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Element Title</span>
+              <input type="text" placeholder="What do you need to do?" ng-model="jobElement.title">
+            </label>
+            <div class="item item-divider">
+                How Many Tasks Are Required?
+            </div>
+            <div class="button-bar">
+                <a class="button button-light" 
+                   ng-repeat="item in numberList"
+                   ng-click="jobElement.number = item.number"
+                   ng-init="jobElement.number = 1">
+                    {{item.title}}
+                </a>
+            </div>
             <div class="list">
-                <div class="item item-divider">
-                    Job Element Name
-                </div>
-                <label class="item item-input item-stacked-label">
-                  <span class="input-label">Element Title</span>
-                  <input type="text" placeholder="What do you need to do?" ng-model="jobElement.title">
-                </label>
-                <div class="item item-divider">
-                    How Many Tasks Are Required?
-                </div>
-                <div class="button-bar">
-                    <a class="button button-light" 
-                       ng-repeat="item in numberList"
-                       ng-click="jobElement.number = item.number"
-                       ng-init="jobElement.number = 1">
-                        {{item.title}}
-                    </a>
-                </div>
                 <label class="item item-input item-stacked-label fader" ng-show="jobElement.number > 0">
                     <span class="input-label">Task 1</span>
                     <input type="text" ng-model="jobElement.task1.title" placeholder="What do you need to do first?">
@@ -69,7 +69,7 @@
             </div>
       </form>
     </ion-content>
-      <div>
+      <div id="JobElementAddModal">
           <button type="submit" form="NewJobElementForm" class="button button-block button-positive fader" id="CreateTaskButton" ng-show="checkModal()">{{ModalButtonText}}</button>
           <div id="HelpCard" class="fader" ng-hide="checkModal()">
             <div class="card">
