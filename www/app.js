@@ -109,8 +109,16 @@ app.controller('FormWizardCtrl', function ($scope, $state) {
 
 app.factory('formInfo', function () {
     'use strict';
-    var gcinfo = { },
-        subinfo = {},
+    var gcinfo = {
+            subcontractor: "Sub-Contractor",
+            generalcontractor: "General Contractor",
+            crewleader: "Crew Leader",
+            gcsuperintendent: "GC Super Intendent",
+            projectname: "Project Name",
+            basicinfostartdate: "Date",
+            jobscope: "Job Scope",
+        },
+        subinfo = { },
         ppeinfo = {
             cm_EyeProtection: false,
             cm_ChemGoggles: false,
@@ -123,7 +131,7 @@ app.factory('formInfo', function () {
             cb_ChemClothing: 'N/A',
             cm_HarnessLanyard: false,
             cm_FaceShield: false,
-            tb_Other: ''
+            tb_Other: 'Other'
         },
         taskinfo = {},
         defaultPPE = {
@@ -232,29 +240,6 @@ app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ion
         var confirmPopup = $ionicPopup.alert({
             title: 'Function Not Implemented',
             template: 'This function is still in development and will be implemented later.'
-        });
-    };
-    
-    $scope.uploadFile = function () {
-        jsPdfBuilder.createPdf();
-        var url = "http://dylonhughes.com/uploads/upload.php",
-         //target path may be local or url
-         filename = "JSA_Form.pdf",
-         targetPath = cordova.file.documentsDirectory.concat(filename);
-        //var filename = targetPath.split("/").pop();
-        var options = {
-            fileKey: "file",
-            fileName: filename,
-            chunkedMode: false,
-            mimeType: "text/plain"
-        };
-        $cordovaFileTransfer.upload(url, targetPath, options).then(function(result) {
-            console.log("SUCCESS: " + JSON.stringify(result.response));
-            alert("success" + targetPath);
-            alert(JSON.stringify(result.response));
-        }, function(err) {
-            console.log("ERROR: " + JSON.stringify(err));
-            alert(JSON.stringify(err));
         });
     };
     
