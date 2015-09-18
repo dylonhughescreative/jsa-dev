@@ -38,6 +38,18 @@
             <i data-ng-if="completedElements.TaskStep4 === 'pending'" class="icon ion-minus pendingicon"></i>
             Task Step #4
         </a>
+        <a on-tap="onclick('formWizard.TrainReq')" class="item item-icon-left">
+            <i data-ng-if="completedElements.TrainReqs === 'invalid'" class="icon ion-close incompleteicon"></i>
+            <i data-ng-if="completedElements.TrainReqs === 'valid'" class="icon ion-checkmark completeicon"></i>
+            <i data-ng-if="completedElements.TrainReqs === 'pending'" class="icon ion-minus pendingicon"></i>
+            Training Requirements
+        </a>
+        <a on-tap="onclick('formWizard.LicReq')" class="item item-icon-left">
+            <i data-ng-if="completedElements.LicReqs === 'invalid'" class="icon ion-close incompleteicon"></i>
+            <i data-ng-if="completedElements.LicReqs === 'valid'" class="icon ion-checkmark completeicon"></i>
+            <i data-ng-if="completedElements.LicReqs === 'pending'" class="icon ion-minus pendingicon"></i>
+            License Requirements
+        </a>
     </ion-content>  
     <button class="button button-block button-positive" id = "b_Verify" on-tap="verified()" on-hold="verified()">Verify</button>
 </ion-view>

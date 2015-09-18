@@ -77,6 +77,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: './FormWizard/JobElements/JobElements.html',
             controller: 'JobElementCtrl'
         })
+        .state('formWizard.TrainReq', {
+            url: '/TrainReq',
+            templateUrl: './FormWizard/TrainingReq/TrainingReq.html',
+            controller: 'TrainReqCtrl'
+        })
+        .state('formWizard.LicReq', {
+            url: '/LicReq',
+            templateUrl: './FormWizard/LicenseReq/LicenseReq.html',
+            controller: 'LicReqCtrl'
+        })
         .state('overview', {
             url: '/overview',
             templateUrl: './FormWizard/Overview.html',
@@ -115,7 +125,8 @@ app.factory('formInfo', function () {
             crewleader: "Crew Leader",
             gcsuperintendent: "GC Super Intendent",
             projectname: "Project Name",
-            basicinfostartdate: "Date",
+            basicinfostartdate: "08/09/2015",
+            basicinfoenddate: "08/07/2015",
             jobscope: "Job Scope",
         },
         subinfo = { },
@@ -134,6 +145,26 @@ app.factory('formInfo', function () {
             tb_Other: 'Other'
         },
         taskinfo = {},
+        trainReqs = {
+            RedTag: false,
+            ConfinedSpace: false,
+            Scaffold: false,
+            FireWatch: false,
+            AerialLift: false,
+            DriverSafety: false,
+            SWP: false,
+            SOP: false,
+            Rigger: false,
+            ForkLift: false,
+            Other: ''
+        },
+        licReqs = {
+            ForkLift: false,
+            AerialLift: false,
+            cb_Crane: 'N/A',
+            cb_HeavyEquip: 'N/A',
+            tb_Other: ''
+        },
         defaultPPE = {
             cb_RespiratorType: 'N/A',
             cb_GlovesType: 'N/A',
@@ -147,7 +178,9 @@ app.factory('formInfo', function () {
             TaskStep1: "pending",
             TaskStep2: "pending",
             TaskStep3: "pending",
-            TaskStep4: "pending"
+            TaskStep4: "pending",
+            TrainReqs: "pending",
+            LicReqs:   "pending"
         },
         formComplete = false;
     
@@ -187,6 +220,24 @@ app.factory('formInfo', function () {
         },
         setTask4complete: function (complete) {
             completedElements.TaskStep4 = complete;
+        },
+        getTrainReqs () {
+            return trainReqs;
+        },
+        setTrainReqs  (tempTrainReqs) {
+            trainReqs = angular.copy(tempLTrainReqs);
+        },
+        setTrainReqsComplete (complete) {
+            completedElements.TrainReqs = complete;
+        },
+        getLicReqs () {
+            return licReqs;
+        },
+        setLicReqs (tempLicReqs) {
+            licReqs = angular.copy(tempLicReqs);
+        },
+        setLicReqsComplete (complete) {
+            completedElements.LicReqs = complete;
         },
         getformcomplete: function (complete) {
             formcomplete = complete;

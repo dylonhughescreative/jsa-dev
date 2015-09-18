@@ -1,0 +1,49 @@
+<ion-view view-title="Training Requirements">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-ios-list-outline"></button>
+    </ion-nav-buttons>
+    <ion-content direction="y" class="submission-content">  
+    <div class="checkboxlist">
+        <ul class="list">         
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.RedTag">                        
+                Red Tag
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.ConfinedSpace">                        
+                Confined Space
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.Scaffold">                        
+                Scaffold
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.FireWatch">                        
+                Fire Watch
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.Flagger">                        
+                Flagger
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.AerialLift">                        
+                Aerial Lift
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.DriverSafety">                        
+                Driver Safety
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.SWP">                        
+                SWP
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.SOP">                        
+                SOP
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.Rigger">                        
+                Rigger
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.ForkLift">                        
+                Fork Lift
+            </ion-checkbox>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Other</span>
+                <input type="text" placeholder="Enter any other Training Requirement not included in this list." ng-model="tempTrainReqs.Other">
+            </label>
+        </ul>
+    </div>
+</ion-content>
+<button class="button button-block button-positive" id = "b_Submit" on-tap="check('formWizard.LicReq')" on-hold="check('formWizard.LicReq')">Next</button>
+</ion-view>

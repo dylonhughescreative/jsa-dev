@@ -1,0 +1,46 @@
+<ion-view view-title="License Requirements">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-ios-list-outline"></button>
+    </ion-nav-buttons>
+    <ion-content direction="y" class="submission-content">  
+    <div class="checkboxlist">
+        <ul class="list">         
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempLicReqs.ForkLift">                        
+                Fork Lift
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempLicReqs.AerialLift">                        
+                Aerial Lift
+            </ion-checkbox>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Crane
+                </div>
+                <select ng-model="tempLicReqs.cb_Crane">
+                    <option selected>N/A</option>
+                    <option>Level D (low)</option>
+                    <option>Level C</option>
+                    <option>Level B</option>
+                    <option>Level A (high)</option>
+                </select>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Heavy Equiptment
+                </div>
+                <select ng-model="tempLicReqs.cb_HeavyEquip">
+                    <option selected>N/A</option>
+                    <option>Level D (low)</option>
+                    <option>Level C</option>
+                    <option>Level B</option>
+                    <option>Level A (high)</option>
+                </select>
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Other</span>
+                <input type="text" placeholder="Enter any other Training Requirement not included in this list." ng-model="tempLicReqs.Other">
+            </label>
+        </ul>
+    </div>
+</ion-content>
+<button class="button button-block button-positive" id = "b_Submit" on-tap="check('overview')" on-hold="check('overview')">Next</button>
+</ion-view>
