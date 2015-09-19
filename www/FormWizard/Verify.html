@@ -9,7 +9,7 @@
         </button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-        <button class="button button-positive" on-tap="uploadFile()" on-hold="uploadFile()" id="signbutton">
+        <button class="button button-positive" on-tap="sign()" on-hold="sign()" id="signbutton">
             Sign
         </button>
     </ion-nav-buttons>
@@ -52,52 +52,52 @@
                         <div class="Textbox" id="tb_EndDate">{{gcinfo.basicinfoenddate | date:"MM/dd/yyyy"}}</div>
                     </div>
                     <div on-tap="notimplementedPopup()" class="overlayButton" id="TaskOne">
-                        <div class="Textbox JobElement" id="tb_JobElement">{{jobelement1.title}}</div>
-                        <div class="Textbox Task"    id="tb_Task1">{{jobelement1.task1.title}}</div>
-                        <div class="Textbox Hazard"  id="tb_Hazard1">{{jobelement1.task1.hazard}}</div>
-                        <div class="Textbox Control" id="tb_Control1">{{jobelement1.task1.control}}</div>
-                        <div class="Textbox Task"    id="tb_Task2">{{jobelement1.task2.title}}</div>
-                        <div class="Textbox Hazard"  id="tb_Hazard2">{{jobelement1.task2.hazard}}</div>
-                        <div class="Textbox Control" id="tb_Control2">{{jobelement1.task2.control}}</div>
-                        <div class="Textbox Task"    id="tb_Task3">{{jobelement1.task3.title}}</div>
-                        <div class="Textbox Hazard"  id="tb_Hazard3">{{jobelement1.task3.hazard}}</div>
-                        <div class="Textbox Control" id="tb_Control3">{{jobelement1.task3.control}}</div>
+                        <div class="Textbox JobElement" id="tb_JobElement">{{jobelements[0].name}}</div>
+                        <div class="Textbox Task"    id="tb_Task1">{{jobelements[0].items[0].title}}</div>
+                        <div class="Textbox Hazard"  id="tb_Hazard1">{{jobelements[0].items[0].hazard}}</div>
+                        <div class="Textbox Control" id="tb_Control1">{{jobelements[0].items[0].control}}</div>
+                        <div class="Textbox Task"    id="tb_Task2">{{jobelements[0].items[1].title}}</div>
+                        <div class="Textbox Hazard"  id="tb_Hazard2">{{jobelements[0].items[1].hazard}}</div>
+                        <div class="Textbox Control" id="tb_Control2">{{jobelements[0].items[1].control}}</div>
+                        <div class="Textbox Task"    id="tb_Task3">{{jobelements[0].items[2].title}}</div>
+                        <div class="Textbox Hazard"  id="tb_Hazard3">{{jobelements[0].items[2].hazard}}</div>
+                        <div class="Textbox Control" id="tb_Control3">{{jobelements[0].items[2].control}}</div>
                     </div>
                     <div on-tap="notimplementedPopup()" class="overlayButton" id="TaskTwo">
-                        <div class="Textbox JobElement" id="tb_JobElement">{{jobelement2.title}}</div>
-                        <div class="Textbox Task"    id="tb_Task1">{{jobelement2.task1.title}}</div>
-                        <div class="Textbox Hazard"  id="tb_Hazard1">{{jobelement2.task1.hazard}}</div>
-                        <div class="Textbox Control" id="tb_Control1">{{jobelement2.task1.control}}</div>
-                        <div class="Textbox Task"    id="tb_Task2">{{jobelement2.task2.title}}</div>
-                        <div class="Textbox Hazard"  id="tb_Hazard2">{{jobelement2.task2.hazard}}</div>
-                        <div class="Textbox Control" id="tb_Control2">{{jobelement2.task2.control}}</div>
-                        <div class="Textbox Task"    id="tb_Task3">{{jobelement2.task3.title}}</div>
-                        <div class="Textbox Hazard"  id="tb_Hazard3">{{jobelement2.task3.hazard}}</div>
-                        <div class="Textbox Control" id="tb_Control3">{{jobelement2.task3.control}}</div>
+                        <div class="Textbox JobElement" id="tb_JobElement">{{jobelements[1].title}}</div>
+                        <div class="Textbox Task"    id="tb_Task1">{{jobelements[1].items[0].title}}</div>
+                        <div class="Textbox Hazard"  id="tb_Hazard1">{{jobelements[1].items[0].hazard}}</div>
+                        <div class="Textbox Control" id="tb_Control1">{{jobelements[1].items[0].control}}</div>
+                        <div class="Textbox Task"    id="tb_Task2">{{jobelements[1].items[1].title}}</div>
+                        <div class="Textbox Hazard"  id="tb_Hazard2">{{jobelements[1].items[1].hazard}}</div>
+                        <div class="Textbox Control" id="tb_Control2">{{jobelements[1].items[1].control}}</div>
+                        <div class="Textbox Task"    id="tb_Task3">{{jobelements[1].items[2].title}}</div>
+                        <div class="Textbox Hazard"  id="tb_Hazard3">{{jobelements[1].items[2].hazard}}</div>
+                        <div class="Textbox Control" id="tb_Control3">{{jobelements[1].items[2].control}}</div>
                     </div>
                     <div on-tap="notimplementedPopup()" class="overlayButton" id="TaskThree">
-                        <div class="Textbox JobElement" id="tb_JobElement">{{jobelement3.title}}</div>
-                        <div class="Textbox Task"    id="tb_Task1">{{jobelement3.task1.title}}</div>
-                        <div class="Textbox Hazard"  id="tb_Hazard1">{{jobelement3.task1.hazard}}</div>
-                        <div class="Textbox Control" id="tb_Control1">{{jobelement3.task1.control}}</div>
-                        <div class="Textbox Task"    id="tb_Task2">{{jobelement3.task2.title}}</div>
-                        <div class="Textbox Hazard"  id="tb_Hazard2">{{jobelement3.task2.hazard}}</div>
-                        <div class="Textbox Control" id="tb_Control2">{{jobelement3.task2.control}}</div>
-                        <div class="Textbox Task"    id="tb_Task3">{{jobelement3.task3.title}}</div>
-                        <div class="Textbox Hazard"  id="tb_Hazard3">{{jobelement3.task3.hazard}}</div>
-                        <div class="Textbox Control" id="tb_Control3">{{jobelement3.task3.control}}</div>
+                        <div class="Textbox JobElement" id="tb_JobElement">{{jobelements[2].title}}</div>
+                        <div class="Textbox Task"    id="tb_Task1">{{jobelements[2].items[0].title}}</div>
+                        <div class="Textbox Hazard"  id="tb_Hazard1">{{jobelements[2].items[0].hazard}}</div>
+                        <div class="Textbox Control" id="tb_Control1">{{jobelements[2].items[0].control}}</div>
+                        <div class="Textbox Task"    id="tb_Task2">{{jobelements[2].items[1].title}}</div>
+                        <div class="Textbox Hazard"  id="tb_Hazard2">{{jobelements[2].items[1].hazard}}</div>
+                        <div class="Textbox Control" id="tb_Control2">{{jobelements[2].items[1].control}}</div>
+                        <div class="Textbox Task"    id="tb_Task3">{{jobelements[2].items[2].title}}</div>
+                        <div class="Textbox Hazard"  id="tb_Hazard3">{{jobelements[2].items[2].hazard}}</div>
+                        <div class="Textbox Control" id="tb_Control3">{{jobelements[2].items[2].control}}</div>
                     </div>
                     <div on-tap="notimplementedPopup()" class="overlayButton" id="TaskFour">
-                        <div class="Textbox JobElement" id="tb_JobElement">{{jobelement4.title}}</div>
-                        <div class="Textbox Task"    id="tb_Task1">{{jobelement4.task1.title}}</div>
-                        <div class="Textbox Hazard"  id="tb_Hazard1">{{jobelement4.task1.hazard}}</div>
-                        <div class="Textbox Control" id="tb_Control1">{{jobelement4.task1.control}}</div>
-                        <div class="Textbox Task"    id="tb_Task2">{{jobelement4.task2.title}}</div>
-                        <div class="Textbox Hazard"  id="tb_Hazard2">{{jobelement4.task2.hazard}}</div>
-                        <div class="Textbox Control" id="tb_Control2">{{jobelement4.task2.control}}</div>
-                        <div class="Textbox Task"    id="tb_Task3">{{jobelement4.task3.title}}</div>
-                        <div class="Textbox Hazard"  id="tb_Hazard3">{{jobelement4.task3.hazard}}</div>
-                        <div class="Textbox Control" id="tb_Control3">{{jobelement4.task3.control}}</div>
+                        <div class="Textbox JobElement" id="tb_JobElement">{{jobelements[3].title}}</div>
+                        <div class="Textbox Task"    id="tb_Task1">{{jobelements[3].items[0].title}}</div>
+                        <div class="Textbox Hazard"  id="tb_Hazard1">{{jobelements[3].items[0].hazard}}</div>
+                        <div class="Textbox Control" id="tb_Control1">{{jobelements[3].items[0].control}}</div>
+                        <div class="Textbox Task"    id="tb_Task2">{{jobelements[3].items[1].title}}</div>
+                        <div class="Textbox Hazard"  id="tb_Hazard2">{{jobelements[3].items[1].hazard}}</div>
+                        <div class="Textbox Control" id="tb_Control2">{{jobelements[3].items[1].control}}</div>
+                        <div class="Textbox Task"    id="tb_Task3">{{jobelements[3].items[2].title}}</div>
+                        <div class="Textbox Hazard"  id="tb_Hazard3">{{jobelements[3].items[2].hazard}}</div>
+                        <div class="Textbox Control" id="tb_Control3">{{jobelements[3].items[2].control}}</div>
                     </div>
                 </ion-scroll>
             </ion-content>

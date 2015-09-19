@@ -4,15 +4,13 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, formInfo, jsP
     $scope.ppeinfo = angular.copy(formInfo.getppeinfo());
     $scope.gcinfo = angular.copy(formInfo.getgcinfo());
     $scope.subinfo = angular.copy(formInfo.getgcinfo());
-    $scope.jobelement1 = {};
-    $scope.jobelement2 = {};
-    $scope.jobelement3 = {};
-    $scope.jobelement4 = {};
+    $scope.jobelements = angular.copy(formInfo.getjobelements());
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
         $scope.ppeinfo = angular.copy(formInfo.getppeinfo());
         $scope.gcinfo = angular.copy(formInfo.getgcinfo());
         $scope.subinfo = angular.copy(formInfo.getgcinfo());
+        $scope.jobelements = angular.copy(formInfo.getjobelements());
     });
     
     $scope.back = function () {

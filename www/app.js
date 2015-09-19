@@ -130,6 +130,7 @@ app.factory('formInfo', function () {
             jobscope: "Job Scope",
         },
         subinfo = { },
+        jobelements = [],
         ppeinfo = {
             cm_EyeProtection: false,
             cm_ChemGoggles: false,
@@ -196,6 +197,12 @@ app.factory('formInfo', function () {
         },
         setgcinfo: function (tempGCinfo) {
             gcinfo = angular.copy(tempGCinfo);
+        },
+        getjobelements: function () {
+            return jobelements;
+        },
+        setjobelements: function (groups) {
+            jobelements = angular.copy(groups)
         },
         getcompletedElements: function () {
             return completedElements;

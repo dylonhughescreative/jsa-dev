@@ -1,4 +1,4 @@
-app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo) {'use strict'; 
+app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, $rootScope, formInfo) {'use strict'; 
                                                                      
     // Create and load the Modal
     $ionicModal.fromTemplateUrl('./FormWizard/JobElements/new-job-element.html', {
@@ -28,6 +28,10 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
         {title: "2 Tasks", number: 2},
         {title: "3 Tasks", number: 3}
     ];
+                                                                                   
+    $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
+        $scope.groups = angular.copy(formInfo.getjobelements());
+    });
     // Called when the form is submitted
     $scope.createTask = function (jobElement) {
         if (!$scope.editing) {
@@ -114,6 +118,7 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, formInfo
     }
                                                                      
     $scope.check = function (state) {
+        formInfo.setjobelements($scope.groups);
         $scope.next(state);
     };
     //for (var i=0; i<4; i++) {

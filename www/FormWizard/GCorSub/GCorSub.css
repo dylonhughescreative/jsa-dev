@@ -73,7 +73,7 @@
     text-align: center;
 }
 
-#subContractor {
+#subContractorText {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
@@ -82,7 +82,7 @@
     right: auto;
 }
 
-#generalContractor {
+#generalContractorText {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
