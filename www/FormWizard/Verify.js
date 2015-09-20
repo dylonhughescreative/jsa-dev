@@ -5,18 +5,24 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, formInfo, jsP
     $scope.gcinfo = angular.copy(formInfo.getgcinfo());
     $scope.subinfo = angular.copy(formInfo.getgcinfo());
     $scope.jobelements = angular.copy(formInfo.getjobelements());
+    $scope.signature = {};
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
         $scope.ppeinfo = angular.copy(formInfo.getppeinfo());
         $scope.gcinfo = angular.copy(formInfo.getgcinfo());
         $scope.subinfo = angular.copy(formInfo.getgcinfo());
         $scope.jobelements = angular.copy(formInfo.getjobelements());
+        $scope.signature = angular.copy(formInfo.getSignatures());
     });
     
     $scope.back = function () {
         var so = cordova.plugins.screenorientation;
         so.setOrientation('unlocked');
         $state.go('overview');
+    };
+    
+    $scope.onclick = function(state) {
+        $state.go(state);
     };
     
     $scope.uploadFile = function () {

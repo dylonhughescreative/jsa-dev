@@ -9,7 +9,7 @@
         </button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-        <button class="button button-positive" on-tap="sign()" on-hold="sign()" id="signbutton">
+        <button class="button button-positive" on-tap="onclick('signature')" on-hold="uploadFile()" id="signbutton">
             Sign
         </button>
     </ion-nav-buttons>
@@ -106,6 +106,14 @@
             <ion-content>
                 <ion-scroll min-zoom="1" max-zoom="3" zooming="true" direction="xy" id="Form">
                     <img src="img/page2.png" id="Image"/>
+                    <div id="Commitment">
+                        <div id="Commitment1">
+                            <div id="EmployeeName">PLACEHOLDER</div>
+                            <img id="EmployeeSignature" src="{{signature}}"/>
+                            <div id="At-Risk">YES</div>
+                            <div id="At-RiskStartDate">{{gcinfo.basicinfostartdate | date:"MM/dd/yyyy"}}</div>
+                        </div>
+                    </div>
                 </ion-scroll>
             </ion-content>
         </ion-slide>

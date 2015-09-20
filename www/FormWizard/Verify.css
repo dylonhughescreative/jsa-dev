@@ -303,3 +303,78 @@
 #tb_Control3{
     top: 73%;
 }
+
+/*----Commitment----*/
+#Commitment {
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    height: 35%;
+}
+#Commitment1 {
+    position: absolute;
+    width: 100%;
+    height: 7%;
+    top: 17%;
+}
+#Commitment2 {
+    
+}
+#Commitment3 {
+    
+}
+#Commitment4 {
+    
+}
+#Commitment5 {
+    
+}
+#Commitment6 {
+    
+}
+#Commitment7 {
+    
+}
+#Commitment8 {
+    
+}
+#Commitment9 {
+    
+}
+#Commitment10 {
+    
+}
+#Commitment11 {
+    
+}
+#Commitment12 {
+    
+}
+
+#EmployeeName {
+    position: absolute;
+    width: 30.5%;
+    height: 100%;
+    left: 2.75%;
+}
+
+#EmployeeSignature {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    left: 33.25%;
+}
+
+#At-Risk {
+    position: absolute;
+    width: 14.5%;
+    height: 100%;
+    left: 67%;
+}
+
+#At-RiskStartDate{
+    position: absolute;
+    width: 18%;
+    height: 100%;
+    left: 81.5%;
+}

@@ -97,6 +97,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: './FormWizard/Verify.html',
             controller: 'VerifyCtrl'
         })
+        .state('signature', {
+            url: '/sign',
+            templateUrl: './FormWizard/Signature.html',
+            controller: 'SigCtrl'
+        })
         .state('portrait', {
             url: '/portrait',
             templateUrl: 'templates/Portrait.html'
@@ -166,6 +171,7 @@ app.factory('formInfo', function () {
             cb_HeavyEquip: 'N/A',
             tb_Other: ''
         },
+        signatures = { },
         defaultPPE = {
             cb_RespiratorType: 'N/A',
             cb_GlovesType: 'N/A',
@@ -248,6 +254,12 @@ app.factory('formInfo', function () {
         },
         getformcomplete: function (complete) {
             formcomplete = complete;
+        },
+        getSignatures () {
+            return signatures;
+        },
+        setSignatures (signature) {
+            signatures = signature;
         }
     };
 });
