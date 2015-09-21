@@ -234,31 +234,31 @@ app.factory('formInfo', function () {
         setTask4complete: function (complete) {
             completedElements.TaskStep4 = complete;
         },
-        getTrainReqs () {
+        getTrainReqs: function () {
             return trainReqs;
         },
-        setTrainReqs  (tempTrainReqs) {
+        setTrainReqs: function (tempTrainReqs) {
             trainReqs = angular.copy(tempLTrainReqs);
         },
-        setTrainReqsComplete (complete) {
+        setTrainReqsComplete: function (complete) {
             completedElements.TrainReqs = complete;
         },
-        getLicReqs () {
+        getLicReqs: function () {
             return licReqs;
         },
-        setLicReqs (tempLicReqs) {
+        setLicReqs: function (tempLicReqs) {
             licReqs = angular.copy(tempLicReqs);
         },
-        setLicReqsComplete (complete) {
+        setLicReqsComplete: function (complete) {
             completedElements.LicReqs = complete;
         },
         getformcomplete: function (complete) {
             formcomplete = complete;
         },
-        getSignatures () {
+        getSignatures: function () {
             return signatures;
         },
-        setSignatures (signature) {
+        setSignatures: function (signature) {
             signatures = signature;
         }
     };
