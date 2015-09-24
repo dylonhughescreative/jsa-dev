@@ -1,24 +1,10 @@
 app.controller('TrainReqCtrl', function ($rootScope, $scope, formInfo) {
     'use strict';
-    $scope.tempTrainReqs = {
-        RedTag: false,
-        ConfinedSpace: false,
-        Scaffold: false,
-        FireWatch: false,
-        Flagger: false,
-        AerialLift: false,
-        DriverSafety: false,
-        SWP: false,
-        SOP: false,
-        Rigger: false,
-        ForkLift: false,
-        tb_Other: ''
-    };
     
-    $scope.tempTrainReqs = angular.copy(formInfo.getppeinfo());
+    $scope.tempTrainReqs = angular.copy(formInfo.getTrainReqs());
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
-        $scope.tempTrainReqs = angular.copy(formInfo.getppeinfo());
+        $scope.tempTrainReqs = angular.copy(formInfo.getTrainReqs());
     });
     
     function verify() {
@@ -42,7 +28,7 @@ app.controller('TrainReqCtrl', function ($rootScope, $scope, formInfo) {
             return "valid";
         } else if ($scope.tempTrainReqs.ForkLift === true) {
             return "valid";
-        } else if ($scope.tempTrainReqs.Other !== "") {
+        } else if ($scope.tempTrainReqs.tb_Other !== "") {
             return "valid";
         } else {
             return "invalid";
@@ -63,7 +49,7 @@ app.controller('TrainReqCtrl', function ($rootScope, $scope, formInfo) {
         //else
         //  next
         format();
-        formInfo.setppeinfo($scope.tempTrainReqs);
+        formInfo.setTrainReqs($scope.tempTrainReqs);
         $scope.next(state);
     };
     

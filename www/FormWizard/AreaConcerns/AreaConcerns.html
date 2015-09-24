@@ -1,56 +1,64 @@
-<link href="FormWizard/JobElements/JobElements.css" rel="stylesheet">
-<ion-view view-title="Job Elements">
-    <ion-nav-buttons side="right">
-        <button class="button button-icon icon ion-ios-plus-empty" ng-click="newTask()"></button>
-    </ion-nav-buttons>
+<link href="FormWizard/AreaConcerns/AreaConcerns.css" rel="stylesheet">
+<ion-view view-title="Area Concerns">
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-ios-list-outline"></button>
     </ion-nav-buttons>
 <ion-content direction="y" class="submission-content">
-    <!-- our list and list items -->
-    <ion-list>
-        <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-button-right"
-                    on-tap="toggleGroup(group)"
-                    on-hold="openJobElement(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="button-positive" ng-class="isGroupShown(group) ? 'ion-chevron-up' : 'ion-chevron-down'" ng-click="toggleGroup(group); $event.stopPropagation()"></i>
-            &nbsp;
-            {{group.name}}
-            <div class="buttons">
-              <button class="button button-assertive" ng-click="deleteGroup(group); $event.stopPropagation()">
-                <i class="icon ion-trash-a"></i>
-              </button>
+    <form ng-submit="createTask(jobElement)" id="NewJobElementForm">
+            <div class="item item-divider">
+                Line Of Fire Concerns
             </div>
-          </ion-item>
-          <ion-item class="item-accordion"
-                    ng-repeat="item in group.items track by $index"
-                    ng-show="isGroupShown(group)"
-                    on-tap="openTaskModal(group, item)"
-                    on-hold="openTaskModal(group,item)">
-            {{item.title}}
-          </ion-item>
-        </div>
-    </ion-list>
-    <div class="fader">
-        <div class="card">
-            <div class="item item-text-wrap half-opacity" data-ng-if="groups.length == 0">
-                To add a task, press the + button above.
+            <div class="list">
+                <label class="item item-input item-stacked-label concern-fader" ng-show="AreaConcerns.lineofFire.length >= 0">
+                    <span class="input-label">Line of Fire 1</span>
+                    <input type="text" ng-model="AreaConcerns.lineofFire[0]" placeholder="Start typing to add a line of fire.">
+                </label>
+                <label class="item item-input item-stacked-label concern-fader" ng-show="(AreaConcerns.lineofFire.length > 0) && (AreaConcerts.lineofFire[0] !== '' && AreaConcerns.lineofFire[0] != null)">
+                    <span class="input-label">Line of Fire 2</span>
+                    <input type="text" ng-model="AreaConcerns.lineofFire[1]" placeholder="Start typing to add a line of fire.">
+                </label>
+                <label class="item item-input item-stacked-label concern-fader" ng-show="(AreaConcerns.lineofFire.length > 1) && (AreaConcerts.lineofFire[1] !== '' && AreaConcerns.lineofFire[1] != null)">
+                    <span class="input-label">Line of Fire 3</span>
+                    <input type="text" ng-model="AreaConcerns.lineofFire[2]" placeholder="Start typing to add a line of fire.">
+                </label>
             </div>
-            <div class="item item-text-wrap half-opacity" data-ng-if="groups.length != 0">
-                Press and hold an item to edit.
+            <div class="item item-divider">
+                Sensitive Equipment
             </div>
-        </div>
-    </div>
+            <div class="list">
+                <label class="item item-input item-stacked-label concern-fader" ng-show="AreaConcerns.sensEquip.length >= 0">
+                    <span class="input-label">Sensitive Equipment 1</span>
+                    <input type="text" ng-model="AreaConcerns.sensEquip[0]" placeholder="Start typing to add sensitive equipment.">
+                </label>
+                <label class="item item-input item-stacked-label concern-fader" ng-show="(AreaConcerns.sensEquip.length > 0) && (AreaConcerts.sensEquip[0] !== '' && AreaConcerns.sensEquip[0] != null)">
+                    <span class="input-label">Sensitive Equipment 2</span>
+                    <input type="text" ng-model="AreaConcerns.sensEquip[1]" placeholder="Start typing to add sensitive equipment.">
+                </label>
+                <label class="item item-input item-stacked-label concern-fader" ng-show="(AreaConcerns.sensEquip.length > 1) && (AreaConcerts.sensEquip[1] !== '' && AreaConcerns.sensEquip[1] != null)">
+                    <span class="input-label">Sensitive Equipment 3</span>
+                    <input type="text" ng-model="AreaConcerns.sensEquip[2]" placeholder="Start typing to add sensitive equipment.">
+                </label>
+            </div>
+            <div class="item item-divider">
+                Fall Hazards/Other
+            </div>
+            <div class="list">
+                <label class="item item-input item-stacked-label concern-fader" ng-show="AreaConcerns.fallHazards.length >= 0">
+                    <span class="input-label">Fall Hazards/Other 1</span>
+                    <input type="text" ng-model="AreaConcerns.fallHazards[0]" placeholder="Start typing to add a fall hazard or another concern.">
+                </label>
+                <label class="item item-input item-stacked-label concern-fader" ng-show="(AreaConcerns.fallHazards.length > 0) && (AreaConcerts.fallHazards[0] !== '' && AreaConcerns.fallHazards[0] != null)">
+                    <span class="input-label">Fall Hazards/Other 2</span>
+                    <input type="text" ng-model="AreaConcerns.fallHazards[1]" placeholder="Start typing to add a fall hazard or another concern.">
+                </label>
+                <label class="item item-input item-stacked-label concern-fader" ng-show="(AreaConcerns.fallHazards.length > 1) && (AreaConcerts.fallHazards[1] !== '' && AreaConcerns.fallHazards[1] != null)">
+                    <span class="input-label">Fall Hazards/Other 3</span>
+                    <input type="text" ng-model="AreaConcerns.fallHazards[2]" placeholder="Start typing to add a fall hazard or another concern.">
+                </label>
+            </div>
+      </form>
 </ion-content>
     <div>
-          <button class="button button-block button-positive" id = "b_Submit" data-ng-if="group.length != 0" on-tap="check('overview')" on-hold="check('overview')">Next</button>
-          <div id="JobElementHelpCard" class="fader" data-ng-if="false">
-            <div class="card">
-                <div class="item item-text-wrap">
-                    You need to add a task using the + button above.
-                </div>
-            </div>
-          </div>
+          <button class="button button-block button-positive" id = "b_Submit" on-tap="check('formWizard.AddTraining')" on-hold="check('formWizard.AddTraining')">Next</button>
       </div>
 </ion-view>

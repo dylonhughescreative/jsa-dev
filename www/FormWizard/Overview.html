@@ -50,6 +50,18 @@
             <i data-ng-if="completedElements.LicReqs === 'pending'" class="icon ion-minus pendingicon"></i>
             License Requirements
         </a>
+<a on-tap="onclick('formWizard.AreaConcerns')" class="item item-icon-left">
+            <i data-ng-if="completedElements.AreaConcerns === 'invalid'" class="icon ion-close incompleteicon"></i>
+            <i data-ng-if="completedElements.AreaConcerns === 'valid'" class="icon ion-checkmark completeicon"></i>
+            <i data-ng-if="completedElements.AreaConcerns === 'pending'" class="icon ion-minus pendingicon"></i>
+            Area Concerns
+        </a>
+        <a on-tap="onclick('formWizard.AddTraining')" class="item item-icon-left">
+            <i data-ng-if="completedElements.AddTraining === 'invalid'" class="icon ion-close incompleteicon"></i>
+            <i data-ng-if="completedElements.AddTraining === 'valid'" class="icon ion-checkmark completeicon"></i>
+            <i data-ng-if="completedElements.AddTraining === 'pending'" class="icon ion-minus pendingicon"></i>
+            Additional Training
+        </a>
     </ion-content>  
     <button class="button button-block button-positive" id = "b_Verify" on-tap="verified()" on-hold="verified()">Verify</button>
 </ion-view>

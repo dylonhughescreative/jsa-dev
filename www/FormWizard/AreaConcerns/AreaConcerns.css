@@ -74,3 +74,15 @@
 .list .item.item-accordion.ng-hide-remove {
   display: block !important;
 }
+
+.concern-fader {
+    opacity: 1;
+}
+
+.concern-fader.ng-hide-add, .concern-fader.ng-hide-remove {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.concern-fader.ng-hide {
+    opacity: 0;
+}

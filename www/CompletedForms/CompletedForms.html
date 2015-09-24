@@ -1,16 +1,9 @@
-<head>
-    <link href="FormWizard/Verify.css" rel="stylesheet"> 
-</head>
+<link href="CompletedForms/CompletedForms.css" rel="stylesheet">
 
-<ion-view title="Form Verify">
-    <ion-nav-buttons side="left" id="navbuttonback">
-        <button class="button-clear" on-tap="back()" id="backButton">
-            <i class="icon ion-ios-arrow-back" id="backButtonIcon"></i>
-        </button>
-    </ion-nav-buttons>
+<ion-view title="Review & Sign">
     <ion-nav-buttons side="right">
-        <button class="button button-positive" on-tap="onclick('signature')" on-hold="onclick('signature')" id="signbutton">
-            Approve
+        <button class="button button-positive" on-tap="onclick('signatureList')" on-hold="onclick('signatureList')" id="signbutton">
+            Sign
         </button>
     </ion-nav-buttons>
     
@@ -18,6 +11,7 @@
     <ion-slide>
         <ion-content>
             <ion-scroll min-zoom="1" max-zoom="3" zooming="true" direction="xy" id="Form">
+                <div id="CompletedOverlay"></div>
                 <img src="img/page1.PNG" id="Image"/>
                 <div on-tap="openModal('BasicInfo')" class="overlayButton" id="BasicInfo">
                     <div class="Textbox" id="subcontractor">{{gcinfo.subcontractor}}</div>
@@ -106,6 +100,7 @@
     <ion-slide>
         <ion-content>
             <ion-scroll min-zoom="1" max-zoom="3" zooming="true" direction="xy" id="Form">
+                <div id="CompletedOverlay"></div>
                 <img src="img/page2.png" id="Image"/>
                 <div id="TrainingReqs">
                     <i  data-ng-if="trainReqs.RedTag" class="icon ion-checkmark-circled TrainReq_Checkmark" id="cm_RedTag"></i>
@@ -149,32 +144,32 @@
                         <div class="Textbox" id="FallHaz">{{areaConcerns.fallHazards[2]}}</div>
                     </div>
                 </div>
-                                    <div id="AdditionalTraining">
-                        <div id="AddTrain1">
-                            <div class="Textbox" id="TrainTopic">{{addTraining[0].name}}</div>
-                            <div class="Textbox" id="TrainDate">{{addTraining[0].date | date:"MM/dd/yy"}}</div>
-                        </div>
-                        <div id="AddTrain2">
-                            <div class="Textbox" id="TrainTopic">{{addTraining[1].name}}</div>
-                            <div class="Textbox" id="TrainDate">{{addTraining[1].date | date:"MM/dd/yy"}}</div>
-                        </div>
-                        <div id="AddTrain3">
-                            <div class="Textbox" id="TrainTopic">{{addTraining[2].name}}</div>
-                            <div class="Textbox" id="TrainDate">{{addTraining[2].date | date:"MM/dd/yy"}}</div>
-                        </div>
-                        <div id="AddTrain4">
-                            <div class="Textbox" id="TrainTopic">{{addTraining[3].name}}</div>
-                            <div class="Textbox" id="TrainDate">{{addTraining[3].date | date:"MM/dd/yy"}}</div>
-                        </div>
-                        <div id="AddTrain5">
-                            <div class="Textbox" id="TrainTopic">{{addTraining[4].name}}</div>
-                            <div class="Textbox" id="TrainDate">{{addTraining[4].date | date:"MM/dd/yy"}}</div>
-                        </div>
-                        <div id="AddTrain6">
-                            <div class="Textbox" id="TrainTopic">{{addTraining[5].name}}</div>
-                            <div class="Textbox" id="TrainDate">{{addTraining[5].date | date:"MM/dd/yy"}}</div>
-                        </div>
+                <div id="AdditionalTraining">
+                    <div id="AddTrain1">
+                        <div class="Textbox" id="TrainTopic">Training topic 1</div>
+                        <div class="Textbox" id="TrainDate">Training Date 1</div>
                     </div>
+                    <div id="AddTrain2">
+                        <div class="Textbox" id="TrainTopic">Training topic 1</div>
+                        <div class="Textbox" id="TrainDate">Training Date 1</div>
+                    </div>
+                    <div id="AddTrain3">
+                        <div class="Textbox" id="TrainTopic">Training topic 1</div>
+                        <div class="Textbox" id="TrainDate">Training Date 1</div>
+                    </div>
+                    <div id="AddTrain4">
+                        <div class="Textbox" id="TrainTopic">Training topic 1</div>
+                        <div class="Textbox" id="TrainDate">Training Date 1</div>
+                    </div>
+                    <div id="AddTrain5">
+                        <div class="Textbox" id="TrainTopic">Training topic 1</div>
+                        <div class="Textbox" id="TrainDate">Training Date 1</div>
+                    </div>
+                    <div id="AddTrain6">
+                        <div class="Textbox" id="TrainTopic">Training topic 1</div>
+                        <div class="Textbox" id="TrainDate">Training Date 1</div>
+                    </div>
+                </div>
                 <div id="Commitment">
                     <div id="Commitment1">
                         <div class="Textbox" id="EmployeeName">{{signatures[1].name}}</div>
@@ -256,5 +251,5 @@
         </ion-content>
     </ion-slide>
 </ion-slide-box>
-    
+  
 </ion-view>

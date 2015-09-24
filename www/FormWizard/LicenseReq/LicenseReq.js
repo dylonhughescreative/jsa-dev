@@ -1,12 +1,5 @@
 app.controller('LicReqCtrl', function ($rootScope, $scope, formInfo) {
     'use strict';
-    $scope.tempLicReqs = {
-        ForkLift: false,
-        AerialLift: false,
-        cb_Crane: 'N/A',
-        cb_HeavyEquip: 'N/A',
-        tb_Other: ''
-    };
     
     $scope.tempLicReqs = angular.copy(formInfo.getLicReqs());
     
@@ -19,7 +12,7 @@ app.controller('LicReqCtrl', function ($rootScope, $scope, formInfo) {
             return "valid";
         } else if ($scope.tempLicReqs.AerialLift === true) {
             return "valid";
-        } else if ($scope.tempLicReqs.cb_Crane === "N/A") {
+        } else if ($scope.tempLicReqs.cb_Crane !== "N/A") {
             return "valid";
         } else if ($scope.tempLicReqs.cb_HeavyEquip !== "N/A") {
             return "valid";

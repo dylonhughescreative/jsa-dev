@@ -1,19 +1,17 @@
 <link href="FormWizard/Signature.css" rel="stylesheet">
 
-<ion-view title="Signature">
+<ion-view title="Commitment">
     <ion-content scroll="false">
         <label class="item item-input item-stacked-label">
             <span class="input-label">Printed Name</span>
-            <input type="text" ng-model="tempGCinfo.username" placeholder="Name (First, Last)">
+            <input type="text" ng-model="commitment.name" placeholder="Name (First, Last)">
         </label>
         <label class="item item-input item-stacked-label">
             <span class="input-label">Date</span>
-            <input type="date" ng-model="tempGCinfo.basicinfostartdate" placeholder="When does work begin?">
+            <input type="date" ng-model="commitment.date" placeholder="When does work begin?">
         </label>
         <canvas id='signatureCanvas' width='1100' height='400' style='border: 1px solid black;'></canvas>
-        <div class='button-bar'>
-            <a class='button button-energized' ng-click='clearCanvas()'>Clear</a>
-            <a class='button button-balanced' ng-click='saveCanvas()'>Save</a>
-        </div>
+        <button class='button button-clear button-positive' id='clearButton' ng-click='clearCanvas()'>Clear</button>
+        <button class="button button-block button-positive" id = "b_Submit" on-tap="saveCanvas()" on-hold="saveCanvas()">Sign</button>
     </ion-content>
 </ion-view>

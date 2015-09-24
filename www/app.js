@@ -87,6 +87,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: './FormWizard/LicenseReq/LicenseReq.html',
             controller: 'LicReqCtrl'
         })
+        .state('formWizard.AreaConcerns', {
+            url: '/AreaConcerns',
+            templateUrl: './FormWizard/AreaConcerns/AreaConcerns.html',
+            controller: 'AreaConcernsCtrl'
+        })
+        .state('formWizard.AddTraining', {
+            url: '/AddTraining',
+            templateUrl: './FormWizard/AddTraining/AddTraining.html',
+            controller: 'AddTrainingCtrl'
+        })
         .state('overview', {
             url: '/overview',
             templateUrl: './FormWizard/Overview.html',
@@ -96,6 +106,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/verify',
             templateUrl: './FormWizard/Verify.html',
             controller: 'VerifyCtrl'
+        })
+        .state('completedForm', {
+            url: '/completedForm',
+            templateUrl: './CompletedForms/CompletedForms.html',
+            controller: 'CompletedFormsCtrl'
+        })
+        .state('signatureList', {
+            url: '/signatureList',
+            templateUrl: './CompletedForms/SignatureList.html',
+            controller: 'SignatureListCtrl'
         })
         .state('signature', {
             url: '/sign',
@@ -132,7 +152,7 @@ app.factory('formInfo', function () {
             projectname: "Project Name",
             basicinfostartdate: "08/09/2015",
             basicinfoenddate: "08/07/2015",
-            jobscope: "Job Scope",
+            jobscope: "Job Scope"
         },
         subinfo = { },
         jobelements = [],
@@ -150,7 +170,6 @@ app.factory('formInfo', function () {
             cm_FaceShield: false,
             tb_Other: 'Other'
         },
-        taskinfo = {},
         trainReqs = {
             RedTag: false,
             ConfinedSpace: false,
@@ -158,27 +177,31 @@ app.factory('formInfo', function () {
             FireWatch: false,
             AerialLift: false,
             DriverSafety: false,
+            Flagger: false,
             SWP: false,
-            SOP: false,
+            SPO: false,
             Rigger: false,
             ForkLift: false,
-            Other: ''
+            cm_Other: false,
+            tb_Other: ''
         },
         licReqs = {
             ForkLift: false,
             AerialLift: false,
+            cm_Crane: false,
             cb_Crane: 'N/A',
+            cm_HeavyEquip: false,
             cb_HeavyEquip: 'N/A',
+            cm_Other: false,
             tb_Other: ''
         },
-        signatures = { },
-        defaultPPE = {
-            cb_RespiratorType: 'N/A',
-            cb_GlovesType: 'N/A',
-            cb_Clothing: 'N/A',
-            cb_ChemClothing: 'N/A',
-            tb_Other: ''
+        areaConcerns = {
+            lineofFire: [],
+            sensEquip: [],
+            fallHazards: []
         },
+        addTraining = [],
+        signatures = [],
         completedElements = {
             BasicInfo: "pending",
             PPEAssess: "pending",
@@ -187,9 +210,15 @@ app.factory('formInfo', function () {
             TaskStep3: "pending",
             TaskStep4: "pending",
             TrainReqs: "pending",
-            LicReqs:   "pending"
+            LicReqs:   "pending",
+            AreaConcerns: "pending",
+            AddTraining: "pending"
         },
-        formComplete = false;
+        formComplete = false,
+        stateController = {
+            nextstate: "",
+            previousstate: ""
+        };
     
     return {
         getppeinfo: function () {
@@ -208,7 +237,7 @@ app.factory('formInfo', function () {
             return jobelements;
         },
         setjobelements: function (groups) {
-            jobelements = angular.copy(groups)
+            jobelements = angular.copy(groups);
         },
         getcompletedElements: function () {
             return completedElements;
@@ -238,7 +267,7 @@ app.factory('formInfo', function () {
             return trainReqs;
         },
         setTrainReqs: function (tempTrainReqs) {
-            trainReqs = angular.copy(tempLTrainReqs);
+            trainReqs = angular.copy(tempTrainReqs);
         },
         setTrainReqsComplete: function (complete) {
             completedElements.TrainReqs = complete;
@@ -252,14 +281,38 @@ app.factory('formInfo', function () {
         setLicReqsComplete: function (complete) {
             completedElements.LicReqs = complete;
         },
+        getAreaConcerns: function () {
+            return areaConcerns;
+        },
+        setAreaConcerns: function (tempAreaConcerns) {
+            areaConcerns = angular.copy(tempAreaConcerns);
+        },
+        setAreaConcernsComplete: function (complete) {
+            completedElements.AreaConcerns = complete;
+        },
+        getAddTraining: function () {
+            return addTraining;
+        },
+        setAddTraining: function (tempAddTraining) {
+            addTraining = angular.copy(tempAddTraining);
+        },
+        setAddTrainingComplete: function (complete) {
+            completedElements.AddTraining = complete;
+        },
         getformcomplete: function (complete) {
-            formcomplete = complete;
+            formComplete = complete;
         },
         getSignatures: function () {
             return signatures;
         },
-        setSignatures: function (signature) {
-            signatures = signature;
+        setSignatures: function (tempSignatures) {
+            signatures = angular.copy(tempSignatures);
+        },
+        getStateController: function () {
+            return stateController;
+        },
+        setStateController: function (tempStateController) {
+            stateController = angular.copy(tempStateController);
         }
     };
 });
