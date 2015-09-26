@@ -222,7 +222,7 @@ app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
     $scope.clothingTypeChanged = function () {
         if($scope.tempPPEinfo.cb_Clothing == "Other") {
             var addToArray = true,
-                other = OtherPopup("Respirator Type");
+                other = OtherPopup("Clothing Type");
             other.then(function(res) {
                 if (res != "cancel") {
                     for(var i=0; i<$scope.clothingOptions.length; i++) {
@@ -250,7 +250,7 @@ app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
     $scope.chemclothingTypeChanged = function () {
         if($scope.tempPPEinfo.cb_ChemClothing == "Other") {
             var addToArray = true,
-                other = OtherPopup("Respirator Type");
+                other = OtherPopup("Chem. Clothing Type");
             other.then(function(res) {
                 if ( res != "cancel")
                 {

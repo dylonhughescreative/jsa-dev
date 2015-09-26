@@ -120,7 +120,7 @@ app.controller('LicReqCtrl', function ($rootScope, $scope, $ionicPopup, formInfo
     $scope.craneTypeChanged = function () {
         if($scope.tempLicReqs.cb_Crane == "Other") {
             var addToArray = true,
-                other = OtherPopup("Respirator Type");
+                other = OtherPopup("Crane Type");
             other.then(function(res) {
                 if (res != "cancel")
                 {
@@ -149,7 +149,7 @@ app.controller('LicReqCtrl', function ($rootScope, $scope, $ionicPopup, formInfo
     $scope.heavyequipTypeChanged = function () {
         if($scope.tempLicReqs.cb_HeavyEquip == "Other") {
             var addToArray = true,
-                other = OtherPopup("Respirator Type");
+                other = OtherPopup("Heavy Equip. Type");
             other.then(function(res) {
                 if(res != "cancel")
                 {
