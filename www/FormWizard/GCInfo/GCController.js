@@ -1,27 +1,27 @@
 app.controller('GCinfoCtrl', function ($rootScope, $scope, formInfo) { 
     'use strict';
-    $scope.tempGCinfo = { };
+    $scope.basicinfo = { };
     
-    $scope.tempGCinfo = angular.copy(formInfo.getgcinfo());
+    $scope.basicinfo = angular.copy(formInfo.getBasicInfo());
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
         $scope.completedElements = angular.copy(formInfo.getcompletedElements());
     });
     
     function verify() {
-        if (angular.isUndefined($scope.tempGCinfo.username) || $scope.tempGCinfo.username === "") {
+        if (angular.isUndefined($scope.basicinfo.username) || $scope.basicinfo.username === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.tempGCinfo.generalcontractor) || $scope.tempGCinfo.generalcontractor === "") {
+        } else if (angular.isUndefined($scope.basicinfo.generalcontractor) || $scope.basicinfo.generalcontractor === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.tempGCinfo.gcsuperintendent) || $scope.tempGCinfo.gcsuperintendent === "") {
+        } else if (angular.isUndefined($scope.basicinfo.gcsuperintendent) || $scope.basicinfo.gcsuperintendent === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.tempGCinfo.projectname) || $scope.tempGCinfo.projectname === "") {
+        } else if (angular.isUndefined($scope.basicinfo.projectname) || $scope.basicinfo.projectname === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.tempGCinfo.basicinfostartdate) || $scope.tempGCinfo.basicinfostartdate === "") {
+        } else if (angular.isUndefined($scope.basicinfo.startdate) || $scope.basicinfo.startdate === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.tempGCinfo.basicinfoenddate) || $scope.tempGCinfo.basicinfoenddate === "") {
+        } else if (angular.isUndefined($scope.basicinfo.enddate) || $scope.basicinfo.enddate === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.tempGCinfo.jobscope) || $scope.tempGCinfo.jobscope === "") {
+        } else if (angular.isUndefined($scope.basicinfo.jobscope) || $scope.basicinfo.jobscope === "") {
             return "invalid";
         } else {
             return "valid";
@@ -34,7 +34,7 @@ app.controller('GCinfoCtrl', function ($rootScope, $scope, formInfo) {
         //  popup
         //else
         //  next
-        formInfo.setgcinfo($scope.tempGCinfo);
+        formInfo.setBasicInfo($scope.basicinfo);
         $scope.next(state);
     };
 });

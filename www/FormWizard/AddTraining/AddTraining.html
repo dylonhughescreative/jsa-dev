@@ -8,6 +8,9 @@
     </ion-nav-buttons>
     <ion-content direction="y" class="submission-content">
         <ion-list>
+            <ion-checkbox class="item item-checkbox-right" ng-model="TempTrainingInfo.None" on-tap="checkchanged_none()" on-hold="checkchanged_none()">                        
+                None
+            </ion-checkbox>
             <div ng-repeat="trn in Training">
                 <ion-item class="item-stable">
                     <p class="training-title">{{trn.name}}</p><p class="training-half-opacity"> - {{trn.date | date:"MM/dd/yyyy"}}</p>

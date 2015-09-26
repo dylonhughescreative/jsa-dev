@@ -9,9 +9,12 @@
                 Line Of Fire Concerns
             </div>
             <div class="list">
+                <ion-checkbox class="item item-checkbox-right" ng-model="AreaConcerns.lof_none" on-tap="LOFcheckchanged_none()" on-hold="LOFcheckchanged_none()">                        
+                    None
+                </ion-checkbox>
                 <label class="item item-input item-stacked-label concern-fader" ng-show="AreaConcerns.lineofFire.length >= 0">
                     <span class="input-label">Line of Fire 1</span>
-                    <input type="text" ng-model="AreaConcerns.lineofFire[0]" placeholder="Start typing to add a line of fire.">
+                    <input type="text" ng-model="AreaConcerns.lineofFire[0]" placeholder="Start typing to add a line of fire." ng-change="LOFTextChanged()">
                 </label>
                 <label class="item item-input item-stacked-label concern-fader" ng-show="(AreaConcerns.lineofFire.length > 0) && (AreaConcerts.lineofFire[0] !== '' && AreaConcerns.lineofFire[0] != null)">
                     <span class="input-label">Line of Fire 2</span>
@@ -26,9 +29,12 @@
                 Sensitive Equipment
             </div>
             <div class="list">
+                <ion-checkbox class="item item-checkbox-right" ng-model="AreaConcerns.sensequip_none" on-tap="SensEquipcheckchanged_none()" on-hold="SensEquipcheckchanged_none()">                        
+                    None
+                </ion-checkbox>
                 <label class="item item-input item-stacked-label concern-fader" ng-show="AreaConcerns.sensEquip.length >= 0">
                     <span class="input-label">Sensitive Equipment 1</span>
-                    <input type="text" ng-model="AreaConcerns.sensEquip[0]" placeholder="Start typing to add sensitive equipment.">
+                    <input type="text" ng-model="AreaConcerns.sensEquip[0]" placeholder="Start typing to add sensitive equipment." ng-change="SensEquipTextChanged()">
                 </label>
                 <label class="item item-input item-stacked-label concern-fader" ng-show="(AreaConcerns.sensEquip.length > 0) && (AreaConcerts.sensEquip[0] !== '' && AreaConcerns.sensEquip[0] != null)">
                     <span class="input-label">Sensitive Equipment 2</span>
@@ -43,9 +49,12 @@
                 Fall Hazards/Other
             </div>
             <div class="list">
+                <ion-checkbox class="item item-checkbox-right" ng-model="AreaConcerns.fallhaz_none" on-tap="FallHazcheckchanged_none()" on-hold="FallHazcheckchanged_none()">                        
+                    None
+                </ion-checkbox>
                 <label class="item item-input item-stacked-label concern-fader" ng-show="AreaConcerns.fallHazards.length >= 0">
                     <span class="input-label">Fall Hazards/Other 1</span>
-                    <input type="text" ng-model="AreaConcerns.fallHazards[0]" placeholder="Start typing to add a fall hazard or another concern.">
+                    <input type="text" ng-model="AreaConcerns.fallHazards[0]" placeholder="Start typing to add a fall hazard or another concern." ng-change="FallHazTextChanged()">
                 </label>
                 <label class="item item-input item-stacked-label concern-fader" ng-show="(AreaConcerns.fallHazards.length > 0) && (AreaConcerts.fallHazards[0] !== '' && AreaConcerns.fallHazards[0] != null)">
                     <span class="input-label">Fall Hazards/Other 2</span>

@@ -144,17 +144,16 @@ app.controller('FormWizardCtrl', function ($scope, $state) {
 
 app.factory('formInfo', function () {
     'use strict';
-    var gcinfo = {
-            subcontractor: "Sub-Contractor",
-            generalcontractor: "General Contractor",
-            crewleader: "Crew Leader",
-            gcsuperintendent: "GC Super Intendent",
-            projectname: "Project Name",
-            basicinfostartdate: "08/09/2015",
-            basicinfoenddate: "08/07/2015",
-            jobscope: "Job Scope"
+    var basicinfo = { 
+            subcontractor: "DillonHughesCreative",
+            crewleader: "Hugh Dillon",
+            projectname: "Testing",
+            generalcontractor: "M2M",
+            sitesuperintendant: "Rick Holloway",
+            startdate: "09/26/2015",
+            enddate: "09/28/2015",
+            jobscope: "To test and destroy"
         },
-        subinfo = { },
         jobelements = [],
         ppeinfo = {
             cm_EyeProtection: false,
@@ -221,17 +220,17 @@ app.factory('formInfo', function () {
         };
     
     return {
+        getBasicInfo: function () {
+            return basicinfo;
+        },
+        setBasicInfo: function (tempbasicinfo) {
+            basicinfo = angular.copy(tempbasicinfo);
+        },
         getppeinfo: function () {
             return ppeinfo;
         },
         setppeinfo: function (tempPPEinfo) {
             ppeinfo = angular.copy(tempPPEinfo);
-        },
-        getgcinfo: function () {
-            return gcinfo;
-        },
-        setgcinfo: function (tempGCinfo) {
-            gcinfo = angular.copy(tempGCinfo);
         },
         getjobelements: function () {
             return jobelements;

@@ -3,6 +3,23 @@ app.controller('TrainReqCtrl', function ($rootScope, $scope, formInfo) {
     
     $scope.tempTrainReqs = angular.copy(formInfo.getTrainReqs());
     
+    var defaultTrainReqs = {
+            None: false,
+            RedTag: false,
+            ConfinedSpace: false,
+            Scaffold: false,
+            FireWatch: false,
+            AerialLift: false,
+            DriverSafety: false,
+            Flagger: false,
+            SWP: false,
+            SPO: false,
+            Rigger: false,
+            ForkLift: false,
+            cm_Other: false,
+            tb_Other: ''
+        }
+    
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
         $scope.tempTrainReqs = angular.copy(formInfo.getTrainReqs());
     });
@@ -53,4 +70,19 @@ app.controller('TrainReqCtrl', function ($rootScope, $scope, formInfo) {
         $scope.next(state);
     };
     
+    $scope.checkchanged = function () {
+        $scope.tempTrainReqs.None = false;
+    };
+    
+    $scope.otherTextChanged = function () {
+        if($scope.tempTrainReqs.tb_Other != "") {
+            $scope.tempTrainReqs.None = false;
+        }
+    };
+    
+    $scope.checkchanged_none = function () {
+        if($scope.tempTrainReqs.None === false) {
+            $scope.tempTrainReqs = angular.copy(defaultTrainReqs);
+        }
+    };
 });
