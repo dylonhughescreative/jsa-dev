@@ -45,5 +45,12 @@
             Additional Training
         </a>
     </ion-content>  
-    <button class="button button-block button-positive" id = "b_Verify" on-tap="verified()" on-hold="verified()">Verify</button>
+    <button data-ng-if="formcomplete" class="button button-block button-positive" id="b_Verify" on-tap="verified()" on-hold="verified()">Verify</button>
+    <div data-ng-if="!formcomplete" id="HelpCard" class="fader">
+        <div class="card">
+            <div class="item item-text-wrap">
+                You need to complete all elements to continue.
+            </div>
+        </div>
+    </div>
 </ion-view>

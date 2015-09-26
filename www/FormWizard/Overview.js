@@ -6,8 +6,13 @@ app.controller('OverviewCtrl', function ($rootScope, $scope, $state, formInfo) {
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
         $scope.completedElements = angular.copy(formInfo.getcompletedElements());
-        if($scope.completedElements.BasicInfo === "valid" && 
-           $scope.completedElements.PPEAssess === "valid") {
+        if ($scope.completedElements.BasicInfo === "valid" && 
+            $scope.completedElements.PPEAssess === "valid" &&
+            $scope.completedElements.JobElements === "valid" &&
+            $scope.completedElements.TrainReqs === "valid" &&
+            $scope.completedElements.LicReqs === "valid" &&
+            $scope.completedElements.AreaConcerns === "valid" &&
+            $scope.completedElements.AddTraining === "valid" ) {
             $scope.formcomplete = true;
         } else {
             $scope.formcomplete = false;
