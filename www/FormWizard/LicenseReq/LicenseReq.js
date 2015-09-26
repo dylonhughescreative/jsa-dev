@@ -94,7 +94,11 @@ app.controller('LicReqCtrl', function ($rootScope, $scope, $ionicPopup, formInfo
             subTitle: 'Additional ' + type,
             scope: $scope,
             buttons: [
-                { text: 'Cancel' },
+                { text: 'Cancel',
+                  onTap: function() {
+                      return "cancel";
+                  }
+                },
                 {
                     text: '<b>OK</b>',
                     type: 'button-positive',
@@ -118,18 +122,21 @@ app.controller('LicReqCtrl', function ($rootScope, $scope, $ionicPopup, formInfo
             var addToArray = true,
                 other = OtherPopup("Respirator Type");
             other.then(function(res) {
-                for(var i=0; i<$scope.craneOptions.length; i++) {
-                    if($scope.craneOptions[i] === res) {
-                        addToArray = false;
+                if (res != "cancel")
+                {
+                    for(var i=0; i<$scope.craneOptions.length; i++) {
+                        if($scope.craneOptions[i] === res) {
+                            addToArray = false;
+                        }
                     }
-                }
-                if(addToArray) {
-                    $scope.craneOptions.splice($scope.craneOptions.length-1, 0, res);
-                }
-                $scope.tempLicReqs.cb_Crane = res;
-                
-                if(res != "N/A") {
-                    $scope.tempLicReqs.None = false;
+                    if(addToArray) {
+                        $scope.craneOptions.splice($scope.craneOptions.length-1, 0, res);
+                    }
+                    $scope.tempLicReqs.cb_Crane = res;
+                    
+                    if(res != "N/A") {
+                        $scope.tempLicReqs.None = false;
+                    }
                 }
             });
         }
@@ -144,18 +151,21 @@ app.controller('LicReqCtrl', function ($rootScope, $scope, $ionicPopup, formInfo
             var addToArray = true,
                 other = OtherPopup("Respirator Type");
             other.then(function(res) {
-                for(var i=0; i<$scope.heavyequipOptions.length; i++) {
-                    if($scope.heavyequipOptions[i] === res) {
-                        addToArray = false;
+                if(res != "cancel")
+                {
+                    for(var i=0; i<$scope.heavyequipOptions.length; i++) {
+                        if($scope.heavyequipOptions[i] === res) {
+                            addToArray = false;
+                        }
                     }
-                }
-                if(addToArray) {
-                    $scope.heavyequipOptions.splice($scope.heavyequipOptions.length-1, 0, res);
-                }
-                $scope.tempLicReqs.cb_HeavyEquip = res;
-                
-                if(res != "N/A") {
-                    $scope.tempLicReqs.None = false;
+                    if(addToArray) {
+                        $scope.heavyequipOptions.splice($scope.heavyequipOptions.length-1, 0, res);
+                    }
+                    $scope.tempLicReqs.cb_HeavyEquip = res;
+                    
+                    if(res != "N/A") {
+                        $scope.tempLicReqs.None = false;
+                    }
                 }
             });
         }

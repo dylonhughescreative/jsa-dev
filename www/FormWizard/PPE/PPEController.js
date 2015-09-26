@@ -140,7 +140,11 @@ app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
             subTitle: 'Additional ' + type,
             scope: $scope,
             buttons: [
-                { text: 'Cancel' },
+                { text: 'Cancel',
+                  onTap: function() {
+                      return "cancel";
+                  }
+                },
                 {
                     text: '<b>OK</b>',
                     type: 'button-positive',
@@ -164,18 +168,20 @@ app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
             var addToArray = true,
                 other = OtherPopup("Respirator Type");
             other.then(function(res) {
-                for(var i=0; i<$scope.respiratorOptions.length; i++) {
-                    if($scope.respiratorOptions[i] === res) {
-                        addToArray = false;
+                if(res != "cancel") {
+                    for(var i=0; i<$scope.respiratorOptions.length; i++) {
+                        if($scope.respiratorOptions[i] === res) {
+                            addToArray = false;
+                        }
                     }
-                }
-                if(addToArray) {
-                    $scope.respiratorOptions.splice($scope.respiratorOptions.length-1, 0, res);
-                }
-                $scope.tempPPEinfo.cb_RespiratorType = res;
-                
-                if(res != "N/A") {
-                    $scope.tempPPEinfo.None = false;
+                    if(addToArray) {
+                        $scope.respiratorOptions.splice($scope.respiratorOptions.length-1, 0, res);
+                    }
+                    $scope.tempPPEinfo.cb_RespiratorType = res;
+                    
+                    if(res != "N/A") {
+                        $scope.tempPPEinfo.None = false;
+                    }
                 }
             });
         }
@@ -188,20 +194,22 @@ app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
     $scope.gloveTypeChanged = function () {
         if($scope.tempPPEinfo.cb_GlovesType == "Other") {
             var addToArray = true,
-                other = OtherPopup("Respirator Type");
+                other = OtherPopup("Glove Type");
             other.then(function(res) {
-                for(var i=0; i<$scope.gloveOptions.length; i++) {
-                    if($scope.gloveOptions[i] === res) {
-                        addToArray = false;
+                if(res != "cancel") {
+                    for(var i=0; i<$scope.gloveOptions.length; i++) {
+                        if($scope.gloveOptions[i] === res) {
+                            addToArray = false;
+                        }
                     }
-                }
-                if(addToArray) {
-                    $scope.gloveOptions.splice($scope.gloveOptions.length-1, 0, res);
-                }
-                $scope.tempPPEinfo.cb_GlovesType = res;
-                
-                if(res != "N/A") {
-                    $scope.tempPPEinfo.None = false;
+                    if(addToArray) {
+                        $scope.gloveOptions.splice($scope.gloveOptions.length-1, 0, res);
+                    }
+                    $scope.tempPPEinfo.cb_GlovesType = res;
+                    
+                    if(res != "N/A") {
+                        $scope.tempPPEinfo.None = false;
+                    }
                 }
             });
         }
@@ -216,18 +224,20 @@ app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
             var addToArray = true,
                 other = OtherPopup("Respirator Type");
             other.then(function(res) {
-                for(var i=0; i<$scope.clothingOptions.length; i++) {
-                    if($scope.clothingOptions[i] === res) {
-                        addToArray = false;
+                if (res != "cancel") {
+                    for(var i=0; i<$scope.clothingOptions.length; i++) {
+                        if($scope.clothingOptions[i] === res) {
+                            addToArray = false;
+                        }
                     }
-                }
-                if(addToArray) {
-                    $scope.clothingOptions.splice($scope.clothingOptions.length-1, 0, res);
-                }
-                $scope.tempPPEinfo.cb_Clothing = res;
-                
-                if(res != "N/A") {
-                    $scope.tempPPEinfo.None = false;
+                    if(addToArray) {
+                        $scope.clothingOptions.splice($scope.clothingOptions.length-1, 0, res);
+                    }
+                    $scope.tempPPEinfo.cb_Clothing = res;
+                    
+                    if(res != "N/A") {
+                        $scope.tempPPEinfo.None = false;
+                    }
                 }
             });
         }
@@ -242,18 +252,21 @@ app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
             var addToArray = true,
                 other = OtherPopup("Respirator Type");
             other.then(function(res) {
-                for(var i=0; i<$scope.chemclothingOptions.length; i++) {
-                    if($scope.chemclothingOptions[i] === res) {
-                        addToArray = false;
+                if ( res != "cancel")
+                {
+                    for(var i=0; i<$scope.chemclothingOptions.length; i++) {
+                        if($scope.chemclothingOptions[i] === res) {
+                            addToArray = false;
+                        }
                     }
-                }
-                if(addToArray) {
-                    $scope.chemclothingOptions.splice($scope.chemclothingOptions.length-1, 0, res);
-                }
-                $scope.tempPPEinfo.cb_ChemClothing = res;
-                
-                if(res != "N/A") {
-                    $scope.tempPPEinfo.None = false;
+                    if(addToArray) {
+                        $scope.chemclothingOptions.splice($scope.chemclothingOptions.length-1, 0, res);
+                    }
+                    $scope.tempPPEinfo.cb_ChemClothing = res;
+                    
+                    if(res != "N/A") {
+                        $scope.tempPPEinfo.None = false;
+                    }
                 }
             });
         }
