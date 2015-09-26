@@ -167,7 +167,7 @@ app.factory('formInfo', function () {
             cb_ChemClothing: 'N/A',
             cm_HarnessLanyard: false,
             cm_FaceShield: false,
-            tb_Other: 'Other'
+            tb_Other: ''
         },
         trainReqs = {
             RedTag: false,
@@ -204,10 +204,7 @@ app.factory('formInfo', function () {
         completedElements = {
             BasicInfo: "pending",
             PPEAssess: "pending",
-            TaskStep1: "pending",
-            TaskStep2: "pending",
-            TaskStep3: "pending",
-            TaskStep4: "pending",
+            JobElements: "pending",
             TrainReqs: "pending",
             LicReqs:   "pending",
             AreaConcerns: "pending",
@@ -238,29 +235,17 @@ app.factory('formInfo', function () {
         setjobelements: function (groups) {
             jobelements = angular.copy(groups);
         },
+        setjobelementsComplete: function (complete) {
+            completedElements.JobElements = complete;
+        },
         getcompletedElements: function () {
             return completedElements;
         },
-        setGCinfocomplete: function (complete) {
-            completedElements.BasicInfo = complete;
-        },
-        setSubinfocomplete: function (complete) {
+        setBasicInfocomplete: function (complete) {
             completedElements.BasicInfo = complete;
         },
         setPPEcomplete: function (complete) {
             completedElements.PPEAssess = complete;
-        },
-        setTask1complete: function (complete) {
-            completedElements.TaskStep1 = complete;
-        },
-        setTask2complete: function (complete) {
-            completedElements.TaskStep2 = complete;
-        },
-        setTask3complete: function (complete) {
-            completedElements.TaskStep3 = complete;
-        },
-        setTask4complete: function (complete) {
-            completedElements.TaskStep4 = complete;
         },
         getTrainReqs: function () {
             return trainReqs;

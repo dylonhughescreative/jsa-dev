@@ -25,7 +25,9 @@ app.controller('TrainReqCtrl', function ($rootScope, $scope, formInfo) {
     });
     
     function verify() {
-        if ($scope.tempTrainReqs.RedTag === true) {
+        if ($scope.tempTrainReqs.None === true) {
+            return "valid";
+        } else if ($scope.tempTrainReqs.RedTag === true) {
             return "valid";
         } else if ($scope.tempTrainReqs.ConfinedSpace === true) {
             return "valid";

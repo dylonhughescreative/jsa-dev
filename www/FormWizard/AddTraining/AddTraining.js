@@ -53,8 +53,17 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
         }
         return false;
     }
+    
+    function verify () {
+        if($scope.TempTrainingInfo.None === true || $scope.Training.length > 0) {
+            return "valid";
+        } else {
+            return "invalid";
+        }
+    }
                                                                      
     $scope.check = function (state) {
+        formInfo.setAddTrainingComplete(verify());
         formInfo.setAddTraining($scope.Training);
         $scope.next(state);
     };

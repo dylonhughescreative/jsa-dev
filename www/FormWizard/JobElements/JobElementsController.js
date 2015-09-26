@@ -116,8 +116,17 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, $rootSco
         }
         return false;
     }
-                                                                     
+    
+    function verify () {
+        if($scope.groups.length > 0) {
+            return "valid";
+        } else {
+            return "invalid";
+        }
+    }
+                                                                                               
     $scope.check = function (state) {
+        formInfo.setjobelementsComplete(verify());
         formInfo.setjobelements($scope.groups);
         $scope.next(state);
     };

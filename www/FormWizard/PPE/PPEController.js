@@ -44,7 +44,9 @@ app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
     });
     
     function verify() {
-        if ($scope.tempPPEinfo.cm_EyeProtection === true) {
+        if ($scope.tempPPEinfo.None === true) {
+            return "valid";
+        } else if ($scope.tempPPEinfo.cm_EyeProtection === true) {
             return "valid";
         } else if ($scope.tempPPEinfo.cm_ChemGoggles === true) {
             return "valid";

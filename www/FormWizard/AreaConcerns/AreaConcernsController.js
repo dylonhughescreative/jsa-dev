@@ -17,8 +17,18 @@ app.controller('AreaConcernsCtrl', function ($scope, $state, formInfo, $rootScop
         }
         return false;
     }
-                                                                     
+    function verify () {
+        if (($scope.AreaConcerns.lof_none === true || $scope.AreaConcerns.lineofFire.length > 0) &&
+           ($scope.AreaConcerns.sensequip_none === true || $scope.AreaConcerns.sensEquip.length > 0) &&
+           ($scope.AreaConcerns.fallhaz_none === true || $scope.AreaConcerns.fallHazards.length > 0)) {
+            return "valid";
+        } else {
+            return "invalid";
+        }
+    }
+    
     $scope.check = function (state) {
+        formInfo.setAreaConcernsComplete(verify());
         formInfo.setAreaConcerns($scope.AreaConcerns);
         $scope.next(state);
     };

@@ -33,7 +33,7 @@ app.controller('SubinfoCtrl', function ($rootScope, $scope, formInfo) {
     }
     
     $scope.check = function (state) {
-        formInfo.getcompletedElements().BasicInfo = verify();
+        formInfo.setBasicInfocomplete(verify());
         //if(!gooddata)
         //  popup
         //else

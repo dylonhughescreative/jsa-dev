@@ -22,7 +22,9 @@ app.controller('LicReqCtrl', function ($rootScope, $scope, $ionicPopup, formInfo
     });
     
     function verify() {
-        if ($scope.tempLicReqs.ForkLift === true) {
+        if ($scope.tempLicReqs.None === true) {
+            return "valid";
+        } else if ($scope.tempLicReqs.ForkLift === true) {
             return "valid";
         } else if ($scope.tempLicReqs.AerialLift === true) {
             return "valid";
