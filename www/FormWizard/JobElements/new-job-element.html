@@ -30,39 +30,39 @@
                 </a>
             </div>
             <div class="list">
-                <label class="item item-input item-stacked-label fader" ng-show="jobElement.number > 0">
+                <label class="item item-input item-stacked-label fader">
                     <span class="input-label">Task 1</span>
                     <input type="text" ng-model="jobElement.task1.title" placeholder="What do you need to do first?">
                 </label>
-                <label class="item item-input item-stacked-label fader" ng-show="(jobElement.number > 0) && (jobElement.task1.title !== '' && jobElement.task1.title != null)">
+                <label class="item item-input item-stacked-label fader ng-hide" ng-show="(jobElement.number > 0) && (jobElement.task1.title !== '' && jobElement.task1.title != null)">
                     <span class="input-label">Potential Hazards</span>
                     <input type="text" ng-model="jobElement.task1.hazards" placeholder="What are the hazards of this task?">
                 </label>
-                <label class="item item-input item-stacked-label fader" ng-show="(jobElement.number > 0) && (jobElement.task1.title !== '' && jobElement.task1.title != null)">
+                <label class="item item-input item-stacked-label fader ng-hide" ng-show="(jobElement.number > 0) && (jobElement.task1.title !== '' && jobElement.task1.title != null)">
                     <span class="input-label">Hazard Control Methods</span>
                     <input type="text" ng-model="jobElement.task1.control" placeholder="How will you mitigate these hazards?">
                 </label>
-                <label class="item item-input item-stacked-label fader" ng-show="jobElement.number > 1">
+                <label class="item item-input item-stacked-label fader ng-hide" ng-show="jobElement.number > 1">
                     <span class="input-label">Task 2</span>
                     <input type="text" ng-model="jobElement.task2.title" placeholder="What about after that?">
                 </label>
-                <label class="item item-input item-stacked-label fader" ng-show="(jobElement.number > 1) && (jobElement.task2.title !== '' && jobElement.task2.title != null)">
+                <label class="item item-input item-stacked-label fader ng-hide" ng-show="(jobElement.number > 1) && (jobElement.task2.title !== '' && jobElement.task2.title != null)">
                     <span class="input-label">Potential Hazards</span>
                     <input type="text" ng-model="jobElement.task2.hazards" placeholder="What are the hazards of this task?">
                 </label>
-                <label class="item item-input item-stacked-label fader" ng-show="(jobElement.number > 1) && (jobElement.task2.title !== '' && jobElement.task2.title != null)">
+                <label class="item item-input item-stacked-label fader ng-hide" ng-show="(jobElement.number > 1) && (jobElement.task2.title !== '' && jobElement.task2.title != null)">
                     <span class="input-label">Hazard Control Methods</span>
                     <input type="text" ng-model="jobElement.task2.control" placeholder="How will you mitigate these hazards?">
                 </label>
-                <label class="item item-input item-stacked-label fader" ng-show="jobElement.number > 2">
+                <label class="item item-input item-stacked-label fader ng-hide" ng-show="jobElement.number > 2">
                     <span class="input-label">Task 3</span>
                     <input type="text" ng-model="jobElement.task3.title" placeholder="And after that?">
                 </label>
-                <label class="item item-input item-stacked-label fader" ng-show="(jobElement.number > 2) && (jobElement.task3.title !== '' && jobElement.task3.title != null)">
+                <label class="item item-input item-stacked-label fader ng-hide" ng-show="(jobElement.number > 2) && (jobElement.task3.title !== '' && jobElement.task3.title != null)">
                     <span class="input-label">Potential Hazards</span>
                     <input type="text" ng-model="jobElement.task3.hazards" placeholder="What are the hazards of this task?">
                 </label>
-                <label class="item item-input item-stacked-label fader" ng-show="(jobElement.number > 2) && (jobElement.task3.title !== '' && jobElement.task3.title != null)">
+                <label class="item item-input item-stacked-label fader ng-hide" ng-show="(jobElement.number > 2) && (jobElement.task3.title !== '' && jobElement.task3.title != null)">
                     <span class="input-label">Hazard Control Methods</span>
                     <input type="text" ng-model="jobElement.task3.control" placeholder="How will you mitigate these hazards?">
                 </label>

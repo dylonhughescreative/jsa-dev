@@ -1,4 +1,16 @@
-app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, $rootScope, formInfo) {'use strict'; 
+app.directive('stopEvent', function () {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attr) {
+                if(attr && attr.stopEvent)
+                    element.bind(attr.stopEvent, function (e) {
+                        e.stopPropagation();
+                    });
+            }
+        };
+     });
+
+app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, $rootScope, $ionicListDelegate, formInfo) {'use strict'; 
                                                                      
     // Create and load the Modal
     $ionicModal.fromTemplateUrl('./FormWizard/JobElements/new-job-element.html', {
@@ -23,6 +35,7 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, $rootSco
     $scope.TaskIndex = 0;
     $scope.ModalHeaderText = "";
     $scope.ModalButtonText = "";
+    $scope.reorderShowing = false;
     $scope.numberList = [
         {title: "1 Task ", number: 1},
         {title: "2 Tasks", number: 2},
@@ -93,7 +106,9 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, $rootSco
                                                                                    
     $scope.checkModal = function() {
         if (($scope.jobElement.title !== "" && $scope.jobElement.title != null) 
-                && ($scope.jobElement.task1.title !== '' && $scope.jobElement.task1.title != null))
+                && ($scope.jobElement.task1.title !== '' && $scope.jobElement.task1.title != null)
+                && ($scope.jobElement.task1.hazards !== '' && $scope.jobElement.task1.hazards != null)
+                && ($scope.jobElement.task1.control !== '' && $scope.jobElement.task1.control != null))
                 //&& ($scope.jobElement.task1.control !== '' && $scope.jobElement.task1.control != null) 
                 //&& ($scope.jobElement.task1.hazards !== '' && $scope.jobElement.task1.hazards != null))
             return true;
@@ -139,7 +154,8 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, $rootSco
     //    $scope.groups[i].items.push(i+1 + '-' + j);
     //  }
     //}
-    $scope.openJobElement = function(group) {
+    $scope.openJobElement = function(group, $event) {
+        event.stopPropagation();
         $scope.ModalHeaderText = "Edit Job Element";
         $scope.ModalButtonText = "Save Element";
         $scope.editing = true;
@@ -155,6 +171,8 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, $rootSco
             $scope.jobElement.task2 = group.items[1];
         if (group.items.length > 2)
             $scope.jobElement.task3 = group.items[2];
+        $ionicListDelegate.closeOptionButtons();
+        $scope.shownGroup = null;
         $scope.jobElementModal.show();
     }
     
@@ -175,20 +193,26 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, $rootSco
         $scope.TaskModal.hide();
     }
     
+    $scope.toggleReorder = function() {
+        $scope.shownGroup = null;
+        $scope.reorderShowing = !$scope.reorderShowing;
+    }
+    
     $scope.submitTaskChange = function() {
         $scope.groups[$scope.groupIndex].items.splice($scope.TaskIndex, 1, $scope.TempTask);
         $scope.TaskModal.hide();
     }
     
-    $scope.deleteGroup = function(group) {
-        event.stopPropagation();
-        var index = null;
-        for(var i=0; i < $scope.groups.length; i++) {
-            if ($scope.groups[i] === group)
-                index = i;
-        }
-        if (index != null)
-            $scope.groups.splice(index, 1);
+    $scope.deleteItem = function(group) {
+        $scope.shownGroup = null;
+        $scope.groups.splice($scope.groups.indexOf(group), 1);
+        $ionicListDelegate.closeOptionButtons();
+    }
+
+    $scope.deleteTask = function(group, task) {
+        var idx = $scope.groups.indexOf(group);
+        $scope.groups[idx].items.splice(
+            $scope.groups[idx].items.indexOf(task), 1);
     }
     /*
      * if given group is the selected group, deselect it
