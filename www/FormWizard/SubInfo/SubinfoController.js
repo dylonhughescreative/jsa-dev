@@ -38,7 +38,7 @@ app.controller('SubinfoCtrl', function ($rootScope, $scope, formInfo) {
         //  popup
         //else
         //  next
-        formInfo.setgcinfo($scope.tempGCinfo);
+        formInfo.setBasicInfo($scope.basicinfo);
         $scope.next(state);
     };
 });
