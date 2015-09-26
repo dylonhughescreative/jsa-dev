@@ -1,4 +1,4 @@
-app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootScope, formInfo) {
+app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootScope, $ionicListDelegate, formInfo) {
     'use strict';        
     // Create and load the Modal
     $ionicModal.fromTemplateUrl('./FormWizard/AddTraining/new-AddTraining.html', {
@@ -9,6 +9,10 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
         $scope.AddTrainingModal = modal;
     });
 
+    $scope.TrainingNone = false;
+    var TrainingEditing = false;
+    var EditingIndex = 0;
+    
     // To close, use $ionicListDelegate.closeOptionButtons();
     $scope.Training = [
         {name:"Example Text 1 ", date:"09/24/15"},
@@ -17,12 +21,21 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
         {name:"Example Text 4 ", date:"09/27/15"}
     ];
     $scope.TempTrainingInfo = {
-        None: false
     };
       // Open our new training modal
     $scope.newTraining = function() {
+        TrainingEditing = false;
+        $scope.TempTrainingInfo = {};
         $scope.AddTrainingModal.show();
     };
+    
+    $scope.editTraining = function(trn) {
+        EditingIndex = $scope.Training.indexOf(trn);
+        TrainingEditing = true;
+        $scope.TempTrainingInfo = $scope.Training[EditingIndex];
+        $ionicListDelegate.closeOptionButtons();
+        $scope.AddTrainingModal.show();
+    }
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
         $scope.Training = angular.copy(formInfo.getAddTraining());
@@ -34,15 +47,20 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
     };
     
     $scope.AddToTraining = function(tempInfo) {
-        // Add to array
-        $scope.Training.push({
-                name: tempInfo.name,
-                date: tempInfo.date
-            });
+        if (!TrainingEditing) {
+            // Add to array
+            $scope.Training.push({
+                    name: tempInfo.name,
+                    date: tempInfo.date
+                });
+        } else {
+            $scope.Training.splice(EditingIndex, 1, $scope.TempTrainingInfo);
+        }
+            
         // Reset temp info and hide.
         $scope.TempTrainingInfo = {};
         $scope.AddTrainingModal.hide();
-        $scope.TempTrainingInfo.None = false;
+        $scope.TrainingNone = false;
     };
     
     function contains(a, obj) {
@@ -55,7 +73,7 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
     }
     
     function verify () {
-        if($scope.TempTrainingInfo.None === true || $scope.Training.length > 0) {
+        if($scope.TrainingNone === true || $scope.Training.length > 0) {
             return "valid";
         } else {
             return "invalid";
@@ -69,9 +87,14 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
     };
     
     $scope.checkchanged_none = function () {
-        if($scope.TempTrainingInfo.None === false) {
+        if($scope.TrainingNone === false) {
             $scope.Training = [];
         }
     };
+    
+    $scope.deleteTraining = function(trn) {
+        $scope.Training.splice($scope.Training.indexOf(trn), 1);
+        $ionicListDelegate.closeOptionButtons();
+    }
 
 });
