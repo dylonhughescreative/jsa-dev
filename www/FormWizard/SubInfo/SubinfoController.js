@@ -21,9 +21,9 @@ app.controller('SubinfoCtrl', function ($rootScope, $scope, formInfo) {
             return "invalid";
         } else if (angular.isUndefined($scope.basicinfo.projectname) || $scope.basicinfo.projectname === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.basicinfostartdate) || $scope.basicinfo.basicinfostartdate === "") {
+        } else if (angular.isUndefined($scope.basicinfo.startdate) || $scope.basicinfo.startdate === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.basicinfoenddate) || $scope.basicinfo.basicinfoenddate === "") {
+        } else if (angular.isUndefined($scope.basicinfo.startdate) || $scope.basicinfo.startdate === "") {
             return "invalid";
         } else if (angular.isUndefined($scope.basicinfo.jobscope) || $scope.basicinfo.jobscope === "") {
             return "invalid";

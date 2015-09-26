@@ -165,6 +165,8 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, $rootSco
         }
         $scope.jobElement.title = group.name;
         $scope.jobElement.number = group.items.length;
+        if (group.items.length <= 0)
+            $scope.jobElement.number = 1;
         if (group.items.length > 0)
             $scope.jobElement.task1 = group.items[0];
         if (group.items.length > 1)
@@ -213,6 +215,7 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, $rootSco
         var idx = $scope.groups.indexOf(group);
         $scope.groups[idx].items.splice(
             $scope.groups[idx].items.indexOf(task), 1);
+        
     }
     /*
      * if given group is the selected group, deselect it

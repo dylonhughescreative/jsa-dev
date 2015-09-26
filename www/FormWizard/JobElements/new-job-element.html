@@ -70,7 +70,7 @@
       </form>
     </ion-content>
       <div id="JobElementAddModal">
-          <button type="submit" form="NewJobElementForm" class="button button-block button-positive fader" id="CreateTaskButton" ng-show="checkModal()">{{ModalButtonText}}</button>
+          <button ng-click="createTask(jobElement)" class="button button-block button-positive fader" id="CreateTaskButton" ng-show="checkModal()">{{ModalButtonText}}</button>
           <div id="HelpCard" class="fader" ng-hide="checkModal()">
             <div class="card">
                 <div class="item item-text-wrap">
