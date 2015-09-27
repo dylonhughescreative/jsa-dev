@@ -1,9 +1,8 @@
 app.controller('CompletedFormsCtrl', function ($rootScope, $scope, $state, formInfo, jsPdfBuilder) {
     'use strict';
     
+    $scope.basicinfo = angular.copy(formInfo.getBasicInfo());
     $scope.ppeinfo = angular.copy(formInfo.getppeinfo());
-    $scope.gcinfo = angular.copy(formInfo.getgcinfo());
-    $scope.subinfo = angular.copy(formInfo.getgcinfo());
     $scope.jobelements = angular.copy(formInfo.getjobelements());
     $scope.trainReqs = angular.copy(formInfo.getTrainReqs());
     $scope.licReqs = angular.copy(formInfo.getLicReqs());
@@ -14,9 +13,8 @@ app.controller('CompletedFormsCtrl', function ($rootScope, $scope, $state, formI
     var stateController = { };
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
+        $scope.basicinfo = angular.copy(formInfo.getBasicInfo());
         $scope.ppeinfo = angular.copy(formInfo.getppeinfo());
-        $scope.gcinfo = angular.copy(formInfo.getgcinfo());
-        $scope.subinfo = angular.copy(formInfo.getgcinfo());
         $scope.jobelements = angular.copy(formInfo.getjobelements());
         $scope.trainReqs = angular.copy(formInfo.getTrainReqs());
         $scope.licReqs = angular.copy(formInfo.getLicReqs());
