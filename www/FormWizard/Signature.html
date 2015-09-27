@@ -1,7 +1,7 @@
 <link href="FormWizard/Signature.css" rel="stylesheet">
 
 <ion-view title="Commitment">
-    <ion-content scroll="false">
+    <ion-content scroll={{sigCanvas.scroll}} class="submission-content">
         <label class="item item-input item-stacked-label">
             <span class="input-label">Printed Name</span>
             <input type="text" ng-model="commitment.name" placeholder="Name (First, Last)">
@@ -10,8 +10,15 @@
             <span class="input-label">Date</span>
             <input type="date" ng-model="commitment.date" placeholder="When does work begin?">
         </label>
-        <canvas id='signatureCanvas' width='1100' height='400' style='border: 1px solid black;'></canvas>
-        <button class='button button-clear button-positive' id='clearButton' ng-click='clearCanvas()'>Clear</button>
-        <button class="button button-block button-positive" id = "b_Submit" on-tap="saveCanvas()" on-hold="saveCanvas()">Sign</button>
-    </ion-content>
+        <label class="item item-toggle item-stacked-label">
+            <span class="input-label">At-Risk?</span>
+            <input type="track" ng-model="commitment.date">
+        </label>
+        
+        <div id="sigCanvas">
+            <button class='button button-clear button-positive' id='clearButton' on-tap='clearCanvas()'>Clear</button>
+            <canvas scroll="false" id='signatureCanvas' width={{sigCanvas.width}} height={{sigCanvas.height}} style='border: 1px solid black;'></canvas>
+        </div>
+    </ion-content>    
+    <button class="button button-block button-positive" id="b_Submit" on-tap="saveCanvas()" on-hold="saveCanvas()">Sign</button>
 </ion-view>

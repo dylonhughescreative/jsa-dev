@@ -2,9 +2,25 @@
     margin: 1%;
 }
 
+#sigCanvas {
+    position: absolute;
+}
+
 #clearButton {
     position: absolute;
-    top: 24%;
-    width: 9%;
-    left: 1%;
+    top: 0%;
+    width: 7%;
+    height: 10%;
+    left: 0.5%;
+    z-index: 3;
+}
+
+#b_Submit{
+    position: fixed;
+    width: 98%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 1%;
+    padding: 0;
 }
