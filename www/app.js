@@ -42,7 +42,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     // Each state's controller can be found in controllers.js
     'use strict';
     
-    $ionicConfigProvider.scrolling.jsScrolling(false);
+    $ionicConfigProvider.scrolling.jsScrolling(true);
     
     $stateProvider
         .state('home', {

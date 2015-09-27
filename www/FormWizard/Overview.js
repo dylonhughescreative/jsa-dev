@@ -15,7 +15,7 @@ app.controller('OverviewCtrl', function ($rootScope, $scope, $state, formInfo) {
             $scope.completedElements.AddTraining === "valid" ) {
             $scope.formcomplete = true;
         } else {
-            $scope.formcomplete = false;
+            $scope.formcomplete = true;
         }
     });
     
