@@ -10,10 +10,9 @@
             <span class="input-label">Date</span>
             <input type="date" ng-model="commitment.date" placeholder="When does work begin?">
         </label>
-        <label class="item item-toggle item-stacked-label">
-            <span class="input-label">At-Risk?</span>
-            <input type="track" ng-model="commitment.date">
-        </label>
+        <ion-toggle ng-model="commitment.risk" toggle-class="toggle-calm">
+            At-Risk?
+        </ion-toggle>
         
         <div id="sigCanvas">
             <button class='button button-clear button-positive' id='clearButton' on-tap='clearCanvas()'>Clear</button>
