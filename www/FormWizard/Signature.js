@@ -30,8 +30,6 @@ app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicM
         $scope.signatures = angular.copy(formInfo.getSignatures());
         stateController = angular.copy(formInfo.getStateController());
         $scope.commitment = { };
-        $scope.clearCanvas();
-        $scope.sigCanvas = $window.width;
     });   
     
     $scope.clearCanvas = function () {
