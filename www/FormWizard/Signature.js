@@ -46,8 +46,8 @@ app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicM
         signaturePad = new SignaturePad(canvas);
         signaturePad.clear();
         var ModalDimensions = document.getElementById('SignatureModal');
-        $scope.sigCanvas.width = ModalDimensions.clientWidth - ModalDimensions.clientWidth*0.02;
-        $scope.sigCanvas.height =  ModalDimensions.clientHeight * 0.5;
+        $scope.sigCanvas.width = ModalDimensions.offsetWidth - ModalDimensions.offsetWidth*0.02;
+        $scope.sigCanvas.height =  ModalDimensions.offsetHeight * 0.5;
     }
     
     $scope.saveCanvas = function () {
@@ -66,9 +66,9 @@ app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicM
     
     function refresh() {
         var ModalDimensions = document.getElementById('SignatureModal');
-        $scope.sigCanvas.width = ModalDimensions.clientWidth - ModalDimensions.clientWidth*0.02;
-        $scope.sigCanvas.height =  ModalDimensions.clientHeight * 0.5;
+        $scope.sigCanvas.width = ModalDimensions.offsetWidth - ModalDimensions.offsetWidth*0.02;
+        $scope.sigCanvas.height =  ModalDimensions.offsetHeight * 0.5;
         $scope.$apply();
     }
-    //angular.element($window).bind('resize', refresh);
+    angular.element($window).bind('resize', refresh);
 });
