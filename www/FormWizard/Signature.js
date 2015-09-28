@@ -24,6 +24,8 @@ app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicM
         var sigImg = signaturePad.toDataURL("image/png", 1);
         $scope.commitment.signature = sigImg;
         $scope.signatureModal.hide();
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('unlocked');
     }
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
@@ -37,12 +39,14 @@ app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicM
     }
     
     $scope.openSignatureModal = function() {
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('landscape');
         $scope.signatureModal.show();
         var canvas = document.getElementById('signatureCanvas');
         signaturePad = new SignaturePad(canvas);
         var ModalDimensions = document.getElementById('SignatureModal');
         $scope.sigCanvas.width = ModalDimensions.clientWidth - ModalDimensions.clientWidth*0.02;
-        $scope.sigCanvas.height =  ModalDimensions.clientHeight * 0.2;
+        $scope.sigCanvas.height =  ModalDimensions.clientHeight * 0.5;
     }
     
     $scope.saveCanvas = function () {
