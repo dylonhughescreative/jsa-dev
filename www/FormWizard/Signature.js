@@ -54,6 +54,8 @@ app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicM
             signature: $scope.commitment.signature    
         });
         formInfo.setSignatures($scope.signatures);
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('landscape');
         $state.go(stateController.nextstate);
     }
     

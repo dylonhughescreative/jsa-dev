@@ -30,6 +30,8 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, formInfo, jsP
     };
     
     $scope.onclick = function(state) {
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('unlocked');
         stateController.nextstate = "completedForm";
         stateController.previoussate = "verify";
         formInfo.setStateController(stateController);

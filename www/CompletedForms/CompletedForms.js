@@ -24,6 +24,8 @@ app.controller('CompletedFormsCtrl', function ($rootScope, $scope, $state, formI
     });
     
     $scope.onclick = function(state) {
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('unlocked');
         stateController.nextstate = "signatureList";
         stateController.previoussate = "completedForm";
         formInfo.setStateController(stateController);
