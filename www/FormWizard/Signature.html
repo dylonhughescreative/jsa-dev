@@ -13,11 +13,8 @@
         <ion-toggle ng-model="commitment.risk" toggle-class="toggle-calm">
             At-Risk?
         </ion-toggle>
-        
-        <div id="sigCanvas">
-            <button class='button button-clear button-positive' id='clearButton' on-tap='clearCanvas()'>Clear</button>
-            <canvas scroll="false" id='signatureCanvas' width={{sigCanvas.width}} height={{sigCanvas.height}} style='border: 1px solid black;'></canvas>
-        </div>
+        <img src={{commitment.signature}}>
+        <button class="button button-block button-positive" ng-click="openSignatureModal()">Enter Signature</button>
     </ion-content>    
     <button class="button button-block button-positive" id="b_Submit" on-tap="saveCanvas()" on-hold="saveCanvas()">Sign</button>
 </ion-view>
