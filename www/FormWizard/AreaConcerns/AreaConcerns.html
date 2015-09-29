@@ -16,11 +16,11 @@
                     <span class="input-label">Line of Fire 1</span>
                     <input type="text" ng-model="AreaConcerns.lineofFire[0]" placeholder="Start typing to add a line of fire." ng-change="LOFTextChanged()">
                 </label>
-                <label class="item item-input item-stacked-label concern-fader" ng-show="(AreaConcerns.lineofFire.length > 0) && (AreaConcerts.lineofFire[0] !== '' && AreaConcerns.lineofFire[0] != null)">
+                <label class="item item-input item-stacked-label concern-fader ng-hide" ng-show="(AreaConcerns.lineofFire.length > 0) && AreaConcerns.lineofFire[0]">
                     <span class="input-label">Line of Fire 2</span>
                     <input type="text" ng-model="AreaConcerns.lineofFire[1]" placeholder="Start typing to add a line of fire.">
                 </label>
-                <label class="item item-input item-stacked-label concern-fader" ng-show="(AreaConcerns.lineofFire.length > 1) && (AreaConcerts.lineofFire[1] !== '' && AreaConcerns.lineofFire[1] != null)">
+                <label class="item item-input item-stacked-label concern-fader ng-hide" ng-show="(AreaConcerns.lineofFire.length > 1) && AreaConcerns.lineofFire[1]">
                     <span class="input-label">Line of Fire 3</span>
                     <input type="text" ng-model="AreaConcerns.lineofFire[2]" placeholder="Start typing to add a line of fire.">
                 </label>
@@ -36,11 +36,11 @@
                     <span class="input-label">Sensitive Equipment 1</span>
                     <input type="text" ng-model="AreaConcerns.sensEquip[0]" placeholder="Start typing to add sensitive equipment." ng-change="SensEquipTextChanged()">
                 </label>
-                <label class="item item-input item-stacked-label concern-fader" ng-show="(AreaConcerns.sensEquip.length > 0) && (AreaConcerts.sensEquip[0] !== '' && AreaConcerns.sensEquip[0] != null)">
+                <label class="item item-input item-stacked-label concern-fader ng-hide" ng-show="(AreaConcerns.sensEquip.length > 0) && AreaConcerns.sensEquip[0]">
                     <span class="input-label">Sensitive Equipment 2</span>
                     <input type="text" ng-model="AreaConcerns.sensEquip[1]" placeholder="Start typing to add sensitive equipment.">
                 </label>
-                <label class="item item-input item-stacked-label concern-fader" ng-show="(AreaConcerns.sensEquip.length > 1) && (AreaConcerts.sensEquip[1] !== '' && AreaConcerns.sensEquip[1] != null)">
+                <label class="item item-input item-stacked-label concern-fader ng-hide" ng-show="(AreaConcerns.sensEquip.length > 1) && AreaConcerns.sensEquip[1]">
                     <span class="input-label">Sensitive Equipment 3</span>
                     <input type="text" ng-model="AreaConcerns.sensEquip[2]" placeholder="Start typing to add sensitive equipment.">
                 </label>
@@ -56,11 +56,11 @@
                     <span class="input-label">Fall Hazards/Other 1</span>
                     <input type="text" ng-model="AreaConcerns.fallHazards[0]" placeholder="Start typing to add a fall hazard or another concern." ng-change="FallHazTextChanged()">
                 </label>
-                <label class="item item-input item-stacked-label concern-fader" ng-show="(AreaConcerns.fallHazards.length > 0) && (AreaConcerts.fallHazards[0] !== '' && AreaConcerns.fallHazards[0] != null)">
+                <label class="item item-input item-stacked-label concern-fader ng-hide" ng-show="(AreaConcerns.fallHazards.length > 0) && AreaConcerns.fallHazards[0]">
                     <span class="input-label">Fall Hazards/Other 2</span>
                     <input type="text" ng-model="AreaConcerns.fallHazards[1]" placeholder="Start typing to add a fall hazard or another concern.">
                 </label>
-                <label class="item item-input item-stacked-label concern-fader" ng-show="(AreaConcerns.fallHazards.length > 1) && (AreaConcerts.fallHazards[1] !== '' && AreaConcerns.fallHazards[1] != null)">
+                <label class="item item-input item-stacked-label concern-fader ng-hide" ng-show="(AreaConcerns.fallHazards.length > 1) && AreaConcerns.fallHazards[1]">
                     <span class="input-label">Fall Hazards/Other 3</span>
                     <input type="text" ng-model="AreaConcerns.fallHazards[2]" placeholder="Start typing to add a fall hazard or another concern.">
                 </label>

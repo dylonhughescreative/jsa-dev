@@ -256,20 +256,20 @@
 }
 
 .Task{
-    left: 15%;
-    width: 20%;
+    left: 17%;
+    width: 17%;
     height: 28%;
 }
 
 .Hazard{
-    left: 35%;
-    width: 30.5%;
+    left: 36%;
+    width: 29.5%;
     height: 28%;
 }
 
 .Control{
-    left: 65.5%;
-    width: 34%;
+    left: 66%;
+    width: 33.5%;
     height: 28%;
 }
 
@@ -670,8 +670,8 @@
 #PrintedName {
     position: absolute;
     width: 33%;
-    height: 5%;
-    top: 89%;
+    height: 3.5%;
+    top: 95%;
     left: 21%;
 }
 
@@ -681,5 +681,4 @@
     height: 4%;
     top: 91%;
     left: 64%;
-    font-size: large;
 }

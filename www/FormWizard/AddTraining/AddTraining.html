@@ -7,10 +7,10 @@
         <button menu-toggle="left" class="button button-icon icon ion-ios-list-outline"></button>
     </ion-nav-buttons>
     <ion-content direction="y" class="submission-content">
+        <ion-checkbox class="item item-checkbox-right" ng-model="TestValue" on-tap="checkchanged_none()" on-hold="checkchanged_none()">  
+            None
+        </ion-checkbox>
         <ion-list>
-            <ion-checkbox class="item item-checkbox-right" ng-model="TrainingNone" on-tap="checkchanged_none()" on-hold="checkchanged_none()">                        
-                None
-            </ion-checkbox>
             <div ng-repeat="trn in Training">
                 <ion-item class="item-stable">
                     <p class="training-title">{{trn.name}}</p><p class="training-half-opacity"> - {{trn.date | date:"MM/dd/yyyy"}}</p>
@@ -19,8 +19,8 @@
                 </ion-item>
             </div>
         </ion-list>
-        <div class="fader">
-            <div class="card training-half-opacity" data-ng-if="Training.length == 0">
+        <div class="card training-half-opacity" data-ng-if="Training.length == 0">
+            <div class="item item-text-wrap">
                 To add a task, press the + button above.
             </div>
         </div>

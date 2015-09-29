@@ -9,16 +9,12 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
         $scope.AddTrainingModal = modal;
     });
 
-    $scope.TrainingNone = false;
+    $scope.TestValue = false;
     var TrainingEditing = false;
     var EditingIndex = 0;
     
     // To close, use $ionicListDelegate.closeOptionButtons();
     $scope.Training = [
-        {name:"Example Text 1 ", date:"09/24/15"},
-        {name:"Example Text 2 ", date:"09/25/15"},
-        {name:"Example Text 3 ", date:"09/26/15"},
-        {name:"Example Text 4 ", date:"09/27/15"}
     ];
     $scope.TempTrainingInfo = {
     };
@@ -60,7 +56,7 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
         // Reset temp info and hide.
         $scope.TempTrainingInfo = {};
         $scope.AddTrainingModal.hide();
-        $scope.TrainingNone = false;
+        $scope.TestValue = false;
     };
     
     function contains(a, obj) {
@@ -73,7 +69,7 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
     }
     
     function verify () {
-        if($scope.TrainingNone === true || $scope.Training.length > 0) {
+        if($scope.TestValue === true || $scope.Training.length > 0) {
             return "valid";
         } else {
             return "invalid";
@@ -87,7 +83,7 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
     };
     
     $scope.checkchanged_none = function () {
-        if($scope.TrainingNone === false) {
+        if($scope.TestValue === false) {
             $scope.Training = [];
         }
     };

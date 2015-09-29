@@ -148,14 +148,6 @@ app.controller('FormWizardCtrl', function ($scope, $state) {
 app.factory('formInfo', function () {
     'use strict';
     var basicinfo = { 
-            subcontractor: "DillonHughesCreative",
-            crewleader: "Hugh Dillon",
-            projectname: "Testing",
-            generalcontractor: "M2M",
-            sitesuperintendant: "Rick Holloway",
-            startdate: "09/26/2015",
-            enddate: "09/28/2015",
-            jobscope: "To test and destroy"
         },
         jobelements = [],
         ppeinfo = {

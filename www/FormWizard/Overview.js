@@ -11,8 +11,7 @@ app.controller('OverviewCtrl', function ($rootScope, $scope, $state, formInfo) {
             $scope.completedElements.JobElements === "valid" &&
             $scope.completedElements.TrainReqs === "valid" &&
             $scope.completedElements.LicReqs === "valid" &&
-            $scope.completedElements.AreaConcerns === "valid" &&
-            $scope.completedElements.AddTraining === "valid" ) {
+            $scope.completedElements.AreaConcerns === "valid" ) {
             $scope.formcomplete = true;
         } else {
             $scope.formcomplete = true;
