@@ -3,6 +3,7 @@ app.controller('OverviewCtrl', function ($rootScope, $scope, $state, formInfo) {
     
     $scope.formcomplete; 
     $scope.completedElements = angular.copy(formInfo.getcompletedElements());
+    var GCorSub = formInfo.getBasicInfo().gcorsub;
     
     if ($scope.completedElements.BasicInfo === "valid" && 
         $scope.completedElements.PPEAssess === "valid" &&
@@ -16,6 +17,7 @@ app.controller('OverviewCtrl', function ($rootScope, $scope, $state, formInfo) {
     }
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
+        GCorSub = formInfo.getBasicInfo().gcorsub;
         $scope.completedElements = angular.copy(formInfo.getcompletedElements());
         if ($scope.completedElements.BasicInfo === "valid" && 
             $scope.completedElements.PPEAssess === "valid" &&
@@ -31,6 +33,14 @@ app.controller('OverviewCtrl', function ($rootScope, $scope, $state, formInfo) {
     
     $scope.onclick = function(state) {
         $state.go(state);
+    };
+    
+    $scope.GCorSub = function () {
+        if (GCorSub != "") {
+            $state.go(GCorSub);
+        } else {
+            $state.go("formWizard.GCorSub");
+        }
     };
     
     $scope.verified = function () {

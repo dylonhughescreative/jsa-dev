@@ -135,7 +135,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/formWizard/GCorSub');
+    $urlRouterProvider.otherwise('overview');
 });
 
 app.controller('FormWizardCtrl', function ($scope, $state) {
@@ -147,7 +147,8 @@ app.controller('FormWizardCtrl', function ($scope, $state) {
 
 app.factory('formInfo', function () {
     'use strict';
-    var basicinfo = { 
+    var basicinfo = {
+            gcorsub: ""
         },
         jobelements = [],
         ppeinfo = {

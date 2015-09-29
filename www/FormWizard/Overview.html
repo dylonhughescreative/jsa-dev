@@ -1,8 +1,6 @@
-<link href="FormWizard/Overview.css" rel="stylesheet">
-
 <ion-view title="Overview">
     <ion-content direction="y" class="submission-content">
-        <a on-tap="onclick('formWizard.GCinfo')" class="item item-icon-left">
+        <a on-tap="GCorSub()" class="item item-icon-left">
             <i data-ng-if="completedElements.BasicInfo === 'invalid'" class="icon ion-close incompleteicon"></i>
             <i data-ng-if="completedElements.BasicInfo === 'valid'" class="icon ion-checkmark completeicon"></i>
             <i data-ng-if="completedElements.BasicInfo === 'pending'" class="icon ion-minus pendingicon"></i>
