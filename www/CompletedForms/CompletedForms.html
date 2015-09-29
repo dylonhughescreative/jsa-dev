@@ -173,7 +173,7 @@
                 <div id="Commitment">
                     <div id="Commitment1">
                         <div class="Textbox" id="EmployeeName">{{signatures[1].name}}</div>
-                        <img id="EmployeeSignature" src="{{signatures[1].signature}}"/>
+                        <img data-ng-if="signatures[1].signature" id="EmployeeSignature" src="{{signatures[1].signature}}"/>
                         <div class="Textbox" id="At-Risk">YES</div>
                         <div class="Textbox" id="At-RiskStartDate">{{signatures[1].date | date:"MM/dd/yyyy"}}</div>
                     </div>

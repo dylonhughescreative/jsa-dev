@@ -194,7 +194,10 @@ app.factory('formInfo', function () {
             sensEquip: [],
             fallHazards: []
         },
-        addTraining = [],
+        addTraining = {
+            AddTraining: [],
+            None: false
+        },
         signatures = [],
         completedElements = {
             BasicInfo: "pending",

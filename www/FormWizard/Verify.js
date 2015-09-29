@@ -7,7 +7,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, formInfo, jsP
     $scope.trainReqs = angular.copy(formInfo.getTrainReqs());
     $scope.licReqs = angular.copy(formInfo.getLicReqs());
     $scope.areaConcerns = angular.copy(formInfo.getAreaConcerns());
-    $scope.addTraining = angular.copy(formInfo.getAddTraining());
+    $scope.addTraining = angular.copy(formInfo.getAddTraining().AddTraining);
     $scope.signatures = angular.copy(formInfo.getSignatures());
     
     var stateController = { };
@@ -19,7 +19,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, formInfo, jsP
         $scope.trainReqs = angular.copy(formInfo.getTrainReqs());
         $scope.licReqs = angular.copy(formInfo.getLicReqs());
         $scope.areaConcerns = angular.copy(formInfo.getAreaConcerns());
-        $scope.addTraining = angular.copy(formInfo.getAddTraining());
+        $scope.addTraining = angular.copy(formInfo.getAddTraining().AddTraining);
         $scope.signatures = angular.copy(formInfo.getSignatures());
     });
     
