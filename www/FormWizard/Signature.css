@@ -24,3 +24,26 @@
     margin: 1%;
     padding: 0;
 }
+
+#infoCard {
+    position: fixed;
+    width: 98%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 1%;
+    padding: 0;
+    text-align: center;
+}
+
+.signature-fader {
+    opacity: 1;
+}
+
+.signature-fader.ng-hide-add, .signature-fader.ng-hide-remove {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.signature-fader.ng-hide {
+    opacity: 0;
+}

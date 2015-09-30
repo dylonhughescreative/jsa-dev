@@ -1,4 +1,4 @@
-app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicModal, formInfo) {
+app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicModal, $ionicPopup, formInfo) {
     'use strict';
     
     $scope.signatures = angular.copy(formInfo.getSignatures());
@@ -24,8 +24,8 @@ app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicM
         var sigImg = signaturePad.toDataURL("image/png", 1);
         $scope.commitment.signature = sigImg;
         $scope.signatureModal.hide();
-        var so = cordova.plugins.screenorientation;
-        so.setOrientation('unlocked');
+        //var so = cordova.plugins.screenorientation;
+        //so.setOrientation('unlocked');
     }
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
@@ -39,8 +39,8 @@ app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicM
     }
     
     $scope.openSignatureModal = function() {
-        var so = cordova.plugins.screenorientation;
-        so.setOrientation('landscape');
+        //var so = cordova.plugins.screenorientation;
+        //so.setOrientation('landscape');
         $scope.signatureModal.show();
         var canvas = document.getElementById('signatureCanvas');
         signaturePad = new SignaturePad(canvas);
@@ -59,10 +59,16 @@ app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicM
             signature: $scope.commitment.signature    
         });
         formInfo.setSignatures($scope.signatures);
-        var so = cordova.plugins.screenorientation;
-        so.setOrientation('landscape');
+        //var so = cordova.plugins.screenorientation;
+        //so.setOrientation('landscape');
         $state.go(stateController.nextstate);
     }
+    
+    $scope.back = function () {
+        //var so = cordova.plugins.screenorientation;
+        //so.setOrientation('landscape');
+        $state.go('verify');
+    };
     
     function refresh() {
         var ModalDimensions = document.getElementById('SignatureModal');

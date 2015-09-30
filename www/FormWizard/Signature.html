@@ -1,6 +1,16 @@
 <link href="FormWizard/Signature.css" rel="stylesheet">
 
-<ion-view title="Commitment">
+<ion-view title="Certify">
+    <ion-nav-buttons side="left" id="navbuttonback">
+        <button class="button-clear" on-tap="back()" id="backButton">
+            <i class="icon ion-ios-arrow-back" id="backButtonIcon"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear ng-hide" ng-show="commitment.signature" on-tap="openSignatureModal()" on-hold="openSignatureModal()" id="signbutton">
+            Re-sign
+        </button>
+    </ion-nav-buttons>
     <ion-content scroll={{sigCanvas.scroll}} class="submission-content">
         <label class="item item-input item-stacked-label">
             <span class="input-label">Printed Name</span>
@@ -14,7 +24,13 @@
             At-Risk?
         </ion-toggle>
         <img src={{commitment.signature}}>
-        <button class="button button-block button-positive" ng-click="openSignatureModal()">Enter Signature</button>
-    </ion-content>    
-    <button class="button button-block button-positive" id="b_Submit" on-tap="saveCanvas()" on-hold="saveCanvas()">Sign</button>
+        <!--button class="button button-block button-positive" ng-click="openSignatureModal()">Enter Signature</button-->
+    </ion-content>
+    <button class="button button-block button-positive signature-fader" ng-hide="commitment.signature" id="b_Submit" ng-click="openSignatureModal()">Enter Signature</button>
+        <div class="card signature-fader" id="infoCard" ng-show="commitment.signature && (!commitment.name || !commitment.date)">
+            <div class="item item-text-wrap">
+                Enter your name and today's date to continue.
+            </div>
+        </div>
+    <button class="button button-block button-positive signature-fader" ng-show="commitment.signature && commitment.date && commitment.name" id="b_Submit" on-tap="saveCanvas()" on-hold="saveCanvas()">Sign</button>
 </ion-view>
