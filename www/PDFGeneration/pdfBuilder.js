@@ -3,7 +3,8 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
     var doc = {},
         pdfOutput = {},
         blob = {},
-        img64 = '';
+        page1 = '',
+        page2 = '';
     
     function save (filepath) {
         $cordovaFile.createFile(cordova.file.documentsDirectory, "JSA_Form.pdf", true);
@@ -16,17 +17,16 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
     }
     
     function BasicInfo () {
-        var gcinfo = angular.copy(formInfo.getgcinfo()),
-            subinfo = angular.copy(formInfo.getgcinfo());
+        var basicinfo = angular.copy(formInfo.getBasicInfo());
         
         doc.setFontSize(12);
-        doc.text( 40, 23.5, gcinfo.subcontractor);
-        doc.text( 47, 28, gcinfo.generalcontractor);
-        doc.text( 132, 23.5, gcinfo.crewleader);
-        doc.text( 142, 28, gcinfo.gcsuperintendent);
-        doc.text( 221, 23.5, gcinfo.projectname);
-        doc.text( 207, 28, gcinfo.basicinfostartdate);
-        doc.text( 32, 32.5, gcinfo.jobscope);
+        doc.text( 40, 23.5, basicinfo.subcontractor);
+        doc.text( 47, 28, basicinfo.generalcontractor);
+        doc.text( 132, 23.5, basicinfo.crewleader);
+        doc.text( 142, 28, basicinfo.gcsuperintendent);
+        doc.text( 221, 23.5, basicinfo.projectname);
+        doc.text( 207, 28, basicinfo.basicinfostartdate);
+        doc.text( 32, 32.5, basicinfo.jobscope);
     }
     
     function PPEInfo () {
@@ -41,19 +41,21 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
     }
     
     function StartEndDate () {
-        var gcinfo = angular.copy(formInfo.getgcinfo()),
-            subinfo = angular.copy(formInfo.getgcinfo());
+        var basicinfo = angular.copy(formInfo.getBasicInfo());
         
         doc.setFontSize(16);
-        doc.text( 125, 64.5, gcinfo.basicinfostartdate);
-        doc.text( 200, 64.5, gcinfo.basicinfoenddate);
+        doc.text( 125, 64.5, basicinfo.startdate);
+        doc.text( 200, 64.5, basicinfo.enddate);
     }
     
     function buildPDF() {
-        doc.addImage(img64, 'JPEG', 10, 10, 275, 190);
-        BasicInfo();
+        doc.addImage(page1, 'JPEG', 10, 10, 275, 190);
+        //BasicInfo();
         PPEInfo();
-        StartEndDate();
+        //StartEndDate();
+        
+        doc.addPage();
+        doc.addImage(page2, 'JPEG', 10, 10, 275, 190);
         
         doc.output('dataurlnewwindow');
         pdfOutput = doc.output("blob");      
@@ -61,32 +63,29 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
         //save("temp/JSA_Form.pdf");
     }
     
-    function onLoaded () {
-        buildPDF();
-    }
-    
     function convertImage2Base64 (url) {
         var canvas = document.createElement('CANVAS'),
             ctx = canvas.getContext('2d'),
-            img = new Image();
-        img.crossOrigin = 'Anonymous';
-        img.onload = function () {
-            var dataUrl;
-            canvas.height = img.height;
-            canvas.width = img.width;
-            ctx.drawImage(img, 0, 0);
-            dataUrl = canvas.toDataURL("image/jpeg", 0.8);
-            img64 = dataUrl;
-            canvas = null;
-            onLoaded();
-        };
+            img = new Image(),
+            dataUrl;
+        
         img.src = url;
+        img.crossOrigin = 'Anonymous';
+        var dataUrl;
+        canvas.height = img.height;
+        canvas.width = img.width;
+        ctx.drawImage(img, 0, 0);
+        dataUrl = canvas.toDataURL("image/jpeg", 0.8);
+        canvas = null;
+        return dataUrl;
     }
     
     return {
         createPdf: function () {
             doc = new jsPDF('landscape', 'mm', 'a4');
-            convertImage2Base64('./img/Page1.png');
+            page1 = convertImage2Base64('./img/page1.PNG');
+            page2 = convertImage2Base64('./img/page2.PNG')
+            buildPDF();
             return true;
         }
     };

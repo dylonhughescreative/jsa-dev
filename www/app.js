@@ -148,7 +148,7 @@ app.controller('FormWizardCtrl', function ($scope, $state) {
 app.factory('formInfo', function () {
     'use strict';
     var basicinfo = {
-            gcorsub: ""
+            gcorsub: "",    
         },
         jobelements = [],
         ppeinfo = {
