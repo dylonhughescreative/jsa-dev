@@ -47,7 +47,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $stateProvider
         .state('home', {
             url: '/home',
-            templateUrl: 'templates/Home.html',
+            templateUrl: './LandingPage/LandingPage.html',
             controller: 'HomeCtrl'
         })
         .state('formWizard', {
@@ -135,7 +135,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('overview');
+    $urlRouterProvider.otherwise('home');
 });
 
 app.factory('formInfo', function () {
