@@ -59,11 +59,16 @@
   <gap:splash src="www/res/screen/android/screen-hdpi-portrait.png" gap:platform="android" gap:qualifier="port-hdpi"/>
   <gap:splash src="www/res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:qualifier="port-xhdpi"/>
   <gap:splash src="www/res/screen/blackberry/screen-225.png" gap:platform="blackberry"/>
-  <gap:splash src="www/res/screen/ios/screen-iphone-portrait.png" gap:platform="ios" width="320" height="480"/>
-  <gap:splash src="www/res/screen/ios/screen-iphone-portrait-2x.png" gap:platform="ios" width="640" height="960"/>
-  <gap:splash src="www/res/screen/ios/screen-iphone-portrait-568h-2x.png" gap:platform="ios" width="640" height="1136"/>
-  <gap:splash src="www/res/screen/ios/screen-ipad-portrait.png" gap:platform="ios" width="768" height="1024"/>
-  <gap:splash src="www/res/screen/ios/screen-ipad-landscape.png" gap:platform="ios" width="1024" height="768"/>
+  <gap:splash src="resources\ios\splash\Default-568h@2x~iphone.png" gap:platform="ios" width="640" height="1136"/>
+  <gap:splash src="resources\ios\splash\Default-667h.png" gap:platform="ios" width="750" height="1334"/>
+  <gap:splash src="resources\ios\splash\Default-736h.png" gap:platform="ios" width="1242" height="2208"/>
+  <gap:splash src="resources\ios\splash\Default-Landscape-736h.png" gap:platform="ios" width="2208" height="1242"/>
+  <gap:splash src="resources\ios\splash\Default-Landscape@2x~ipad.png" gap:platform="ios" width="2048" height="1536"/>
+  <gap:splash src="resources\ios\splash\Default-Landscape~ipad.png" gap:platform="ios" width="1024" height="768"/>
+  <gap:splash src="resources\ios\splash\Default-Portrait@2x~ipad.png" gap:platform="ios" width="1536" height="2048"/>
+  <gap:splash src="resources\ios\splash\Default-Portrait~ipad.png" gap:platform="ios" width="768" height="1024"/>
+  <gap:splash src="resources\ios\splash\Default@2x~iphone.png" gap:platform="ios" width="640" height="960"/>
+  <gap:splash src="resources\ios\splash\Default~iphone.png" gap:platform="ios" width="320" height="480"/>
   <gap:splash src="www/res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone"/>
   <access origin="*"/>
   <feature name="Keyboard">
