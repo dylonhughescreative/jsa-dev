@@ -48,7 +48,7 @@
                         },
                         {
                             "xml": "<feature name=\"Keyboard\"><param name=\"ios-package\" onload=\"true\" value=\"IonicKeyboard\" /></feature>",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
@@ -73,6 +73,9 @@
             "PACKAGE_NAME": "com.dylonhughescreative.jsadev"
         },
         "org.apache.cordova.splashscreen": {
+            "PACKAGE_NAME": "com.dylonhughescreative.jsadev"
+        },
+        "com.ionic.keyboard": {
             "PACKAGE_NAME": "com.dylonhughescreative.jsadev"
         }
     },
