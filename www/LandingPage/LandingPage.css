@@ -3,10 +3,10 @@
     width: 100%;
     height: auto;
     opacity: 0.5;
-    top: 50%;
+    top: 40%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);    
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -40%);    
+    transform: translate(-50%, -40%);
 }
 
 #BackgroundContainer {
@@ -19,5 +19,8 @@
     #HomeBackgroundImage {
         height: 100%;
         width: auto;
+        top: 45%;
+        -webkit-transform: translate(-50%, -45%);
+        transform: translate(-50%, -45%);
     }
 }
