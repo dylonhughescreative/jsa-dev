@@ -37,6 +37,13 @@ module.exports = [
         "runs": true
     },
     {
+        "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
+        "id": "org.apache.cordova.splashscreen.SplashScreen",
+        "clobbers": [
+            "navigator.splashscreen"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
         "id": "cordova-plugin-file.DirectoryEntry",
         "clobbers": [
@@ -190,6 +197,7 @@ module.exports.metadata =
     "cordova-plugin-file-transfer": "1.2.1",
     "cordova-plugin-screen-orientation": "1.4.0",
     "ionic-plugin-keyboard": "1.0.7",
+    "org.apache.cordova.splashscreen": "1.0.0",
     "cordova-plugin-file": "3.0.0"
 }
 // BOTTOM OF METADATA

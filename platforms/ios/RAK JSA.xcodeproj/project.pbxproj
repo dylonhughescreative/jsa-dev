@@ -46,6 +46,7 @@
 		2314FE8D82014111BF36DB29 /* YoikScreenOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 74694AEFE11047C79C777041 /* YoikScreenOrientation.m */; };
 		6D35B06449C64D0C8CABA3A3 /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC6217BE27F4BEE8261EA27 /* IonicKeyboard.m */; };
 		3D322E9C8DCF458D9502090B /* UIWebViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A773960EE74995ACD2AB73 /* UIWebViewExtension.m */; };
+		5FD8FB9D50AD40CC951E0167 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 121EDE303B42459D927361D2 /* CDVSplashScreen.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,8 @@
 		02A773960EE74995ACD2AB73 /* UIWebViewExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIWebViewExtension.m"; path = "ionic-plugin-keyboard/UIWebViewExtension.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		4F172C2DC7D84320858329FC /* IonicKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "IonicKeyboard.h"; path = "ionic-plugin-keyboard/IonicKeyboard.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		4ACF6A31DC9B429C8C8B6F0E /* UIWebViewExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIWebViewExtension.h"; path = "ionic-plugin-keyboard/UIWebViewExtension.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		121EDE303B42459D927361D2 /* CDVSplashScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVSplashScreen.m"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		5D8861CDA6814BF881B0A3C3 /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +240,8 @@
 				02A773960EE74995ACD2AB73 /* UIWebViewExtension.m */,
 				4F172C2DC7D84320858329FC /* IonicKeyboard.h */,
 				4ACF6A31DC9B429C8C8B6F0E /* UIWebViewExtension.h */,
+				121EDE303B42459D927361D2 /* CDVSplashScreen.m */,
+				5D8861CDA6814BF881B0A3C3 /* CDVSplashScreen.h */,
 			);
 			name = Plugins;
 			path = "RAK JSA/Plugins";
@@ -428,6 +433,7 @@
 				2314FE8D82014111BF36DB29 /* YoikScreenOrientation.m in Sources */,
 				6D35B06449C64D0C8CABA3A3 /* IonicKeyboard.m in Sources */,
 				3D322E9C8DCF458D9502090B /* UIWebViewExtension.m in Sources */,
+				5FD8FB9D50AD40CC951E0167 /* CDVSplashScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
