@@ -138,13 +138,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $urlRouterProvider.otherwise('overview');
 });
 
-app.controller('FormWizardCtrl', function ($scope, $state) {
-    'use strict';
-    $scope.next = function (state) {
-        $state.go(state);
-    };
-});
-
 app.factory('formInfo', function () {
     'use strict';
     var basicinfo = {
