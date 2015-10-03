@@ -1,6 +1,6 @@
 app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate) {
     'use strict';
-    $scope.next = function (state) {
+    $scope.GoTo = function (state) {
         $state.go(state);
     };
     
