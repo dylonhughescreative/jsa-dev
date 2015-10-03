@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.dylonhughescreative.jsadev" version="1.0.0">
   <name>RAK JSA</name>
   <description>An app interface for filling out Job Safety Analysis forms.</description>
@@ -64,7 +65,7 @@
   <gap:splash src="www/res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone"/>
   <access origin="*"/>
   <feature name="Keyboard">
-      <param name="ios-package" value="CDVKeyboard" onload="true"/>
+    <param name="ios-package" value="CDVKeyboard" onload="true"/>
   </feature>
   <plugin name="cordova-plugin-whitelist" version="1"/>
   <allow-intent href="http://*/*"/>
@@ -79,5 +80,15 @@
   <platform name="ios">
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
+    <splash src="resources\ios\splash\Default-568h@2x~iphone.png" width="640" height="1136"/>
+    <splash src="resources\ios\splash\Default-667h.png" width="750" height="1334"/>
+    <splash src="resources\ios\splash\Default-736h.png" width="1242" height="2208"/>
+    <splash src="resources\ios\splash\Default-Landscape-736h.png" width="2208" height="1242"/>
+    <splash src="resources\ios\splash\Default-Landscape@2x~ipad.png" width="2048" height="1536"/>
+    <splash src="resources\ios\splash\Default-Landscape~ipad.png" width="1024" height="768"/>
+    <splash src="resources\ios\splash\Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
+    <splash src="resources\ios\splash\Default-Portrait~ipad.png" width="768" height="1024"/>
+    <splash src="resources\ios\splash\Default@2x~iphone.png" width="640" height="960"/>
+    <splash src="resources\ios\splash\Default~iphone.png" width="320" height="480"/>
   </platform>
 </widget>
