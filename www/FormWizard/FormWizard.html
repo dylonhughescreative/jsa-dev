@@ -4,15 +4,10 @@
             <h1 class="title">Completion Steps</h1>
         </ion-header-bar>
         <ion-content scroll="false">
-            <div class="checkboxlist">
-                <ul class="list">
-                    <li class="item item-checkbox" ng-repeat="step in wizardSteps">
-                        <label class="checkbox">
-                            <input type="checkbox">
-                        </label>
-                        {{step.title}}
-                    </li>
-                </ul>
+            <div class="list list-inset">
+                <a class="item" ng-click="GoToPage(step.link)" ng-repeat="step in wizardSteps">
+                    {{step.title}}
+                </a>
             </div>
         </ion-content>
     </ion-side-menu>
