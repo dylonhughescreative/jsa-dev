@@ -1,0 +1,11 @@
+.fader {
+    opacity: 1;
+}
+
+.fader.ng-hide-add, .fader.ng-hide-remove {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fader.ng-hide {
+    opacity: 0;
+}
