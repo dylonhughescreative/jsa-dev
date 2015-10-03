@@ -60,9 +60,6 @@
         }
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.dylonhughescreative.jsadev"
-        },
         "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.dylonhughescreative.jsadev"
         },
@@ -70,6 +67,9 @@
             "PACKAGE_NAME": "com.dylonhughescreative.jsadev"
         },
         "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.dylonhughescreative.jsadev"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.dylonhughescreative.jsadev"
         },
         "org.apache.cordova.splashscreen": {
