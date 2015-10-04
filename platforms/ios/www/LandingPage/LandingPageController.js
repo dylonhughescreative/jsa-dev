@@ -1,14 +1,13 @@
-app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $cordovaSplashscreen) {
+app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $cordovaSplashscreen, $ionicPlatform) {
     'use strict';
     $scope.GoTo = function (state) {
         $state.go(state);
     };
     
-    document.addEventListener("deviceready", function () {
-        setTimeout(function() {
-            $cordovaSplashscreen.hide();
-        }, 2000);
-    });
+    $ionicPlatform.ready(function() {
+        $cordovaSplashscreen.hide();
+        $scope.$digest;
+    }
     
     $scope.helpShow = false;
     
