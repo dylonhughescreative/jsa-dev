@@ -6,7 +6,7 @@ app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate) {
     
     angular.element(document).ready(function() {
         navigator.splashscreen.hide();
-    }
+    });
     
     $scope.helpShow = false;
     
