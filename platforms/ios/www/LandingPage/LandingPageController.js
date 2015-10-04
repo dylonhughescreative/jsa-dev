@@ -1,11 +1,11 @@
-app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $cordovaSplashscreen) {
+app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate) {
     'use strict';
     $scope.GoTo = function (state) {
         $state.go(state);
     };
     
     angular.element(document).ready(function() {
-        $cordovaSplashscreen.hide();
+        navigator.splashscreen.hide();
     }
     
     $scope.helpShow = false;
