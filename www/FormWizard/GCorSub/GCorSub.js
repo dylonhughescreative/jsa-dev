@@ -1,4 +1,4 @@
-app.controller('GCorSub', function ($scope, formInfo) {
+app.controller('GCorSub', function ($scope, $rootScope, formInfo) {
     'use strict';
     $scope.onclick = function (state) {
         var BasicInfo = formInfo.getBasicInfo();
