@@ -43,6 +43,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     'use strict';
     
     $ionicConfigProvider.scrolling.jsScrolling(true);
+    $ionicConfigProvider.views.swipeBackEnabled(false);
     
     $stateProvider
         .state('home', {
