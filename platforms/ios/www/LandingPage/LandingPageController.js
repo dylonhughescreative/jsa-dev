@@ -4,7 +4,7 @@ app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $co
         $state.go(state);
     };
     
-    angular.element(document).ready(function() {
+    document.addEventListener("deviceready", function () {
         $cordovaSplashscreen.hide();
     });
     
