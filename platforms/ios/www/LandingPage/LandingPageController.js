@@ -5,8 +5,10 @@ app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $co
     };
     
     $ionicPlatform.ready(function() {
-        $cordovaSplashscreen.hide();
-        $scope.$digest;
+        setTimeout(function() {
+            $cordovaSplashscreen.hide();
+            $scope.$digest;
+        }, 2000);
     });
     
     $scope.helpShow = false;
