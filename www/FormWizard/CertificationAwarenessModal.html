@@ -3,15 +3,16 @@
 
     <!-- Modal header bar -->
     <ion-header-bar class="bar-secondary">
-      <button class="button button-clear button-positive" ng-click="closeCertificationModal()">Back</button>
+      <button class="button button-clear button-positive" ng-click="closeCertModalAndBack()">Back</button>
       <h1 class="title">Contractor Certification</h1>
+      <button class="button button-clear button-positive" on-tap="closeCertModal()">Accept</button>
     </ion-header-bar>
 
     <!-- Modal content area -->
-    <ion-content scroll="false" id="SignatureModal">
+    <ion-content direction="y" id="CertificationModal">
         <div class="card list">
             <div class="item">
-                <h2 style="text-align: center">Contractor Certification</h2>
+                <h1 style="text-align: center">Contractor Certification</h1>
             </div>
             <div class="item item-text-wrap">
                 <p>
@@ -20,6 +21,5 @@
                 </p>
             </div>
         </div>
-        <button class="button button-block button-positive" id="CertifyButton" on-tap="closeCertModal()">I Understand</button>
     </ion-content>
   </div>

@@ -1,4 +1,4 @@
-app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicModal, $ionicPopup, formInfo) {
+app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicModal, $ionicPopup, $document, formInfo) {
     'use strict';
     
     $scope.signatures = angular.copy(formInfo.getSignatures());
@@ -34,8 +34,10 @@ app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicM
         var sigImg = signaturePad.toDataURL("image/png", 1);
         $scope.commitment.signature = sigImg;
         $scope.signatureModal.hide();
-        //var so = cordova.plugins.screenorientation;
-        //so.setOrientation('unlocked');
+        if (window.cordova) {
+            var so = cordova.plugins.screenorientation;
+            so.setOrientation('unlocked');
+        }
     }
     
     $scope.openCertModal = function() {
@@ -44,6 +46,15 @@ app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicM
     
     $scope.closeCertModal = function() {
         $scope.certificationModal.hide();
+    }
+    
+    $scope.closeCertModalAndBack = function() {
+        $scope.certificationModal.hide();
+        if (window.cordova) {
+            var so = cordova.plugins.screenorientation;
+            so.setOrientation('landscape');
+        }
+        $state.go('verify');
     }
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
@@ -57,8 +68,10 @@ app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicM
     }
     
     $scope.openSignatureModal = function() {
-        //var so = cordova.plugins.screenorientation;
-        //so.setOrientation('landscape');
+        if (window.cordova) { 
+            var so = cordova.plugins.screenorientation;
+            so.setOrientation('landscape');
+        }
         $scope.signatureModal.show();
         var canvas = document.getElementById('signatureCanvas');
         signaturePad = new SignaturePad(canvas);
@@ -77,22 +90,30 @@ app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicM
             signature: $scope.commitment.signature    
         });
         formInfo.setSignatures($scope.signatures);
-        //var so = cordova.plugins.screenorientation;
-        //so.setOrientation('landscape');
+        if (window.cordova) {
+            var so = cordova.plugins.screenorientation;
+            so.setOrientation('landscape');
+        }
         $state.go(stateController.nextstate);
     }
     
     $scope.back = function () {
-        //var so = cordova.plugins.screenorientation;
-        //so.setOrientation('landscape');
+        if (window.cordova) {
+            var so = cordova.plugins.screenorientation;
+            so.setOrientation('landscape');
+        }
         $state.go('verify');
     };
     
     function refresh() {
         var ModalDimensions = document.getElementById('SignatureModal');
-        $scope.sigCanvas.width = ModalDimensions.offsetWidth - ModalDimensions.offsetWidth*0.02;
-        $scope.sigCanvas.height =  ModalDimensions.offsetHeight * 0.5;
-        $scope.$apply();
+        if (ModalDimensions != null) {
+            $scope.sigCanvas.width = ModalDimensions.offsetWidth - ModalDimensions.offsetWidth*0.02;
+            $scope.sigCanvas.height =  ModalDimensions.offsetHeight * 0.5;
+            $scope.$apply();
+        }
     }
     angular.element($window).bind('resize', refresh);
+    if ($scope.certificationModal)
+        $scope.openCertModal();
 });
