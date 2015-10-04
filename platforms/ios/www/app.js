@@ -10,15 +10,16 @@ app.run(function ($ionicPlatform, $state, $window) {
     'use strict';
     var cordova, StatusBar;
     $ionicPlatform.ready(function () {
+        // We do this now in GC or Sub because of a plugins exception I was getting 10/4/15
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
-        if (window.cordova && window.cordova.plugins.Keyboard) {
-            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            cordova.plugins.Keyboard.disableScroll(true);
-        }
-        if (window.StatusBar) {
-            StatusBar.hide();
-        }
+        //if (window.cordova && window.cordova.plugins.Keyboard) {
+        //    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        //    cordova.plugins.Keyboard.disableScroll(true);
+        //}
+        //if (window.StatusBar) {
+        //    StatusBar.hide();
+        //}
     });
     
     //function onScreenSizeChange() {
