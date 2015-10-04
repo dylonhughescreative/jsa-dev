@@ -6,13 +6,6 @@ app.controller('GCinfoCtrl', function ($rootScope, $scope, formInfo) {
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
         $scope.completedElements = angular.copy(formInfo.getcompletedElements());
-        if (window.cordova && window.cordova.plugins.Keyboard) {
-            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            cordova.plugins.Keyboard.disableScroll(true);
-        }
-        if (window.StatusBar) {
-            StatusBar.hide();
-        }
     });
     
     function verify() {

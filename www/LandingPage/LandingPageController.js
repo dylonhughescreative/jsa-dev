@@ -4,4 +4,6 @@ app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate) {
         $state.go(state);
     };
     
+    $scope.helpShow = false;
+    
 });

@@ -5,10 +5,20 @@ app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicM
     $scope.commitment = { };
     
     $ionicModal.fromTemplateUrl('./FormWizard/SignatureModal.html', {
+        id: "1",
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function (modal) {
         $scope.signatureModal = modal;
+    });
+    
+    $ionicModal.fromTemplateUrl('./FormWizard/CertificationAwarenessModal.html', {
+        id: "2",
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.certificationModal = modal;
+        $scope.openCertModal();
     });
     
     $scope.sigCanvas = {
@@ -26,6 +36,14 @@ app.controller('SigCtrl', function ($rootScope, $scope, $state, $window, $ionicM
         $scope.signatureModal.hide();
         //var so = cordova.plugins.screenorientation;
         //so.setOrientation('unlocked');
+    }
+    
+    $scope.openCertModal = function() {
+        $scope.certificationModal.show();
+    }
+    
+    $scope.closeCertModal = function() {
+        $scope.certificationModal.hide();
     }
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 

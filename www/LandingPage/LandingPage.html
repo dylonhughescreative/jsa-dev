@@ -1,26 +1,39 @@
 <ion-view view-title="JSA Form Dashboard">
-    <ion-content scroll=false>
+    <ion-content>
         <div id="BackgroundContainer">
             <img id="HomeBackgroundImage" src="./img/RAKSplash.png" />
             <div id="HomeListContainer">
                 <div class="list card">
-                    <a class="item item-icon-left" ng-click="GoTo('formWizard.GCorSub')">
+                    <a nav-transition="ios" class="item item-icon-left" on-tap="GoTo('formWizard.GCorSub')">
                         <i class="icon ion-ios-compose-outline"></i>
                         Create New JSA Form
                     </a>
-                    <a class="item item-icon-left">
+                    <a nav-transition="ios" class="item item-icon-left">
                         <i class="icon ion-ios-folder-outline"></i>
                         View Past JSA Forms
                     </a>
-                    <a class="item item-icon-left">
+                    <a nav-transition="ios" class="item item-icon-left">
                         <i class="icon ion-ios-gear-outline"></i>
                         Settings
                     </a>
-                    <a class="item item-icon-left item-icon-right">
+                    <a nav-transition="ios" class="item item-icon-left item-icon-right" on-tap="helpShow = !helpShow;">
                         <i class="icon ion-ios-help-outline"></i>
                         View Help
                         <i class="icon ion-ios-arrow-down"></i>
                     </a>
+                </div>
+                <div class="card ng-hide" ng-show="helpShow">
+                    <div class="item item-text-wrap">
+                        <h3>Job Safety Analysis Forms</h3><br>
+                        <p>
+                            -  Select the Create New Form option above, then follow the steps to enter your information.<br><br> 
+                            -  Once all of the information has been entered, the form will appear with the information already in place.<br><br>
+                            -  Certify that the form is valid using the Approve button.<br><br>-  After the form is certified, each employee can add their signature to the form.<br><br>
+                            -  Once the form is completed, certified, and signed, it can be submitted using the submit button.
+                        </p>
+                        <br>
+                        <p>For more information, please visit rakdivisions.com or send an email to info@rakdivisions.com</p>
+                    </div>
                 </div>
             </div>
         </div>
