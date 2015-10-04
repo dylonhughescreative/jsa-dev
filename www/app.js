@@ -34,6 +34,12 @@ app.run(function ($ionicPlatform, $state, $window) {
     //angular.element($window).bind('load', onScreenSizeChange);
 });
 
+app.run(function ($cordovaSplashscreen) {
+    setTimeout(function() {
+        $cordovaSplashscreen.hide()
+    }, 2000)
+});
+
 app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
     // Ionic uses AngularUI Router which uses the concept of states
