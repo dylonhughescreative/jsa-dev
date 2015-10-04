@@ -5,7 +5,9 @@ app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $co
     };
     
     document.addEventListener("deviceready", function () {
-        $cordovaSplashscreen.hide();
+        setTimeout(function() {
+            $cordovaSplashscreen.hide();
+        }, 2000);
     });
     
     $scope.helpShow = false;
