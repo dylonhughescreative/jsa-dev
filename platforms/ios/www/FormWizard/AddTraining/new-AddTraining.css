@@ -1,0 +1,21 @@
+.training-fader {
+    opacity: 1;
+}
+
+.training-fader.ng-hide-add, .training-fader.ng-hide-remove {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.training-fader.ng-hide {
+    opacity: 0;
+}
+
+#SaveTrainingButton {
+    position: fixed;
+    width: 98%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 1%;
+    padding: 0;
+}

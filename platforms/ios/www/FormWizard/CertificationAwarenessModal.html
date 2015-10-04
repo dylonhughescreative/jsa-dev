@@ -1,0 +1,25 @@
+ <link href="FormWizard/Signature.css" rel="stylesheet">
+  <div class="modal">
+
+    <!-- Modal header bar -->
+    <ion-header-bar class="bar-secondary">
+      <button class="button button-clear button-positive" ng-click="closeCertModalAndBack()">Back</button>
+      <h1 class="title">Contractor Certification</h1>
+      <button class="button button-clear button-positive" on-tap="closeCertModal()">Accept</button>
+    </ion-header-bar>
+
+    <!-- Modal content area -->
+    <ion-content direction="y" id="CertificationModal">
+        <div class="card list">
+            <div class="item">
+                <h1 style="text-align: center">Contractor Certification</h1>
+            </div>
+            <div class="item item-text-wrap">
+                <p>
+                    By certifying and signing this form, you state to the best of your knowledge that the information entered is correct and valid.<br><br>
+                    After entering your signature, the form will become read-only so that it cannot be edited after employee signatures have been added.
+                </p>
+            </div>
+        </div>
+    </ion-content>
+  </div>

@@ -1,0 +1,33 @@
+  <link href="FormWizard/AddTraining/new-AddTraining.css" rel="stylesheet">
+  <div class="modal">
+
+    <!-- Modal header bar -->
+    <ion-header-bar class="bar-secondary">
+      <h1 class="title">Add Training</h1>
+      <button class="button button-clear button-positive" ng-click="closeTraining()">Cancel</button>
+    </ion-header-bar>
+
+    <!-- Modal content area -->
+    <ion-content direction="y" id="ModalContentJobElement">
+
+      <form ng-submit="createTask(jobElement)" id="NewTrainingForm">
+            <div class="item item-divider">
+                Training Name
+            </div>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Training</span>
+              <input type="text" placeholder="What's this training called?" ng-model="TempTrainingInfo.name">
+            </label>
+            <div class="item item-divider">
+                Training Delivery Date
+            </div>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Date</span>
+              <input type="date" placeholder="When is this training taking place?" ng-model="TempTrainingInfo.date">
+            </label>
+      </form>
+    </ion-content>
+      <div id="JobElementAddModal">
+          <button type="submit" form="NewTrainingForm" class="button button-block button-positive fader" id="SaveTrainingButton" ng-click="AddToTraining(TempTrainingInfo)">Add To Training</button>
+      </div>
+  </div>

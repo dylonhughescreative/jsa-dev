@@ -1,0 +1,54 @@
+<ion-view title="Overview">
+    <ion-content direction="y" class="submission-content">
+        <a on-tap="GCorSub()" class="item item-icon-left">
+            <i data-ng-if="completedElements.BasicInfo === 'invalid'" class="icon ion-close incompleteicon"></i>
+            <i data-ng-if="completedElements.BasicInfo === 'valid'" class="icon ion-checkmark completeicon"></i>
+            <i data-ng-if="completedElements.BasicInfo === 'pending'" class="icon ion-minus pendingicon"></i>
+            General Information
+        </a>
+        <a on-tap="onclick('formWizard.PPE')" class="item item-icon-left">
+            <i data-ng-if="completedElements.PPEAssess === 'invalid'" class="icon ion-close incompleteicon"></i>
+            <i data-ng-if="completedElements.PPEAssess === 'valid'" class="icon ion-checkmark completeicon"></i>
+            <i data-ng-if="completedElements.PPEAssess === 'pending'" class="icon ion-minus pendingicon"></i>
+            PPE Assessment
+        </a>
+        <a on-tap="onclick('formWizard.JobElements')" class="item item-icon-left">
+            <i data-ng-if="completedElements.JobElements === 'invalid'" class="icon ion-close incompleteicon"></i>
+            <i data-ng-if="completedElements.JobElements === 'valid'" class="icon ion-checkmark completeicon"></i>
+            <i data-ng-if="completedElements.JobElements === 'pending'" class="icon ion-minus pendingicon"></i>
+            Job Elements
+        </a>
+        <a on-tap="onclick('formWizard.TrainReq')" class="item item-icon-left">
+            <i data-ng-if="completedElements.TrainReqs === 'invalid'" class="icon ion-close incompleteicon"></i>
+            <i data-ng-if="completedElements.TrainReqs === 'valid'" class="icon ion-checkmark completeicon"></i>
+            <i data-ng-if="completedElements.TrainReqs === 'pending'" class="icon ion-minus pendingicon"></i>
+            Training Requirements
+        </a>
+        <a on-tap="onclick('formWizard.LicReq')" class="item item-icon-left">
+            <i data-ng-if="completedElements.LicReqs === 'invalid'" class="icon ion-close incompleteicon"></i>
+            <i data-ng-if="completedElements.LicReqs === 'valid'" class="icon ion-checkmark completeicon"></i>
+            <i data-ng-if="completedElements.LicReqs === 'pending'" class="icon ion-minus pendingicon"></i>
+            License Requirements
+        </a>
+<a on-tap="onclick('formWizard.AreaConcerns')" class="item item-icon-left">
+            <i data-ng-if="completedElements.AreaConcerns === 'invalid'" class="icon ion-close incompleteicon"></i>
+            <i data-ng-if="completedElements.AreaConcerns === 'valid'" class="icon ion-checkmark completeicon"></i>
+            <i data-ng-if="completedElements.AreaConcerns === 'pending'" class="icon ion-minus pendingicon"></i>
+            Area Concerns
+        </a>
+        <a on-tap="onclick('formWizard.AddTraining')" class="item item-icon-left">
+            <i data-ng-if="completedElements.AddTraining === 'invalid'" class="icon ion-close incompleteicon"></i>
+            <i data-ng-if="completedElements.AddTraining === 'valid'" class="icon ion-checkmark completeicon"></i>
+            <i data-ng-if="completedElements.AddTraining === 'pending'" class="icon ion-minus pendingicon"></i>
+            Additional Training
+        </a>
+    </ion-content>  
+    <button data-ng-if="formcomplete" class="button button-block button-positive" id="b_Verify" on-tap="verified()" on-hold="verified()">Verify</button>
+    <div data-ng-if="!formcomplete" id="HelpCard" class="fader">
+        <div class="card">
+            <div class="item item-text-wrap">
+                You need to complete all elements to continue.
+            </div>
+        </div>
+    </div>
+</ion-view>

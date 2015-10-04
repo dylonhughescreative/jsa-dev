@@ -48,7 +48,7 @@
                         },
                         {
                             "xml": "<feature name=\"Keyboard\"><param name=\"ios-package\" onload=\"true\" value=\"IonicKeyboard\" /></feature>",
-                            "count": 2
+                            "count": 1
                         },
                         {
                             "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
@@ -66,16 +66,13 @@
         "cordova-plugin-screen-orientation": {
             "PACKAGE_NAME": "com.dylonhughescreative.jsadev"
         },
-        "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "com.dylonhughescreative.jsadev"
-        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.dylonhughescreative.jsadev"
         },
-        "org.apache.cordova.splashscreen": {
+        "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.dylonhughescreative.jsadev"
         },
-        "com.ionic.keyboard": {
+        "org.apache.cordova.splashscreen": {
             "PACKAGE_NAME": "com.dylonhughescreative.jsadev"
         }
     },

@@ -1,0 +1,72 @@
+<ion-view view-title="PPE">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-ios-list-outline"></button>
+    </ion-nav-buttons>
+    <ion-content direction="y" class="submission-content">  
+    <div class="checkboxlist">
+        <ul class="list">
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.None" on-tap="checkchanged_none()" on-hold="checkchanged_none()">
+                None
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.cm_EyeProtection" on-tap="checkchanged()" on-hold="checkchanged()">                        
+                Eye Protection
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.cm_ChemGoggles" on-tap="checkchanged()" on-hold="checkchanged()">
+                Chem. Goggles
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.cm_HardHat" on-tap="checkchanged()" on-hold="checkchanged()">
+                Hard Hat
+            </ion-checkbox>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Respirator Type
+                </div>
+                <select ng-options="options for options in respiratorOptions" ng-model="tempPPEinfo.cb_RespiratorType" ng-change="respiratorTypeChanged()">
+                    <option selected>N/A</option>
+                </select>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Gloves Type
+                </div>
+                <select ng-options="options for options in gloveOptions" ng-model="tempPPEinfo.cb_GlovesType" ng-change="gloveTypeChanged()">
+                    <option selected>N/A</option>
+                </select>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Clothing
+                </div>
+                <select ng-options="options for options in clothingOptions" ng-model="tempPPEinfo.cb_Clothing" ng-change="clothingTypeChanged()">
+                    <option selected>N/A</option>
+                </select>
+            </label>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.cm_ProtectiveToe" on-tap="checkchanged()" on-hold="checkchanged()">
+                Protective Toe
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.cm_HearingProtection" on-tap="checkchanged()" on-hold="checkchanged()">
+                Hearing Protection
+            </ion-checkbox>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Chem. Clothing
+                </div>
+                <select ng-options="options for options in chemclothingOptions" ng-model="tempPPEinfo.cb_ChemClothing" ng-change="chemclothingTypeChanged()">
+                    <option selected>N/A</option>
+                </select>
+            </label>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.cm_HarnessLanyard" on-tap="checkchanged()" on-hold="checkchanged()">
+                Harness/Lanyard
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="tempPPEinfo.cm_FaceShield" on-tap="checkchanged()" on-hold="checkchanged()">
+                Face Shield
+            </ion-checkbox>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Other</span>
+                <input type="text" placeholder="Enter any other PPE not included in this list." ng-model="tempPPEinfo.tb_Other" ng-change="otherTextChanged()">
+            </label>
+        </ul>
+    </div>
+</ion-content>
+<button class="button button-block button-positive" id = "b_Submit" on-tap="check('formWizard.JobElements')" on-hold="check('formWizard.JobElements')">Next</button>
+</ion-view>
