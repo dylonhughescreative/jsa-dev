@@ -7,7 +7,7 @@ app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $co
     $ionicPlatform.ready(function() {
         $cordovaSplashscreen.hide();
         $scope.$digest;
-    }
+    });
     
     $scope.helpShow = false;
     
