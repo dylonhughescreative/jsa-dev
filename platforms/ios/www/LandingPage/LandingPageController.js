@@ -4,6 +4,12 @@ app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate) {
         $state.go(state);
     };
     
+    $scope.$on('$ionicView.loaded', function($cordovaSplashscreen) {
+        ionic.Platform.ready( function() {
+            $cordovaSplashscreen.hide();
+        });
+    });
+    
     $scope.helpShow = false;
     
 });

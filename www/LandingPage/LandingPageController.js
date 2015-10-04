@@ -4,10 +4,9 @@ app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $io
         $state.go(state);
     };
     
-    $scope.$on('$ionicView.loaded', function() {
+    $scope.$on('$ionicView.loaded', function($cordovaSplashscreen) {
         ionic.Platform.ready( function() {
-            if (navigator && navigator.splashscreen)
-                navigator.splashscreen.hide();
+            $cordovaSplashscreen.hide();
         });
     });
     
