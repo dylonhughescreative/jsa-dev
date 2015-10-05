@@ -29,6 +29,12 @@
     overflow: hidden;
 }
 
+.invalid-text {
+    border-width: 5px;
+    border-style: solid;
+    border-color: red;
+}
+
 
 /*----Buttons----*/
 
@@ -681,4 +687,14 @@
     height: 4%;
     top: 92.5%;
     left: 64%;
+}
+
+#CertifyButton {
+    position: fixed;
+    width: 98%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 1%;
+    padding: 0;
 }
