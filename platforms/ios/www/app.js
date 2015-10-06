@@ -143,55 +143,176 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 app.factory('formInfo', function () {
     'use strict';
     var basicinfo = {
-            gcorsub: "",    
+            gcorsub: "",
+            subcontractor: "sub",
+            username: "pho",
+            companyname: "corp",
+            crewleader: "crewlead",
+            projectname: "project",
+            generalcontractor: "gencon",
+            gcsuperintendent: "sitesuper",
+            startdate: "01/01/01",
+            jobscope: "jobgoals",
+            enddate: "02/02/02"
         },
-        jobelements = [],
+        jobelements = [
+            {
+                name: "Job Element 1",
+                items: [
+                    {
+                        title: "Task 1",
+                        hazards: "Hazards 1",
+                        control: "Control 1"
+                    },
+                    {
+                        title: "Task 2",
+                        hazards: "Hazards 2",
+                        control: "Control 2"
+                    },
+                    {
+                        title: "Task 3",
+                        hazards: "Hazards 3",
+                        control: "Control 3"
+                    }
+                ]
+            },
+            {
+                name: "Job Element 2",
+                items: [
+                    {
+                        title: "Task 1",
+                        hazards: "Hazards 1",
+                        control: "Control 1"
+                    },
+                    {
+                        title: "Task 2",
+                        hazards: "Hazards 2",
+                        control: "Control 2"
+                    },
+                    {
+                        title: "Task 3",
+                        hazards: "Hazards 3",
+                        control: "Control 3"
+                    }
+                ]
+            },
+            {
+                name: "Job Element 3",
+                items: [
+                    {
+                        title: "Task 1",
+                        hazards: "Hazards 1",
+                        control: "Control 1"
+                    },
+                    {
+                        title: "Task 2",
+                        hazards: "Hazards 2",
+                        control: "Control 2"
+                    },
+                    {
+                        title: "Task 3",
+                        hazards: "Hazards 3",
+                        control: "Control 3"
+                    }
+                ]
+            },
+            {
+                name: "Job Element 4",
+                items: [
+                    {
+                        title: "Task 1",
+                        hazards: "Hazards 1",
+                        control: "Control 1"
+                    },
+                    {
+                        title: "Task 2",
+                        hazards: "Hazards 2",
+                        control: "Control 2"
+                    },
+                    {
+                        title: "Task 3",
+                        hazards: "Hazards 3",
+                        control: "Control 3"
+                    }
+                ]
+            }
+        ],
         ppeinfo = {
-            cm_EyeProtection: false,
-            cm_ChemGoggles: false,
-            cm_HardHat: false,
+            cm_EyeProtection: true,
+            cm_ChemGoggles: true,
+            cm_HardHat: true,
             cb_RespiratorType: 'N/A',
             cb_GlovesType: 'N/A',
             cb_Clothing: 'N/A',
-            cm_ProtectiveToe: false,
-            cm_HearingProtection: false,
+            cm_ProtectiveToe: true,
+            cm_HearingProtection: true,
             cb_ChemClothing: 'N/A',
-            cm_HarnessLanyard: false,
-            cm_FaceShield: false,
+            cm_HarnessLanyard: true,
+            cm_FaceShield: true,
             tb_Other: ''
         },
         trainReqs = {
-            RedTag: false,
-            ConfinedSpace: false,
-            Scaffold: false,
-            FireWatch: false,
-            AerialLift: false,
-            DriverSafety: false,
-            Flagger: false,
-            SWP: false,
-            SPO: false,
-            Rigger: false,
-            ForkLift: false,
-            cm_Other: false,
+            RedTag: true,
+            ConfinedSpace: true,
+            Scaffold: true,
+            FireWatch: true,
+            Flagger: true,
+            AerialLift: true,
+            DriverSafety: true,
+            SWP: true,
+            SPO: true,
+            Rigger: true,
+            ForkLift: true,
+            cm_Other: true,
             tb_Other: ''
         },
         licReqs = {
-            ForkLift: false,
-            AerialLift: false,
-            cm_Crane: false,
+            ForkLift: true,
+            AerialLift: true,
+            cm_Crane: true,
             cb_Crane: 'N/A',
-            cm_HeavyEquip: false,
+            cm_HeavyEquip: true,
             cb_HeavyEquip: 'N/A',
-            cm_Other: false,
+            cm_Other: true,
             tb_Other: ''
         },
         areaConcerns = {
-            lineofFire: [],
-            sensEquip: [],
-            fallHazards: []
+            lineofFire: ["lof1","lof2","lof3"],
+            sensEquip: ["equip1","equip2","equip3"],
+            fallHazards: ["hazard1","hazard2","hazard3"]
         },
         addTraining = {
-            AddTraining: [],
+            AddTraining: [ {
+                        name: "name 1",
+                        date: "01/01/01",
+                        
+                    },
+                    {
+                        name: "name 2",
+                        date: "02/02/02",
+                        
+                    },
+                    {
+                        name: "name 3",
+                        date: "03/03/03",
+                        
+                    },
+                    {
+                        name: "name 4",
+                        date: "04/04/04",
+                        
+                    },
+                    {
+                        name: "name 5",
+                        date: "05/05/05",
+                        
+                    },
+                    {
+                        name: "name 6",
+                        date: "06/06/06",
+                        
+                    }],
+            
             None: false
         },
         signatures = [],
