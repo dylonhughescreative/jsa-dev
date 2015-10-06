@@ -1,4 +1,4 @@
-app.controller('FormWizardCtrl', function ($scope, $state, $ionicSideMenuDelegate) {
+app.controller('FormWizardCtrl', function ($scope, $state, $ionicSideMenuDelegate, formInfo) {
     'use strict';
     $scope.next = function (state) {
         $state.go(state);
@@ -38,8 +38,15 @@ app.controller('FormWizardCtrl', function ($scope, $state, $ionicSideMenuDelegat
                link: 'overview'
            },
     ];
+    
     $scope.GoToPage = function (state)
     {
+        if(state == "formWizard.GCorSub") {
+            if(formInfo.getBasicInfo().gcorsub != "") {
+                state = formInfo.getBasicInfo().gcorsub;
+            }
+        }
+            
         $state.go(state);
         $ionicSideMenuDelegate.toggleLeft(false);
     }
