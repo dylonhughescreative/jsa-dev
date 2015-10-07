@@ -321,27 +321,27 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
         for (var i=0; i < addTraining.AddTraining.length;i++) {
            if (i==0) {
                doc.text(16.5,71,addTraining.AddTraining[0].name);
-               doc.text(235.5,71,addTraining.AddTraining[0].date | "MM/dd/yyyy");
+               doc.text(235.5,71,addTraining.AddTraining[0].date.toString());
            }
            if (i==1) {
                doc.text(16.5,75.5,addTraining.AddTraining[1].name);
-               doc.text(235.5,75.5,addTraining.AddTraining[1].date | "MM/dd/yyyy");
+               doc.text(235.5,75.5,addTraining.AddTraining[1].date.toString());
            }
            if (i==2) {
                doc.text(16.5,80.5,addTraining.AddTraining[2].name);
-               doc.text(235.5,80.5,addTraining.AddTraining[2].date | "MM/dd/yyyy");
+               doc.text(235.5,80.5,addTraining.AddTraining[2].date.toString());
            }
            if (i==3) {
                doc.text(16.5,85.5,addTraining.AddTraining[3].name);
-               doc.text(235.5,85.5,addTraining.AddTraining[3].date | "MM/dd/yyyy");
+               doc.text(235.5,85.5,addTraining.AddTraining[3].date.toString());
            }
            if (i==4) {
                doc.text(16.5,90.5,addTraining.AddTraining[4].name);
-               doc.text(235.5,90.5,addTraining.AddTraining[4].date | "MM/dd/yyyy");
+               doc.text(235.5,90.5,addTraining.AddTraining[4].date.toString());
            }
            if (i==5) {
                doc.text(16.5,94.5,addTraining.AddTraining[5].name);
-               doc.text(235.5,94.5,addTraining.AddTraining[5].date | "MM/dd/yyyy"); 
+               doc.text(235.5,94.5,addTraining.AddTraining[5].date.toString()); 
            }
            
        }  
@@ -365,13 +365,13 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
         for (var i=0; i < signatures.length;i++) {
            if (i==0) {
                doc.text(16.5,100.5, signatures[0].name);
-               doc.text(235.5,100.5,signatures[0].date);
+               doc.text(235.5,100.5,signatures[0].date.toString());
                doc.text(194.5,100.5,signatures[0].tb_AtRisk);
                doc.addImage(signImage, 'JPEG', 102.5, 106.5, 60, 4);
            }
            if (i==1) {
                doc.text(16.5,105.5,signatures[1].name);
-               doc.text(235.5,105.5,signatures[1].date);
+               doc.text(235.5,105.5,signatures[1].date.toString());
                doc.text(194.5,105.5,signatures[1].tb_AtRisk);
                //doc.text(102.5,105.5,signatures[1].signature,signImage);
                //doc.addImage(signImage, 'JPEG', 102.5, 100.5, 100, 100);
@@ -385,63 +385,63 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
            }
            if (i==3) {
                doc.text(16.5,114.5,signatures[3].name);
-               doc.text(235.5,114.5,signatures[3].date);
+               doc.text(235.5,114.5,signatures[3].date.toString());
                doc.text(194.5,114.5,signatures[3].tb_AtRisk);
                //doc.text(102.5,114.5,signatures[3].signature,signImage);
                //doc.addImage(signImage, 'JPEG', 102.5, 100.5, 100, 100);
            }
            if (i==4) {
                doc.text(16.5,120.5,signatures[4].name);
-               doc.text(235.5,120.5,signatures[4].date);
+               doc.text(235.5,120.5,signatures[4].date.toString());
                doc.text(194.5,120.5,signatures[4].tb_AtRisk);
                //doc.text(102.5,120.5,signatures[4].signature,signImage);
                //doc.addImage(signImage, 'JPEG', 102.5, 100.5, 100, 100);
            }
            if (i==5) {
                doc.text(16.5,124.5,signatures[5].name);
-               doc.text(235.5,124.5,signatures[5].date);
+               doc.text(235.5,124.5,signatures[5].date.toString());
                doc.text(194.5,124.5,signatures[5].tb_AtRisk);
                //doc.text(102.5,124.5,signatures[5].signature,signImage);
                //doc.addImage(signImage, 'JPEG', 102.5, 100.5, 100, 100);
            }
             if (i==6) {
                doc.text(16.5,129.5,signatures[6].name);
-               doc.text(235.5,129.5,signatures[6].date);
+               doc.text(235.5,129.5,signatures[6].date.toString());
                doc.text(194.5,129.5,signatures[6].tb_AtRisk);
                //doc.text(102.5,129.5,signatures[6].signature);
                //doc.addImage(signImage, 'JPEG', 102.5, 100.5, 100, 100);
            }
            if (i==7) {
                doc.text(16.5,134.5,signatures[7].name);
-               doc.text(235.5,134.5,signatures[7].date);
+               doc.text(235.5,134.5,signatures[7].date.toString());
                doc.text(194.5,134.5,signatures[7].tb_AtRisk);
                //doc.text(102.5,134.5,Signatures[7].signature,signImage);
                //doc.addImage(signImage, 'JPEG', 102.5, 100.5, 100, 100);
            }
            if (i==8) {
                doc.text(16.5,139.5,signatures[8].name);
-               doc.text(235.5,139.5,signatures[8].date);
+               doc.text(235.5,139.5,signatures[8].date.toString());
                doc.text(194.5,139.5,signatures[8].tb_AtRisk);
                //doc.text(102.5,139.5,Signatures[8].signature,signImage);
                //doc.addImage(signImage, 'JPEG', 102.5, 100.5, 100, 100);
            }
            if (i==9) {
                doc.text(16.5,144.5,signatures[9].name);
-               doc.text(235.5,144.5,signatures[9].date);
+               doc.text(235.5,144.5,signatures[9].date.toString());
                doc.text(194.5,144.5,signatures[9].tb_AtRisk);
                //doc.text(102.5,144.5,signatures[9].signature,signImage);
                //doc.addImage(signImage, 'JPEG', 102.5, 100.5, 100, 100);
            }
            if (i==10) {
                doc.text(16.5,149.5,signatures[10].name);
-               doc.text(235.5,149.5,signatures[10].date);
+               doc.text(235.5,149.5,signatures[10].date.toString());
                doc.text(194.5,149.5,signatures[10].tb_AtRisk);
                //doc.text(102.5,149.5,signatures[10].signature,signImage);
                //doc.addImage(signImage, 'JPEG', 102.5, 100.5, 100, 100);
            }
            if (i==11) {
                doc.text(16.5,154.5,signatures[11].name);
-               doc.text(235.5,154.5,signatures[11].date);
+               doc.text(235.5,154.5,signatures[11].date.toString());
                doc.text(194.5,154.5,signatures[11].tb_AtRisk);
                //doc.text(102.5,154.5,signatures[11].signature,signImage);
                //doc.addImage(signImage, 'JPEG', 102.5, 100.5, 100, 100);
