@@ -31,7 +31,7 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
         if (basicinfo.projectname)
             doc.text( 221, 23.5, basicinfo.projectname);
         if (basicinfo.startdate)    
-            doc.text( 207, 28, basicinfo.startdate | date:"MM/dd/yyyy"); // This doesn't work
+            doc.text( 207, 28, basicinfo.startdate.toString()); // This doesn't work
         if (basicinfo.jobscope)
             doc.text( 32, 32.5, basicinfo.jobscope);
     }
@@ -76,8 +76,8 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
         var basicinfo = angular.copy(formInfo.getBasicInfo());
         
         doc.setFontSize(16);
-        doc.text( 125, 64.5, basicinfo.startdate | date:"MM/dd/yyyy");
-        doc.text( 200, 64.5, basicinfo.enddate | date:"MM/dd/yyyy");
+        doc.text( 125, 64.5, basicinfo.startdate.toString());
+        doc.text( 200, 64.5, basicinfo.enddate.toString());
     }
     
     function JobElements () {
