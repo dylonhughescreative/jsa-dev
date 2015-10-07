@@ -2,6 +2,10 @@
     margin: 1%;
 }
 
+#completedSigCanvas {
+    margin: 1%;
+}
+
 #sigCanvas {
     position: absolute;
 }

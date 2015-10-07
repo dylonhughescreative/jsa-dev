@@ -3,9 +3,19 @@ app.controller('SignatureListCtrl', function ($scope, $rootScope, formInfo, $sta
     
     var stateController = { };
     
-    $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
+    $scope.$on('$stateChangeStart', function(){
         $scope.signatures = angular.copy(formInfo.getSignatures());
     });
+    
+    $scope.showDelete = false;
+    
+    $scope.toggleDeleteShowing = function() {
+        $scope.showDelete = !$scope.showDelete;
+    }
+    
+    $scope.back = function() {
+        $state.go('completedForm');
+    }
     
     $scope.onclick = function (state) {
         stateController.nextstate = "completedForm";

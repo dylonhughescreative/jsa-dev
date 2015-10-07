@@ -117,10 +117,16 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
             templateUrl: './CompletedForms/CompletedForms.html',
             controller: 'CompletedFormsCtrl'
         })
+        .state('submitForm', {
+            url: '/submitForm',
+            templateUrl: 'SubmitForm.html',
+            controller: 'SubmitFormCtrl'
+        })
         .state('signatureList', {
             url: '/signatureList',
             templateUrl: './CompletedForms/SignatureList.html',
-            controller: 'SignatureListCtrl'
+            controller: 'SignatureListCtrl',
+            cache: false
         })
         .state('signature', {
             url: '/sign',

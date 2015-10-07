@@ -1,17 +1,16 @@
 <link href="CompletedForms/SignatureList.css" rel="stylesheet">
 <ion-view view-title="Current Signatures">
     <ion-nav-buttons side="left">
-        <button menu-toggle="left" class="button button-icon icon ion-ios-list-outline"></button>
-    </ion-nav-buttons>
-    <ion-nav-buttons side="right">
-        <button class="button button-icon icon ion-ios-plus-empty" ng-click="onclick('signature')"></button>
+        <button menu-toggle="left" class="button button-icon icon ion-ios-arrow-left" on-tap="back()"></button>
     </ion-nav-buttons>
     
     <ion-content direction="y" class="submission-content">
-        <ion-list show-delete="shouldShowDelete">
+        <ion-list show-delete="showDelete">
             <ion-item ng-repeat="sig in signatures">
                 {{sig.name}}
             </ion-item>
+            <ion-item class="item-divider">&nbsp;</ion-item>
+            <ion-item>{{signatures[0].name}}</ion-item>
         </ion-list>
     </ion-content>
     

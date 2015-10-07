@@ -32,6 +32,28 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
         $scope.certificationModal = modal;
     });
     
+    // I found this call after kludging my way into making 2 signature modals.
+    // It's 1 AM so I don't feel like correcting it right now, but here's a 
+    // TODO
+    $scope.$on('$stateChangeStart', function(){
+        $scope.signatureModal.remove();
+        $scope.certificationModal.remove();
+        $ionicModal.fromTemplateUrl('./FormWizard/CertificationAwarenessModal.html', {
+            id: "2",
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.certificationModal = modal;
+        });
+        $ionicModal.fromTemplateUrl('./FormWizard/SignatureModal.html', {
+            id: "1",
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.signatureModal = modal;
+        });
+    });
+    
     $scope.sigCanvas = {
         scroll: 'false',
         width: $window.innerWidth - $window.innerWidth*0.02,

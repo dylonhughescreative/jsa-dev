@@ -1,0 +1,36 @@
+<link href="CompletedForms/SignatureList.css" rel="stylesheet">
+<ion-view view-title="Current Signatures">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-ios-arrow-left" on-tap="back()"></button>
+    </ion-nav-buttons>
+    
+    <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-ios-trash-outline" on-tap="toggleDeleteShowing()"></button>
+    </ion-nav-buttons>
+    
+    <ion-content direction="y" class="submission-content">
+        <ion-list show-delete="showDelete">
+            <ion-item ng-repeat="sig in signatures" ng-if="sig != signatures[0]">
+                {{sig.name}}
+            </ion-item>
+            <div class="card" ng-if="signatures.count < 2">
+                <div class="item item-text-wrap">
+                    <p>
+                        You have not entered any employee signatures.
+                    </p>
+                </div>
+            </div>
+            <ion-item class="item-divider">&nbsp;</ion-item>
+            <ion-item>{{signatures[0].name}}</ion-item>
+        </ion-list>
+        <div class="card">
+            <div class="item item-text-wrap">
+                <p>
+                    These are the signatures you entered.  If it's everyone you wish to add, pressing submit will generate this JSA in PDF form at www.dylonhughes.com/uploads/uploaddata.
+                </p>
+            </div>
+        </div>
+    
+    </ion-content>
+    <button class="button button-block button-positive" id = "SubmitFormButton" on-tap="uploadFile()">Submit Form</button>
+</ion-view>
