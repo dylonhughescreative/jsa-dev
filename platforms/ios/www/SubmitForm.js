@@ -1,4 +1,4 @@
-app.controller('SubmitFormCtrl', function ($rootScope, $scope, $state, $ionicActionSheet, $ionicModal, $window, $document, formInfo, jsPdfBuilder) {
+app.controller('SubmitFormCtrl', function ($rootScope, $scope, $state, $ionicActionSheet, $ionicModal, $cordovaFileTransfer, $window, $document, formInfo, jsPdfBuilder) {
     'use strict';
     $scope.signatures = angular.copy(formInfo.getSignatures());
     
