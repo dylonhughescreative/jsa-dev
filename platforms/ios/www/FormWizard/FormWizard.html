@@ -5,9 +5,13 @@
         </ion-header-bar>
         <ion-content scroll="false">
             <div class="list list-inset">
+                <a class="item" ng-click="GoToPage('app.home')">Home</a>
+                <div class="item item-divider">Form Sections</div>
                 <a class="item" ng-click="GoToPage(step.link)" ng-repeat="step in wizardSteps">
                     {{step.title}}
                 </a>
+                <div class="item item-divider">Completion</div>
+                <a class="item" ng-click="GoToPage('app.overview')">Overview</a>
             </div>
         </ion-content>
     </ion-side-menu>

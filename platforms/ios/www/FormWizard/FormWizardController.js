@@ -32,11 +32,7 @@ app.controller('FormWizardCtrl', function ($scope, $state, $ionicSideMenuDelegat
            {
                title: 'Additional Training',
                link: 'formWizard.AddTraining'
-           },
-           {
-               title: 'Overview',
-               link: 'overview'
-           },
+           }
     ];
     
     $scope.GoToPage = function (state)

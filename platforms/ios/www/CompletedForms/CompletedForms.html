@@ -2,11 +2,12 @@
 
 <ion-view title="Review & Sign">
     <ion-nav-buttons side="right">
-        <button class="button button-positive" on-tap="onclick('signatureList')" on-hold="onclick('signatureList')" id="signbutton">
-            Sign
-        </button>
+        <!--button class="button button-icon icon ion-ios-plus-empty" on-tap="onclick('signatureList')" on-hold="onclick('signatureList')"></button-->
+        <button class="button button-icon icon ion-ios-plus-empty" on-tap="openCertModal()"></button>
     </ion-nav-buttons>
-    
+    <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-ios-list-outline" on-tap="ShowActionSheet()" on-hold="ShowActionSheet()"></button>
+    </ion-nav-buttons>
     <ion-slide-box on-slide-changed="slideHasChanged($index)">
     <ion-slide>
         <ion-content>
