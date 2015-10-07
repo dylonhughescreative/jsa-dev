@@ -65,15 +65,15 @@ app.controller('CompletedFormsCtrl', function ($rootScope, $scope, $state, $ioni
         var sigImg = signaturePad.toDataURL("image/jpeg", 100);
         $scope.commitment.signature = sigImg;
         console.log(sigImg);
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('landscape');
         $scope.signatureModal.hide();
-        if (window.cordova) {
-            var so = cordova.plugins.screenorientation;
-            so.setOrientation('unlocked');
-        }
         $scope.saveCanvas();
     }
     
     $scope.openCertModal = function() {
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('unlocked');
         $scope.certificationModal.show();
     }
     
@@ -128,10 +128,6 @@ app.controller('CompletedFormsCtrl', function ($rootScope, $scope, $state, $ioni
             signature: $scope.commitment.signature    
         });
         formInfo.setSignatures($scope.signatures);
-        if (window.cordova) {
-            var so = cordova.plugins.screenorientation;
-            so.setOrientation('landscape');
-        }
         $scope.commitment = {};
         //$state.go(stateController.nextstate);
     }
@@ -169,6 +165,8 @@ app.controller('CompletedFormsCtrl', function ($rootScope, $scope, $state, $ioni
             buttonClicked: function(index) {
                 if (index == 0) {
                     $state.go('submitForm');
+                    var so = cordova.plugins.screenorientation;
+                    so.setOrientation('unlocked');
                 }
                 else if (index == 1) {
                     $scope.openCertModal();

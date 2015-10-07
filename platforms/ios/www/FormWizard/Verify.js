@@ -64,6 +64,8 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     var signaturePad;
     
     $scope.closeSignatureModal = function() {
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('landscape');
         $scope.signatureModal.hide();
         $scope.saveCanvas();
     }
@@ -162,6 +164,8 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     };
     
     $scope.openCertModal = function() {
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('unlocked');
         $scope.certificationModal.show();
     }
     

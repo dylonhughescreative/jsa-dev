@@ -20,13 +20,20 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
         var basicinfo = angular.copy(formInfo.getBasicInfo());
         
         doc.setFontSize(12);
-        doc.text( 40, 23.5, basicinfo.subcontractor);
-        doc.text( 47, 28, basicinfo.generalcontractor);
-        doc.text( 132, 23.5, basicinfo.crewleader);
-        doc.text( 142, 28, basicinfo.gcsuperintendent);
-        doc.text( 221, 23.5, basicinfo.projectname);
-        doc.text( 207, 28, basicinfo.startdate);
-        doc.text( 32, 32.5, basicinfo.jobscope);
+        if (basicinfo.subcontractor)
+            doc.text( 40, 23.5, basicinfo.subcontractor);
+        if (basicinfo.generalcontractor)
+            doc.text( 47, 28, basicinfo.generalcontractor);
+        if (basicinfo.crewleader)
+            doc.text( 132, 23.5, basicinfo.crewleader);
+        if (basicinfo.gcsuperintendent)
+            doc.text( 142, 28, basicinfo.gcsuperintendent);
+        if (basicinfo.projectname)
+            doc.text( 221, 23.5, basicinfo.projectname);
+        if (basicinfo.startdate)    
+            doc.text( 207, 28, basicinfo.startdate | "MM/dd/yyyy"); // This doesn't work
+        if (basicinfo.jobscope)
+            doc.text( 32, 32.5, basicinfo.jobscope);
     }
     
     function PPEInfo () {
@@ -69,8 +76,8 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
         var basicinfo = angular.copy(formInfo.getBasicInfo());
         
         doc.setFontSize(16);
-        doc.text( 125, 64.5, basicinfo.startdate);
-        doc.text( 200, 64.5, basicinfo.enddate);
+        doc.text( 125, 64.5, basicinfo.startdate | "MM/dd/yyyy");
+        doc.text( 200, 64.5, basicinfo.enddate | "MM/dd/yyyy");
     }
     
     function JobElements () {
@@ -314,27 +321,27 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
         for (var i=0; i < addTraining.AddTraining.length;i++) {
            if (i==0) {
                doc.text(16.5,71,addTraining.AddTraining[0].name);
-               doc.text(235.5,71,addTraining.AddTraining[0].date);
+               doc.text(235.5,71,addTraining.AddTraining[0].date | "MM/dd/yyyy");
            }
            if (i==1) {
                doc.text(16.5,75.5,addTraining.AddTraining[1].name);
-               doc.text(235.5,75.5,addTraining.AddTraining[1].date);
+               doc.text(235.5,75.5,addTraining.AddTraining[1].date | "MM/dd/yyyy");
            }
            if (i==2) {
                doc.text(16.5,80.5,addTraining.AddTraining[2].name);
-               doc.text(235.5,80.5,addTraining.AddTraining[2].date);
+               doc.text(235.5,80.5,addTraining.AddTraining[2].date | "MM/dd/yyyy");
            }
            if (i==3) {
                doc.text(16.5,85.5,addTraining.AddTraining[3].name);
-               doc.text(235.5,85.5,addTraining.AddTraining[3].date);
+               doc.text(235.5,85.5,addTraining.AddTraining[3].date | "MM/dd/yyyy");
            }
            if (i==4) {
                doc.text(16.5,90.5,addTraining.AddTraining[4].name);
-               doc.text(235.5,90.5,addTraining.AddTraining[4].date);
+               doc.text(235.5,90.5,addTraining.AddTraining[4].date | "MM/dd/yyyy");
            }
            if (i==5) {
                doc.text(16.5,94.5,addTraining.AddTraining[5].name);
-               doc.text(235.5,94.5,addTraining.AddTraining[5].date); 
+               doc.text(235.5,94.5,addTraining.AddTraining[5].date | "MM/dd/yyyy"); 
            }
            
        }  
