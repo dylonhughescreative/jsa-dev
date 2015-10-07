@@ -366,8 +366,8 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
            if (i==0) {
                doc.text(16.5,100.5, signatures[0].name);
                doc.text(235.5,100.5,signatures[0].date.toString());
-               doc.text(194.5,100.5,signatures[0].tb_AtRisk);
-               doc.addImage(signImage, 'JPEG', 102.5, 106.5, 60, 4);
+               //doc.text(194.5,100.5,signatures[0].tb_AtRisk);
+               doc.addImage(signatures[0].signature, 'JPEG', 102.5, 106.5, 60, 4);
            }
            if (i==1) {
                doc.text(16.5,105.5,signatures[1].name);
