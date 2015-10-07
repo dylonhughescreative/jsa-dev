@@ -345,7 +345,7 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
            }
            
        }  
-}
+    }
     
     function Signatures () {
         var signatures = angular.copy(formInfo.getSignatures());        

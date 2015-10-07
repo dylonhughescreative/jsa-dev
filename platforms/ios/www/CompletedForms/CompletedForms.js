@@ -119,8 +119,8 @@ app.controller('CompletedFormsCtrl', function ($rootScope, $scope, $state, $ioni
     
     $scope.saveCanvas = function () {
         var sigImg = signaturePad.toDataURL("image/jpeg", 100);
-        var sigImgPng = signaturePad.toDataURL("image/png", 100); 
-        $scope.commitment.signature = sigImgPng;
+        //var sigImgPng = signaturePad.toDataURL("image/png", 100); 
+        $scope.commitment.signature = sigImg;
         console.log(sigImg);
         $scope.signatures.push({
             name: $scope.commitment.name,
