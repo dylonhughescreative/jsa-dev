@@ -9,6 +9,8 @@ app.controller('SubmitFormCtrl', function ($rootScope, $scope, $state, $ionicAct
     }
     
     $scope.back = function() {
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation('landscape');
         $state.go('completedForm');
     }
     
