@@ -104,7 +104,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     }
     
     $scope.saveCanvas = function () {
-        var sigImg = signaturePad.toDataURL("image/png", 1);
+        var sigImg = signaturePad.toDataURL();
         $scope.commitment.signature = sigImg;
         $scope.signatures.push({
             name: $scope.commitment.name,

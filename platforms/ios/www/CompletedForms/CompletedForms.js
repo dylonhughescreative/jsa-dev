@@ -62,7 +62,7 @@ app.controller('CompletedFormsCtrl', function ($rootScope, $scope, $state, $ioni
     var signaturePad;
     
     $scope.closeSignatureModal = function() {
-        var sigImg = signaturePad.toDataURL("image/jpeg", 100);
+        var sigImg = signaturePad.toDataURL();
         $scope.commitment.signature = sigImg;
         console.log(sigImg);
         var so = cordova.plugins.screenorientation;
@@ -108,9 +108,7 @@ app.controller('CompletedFormsCtrl', function ($rootScope, $scope, $state, $ioni
         }
         $scope.signatureModal.show();
         var canvas = document.getElementById('completedSigCanvas');
-        signaturePad = new SignaturePad(canvas, {
-            backgroundColor: 'rgb(255,255,255)'
-        });
+        signaturePad = new SignaturePad(canvas);
         signaturePad.clear();
         var ModalDimensions = document.getElementById('CompletedSigModal');
         $scope.sigCanvas.width = ModalDimensions.offsetWidth - ModalDimensions.offsetWidth*0.02;
@@ -118,8 +116,7 @@ app.controller('CompletedFormsCtrl', function ($rootScope, $scope, $state, $ioni
     }
     
     $scope.saveCanvas = function () {
-        var sigImg = signaturePad.toDataURL("image/jpeg", 100);
-        //var sigImgPng = signaturePad.toDataURL("image/png", 100); 
+        var sigImg = signaturePad.toDataURL(); 
         $scope.commitment.signature = sigImg;
         console.log(sigImg);
         $scope.signatures.push({
