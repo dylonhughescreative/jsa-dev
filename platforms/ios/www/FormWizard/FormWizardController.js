@@ -1,9 +1,6 @@
-app.controller('FormWizardCtrl', function ($scope, $state, $ionicSideMenuDelegate, formInfo) {
+app.controller('FormWizardCtrl', function ($rootScope, $scope, $state, $ionicSideMenuDelegate, formInfo) {
     'use strict';
-    $scope.next = function (state) {
-        $state.go(state);
-    };
-    
+  
     $scope.wizardSteps = [
            {
                title: 'General Information',
@@ -34,6 +31,23 @@ app.controller('FormWizardCtrl', function ($scope, $state, $ionicSideMenuDelegat
                link: 'formWizard.AddTraining'
            }
     ];
+    $scope.basicinfo = angular.copy(formInfo.getBasicInfo());
+    
+    $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
+        $scope.completedElements = angular.copy(formInfo.getcompletedElements());
+    });
+    
+    $scope.check = function (state) {
+        switch (state) {
+            case "formWizard.GCinfo":
+                checkGCinfo();
+                break;
+        }
+    };
+    
+    $scope.next = function (state) {
+        $state.go(state);
+    };
     
     $scope.GoToPage = function (state)
     {
@@ -45,5 +59,31 @@ app.controller('FormWizardCtrl', function ($scope, $state, $ionicSideMenuDelegat
             
         $state.go(state);
         $ionicSideMenuDelegate.toggleLeft(false);
+    };
+    
+    function verifyGCinfo () {
+        if (angular.isUndefined($scope.basicinfo.username) || $scope.basicinfo.username === "") {
+            return "invalid";
+        } else if (angular.isUndefined($scope.basicinfo.generalcontractor) || $scope.basicinfo.generalcontractor === "") {
+            return "invalid";
+        } else if (angular.isUndefined($scope.basicinfo.gcsuperintendent) || $scope.basicinfo.gcsuperintendent === "") {
+            return "invalid";
+        } else if (angular.isUndefined($scope.basicinfo.projectname) || $scope.basicinfo.projectname === "") {
+            return "invalid";
+        } else if (angular.isUndefined($scope.basicinfo.startdate) || $scope.basicinfo.startdate === "") {
+            return "invalid";
+        } else if (angular.isUndefined($scope.basicinfo.enddate) || $scope.basicinfo.enddate === "") {
+            return "invalid";
+        } else if (angular.isUndefined($scope.basicinfo.jobscope) || $scope.basicinfo.jobscope === "") {
+            return "invalid";
+        } else {
+            return "valid";
+        }
+    }
+    
+    function checkGCinfo () {
+        formInfo.setBasicInfocomplete(verifyGCinfo());
+        formInfo.setBasicInfo($scope.basicinfo)
+        $scope.next(state);
     }
 });

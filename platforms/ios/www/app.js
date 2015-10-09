@@ -49,18 +49,33 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $stateProvider
         .state('home', {
             url: '/home',
-            templateUrl: './LandingPage/LandingPage.html',
-            controller: 'HomeCtrl'
+            views: {
+                'sideMenu': {
+                    //templateUrl: 'templates/sidemenu.html',
+                },
+                'menuContent': {
+                    templateUrl: './LandingPage/LandingPage.html',
+                    controller: 'HomeCtrl'
+                }
+            }
         })
         .state('formWizard', {
             url: '/formWizard',
-            controller: 'FormWizardCtrl',
-            templateUrl: './FormWizard/FormWizard.html'
+            views: {
+                'sideMenu': {
+                    controller: 'FormWizardCtrl',
+                    templateUrl: './FormWizard/FormWizard_SideMenu.html'
+                },
+                'menuContent': {
+                    controller: 'FormWizardCtrl',
+                    templateUrl: './FormWizard/FormWizard.html'
+                }
+            } 
         })
         .state('formWizard.GCorSub', {
             url: '/GCorSub',
             templateUrl: './FormWizard/GCorSub/GCorSub.html',
-            controller: 'GCorSub'
+            controller: 'GCorSub',
         })
         .state('formWizard.GCinfo', {
             url: '/GCinfo',
