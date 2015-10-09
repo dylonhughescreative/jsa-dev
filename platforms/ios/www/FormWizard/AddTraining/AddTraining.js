@@ -14,7 +14,6 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
     var EditingIndex = 0;
     
     // To close, use $ionicListDelegate.closeOptionButtons();
-    $scope.Training = angular.copy(formInfo.getAddTraining());
     $scope.TempTrainingInfo = { };
       // Open our new training modal
     $scope.newTraining = function() {
@@ -30,10 +29,6 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
         $ionicListDelegate.closeOptionButtons();
         $scope.AddTrainingModal.show();
     }
-    
-    $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
-        $scope.Training = angular.copy(formInfo.getAddTraining());
-    });
   
     // Close the new training modal
     $scope.closeTraining = function() {
@@ -64,21 +59,7 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
             }
         }
         return false;
-    }
-    
-    function verify () {
-        if($scope.Training.None === true || $scope.Training.AddTraining.length > 0) {
-            return "valid";
-        } else {
-            return "invalid";
-        }
-    }
-                                                                     
-    $scope.check = function (state) {
-        formInfo.setAddTrainingComplete(verify());
-        formInfo.setAddTraining($scope.Training);
-        $scope.next(state);
-    };
+    }                                                                   
     
     $scope.checkchanged_none = function () {
         if($scope.Training.None === false) {

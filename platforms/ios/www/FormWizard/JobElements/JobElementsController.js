@@ -29,7 +29,6 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, $rootSco
     });
     $scope.jobElement = {};
     $scope.TempTask = {};
-    $scope.groups = [];
     $scope.editing = false;
     $scope.groupIndex = 0;
     $scope.TaskIndex = 0;
@@ -42,9 +41,6 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, $rootSco
         {title: "3 Tasks", number: 3}
     ];
                                                                                    
-    $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
-        $scope.groups = angular.copy(formInfo.getjobelements());
-    });
     // Called when the form is submitted
     $scope.createTask = function (jobElement) {
         if (!$scope.editing) {
@@ -131,20 +127,7 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, $rootSco
         }
         return false;
     }
-    
-    function verify () {
-        if($scope.groups.length > 0) {
-            return "valid";
-        } else {
-            return "invalid";
-        }
-    }
                                                                                                
-    $scope.check = function (state) {
-        formInfo.setjobelementsComplete(verify());
-        formInfo.setjobelements($scope.groups);
-        $scope.next(state);
-    };
     //for (var i=0; i<4; i++) {
     //  $scope.groups[i] = {
     //    name: i+1,

@@ -1,14 +1,5 @@
 app.controller('AreaConcernsCtrl', function ($scope, $state, formInfo, $rootScope) {
     'use strict';         
-    $scope.AreaConcerns = {
-        lineofFire: [],
-        lof_none: false,
-        sensEquip: [],
-        sensequip_none: false,
-        fallHazards: [],
-        fallhaz_none: false
-    }
-
     function contains(a, obj) {
         for (var i = 0; i < a.length; i++) {
             if (a[i] === obj) {
@@ -17,21 +8,6 @@ app.controller('AreaConcernsCtrl', function ($scope, $state, formInfo, $rootScop
         }
         return false;
     }
-    function verify () {
-        if (($scope.AreaConcerns.lof_none === true || $scope.AreaConcerns.lineofFire.length > 0) &&
-           ($scope.AreaConcerns.sensequip_none === true || $scope.AreaConcerns.sensEquip.length > 0) &&
-           ($scope.AreaConcerns.fallhaz_none === true || $scope.AreaConcerns.fallHazards.length > 0)) {
-            return "valid";
-        } else {
-            return "invalid";
-        }
-    }
-    
-    $scope.check = function (state) {
-        formInfo.setAreaConcernsComplete(verify());
-        formInfo.setAreaConcerns($scope.AreaConcerns);
-        $scope.next(state);
-    };
     
     $scope.LOFcheckchanged_none = function () {
         if($scope.AreaConcerns.lof_none === false) {
@@ -68,9 +44,5 @@ app.controller('AreaConcernsCtrl', function ($scope, $state, formInfo, $rootScop
             $scope.AreaConcerns.fallhaz_none = false;
         }
     };
-    
-    $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
-        $scope.AreaConcerns = angular.copy(formInfo.getAreaConcerns());
-    });
 
 });

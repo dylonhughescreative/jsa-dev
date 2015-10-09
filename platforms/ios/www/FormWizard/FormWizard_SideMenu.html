@@ -3,12 +3,12 @@
 </ion-header-bar>
 <ion-content direction="y">
     <div class="list list-inset">
-        <a class="item" ng-click="GoToPage('home')">Home</a>
+        <a class="item" ng-click="check('home')">Home</a>
         <div class="item item-divider">Form Sections</div>
-        <a class="item" ng-click="GoToPage(step.link)" ng-repeat="step in wizardSteps">
+        <a class="item" ng-click="check(step.link)" ng-repeat="step in wizardSteps">
             {{step.title}}
         </a>
         <div class="item item-divider">Completion</div>
-        <a class="item" ng-click="GoToPage('overview')">Overview</a>
+        <a class="item" ng-click="check('overview')">Overview</a>
     </div>
 </ion-content>

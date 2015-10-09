@@ -119,8 +119,16 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         })
         .state('overview', {
             url: '/overview',
-            templateUrl: './FormWizard/Overview.html',
-            controller: 'OverviewCtrl'
+            views: {
+                'sideMenu': {
+                    controller: 'FormWizardCtrl',
+                    templateUrl: './FormWizard/FormWizard_SideMenu.html'
+                },
+                'menuContent': {
+                    templateUrl: './FormWizard/Overview.html',
+                    controller: 'OverviewCtrl'
+                }
+            }
         })
         .state('verify', {
             url: '/verify',
@@ -167,20 +175,7 @@ app.factory('formInfo', function () {
             gcorsub: ""
         },
         jobelements = [],
-        ppeinfo = {
-            cm_EyeProtection: false,
-            cm_ChemGoggles: false,
-            cm_HardHat: false,
-            cb_RespiratorType: 'N/A',
-            cb_GlovesType: 'N/A',
-            cb_Clothing: 'N/A',
-            cm_ProtectiveToe: false,
-            cm_HearingProtection: false,
-            cb_ChemClothing: 'N/A',
-            cm_HarnessLanyard: false,
-            cm_FaceShield: false,
-            tb_Other: ''
-        },
+        ppeinfo = { },
         trainReqs = {
             RedTag: false,
             ConfinedSpace: false,
