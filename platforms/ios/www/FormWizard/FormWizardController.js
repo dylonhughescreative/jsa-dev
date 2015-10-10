@@ -1,5 +1,9 @@
 app.controller('FormWizardCtrl', function ($rootScope, $scope, $state, $ionicSideMenuDelegate, formInfo) {
     'use strict';
+    
+    var formparentState = this;
+    
+    formparentState.formInfo = formInfo;
   
     $scope.wizardSteps = [
            {
@@ -32,26 +36,6 @@ app.controller('FormWizardCtrl', function ($rootScope, $scope, $state, $ionicSid
            }
     ];
     
-    $scope.completedElements = angular.copy(formInfo.getcompletedElements());
-    $scope.basicinfo = angular.copy(formInfo.getBasicInfo());
-    $scope.tempPPEinfo = angular.copy(formInfo.getppeinfo());
-    $scope.groups = angular.copy(formInfo.getjobelements());
-    $scope.tempTrainReqs = angular.copy(formInfo.getTrainReqs());
-    $scope.tempLicReqs = angular.copy(formInfo.getLicReqs());
-    $scope.AreaConcerns = angular.copy(formInfo.getAreaConcerns());
-    $scope.Training = angular.copy(formInfo.getAddTraining());
-    
-    $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
-        $scope.completedElements = angular.copy(formInfo.getcompletedElements());
-        $scope.basicinfo = angular.copy(formInfo.getBasicInfo());
-        $scope.tempPPEinfo = angular.copy(formInfo.getppeinfo());
-        $scope.groups = angular.copy(formInfo.getjobelements());
-        $scope.tempTrainReqs = angular.copy(formInfo.getTrainReqs());
-        $scope.tempLicReqs = angular.copy(formInfo.getLicReqs());
-        $scope.AreaConcerns = angular.copy(formInfo.getAreaConcerns());
-        $scope.Training = angular.copy(formInfo.getAddTraining());
-    });
-    
     $scope.check = function (nextState) {  
         switch ($state.current.name) {
             case "formWizard.GCinfo":
@@ -83,8 +67,8 @@ app.controller('FormWizardCtrl', function ($rootScope, $scope, $state, $ionicSid
         }
         
         if(nextState == "formWizard.GCorSub") {
-            if(formInfo.getBasicInfo().gcorsub != "") {
-                nextState = formInfo.getBasicInfo().gcorsub;
+            if(formparentState.formInfo.basicinfo.gcorsub != "") {
+                nextState = formparentState.formInfo.basicinfo.gcorsub;
             }
         }
         
@@ -97,8 +81,8 @@ app.controller('FormWizardCtrl', function ($rootScope, $scope, $state, $ionicSid
     
     $scope.GoToPage = function (state) {
         if(state == "formWizard.GCorSub") {
-            if(formInfo.getBasicInfo().gcorsub != "") {
-                state = formInfo.getBasicInfo().gcorsub;
+            if(formparentState.formInfo.basicinfo.gcorsub != "") {
+                nextState = formparentState.formInfo.basicinfo.gcorsub;
             }
         }
             
@@ -107,121 +91,118 @@ app.controller('FormWizardCtrl', function ($rootScope, $scope, $state, $ionicSid
     };
     
     function verifyGCinfo () {
-        if (angular.isUndefined($scope.basicinfo.username) || $scope.basicinfo.username === "") {
+        if (angular.isUndefined(formparentState.formInfo.basicinfo.username) || formparentState.formInfo.basicinfo.username === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.generalcontractor) || $scope.basicinfo.generalcontractor === "") {
+        } else if (angular.isUndefined(formparentState.formInfo.basicinfo.generalcontractor) || formparentState.formInfo.basicinfo.generalcontractor === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.gcsuperintendent) || $scope.basicinfo.gcsuperintendent === "") {
+        } else if (angular.isUndefined(formparentState.formInfo.basicinfo.gcsuperintendent) || formparentState.formInfo.basicinfo.gcsuperintendent === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.projectname) || $scope.basicinfo.projectname === "") {
+        } else if (angular.isUndefined(formparentState.formInfo.basicinfo.projectname) || formparentState.formInfo.basicinfo.projectname === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.startdate) || $scope.basicinfo.startdate === "") {
+        } else if (angular.isUndefined(formparentState.formInfo.basicinfo.startdate) || formparentState.formInfo.basicinfo.startdate === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.enddate) || $scope.basicinfo.enddate === "") {
+        } else if (angular.isUndefined(formparentState.formInfo.basicinfo.enddate) || formparentState.formInfo.basicinfo.enddate === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.jobscope) || $scope.basicinfo.jobscope === "") {
+        } else if (angular.isUndefined(formparentState.formInfo.basicinfo.jobscope) || formparentState.formInfo.basicinfo.jobscope === "") {
             return "invalid";
         } else {
             return "valid";
         }
     } 
     function checkGCinfo () {
-        formInfo.setBasicInfocomplete(verifyGCinfo());
-        formInfo.setBasicInfo($scope.basicinfo)
+        formparentState.formInfo.completedElements.BasicInfo = verifyGCinfo();
     }
     
     function verifySubinfo() {
-        if (angular.isUndefined($scope.basicinfo.username) || $scope.basicinfo.username === "") {
+        if (angular.isUndefined(formparentState.formInfo.basicinfo.username) || formparentState.formInfo.basicinfo.username === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.subcontractor) || $scope.basicinfo.subcontractor === "") {
+        } else if (angular.isUndefined(formparentState.formInfo.basicinfo.subcontractor) || formparentState.formInfo.basicinfo.subcontractor === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.sitesupervisor) || $scope.basicinfo.sitesupervisor === "") {
+        } else if (angular.isUndefined(formparentState.formInfo.basicinfo.sitesupervisor) || formparentState.formInfo.basicinfo.sitesupervisor === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.generalcontractor) || $scope.basicinfo.generalcontractor === "") {
+        } else if (angular.isUndefined(formparentState.formInfo.basicinfo.generalcontractor) || formparentState.formInfo.basicinfo.generalcontractor === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.gcsuperintendent) || $scope.basicinfo.gcsuperintendent === "") {
+        } else if (angular.isUndefined(formparentState.formInfo.basicinfo.gcsuperintendent) || formparentState.formInfo.basicinfo.gcsuperintendent === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.projectname) || $scope.basicinfo.projectname === "") {
+        } else if (angular.isUndefined(formparentState.formInfo.basicinfo.projectname) || formparentState.formInfo.basicinfo.projectname === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.startdate) || $scope.basicinfo.startdate === "") {
+        } else if (angular.isUndefined(formparentState.formInfo.basicinfo.startdate) || formparentState.formInfo.basicinfo.startdate === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.startdate) || $scope.basicinfo.startdate === "") {
+        } else if (angular.isUndefined(formparentState.formInfo.basicinfo.startdate) || formparentState.formInfo.basicinfo.startdate === "") {
             return "invalid";
-        } else if (angular.isUndefined($scope.basicinfo.jobscope) || $scope.basicinfo.jobscope === "") {
+        } else if (angular.isUndefined(formparentState.formInfo.basicinfo.jobscope) || formparentState.formInfo.basicinfo.jobscope === "") {
             return "invalid";
         } else {
             return "valid";
         }
     }   
     function checkSubinfo () {
-        formInfo.setBasicInfocomplete(verifySubinfo());
-        formInfo.setBasicInfo($scope.basicinfo);
+        formparentState.formInfo.completedElements.BasicInfo = verifySubinfo();
     }
     
     function verifyPPEinfo () {
-        if ($scope.tempPPEinfo.None === true) {
+        if (formparentState.formInfo.ppeinfo.None === true) {
             return "valid";
-        } else if ($scope.tempPPEinfo.cm_EyeProtection === true) {
+        } else if (formparentState.formInfo.ppeinfo.cm_EyeProtection === true) {
             return "valid";
-        } else if ($scope.tempPPEinfo.cm_ChemGoggles === true) {
+        } else if (formparentState.formInfo.ppeinfo.cm_ChemGoggles === true) {
             return "valid";
-        } else if ($scope.tempPPEinfo.cm_HardHat === true) {
+        } else if (formparentState.formInfo.ppeinfo.cm_HardHat === true) {
             return "valid";
-        } else if ($scope.tempPPEinfo.cb_RespiratorType !== "N/A") {
+        } else if (formparentState.formInfo.ppeinfo.cb_RespiratorType !== "N/A") {
             return "valid";
-        } else if ($scope.tempPPEinfo.cb_GlovesType !== "N/A") {
+        } else if (formparentState.formInfo.ppeinfo.cb_GlovesType !== "N/A") {
             return "valid";
-        } else if ($scope.tempPPEinfo.cb_Clothing !== "N/A") {
+        } else if (formparentState.formInfo.ppeinfo.cb_Clothing !== "N/A") {
             return "valid";
-        } else if ($scope.tempPPEinfo.cm_ProtectiveToe === true) {
+        } else if (formparentState.formInfo.ppeinfo.cm_ProtectiveToe === true) {
             return "valid";
-        } else if ($scope.tempPPEinfo.cm_HearingProtection === true) {
+        } else if (formparentState.formInfo.ppeinfo.cm_HearingProtection === true) {
             return "valid";
-        } else if ($scope.tempPPEinfo.cm_HarnessLanyard === true) {
+        } else if (formparentState.formInfo.ppeinfo.cm_HarnessLanyard === true) {
             return "valid";
-        } else if ($scope.tempPPEinfo.cm_FaceShield === true) {
+        } else if (formparentState.formInfo.ppeinfo.cm_FaceShield === true) {
             return "valid";
-        } else if ($scope.tempPPEinfo.tb_Other !== "") {
+        } else if (formparentState.formInfo.ppeinfo.tb_Other !== "") {
             return "valid";
         } else {
             return "invalid";
         }
     }
     function formatPPEinfo () {
-        if ($scope.tempPPEinfo.cb_RespiratorType !== "N/A") {
-            $scope.tempPPEinfo.cm_RespiratorType = true;
+        if (formparentState.formInfo.ppeinfo.cb_RespiratorType !== "N/A") {
+            formparentState.formInfo.ppeinfo.cm_RespiratorType = true;
         } else {
-            $scope.tempPPEinfo.cm_RespiratorType = false;
+            formparentState.formInfo.ppeinfo.cm_RespiratorType = false;
         }
         
-        if ($scope.tempPPEinfo.cb_GlovesType !== "N/A") {
-            $scope.tempPPEinfo.cm_GlovesType = true;
+        if (formparentState.formInfo.ppeinfo.cb_GlovesType !== "N/A") {
+            formparentState.formInfo.ppeinfo.cm_GlovesType = true;
         } else {
-            $scope.tempPPEinfo.cm_GlovesType = false;
+            formparentState.formInfo.ppeinfo.cm_GlovesType = false;
         }
         
-        if ($scope.tempPPEinfo.cb_Clothing !== "N/A") {
-            $scope.tempPPEinfo.cm_Clothing = true;
+        if (formparentState.formInfo.ppeinfo.cb_Clothing !== "N/A") {
+            formparentState.formInfo.ppeinfo.cm_Clothing = true;
         } else {
-            $scope.tempPPEinfo.cm_Clothing = false;
+            formparentState.formInfo.ppeinfo.cm_Clothing = false;
         }
         
-        if ($scope.tempPPEinfo.cb_ChemClothing !== "N/A") {
-            $scope.tempPPEinfo.cm_ChemClothing = true;
+        if (formparentState.formInfo.ppeinfo.cb_ChemClothing !== "N/A") {
+            formparentState.formInfo.ppeinfo.cm_ChemClothing = true;
         } else {
-            $scope.tempPPEinfo.cm_ChemClothing = false;
+            formparentState.formInfo.ppeinfo.cm_ChemClothing = false;
         }
         
-        if ($scope.tempPPEinfo.tb_Other !== "") {
-            $scope.tempPPEinfo.cm_Other = true;
+        if (formparentState.formInfo.ppeinfo.tb_Other !== "") {
+            formparentState.formInfo.ppeinfo.cm_Other = true;
         } else {
-            $scope.tempPPEinfo.cm_Other = false;
+            formparentState.formInfo.ppeinfo.cm_Other = false;
         }
     }
     function checkPPEinfo () {
-        formInfo.setPPEcomplete(verifyPPEinfo());
+        formparentState.formInfo.completedElements.PPEAssess = verifyPPEinfo();
         formatPPEinfo();
-        formInfo.setppeinfo($scope.tempPPEinfo);
     }
     
     function verifyJobElements () {

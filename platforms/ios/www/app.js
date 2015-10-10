@@ -8,31 +8,7 @@ var app = angular.module('starter', ['ionic', 'ngCordova']);
 
 app.run(function ($ionicPlatform, $state, $window) {
     'use strict';
-    var cordova, StatusBar;
-    $ionicPlatform.ready(function () {
-        // We do this now in GC or Sub because of a plugins exception I was getting 10/4/15
-        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-        // for form inputs)
-        //if (window.cordova && window.cordova.plugins.Keyboard) {
-        //    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-        //    cordova.plugins.Keyboard.disableScroll(true);
-        //}
-        //if (window.StatusBar) {
-        //    StatusBar.hide();
-        //}
-    });
-    
-    //function onScreenSizeChange() {
-    //    if ($window.innerWidth > $window.innerHeight) {
-    //        $state.go('landscape');
-    //        //$scope.$apply();
-    //    } else {
-    //        $state.go('portrait');
-    //        //$scope.$apply();
-    //    }
-    //}
-    //angular.element($window).bind('resize', onScreenSizeChange);
-    //angular.element($window).bind('load', onScreenSizeChange);
+    // Can place $ionicPlatform events here but plugins may not be ready.
 });
 
 app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
@@ -63,11 +39,11 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
             url: '/formWizard',
             views: {
                 'sideMenu': {
-                    controller: 'FormWizardCtrl',
+                    controller: 'FormWizardCtrl as formparentState',
                     templateUrl: './FormWizard/FormWizard_SideMenu.html'
                 },
                 'menuContent': {
-                    controller: 'FormWizardCtrl',
+                    controller: 'FormWizardCtrl as formparentState',
                     templateUrl: './FormWizard/FormWizard.html'
                 }
             } 
@@ -75,22 +51,22 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         .state('formWizard.GCorSub', {
             url: '/GCorSub',
             templateUrl: './FormWizard/GCorSub/GCorSub.html',
-            controller: 'GCorSub',
+            controller: 'GCorSub as gcorsubSelect',
         })
         .state('formWizard.GCinfo', {
             url: '/GCinfo',
             templateUrl: './FormWizard/GCInfo/GCinfo.html',
-            controller: 'GCinfoCtrl'
+            controller: 'GCinfoCtrl as gcinfoState'
         })
         .state('formWizard.Subinfo', {
             url: '/Subinfo',
             templateUrl: './FormWizard/SubInfo/Subinfo.html',
-            controller: 'SubinfoCtrl'
+            controller: 'SubinfoCtrl as subinfoState'
         })
         .state('formWizard.PPE', {
             url: '/PPE',
             templateUrl: './FormWizard/PPE/PPE.html',
-            controller: 'PPECtrl'
+            controller: 'PPECtrl as ppeState'
         })
         .state('formWizard.JobElements', {
             url: '/JobElements',
@@ -169,14 +145,14 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $urlRouterProvider.otherwise('home');
 });
 
-app.factory('formInfo', function () {
-    'use strict';
-    var basicinfo = {
+app.service('formInfo', function () {
+    var formInfo = this;
+    formInfo.basicinfo = {
             gcorsub: ""
         },
-        jobelements = [],
-        ppeinfo = { },
-        trainReqs = {
+        formInfo.jobelements = [],
+        formInfo.ppeinfo = { },
+        formInfo.trainReqs = {
             RedTag: false,
             ConfinedSpace: false,
             Scaffold: false,
@@ -191,7 +167,7 @@ app.factory('formInfo', function () {
             cm_Other: false,
             tb_Other: ''
         },
-        licReqs = {
+        formInfo.licReqs = {
             ForkLift: false,
             AerialLift: false,
             cm_Crane: false,
@@ -201,13 +177,13 @@ app.factory('formInfo', function () {
             cm_Other: true,
             tb_Other: ''
         },
-        areaConcerns = {},
-        addTraining = {
+        formInfo.areaConcerns = {},
+        formInfo.addTraining = {
             AddTraining: [],     
             None: false
         },
-        signatures = [],
-        completedElements = {
+        formInfo.signatures = [],
+        formInfo.completedElements = {
             BasicInfo: "pending",
             PPEAssess: "pending",
             JobElements: "pending",
@@ -216,151 +192,9 @@ app.factory('formInfo', function () {
             AreaConcerns: "pending",
             AddTraining: "pending"
         },
-        formComplete = false,
-        stateController = {
+        formInfo.formComplete = false,
+        formInfo.stateController = {
             nextstate: "",
             previousstate: ""
         };
-    
-    return {
-        getBasicInfo: function () {
-            return basicinfo;
-        },
-        setBasicInfo: function (tempbasicinfo) {
-            basicinfo = angular.copy(tempbasicinfo);
-        },
-        getppeinfo: function () {
-            return ppeinfo;
-        },
-        setppeinfo: function (tempPPEinfo) {
-            ppeinfo = angular.copy(tempPPEinfo);
-        },
-        getjobelements: function () {
-            return jobelements;
-        },
-        setjobelements: function (groups) {
-            jobelements = angular.copy(groups);
-        },
-        setjobelementsComplete: function (complete) {
-            completedElements.JobElements = complete;
-        },
-        getcompletedElements: function () {
-            return completedElements;
-        },
-        setBasicInfocomplete: function (complete) {
-            completedElements.BasicInfo = complete;
-        },
-        setPPEcomplete: function (complete) {
-            completedElements.PPEAssess = complete;
-        },
-        getTrainReqs: function () {
-            return trainReqs;
-        },
-        setTrainReqs: function (tempTrainReqs) {
-            trainReqs = angular.copy(tempTrainReqs);
-        },
-        setTrainReqsComplete: function (complete) {
-            completedElements.TrainReqs = complete;
-        },
-        getLicReqs: function () {
-            return licReqs;
-        },
-        setLicReqs: function (tempLicReqs) {
-            licReqs = angular.copy(tempLicReqs);
-        },
-        setLicReqsComplete: function (complete) {
-            completedElements.LicReqs = complete;
-        },
-        getAreaConcerns: function () {
-            return areaConcerns;
-        },
-        setAreaConcerns: function (tempAreaConcerns) {
-            areaConcerns = angular.copy(tempAreaConcerns);
-        },
-        setAreaConcernsComplete: function (complete) {
-            completedElements.AreaConcerns = complete;
-        },
-        getAddTraining: function () {
-            return addTraining;
-        },
-        setAddTraining: function (tempAddTraining) {
-            addTraining = angular.copy(tempAddTraining);
-        },
-        setAddTrainingComplete: function (complete) {
-            completedElements.AddTraining = complete;
-        },
-        getformcomplete: function (complete) {
-            formComplete = complete;
-        },
-        getSignatures: function () {
-            return signatures;
-        },
-        setSignatures: function (tempSignatures) {
-            signatures = angular.copy(tempSignatures);
-        },
-        getStateController: function () {
-            return stateController;
-        },
-        setStateController: function (tempStateController) {
-            stateController = angular.copy(tempStateController);
-        }
-    };
-});
-
-app.controller('SubinfoCtrl', function ($scope, formInfo) { 'use strict'; });
-app.controller('TaskCtrl', function ($scope, formInfo) { 'use strict'; });
-
-app.controller('ModalCtrl', function ($scope, $ionicModal, $state, $window, $ionicPopup, jsPdfBuilder, $cordovaFileTransfer, $cordovaFile) {
-    'use strict';
-    //--------------Custom Modal Methods-----------------//
-    $scope.reset = function (form) {
-        if (form === "BasicInfo") {
-            $scope.user = angular.copy(blank);
-        } else if (form === "PPE") {
-            $scope.elements = angular.copy(elementsBlank);
-        }
-    };
-    
-    $scope.cancelModal = function (form) {
-        if (form === "BasicInfo") {
-            $scope.user = angular.copy($scope.basicinfo);
-        } else if (form === "PPE") {
-            $scope.elements = angular.copy($scope.ppeinfo);
-        }
-        $scope.closeModal(form);
-    };
-    
-    $scope.sign = function (sign) {
-        var confirmPopup = $ionicPopup.confirm({
-            title: 'Confirm Signature',
-            template: 'Are you sure you want to sign the form? Continuing will reset the app.'
-        });
-        confirmPopup.then(function (res) {
-            if (res) {
-                console.log('You are sure');
-                $window.location.href = "#/portrait";
-                $window.location.reload();
-            } else {
-                console.log('You are not sure');
-            }
-        });
-    };
-    
-    $scope.notimplementedPopup = function () {
-        //pdfBuilder.createPdf();
-        jsPdfBuilder.createPdf();
-        
-        var confirmPopup = $ionicPopup.alert({
-            title: 'Function Not Implemented',
-            template: 'This function is still in development and will be implemented later.'
-        });
-    };
-    
-    function refresh() {
-        $scope.scrollheight = (1 - (64 / $window.innerHeight)) * 100;
-        $scope.ppeinfo = angular.copy($scope.elements);
-        $scope.basicinfo = angular.copy($scope.user);
-        //$scope.$apply();
-    }
-    angular.element($window).bind('resize', refresh);
 });

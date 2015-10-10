@@ -127,16 +127,7 @@ app.controller('JobElementCtrl', function ($scope, $ionicModal, $state, $rootSco
         }
         return false;
     }
-                                                                                               
-    //for (var i=0; i<4; i++) {
-    //  $scope.groups[i] = {
-    //    name: i+1,
-    //    items: []
-    //  };
-    //  for (var j=1; j<4; j++) {
-    //    $scope.groups[i].items.push(i+1 + '-' + j);
-    //  }
-    //}
+
     $scope.openJobElement = function(group, $event) {
         event.stopPropagation();
         $scope.ModalHeaderText = "Edit Job Element";

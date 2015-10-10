@@ -1,6 +1,9 @@
 app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
     'use strict';
     
+    var ppeState = this;
+    ppeState.formInfo = formInfo;
+    
     $scope.respiratorOptions = ['N/A', 'Mouth Bit', 'Quarter-Mask', 'Half-Face Mask', 'Full Facepiece', 'Other'];
     $scope.gloveOptions = ['N/A', 'Leather', 'Canvas', 'Metal Mesh', 'Other'];
     $scope.clothingOptions = ['N/A', 'Other'];
@@ -24,19 +27,18 @@ app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
     };
     
     $scope.checkchanged = function () {
-        ppeinfo.None = false;
-        formInfo.setppeinfo(ppeinfo);
+        ppeState.formInfo.ppeinfo.None = false;
     };
     
     $scope.otherTextChanged = function () {
-        if($scope.tempPPEinfo.tb_Other != "") {
-            $scope.tempPPEinfo.None = false;
+        if(ppeState.formInfo.ppeinfo.tb_Other != "") {
+            ppeState.formInfo.ppeinfo.None = false;
         }
     };
     
     $scope.checkchanged_none = function () {
-        if($scope.tempPPEinfo.None === false) {
-            $scope.tempPPEinfo = angular.copy(defaultPPEinfo);
+        if(ppeState.formInfo.ppeinfo.None === false) {
+            ppeState.formInfo.ppeinfo = angular.copy(defaultPPEinfo);
         }
     };
     
@@ -59,7 +61,6 @@ app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
                     type: 'button-positive',
                     onTap: function(e) {
                         if (!$scope.data.other) {
-                        //don't allow the user to close unless he enters wifi password
                         e.preventDefault();
                         } else {
                             return $scope.data.other;
@@ -73,7 +74,7 @@ app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
     }
     
     $scope.respiratorTypeChanged = function () {
-        if($scope.tempPPEinfo.cb_RespiratorType == "Other") {
+        if(ppeState.formInfo.ppeinfo.cb_RespiratorType == "Other") {
             var addToArray = true,
                 other = OtherPopup("Respirator Type");
             other.then(function(res) {
@@ -86,22 +87,22 @@ app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
                     if(addToArray) {
                         $scope.respiratorOptions.splice($scope.respiratorOptions.length-1, 0, res);
                     }
-                    $scope.tempPPEinfo.cb_RespiratorType = res;
+                    ppeState.formInfo.ppeinfo.cb_RespiratorType = res;
                     
                     if(res != "N/A") {
-                        $scope.tempPPEinfo.None = false;
+                        ppeState.formInfo.ppeinfo.None = false;
                     }
                 }
             });
         }
         
-        if($scope.tempPPEinfo.cb_RespiratorType != "N/A") {
-            $scope.tempPPEinfo.None = false;
+        if(ppeState.formInfo.ppeinfo.cb_RespiratorType != "N/A") {
+            ppeState.formInfo.ppeinfo.None = false;
         }
     };
     
     $scope.gloveTypeChanged = function () {
-        if($scope.tempPPEinfo.cb_GlovesType == "Other") {
+        if(ppeState.formInfo.ppeinfo.cb_GlovesType == "Other") {
             var addToArray = true,
                 other = OtherPopup("Glove Type");
             other.then(function(res) {
@@ -114,22 +115,22 @@ app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
                     if(addToArray) {
                         $scope.gloveOptions.splice($scope.gloveOptions.length-1, 0, res);
                     }
-                    $scope.tempPPEinfo.cb_GlovesType = res;
+                    ppeState.formInfo.ppeinfo.cb_GlovesType = res;
                     
                     if(res != "N/A") {
-                        $scope.tempPPEinfo.None = false;
+                        ppeState.formInfo.ppeinfo.None = false;
                     }
                 }
             });
         }
         
-        if($scope.tempPPEinfo.cb_GlovesType != "N/A") {
-            $scope.tempPPEinfo.None = false;
+        if(ppeState.formInfo.ppeinfo.cb_GlovesType != "N/A") {
+            ppeState.formInfo.ppeinfo.None = false;
         }
     };
         
     $scope.clothingTypeChanged = function () {
-        if($scope.tempPPEinfo.cb_Clothing == "Other") {
+        if(ppeState.formInfo.ppeinfo.cb_Clothing == "Other") {
             var addToArray = true,
                 other = OtherPopup("Clothing Type");
             other.then(function(res) {
@@ -142,22 +143,22 @@ app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
                     if(addToArray) {
                         $scope.clothingOptions.splice($scope.clothingOptions.length-1, 0, res);
                     }
-                    $scope.tempPPEinfo.cb_Clothing = res;
+                    ppeState.formInfo.ppeinfo.cb_Clothing = res;
                     
                     if(res != "N/A") {
-                        $scope.tempPPEinfo.None = false;
+                        ppeState.formInfo.ppeinfo.None = false;
                     }
                 }
             });
         }
         
-        if($scope.tempPPEinfo.cb_Clothing != "N/A") {
-            $scope.tempPPEinfo.None = false;
+        if(ppeState.formInfo.ppeinfo.cb_Clothing != "N/A") {
+            ppeState.formInfo.ppeinfo.None = false;
         }
     };
     
     $scope.chemclothingTypeChanged = function () {
-        if($scope.tempPPEinfo.cb_ChemClothing == "Other") {
+        if(ppeState.formInfo.ppeinfo.cb_ChemClothing == "Other") {
             var addToArray = true,
                 other = OtherPopup("Chem. Clothing Type");
             other.then(function(res) {
@@ -171,17 +172,17 @@ app.controller('PPECtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
                     if(addToArray) {
                         $scope.chemclothingOptions.splice($scope.chemclothingOptions.length-1, 0, res);
                     }
-                    $scope.tempPPEinfo.cb_ChemClothing = res;
+                    ppeState.formInfo.ppeinfo.cb_ChemClothing = res;
                     
                     if(res != "N/A") {
-                        $scope.tempPPEinfo.None = false;
+                        ppeState.formInfo.ppeinfo.None = false;
                     }
                 }
             });
         }
         
-        if($scope.tempPPEinfo.cb_ChemClothing != "N/A") {
-            $scope.tempPPEinfo.None = false;
+        if(ppeState.formInfo.ppeinfo.cb_ChemClothing != "N/A") {
+            ppeState.formInfo.ppeinfo.None = false;
         }
     }
     
