@@ -151,24 +151,24 @@ app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $co
         
         //AREA OF CONCERNS
         formInfo.areaConcerns.lof_none = false;
-        for(var i=0; i<2; i++) {
+        for(var i=0; i<3; i++) {
             var lineofFire = "LINE OF FIRE " + i;
             formInfo.areaConcerns.lineofFire.push(lineofFire);
         }
         formInfo.areaConcerns.sensequip_none = false;
-        for(var i=0; i<2; i++) {
+        for(var i=0; i<3; i++) {
             var sensEquip = "SENS. EQUIPTMENT " + i;
             formInfo.areaConcerns.sensEquip.push(sensEquip);
         }
         formInfo.areaConcerns.fallhaz_none = false;
-        for(var i=0; i<2; i++) {
+        for(var i=0; i<3; i++) {
             var fallHazards = "FALL HAZARD " + i;
             formInfo.areaConcerns.fallHazards.push(fallHazards);
         }
         
         //ADDITIONAL TRAINING
         formInfo.addTraining.None = false;
-        for(var i=0; i<5; i++) {
+        for(var i=0; i<6; i++) {
             var addTraining = { };
             addTraining.name = "ADD. TRAINING " + i;
             addTraining.date = "10/10/2015";
