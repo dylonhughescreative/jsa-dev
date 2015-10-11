@@ -2,7 +2,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     'use strict';
     
     var verifyState = this;
-    var vForm = formInfo;
+    verifyState.vForm = formInfo;
     
     var stateController = { };
     

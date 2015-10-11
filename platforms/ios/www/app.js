@@ -109,6 +109,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         .state('verify', {
             url: '/verify',
             views: {
+                'sideMenu': {
+                    controller: 'FormWizardCtrl',
+                    templateUrl: './FormWizard/FormWizard_SideMenu.html'
+                },
                 'menuContent': {
                     templateUrl: './FormWizard/Verify.html',
                     controller: 'VerifyCtrl as verifyState'
