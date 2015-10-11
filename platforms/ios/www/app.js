@@ -31,7 +31,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
                 },
                 'menuContent': {
                     templateUrl: './LandingPage/LandingPage.html',
-                    controller: 'HomeCtrl'
+                    controller: 'HomeCtrl as homeState'
                 }
             }
         })
@@ -151,57 +151,58 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
 app.service('formInfo', function () {
     var formInfo = this;
+    
     formInfo.basicinfo = {
-            gcorsub: ""
-        },
-        formInfo.jobelements = [],
-        formInfo.ppeinfo = { },
-        formInfo.trainReqs = {
-            RedTag: false,
-            ConfinedSpace: false,
-            Scaffold: false,
-            FireWatch: false,
-            Flagger: false,
-            AerialLift: false,
-            DriverSafety: false,
-            SWP: false,
-            SPO: false,
-            Rigger: false,
-            ForkLift: false,
-            cm_Other: false,
-            tb_Other: ''
-        },
-        formInfo.licReqs = {
-            ForkLift: false,
-            AerialLift: false,
-            cm_Crane: false,
-            cb_Crane: 'N/A',
-            cm_HeavyEquip: false,
-            cb_HeavyEquip: 'N/A',
-            cm_Other: true,
-            tb_Other: ''
-        },
-        formInfo.areaConcerns = {
-            lineofFire: [],
-            sensEquip: [],
-            fallHazards: []
-        },
-        formInfo.addTraining = {
-            AddTraining: [],     
-            None: false
-        },
-        formInfo.signatures = [],
-        formInfo.completedElements = {
-            BasicInfo: "pending",
-            PPEAssess: "pending",
-            JobElements: "pending",
-            TrainReqs: "pending",
-            LicReqs:   "pending",
-            AreaConcerns: "pending",
-            AddTraining: "pending"
-        },
-        formInfo.formComplete = false,
-        formInfo.stateController = {
+        gcorsub: ""
+    },
+    formInfo.jobelements = [],
+    formInfo.ppeinfo = { },
+    formInfo.trainReqs = {
+        RedTag: false,
+        ConfinedSpace: false,
+        Scaffold: false,
+        FireWatch: false,
+        Flagger: false,
+        AerialLift: false,
+        DriverSafety: false,
+        SWP: false,
+        SOP: false,
+        Rigger: false,
+        ForkLift: false,
+        cm_Other: false,
+        tb_Other: ''
+    },
+    formInfo.licReqs = {
+        ForkLift: false,
+        AerialLift: false,
+        cm_Crane: false,
+        cb_Crane: 'N/A',
+        cm_HeavyEquip: false,
+        cb_HeavyEquip: 'N/A',
+        cm_Other: true,
+        tb_Other: ''
+    },
+    formInfo.areaConcerns = {
+        lineofFire: [],
+        sensEquip: [],
+        fallHazards: []
+    },
+    formInfo.addTraining = {
+        AddTraining: [],     
+        None: false
+    },
+    formInfo.signatures = [],
+    formInfo.completedElements = {
+        BasicInfo: "pending",
+        PPEAssess: "pending",
+        JobElements: "pending",
+        TrainReqs: "pending",
+        LicReqs:   "pending",
+        AreaConcerns: "pending",
+        AddTraining: "pending"
+    },
+    formInfo.formComplete = false,
+    formInfo.stateController = {
             nextstate: "",
             previousstate: ""
         };
