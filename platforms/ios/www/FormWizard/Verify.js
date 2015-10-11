@@ -1,24 +1,25 @@
-app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, $window, formInfo, jsPdfBuilder) {
+app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, $window, $ionicNavBarDelegate, formInfo, savedForms, jsPdfBuilder) {
     'use strict';
     
     var verifyState = this;
     verifyState.vForm = formInfo;
+    verifyState.saved = savedForms;
     
     var stateController = { };
     $scope.NextButtonText = "Certify";
     var lockForm = function() {
-        $scope.locked = true;
+        verifyState.vForm.locked = true;
         $scope.NextButtonText = "Add Signature";
     }
     
     var unlockForm = function() {
-        $scope.locked = false;
+        verifyState.vForm.locked = false;
         $scope.NextButtonText = "Certify";
     }
     
     $scope.commitment = { };
     $scope.emptySig = true;
-    $scope.locked = false;
+    verifyState.vForm.locked = false;
     
     $ionicModal.fromTemplateUrl('./FormWizard/SignatureModal.html', {
         id: "1",
@@ -129,9 +130,10 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             var so = cordova.plugins.screenorientation;
             so.setOrientation('landscape');
         }
-        if ($scope.locked != true)
+        if (!verifyState.vForm.locked)
             lockForm();
         $scope.commitment = {};
+        $ionicNavBarDelegate.showBackButton(false);
     }
     
     $scope.back = function () {
@@ -169,14 +171,14 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     $scope.openCertModal = function() {
         //var so = cordova.plugins.screenorientation;
         //so.setOrientation('unlocked');
-        if ($scope.locked)
+        if (verifyState.vForm.locked)
             $scope.employeeModal.show();
         else
             $scope.certificationModal.show();
     }
     
     $scope.closeCertModal = function() {
-        if ($scope.locked)
+        if (verifyState.vForm.locked)
             $scope.employeeModal.hide();
         else
             $scope.certificationModal.hide();
@@ -189,6 +191,33 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             so.setOrientation('landscape');
         }
         $state.go('verify');
+    }
+    
+    $scope.ActionItems = [
+           {
+               title: 'Save Form',
+               verifyAction: 'saveform'
+           },
+           {
+               title: 'Add Employee Signature',
+               verifyAction: 'addemployee'
+           },
+           {
+               title: 'Edit Form',
+               verifyAction: 'unlock'
+           },
+    ];
+    
+    $scope.actionClick = function(actionName) {
+        if (actionName === "saveform") {
+            verifyState.saved.recentForms.push(
+        }
+        else if (actionName === "addemployee") {
+            
+        }
+        else if (actionName === "") {
+            
+        }
     }
     
     $scope.uploadFile = function () {

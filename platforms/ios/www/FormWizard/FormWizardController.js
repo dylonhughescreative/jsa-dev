@@ -90,6 +90,10 @@ app.controller('FormWizardCtrl', function ($rootScope, $scope, $state, $ionicSid
         $ionicSideMenuDelegate.toggleLeft(false);
     };
     
+    $scope.$on('$stateChangeStart', function(){
+        $ionicSideMenuDelegate.toggleLeft(false);
+    });
+    
     function verifyGCinfo () {
         if (angular.isUndefined(formparentState.formInfo.basicinfo.username) || formparentState.formInfo.basicinfo.username === "") {
             return "invalid";

@@ -110,8 +110,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
             url: '/verify',
             views: {
                 'sideMenu': {
-                    controller: 'FormWizardCtrl',
-                    templateUrl: './FormWizard/FormWizard_SideMenu.html'
+                    controller: 'VerifyCtrl as verifyState',
+                    templateUrl: './FormWizard/Verify_SideMenu.html'
                 },
                 'menuContent': {
                     templateUrl: './FormWizard/Verify.html',
@@ -155,7 +155,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
 app.service('formInfo', function () {
     var formInfo = this;
-    
+    formInfo.formName = "",
     formInfo.basicinfo = {
         gcorsub: ""
     },
@@ -206,8 +206,14 @@ app.service('formInfo', function () {
         AddTraining: "pending"
     },
     formInfo.formComplete = false,
+    formInfo.locked = false,
     formInfo.stateController = {
             nextstate: "",
             previousstate: ""
         };
+});
+
+app.service('savedForms', function () {
+    var savedForms = this;
+    savedForms.recentForms = [];
 });
