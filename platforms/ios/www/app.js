@@ -102,14 +102,18 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
                 },
                 'menuContent': {
                     templateUrl: './FormWizard/Overview.html',
-                    controller: 'OverviewCtrl'
+                    controller: 'OverviewCtrl as overviewState'
                 }
             }
         })
         .state('verify', {
             url: '/verify',
-            templateUrl: './FormWizard/Verify.html',
-            controller: 'VerifyCtrl'
+            views: {
+                'menuContent': {
+                    templateUrl: './FormWizard/Verify.html',
+                    controller: 'VerifyCtrl as verifyState'
+                }
+            }
         })
         .state('completedForm', {
             url: '/completedForm',

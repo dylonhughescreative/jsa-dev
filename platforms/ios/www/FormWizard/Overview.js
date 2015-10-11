@@ -1,33 +1,29 @@
 app.controller('OverviewCtrl', function ($rootScope, $scope, $state, formInfo) {
     'use strict';
+    var overviewState = this;
+    overviewState.formInfo = formInfo;
     
-    $scope.formcomplete; 
-    $scope.completedElements = angular.copy(formInfo.getcompletedElements());
-    var GCorSub = formInfo.getBasicInfo().gcorsub;
-    
-    if ($scope.completedElements.BasicInfo === "valid" && 
-        $scope.completedElements.PPEAssess === "valid" &&
-        $scope.completedElements.JobElements === "valid" &&
-        $scope.completedElements.TrainReqs === "valid" &&
-        $scope.completedElements.LicReqs === "valid" &&
-        $scope.completedElements.AreaConcerns === "valid" ) {
-        $scope.formcomplete = true;
+    if (overviewState.formInfo.completedElements.BasicInfo === "valid" && 
+        overviewState.formInfo.completedElements.PPEAssess === "valid" &&
+        overviewState.formInfo.completedElements.JobElements === "valid" &&
+        overviewState.formInfo.completedElements.TrainReqs === "valid" &&
+        overviewState.formInfo.completedElements.LicReqs === "valid" &&
+        overviewState.formInfo.completedElements.AreaConcerns === "valid" ) {
+        overviewState.formInfo.formComplete = true;
     } else {
-        $scope.formcomplete = false;
+        overviewState.formInfo.formComplete = false;
     }
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
-        GCorSub = formInfo.getBasicInfo().gcorsub;
-        $scope.completedElements = angular.copy(formInfo.getcompletedElements());
-        if ($scope.completedElements.BasicInfo === "valid" && 
-            $scope.completedElements.PPEAssess === "valid" &&
-            $scope.completedElements.JobElements === "valid" &&
-            $scope.completedElements.TrainReqs === "valid" &&
-            $scope.completedElements.LicReqs === "valid" &&
-            $scope.completedElements.AreaConcerns === "valid" ) {
-            $scope.formcomplete = true;
+        if (overviewState.formInfo.completedElements.BasicInfo === "valid" && 
+            overviewState.formInfo.completedElements.PPEAssess === "valid" &&
+            overviewState.formInfo.completedElements.JobElements === "valid" &&
+            overviewState.formInfo.completedElements.TrainReqs === "valid" &&
+            overviewState.formInfo.completedElements.LicReqs === "valid" &&
+            overviewState.formInfo.completedElements.AreaConcerns === "valid" ) {
+            overviewState.formInfo.formComplete = true;
         } else {
-            $scope.formcomplete = false;
+            overviewState.formInfo.formComplete = false;
         }
     });
     
@@ -36,16 +32,16 @@ app.controller('OverviewCtrl', function ($rootScope, $scope, $state, formInfo) {
     };
     
     $scope.GCorSub = function () {
-        if (GCorSub != "") {
-            $state.go(GCorSub);
+        if (overviewState.formInfo.basicinfo.gcorsub != "") {
+            $state.go(overviewState.formInfo.basicinfo.gcorsub);
         } else {
             $state.go("formWizard.GCorSub");
         }
     };
     
     $scope.verified = function () {
-        var so = cordova.plugins.screenorientation;
-        so.setOrientation('landscape');
+        //var so = cordova.plugins.screenorientation;
+        //so.setOrientation('landscape');
         $state.go('verify');
     };
 });

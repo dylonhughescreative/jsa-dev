@@ -1,18 +1,11 @@
 app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, $window, formInfo, jsPdfBuilder) {
     'use strict';
     
-    $scope.basicinfo = angular.copy(formInfo.getBasicInfo());
-    $scope.ppeinfo = angular.copy(formInfo.getppeinfo());
-    $scope.jobelements = angular.copy(formInfo.getjobelements());
-    $scope.trainReqs = angular.copy(formInfo.getTrainReqs());
-    $scope.licReqs = angular.copy(formInfo.getLicReqs());
-    $scope.areaConcerns = angular.copy(formInfo.getAreaConcerns());
-    $scope.addTraining = angular.copy(formInfo.getAddTraining().AddTraining);
-    $scope.signatures = angular.copy(formInfo.getSignatures());
+    var verifyState = this;
+    var vForm = formInfo;
     
     var stateController = { };
     
-    $scope.signatures = angular.copy(formInfo.getSignatures());
     $scope.commitment = { };
     $scope.emptySig = true;
     
@@ -60,19 +53,16 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
         height: $window.innerHeight * 0.2
     };
     
-    var stateController = angular.copy(formInfo.getStateController());
     var signaturePad;
     
     $scope.closeSignatureModal = function() {
-        var so = cordova.plugins.screenorientation;
-        so.setOrientation('landscape');
+        //var so = cordova.plugins.screenorientation;
+        //so.setOrientation('landscape');
         $scope.signatureModal.hide();
         $scope.saveCanvas();
     }
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 
-        $scope.signatures = angular.copy(formInfo.getSignatures());
-        stateController = angular.copy(formInfo.getStateController());
         $scope.commitment = { };
     });   
     
@@ -111,7 +101,6 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             date: $scope.commitment.date,
             signature: $scope.commitment.signature    
         });
-        formInfo.setSignatures($scope.signatures);
         if (window.cordova) {
             var so = cordova.plugins.screenorientation;
             so.setOrientation('landscape');
@@ -136,21 +125,10 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
         }
     }
     angular.element($window).bind('resize', refresh);
-     
-    $rootScope.$on('$viewContentLoading', function(event, viewConfig){
-        $scope.basicinfo = angular.copy(formInfo.getBasicInfo());
-        $scope.ppeinfo = angular.copy(formInfo.getppeinfo());
-        $scope.jobelements = angular.copy(formInfo.getjobelements());
-        $scope.trainReqs = angular.copy(formInfo.getTrainReqs());
-        $scope.licReqs = angular.copy(formInfo.getLicReqs());
-        $scope.areaConcerns = angular.copy(formInfo.getAreaConcerns());
-        $scope.addTraining = angular.copy(formInfo.getAddTraining().AddTraining);
-        $scope.signatures = angular.copy(formInfo.getSignatures());
-    });
     
     $scope.back = function () {
-        var so = cordova.plugins.screenorientation;
-        so.setOrientation('unlocked');
+        //var so = cordova.plugins.screenorientation;
+        //so.setOrientation('unlocked');
         $state.go('overview');
     };
     
@@ -159,13 +137,12 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
         //so.setOrientation('unlocked');
         stateController.nextstate = "completedForm";
         stateController.previoussate = "verify";
-        formInfo.setStateController(stateController);
         $state.go(state);
     };
     
     $scope.openCertModal = function() {
-        var so = cordova.plugins.screenorientation;
-        so.setOrientation('unlocked');
+        //var so = cordova.plugins.screenorientation;
+        //so.setOrientation('unlocked');
         $scope.certificationModal.show();
     }
     
