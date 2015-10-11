@@ -7,35 +7,35 @@
         <button menu-toggle="left" class="button button-icon icon ion-ios-list-outline"></button>
     </ion-nav-buttons>
 <ion-content direction="y" class="submission-content">
-    <!-- our list and list items -->
+    <!-- our list and list tasks -->
     <ion-list show-reorder="reorderShowing">
-        <div ng-repeat="group in groups track by $index">
+        <div ng-repeat="element in jobElementsState.formInfo.jobelements track by $index">
             <ion-item class="item-stable"
-                    on-tap="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-                <i class="button-positive" ng-class="isGroupShown(group) ? 'ion-chevron-up' : 'ion-chevron-down'" ng-click="toggleGroup(group)"></i>
-                {{group.name}}
-                <ion-option-button class="button-positive" ng-click="openJobElement(group)">
+                    on-tap="toggleGroup(element)"
+                    ng-class="{active: isGroupShown(element)}">
+                <i class="button-positive" ng-class="isGroupShown(element) ? 'ion-chevron-up' : 'ion-chevron-down'" ng-click="toggleGroup(element)"></i>
+                {{element.name}}
+                <ion-option-button class="button-positive" ng-click="openJobElement(element)">
                     Edit
                 </ion-option-button>
-                <ion-option-button class="button-assertive" ng-click="deleteItem(group)">
+                <ion-option-button class="button-assertive" ng-click="deleteItem(element)">
                     Delete
                 </ion-option-button>
             </ion-item>
           <ion-item class="item-accordion"
-                    ng-repeat="item in group.items track by $index"
-                    ng-show="isGroupShown(group)">
+                    ng-repeat="item in element.tasks track by $index"
+                    ng-show="isGroupShown(element)">
             {{item.title}}
-                <ion-option-button class="button-positive" ng-click="openTaskModal(group, item)">
+                <ion-option-button class="button-positive" ng-click="openTaskModal(element, item)">
                     Edit
                 </ion-option-button>
-                <ion-option-button class="button-assertive" ng-click="deleteTask(group, item)">
+                <ion-option-button class="button-assertive" ng-click="deleteTask(element, item)">
                     Delete
                 </ion-option-button>
           </ion-item>
         </div>
     </ion-list>
-    <div class="fader" data-ng-if="groups.length == 0">
+    <div class="fader" data-ng-if="jobElementState.formInfo.jobelements.length == 0">
         <div class="card">
             <div class="item item-text-wrap half-opacity">
                 To add a task, press the + button above.
@@ -44,6 +44,6 @@
     </div>
 </ion-content>
     <div>
-          <button class="button button-block button-positive" id = "b_Submit" data-ng-if="group.length != 0" on-tap="check('formWizard.TrainReq')" on-hold="check('overview')">Next</button>
+          <button class="button button-block button-positive" id = "b_Submit" data-ng-if="jobElementState.formInfo.jobelements.length != 0" on-tap="check('formWizard.TrainReq')" on-hold="check('overview')">Next</button>
       </div>
 </ion-view>

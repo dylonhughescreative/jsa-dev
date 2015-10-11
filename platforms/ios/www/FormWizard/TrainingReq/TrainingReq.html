@@ -5,45 +5,45 @@
     <ion-content direction="y" class="submission-content">  
     <div class="checkboxlist">
         <ul class="list">
-            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.None" on-tap="checkchanged_none()" on-hold="checkchanged_none()">                        
+            <ion-checkbox class="item item-checkbox-right" ng-model="trainReqState.formInfo.trainReqs.None" on-tap="checkchanged_none()" on-hold="checkchanged_none()">                        
                 None
             </ion-checkbox>
-            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.RedTag" on-tap="checkchanged()" on-hold="checkchanged()">                        
+            <ion-checkbox class="item item-checkbox-right" ng-model="trainReqState.formInfo.trainReqs.RedTag" on-tap="checkchanged()" on-hold="checkchanged()">                        
                 Red Tag
             </ion-checkbox>
-            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.ConfinedSpace" on-tap="checkchanged()" on-hold="checkchanged()">                        
+            <ion-checkbox class="item item-checkbox-right" ng-model="trainReqState.formInfo.trainReqs.ConfinedSpace" on-tap="checkchanged()" on-hold="checkchanged()">                        
                 Confined Space
             </ion-checkbox>
-            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.Scaffold" on-tap="checkchanged()" on-hold="checkchanged()">                        
+            <ion-checkbox class="item item-checkbox-right" ng-model="trainReqState.formInfo.trainReqs.Scaffold" on-tap="checkchanged()" on-hold="checkchanged()">                        
                 Scaffold
             </ion-checkbox>
-            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.FireWatch" on-tap="checkchanged()" on-hold="checkchanged()">                        
+            <ion-checkbox class="item item-checkbox-right" ng-model="trainReqState.formInfo.trainReqs.FireWatch" on-tap="checkchanged()" on-hold="checkchanged()">                        
                 Fire Watch
             </ion-checkbox>
-            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.Flagger" on-tap="checkchanged()" on-hold="checkchanged()">                        
+            <ion-checkbox class="item item-checkbox-right" ng-model="trainReqState.formInfo.trainReqs.Flagger" on-tap="checkchanged()" on-hold="checkchanged()">                        
                 Flagger
             </ion-checkbox>
-            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.AerialLift" on-tap="checkchanged()" on-hold="checkchanged()">                        
+            <ion-checkbox class="item item-checkbox-right" ng-model="trainReqState.formInfo.trainReqs.AerialLift" on-tap="checkchanged()" on-hold="checkchanged()">                        
                 Aerial Lift
             </ion-checkbox>
-            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.DriverSafety" on-tap="checkchanged()" on-hold="checkchanged()">                        
+            <ion-checkbox class="item item-checkbox-right" ng-model="trainReqState.formInfo.trainReqs.DriverSafety" on-tap="checkchanged()" on-hold="checkchanged()">                        
                 Driver Safety
             </ion-checkbox>
-            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.SWP" on-tap="checkchanged()" on-hold="checkchanged()">                        
+            <ion-checkbox class="item item-checkbox-right" ng-model="trainReqState.formInfo.trainReqs.SWP" on-tap="checkchanged()" on-hold="checkchanged()">                        
                 SWP
             </ion-checkbox>
-            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.SOP" on-tap="checkchanged()" on-hold="checkchanged()">                        
+            <ion-checkbox class="item item-checkbox-right" ng-model="trainReqState.formInfo.trainReqs.SOP" on-tap="checkchanged()" on-hold="checkchanged()">                        
                 SOP
             </ion-checkbox>
-            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.Rigger" on-tap="checkchanged()" on-hold="checkchanged()">                        
+            <ion-checkbox class="item item-checkbox-right" ng-model="trainReqState.formInfo.trainReqs.Rigger" on-tap="checkchanged()" on-hold="checkchanged()">                        
                 Rigger
             </ion-checkbox>
-            <ion-checkbox class="item item-checkbox-right" ng-model="tempTrainReqs.ForkLift" on-tap="checkchanged()" on-hold="checkchanged()">                        
+            <ion-checkbox class="item item-checkbox-right" ng-model="trainReqState.formInfo.trainReqs.ForkLift" on-tap="checkchanged()" on-hold="checkchanged()">                        
                 Fork Lift
             </ion-checkbox>
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Other</span>
-                <input type="text" placeholder="Enter any other Training Requirement" ng-model="tempTrainReqs.tb_Other" ng-change="otherTextChanged()">
+                <input type="text" placeholder="Enter any other Training Requirement" ng-model="trainReqState.formInfo.trainReqs.tb_Other" ng-change="otherTextChanged()">
             </label>
         </ul>
     </div>

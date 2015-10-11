@@ -1,6 +1,9 @@
 app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootScope, $ionicListDelegate, formInfo) {
     'use strict';
     
+    var addTrainState = this;
+    addTrainState.formInfo = formInfo;
+    
     // Create and load the Modal
     $ionicModal.fromTemplateUrl('./FormWizard/AddTraining/new-AddTraining.html', {
         id: "1",
@@ -23,9 +26,9 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
     };
     
     $scope.editTraining = function(trn) {
-        EditingIndex = $scope.Training.AddTraining.indexOf(trn);
+        EditingIndex = addTrainState.formInfo.addTraining.AddTraining.indexOf(trn);
         TrainingEditing = true;
-        $scope.TempTrainingInfo = $scope.Training.AddTraining[EditingIndex];
+        $scope.TempTrainingInfo = addTrainState.formInfo.addTraining.AddTraining[EditingIndex];
         $ionicListDelegate.closeOptionButtons();
         $scope.AddTrainingModal.show();
     }
@@ -38,18 +41,18 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
     $scope.AddToTraining = function(tempInfo) {
         if (!TrainingEditing) {
             // Add to array
-            $scope.Training.AddTraining.push({
+            addTrainState.formInfo.addTraining.AddTraining.push({
                     name: tempInfo.name,
                     date: tempInfo.date
                 });
         } else {
-            $scope.Training.AddTraining.splice(EditingIndex, 1, $scope.TempTrainingInfo);
+            addTrainState.formInfo.addTraining.AddTraining.splice(EditingIndex, 1, $scope.TempTrainingInfo);
         }
             
         // Reset temp info and hide.
         $scope.TempTrainingInfo = {};
         $scope.AddTrainingModal.hide();
-        $scope.Training.None = false;
+        addTrainState.formInfo.addTraining.None = false;
     };
     
     function contains(a, obj) {
@@ -62,13 +65,13 @@ app.controller('AddTrainingCtrl', function ($scope, $ionicModal, $state, $rootSc
     }                                                                   
     
     $scope.checkchanged_none = function () {
-        if($scope.Training.None === false) {
-            $scope.Training.AddTraining = [];
+        if(addTrainState.formInfo.addTraining.None === false) {
+            addTrainState.formInfo.addTraining.AddTraining = [];
         }
     };
     
     $scope.deleteTraining = function(trn) {
-        $scope.Training.AddTraining.splice($scope.Training.AddTraining.indexOf(trn), 1);
+        addTrainState.formInfo.addTraining.AddTraining.splice(addTrainState.formInfo.addTraining.AddTraining.indexOf(trn), 1);
         $ionicListDelegate.closeOptionButtons();
     }
 

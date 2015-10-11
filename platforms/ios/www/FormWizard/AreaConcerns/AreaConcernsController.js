@@ -1,5 +1,7 @@
 app.controller('AreaConcernsCtrl', function ($scope, $state, formInfo, $rootScope) {
     'use strict';         
+    var areaConcernsState = this;
+    areaConcernsState.formInfo = formInfo;
     function contains(a, obj) {
         for (var i = 0; i < a.length; i++) {
             if (a[i] === obj) {
@@ -10,38 +12,38 @@ app.controller('AreaConcernsCtrl', function ($scope, $state, formInfo, $rootScop
     }
     
     $scope.LOFcheckchanged_none = function () {
-        if($scope.AreaConcerns.lof_none === false) {
-            $scope.AreaConcerns.lineofFire = [];
+        if(areaConcernsState.formInfo.areaConcerns.lof_none === false) {
+            areaConcernsState.formInfo.areaConcerns.lineofFire = [];
         }
     };
     
     $scope.LOFTextChanged = function () {
-        if($scope.AreaConcerns.lineofFire[0] != "") {
-            $scope.AreaConcerns.lof_none = false;
+        if(areaConcernsState.formInfo.areaConcerns.lineofFire[0] != "") {
+            areaConcernsState.formInfo.areaConcerns.lof_none = false;
         }
     };
     
     $scope.SensEquipcheckchanged_none = function () {
-        if($scope.AreaConcerns.sensequip_none === false) {
-            $scope.AreaConcerns.sensEquip = [];
+        if(areaConcernsState.formInfo.areaConcerns.sensequip_none === false) {
+            areaConcernsState.formInfo.areaConcerns.sensEquip = [];
         }
     };
     
     $scope.SensEquipTextChanged = function () {
-        if($scope.AreaConcerns.sensEquip[0] != "") {
-            $scope.AreaConcerns.sensequip_none = false;
+        if(areaConcernsState.formInfo.areaConcerns.sensEquip[0] != "") {
+            areaConcernsState.formInfo.areaConcerns.sensequip_none = false;
         }
     };
     
     $scope.FallHazcheckchanged_none = function () {
-        if($scope.AreaConcerns.fallhaz_none === false) {
-            $scope.AreaConcerns.fallHazards = [];
+        if(areaConcernsState.formInfo.areaConcerns.fallhaz_none === false) {
+            areaConcernsState.formInfo.areaConcerns.fallHazards = [];
         }
     };
     
     $scope.FallHazTextChanged = function () {
-        if($scope.AreaConcerns.fallHazards[0] != "") {
-            $scope.AreaConcerns.fallhaz_none = false;
+        if(areaConcernsState.formInfo.areaConcerns.fallHazards[0] != "") {
+            areaConcernsState.formInfo.areaConcerns.fallhaz_none = false;
         }
     };
 

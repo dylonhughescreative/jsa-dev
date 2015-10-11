@@ -1,5 +1,7 @@
 app.controller('TrainReqCtrl', function ($rootScope, $scope, formInfo) {
     'use strict';
+    var trainReqState = this;
+    trainReqState.formInfo = formInfo;
     
     var defaultTrainReqs = {
             None: false,
@@ -19,18 +21,18 @@ app.controller('TrainReqCtrl', function ($rootScope, $scope, formInfo) {
         }
     
     $scope.checkchanged = function () {
-        $scope.tempTrainReqs.None = false;
+        trainReqState.formInfo.trainReqs.None = false;
     };
     
     $scope.otherTextChanged = function () {
-        if($scope.tempTrainReqs.tb_Other != "") {
-            $scope.tempTrainReqs.None = false;
+        if(trainReqState.formInfo.trainReqs.tb_Other != "") {
+            trainReqState.formInfo.trainReqs.None = false;
         }
     };
     
     $scope.checkchanged_none = function () {
-        if($scope.tempTrainReqs.None === false) {
-            $scope.tempTrainReqs = angular.copy(defaultTrainReqs);
+        if(trainReqState.formInfo.trainReqs.None === false) {
+            trainReqState.formInfo.trainReqs = angular.copy(defaultTrainReqs);
         }
     };
 });

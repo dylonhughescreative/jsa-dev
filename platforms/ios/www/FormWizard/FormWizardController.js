@@ -206,126 +206,119 @@ app.controller('FormWizardCtrl', function ($rootScope, $scope, $state, $ionicSid
     }
     
     function verifyJobElements () {
-        if($scope.groups.length > 0) {
+        if(formparentState.formInfo.jobelements.length > 0) {
             return "valid";
         } else {
             return "invalid";
         }
     }
     function checkJobElements () {
-        formInfo.setjobelementsComplete(verifyJobElements());
-        formInfo.setjobelements($scope.groups);
+        formparentState.formInfo.completedElements.JobElements = verifyJobElements();
     }
     
     function verifyTrainReqs () {
-        if ($scope.tempTrainReqs.None === true) {
+        if (formparentState.formInfo.trainReqs.None === true) {
             return "valid";
-        } else if ($scope.tempTrainReqs.RedTag === true) {
+        } else if (formparentState.formInfo.trainReqs.RedTag === true) {
             return "valid";
-        } else if ($scope.tempTrainReqs.ConfinedSpace === true) {
+        } else if (formparentState.formInfo.trainReqs.ConfinedSpace === true) {
             return "valid";
-        } else if ($scope.tempTrainReqs.Scaffold === true) {
+        } else if (formparentState.formInfo.trainReqs.Scaffold === true) {
             return "valid";
-        } else if ($scope.tempTrainReqs.FireWatch === true) {
+        } else if (formparentState.formInfo.trainReqs.FireWatch === true) {
             return "valid";
-        } else if ($scope.tempTrainReqs.AerialLift === true) {
+        } else if (formparentState.formInfo.trainReqs.AerialLift === true) {
             return "valid";
-        } else if ($scope.tempTrainReqs.DriverSafety === true) {
+        } else if (formparentState.formInfo.trainReqs.DriverSafety === true) {
             return "valid";
-        } else if ($scope.tempTrainReqs.SWP === true) {
+        } else if (formparentState.formInfo.trainReqs.SWP === true) {
             return "valid";
-        } else if ($scope.tempTrainReqs.SOP === true) {
+        } else if (formparentState.formInfo.trainReqs.SOP === true) {
             return "valid";
-        } else if ($scope.tempTrainReqs.Rigger === true) {
+        } else if (formparentState.formInfo.trainReqs.Rigger === true) {
             return "valid";
-        } else if ($scope.tempTrainReqs.ForkLift === true) {
+        } else if (formparentState.formInfo.trainReqs.ForkLift === true) {
             return "valid";
-        } else if ($scope.tempTrainReqs.tb_Other !== "") {
+        } else if (formparentState.formInfo.trainReqs.tb_Other !== "") {
             return "valid";
         } else {
             return "invalid";
         }
     }
     function formatTrainReqs() {
-        if ($scope.tempTrainReqs.Other !== "") {
-            $scope.tempTrainReqs.cm_Other = true;
+        if (formparentState.formInfo.trainReqs.Other !== "") {
+            formparentState.formInfo.trainReqs.cm_Other = true;
         } else {
-            $scope.tempTrainReqs.cm_Other = false;
+            formparentState.formInfo.trainReqs.cm_Other = false;
         }
     }
     function checkTrainReqs () {
-        formInfo.setTrainReqsComplete(verifyTrainReqs());
+        formparentState.formInfo.completedElements.TrainReqs = verifyTrainReqs();
         formatTrainReqs();
-        formInfo.setTrainReqs($scope.tempTrainReqs);
     }
     
     function verifyLicReqs () {
-        if ($scope.tempLicReqs.None === true) {
+        if (formparentState.formInfo.licReqs.None === true) {
             return "valid";
-        } else if ($scope.tempLicReqs.ForkLift === true) {
+        } else if (formparentState.formInfo.licReqs.ForkLift === true) {
             return "valid";
-        } else if ($scope.tempLicReqs.AerialLift === true) {
+        } else if (formparentState.formInfo.licReqs.AerialLift === true) {
             return "valid";
-        } else if ($scope.tempLicReqs.cb_Crane !== "N/A") {
+        } else if (formparentState.formInfo.licReqs.cb_Crane !== "N/A") {
             return "valid";
-        } else if ($scope.tempLicReqs.cb_HeavyEquip !== "N/A") {
+        } else if (formparentState.formInfo.licReqs.cb_HeavyEquip !== "N/A") {
             return "valid";
-        } else if ($scope.tempLicReqs.tb_Other !== "") {
+        } else if (formparentState.formInfo.licReqs.tb_Other !== "") {
             return "valid";
         } else {
             return "invalid";
         }
     }
     function formatLicReqs () {
-        if ($scope.tempLicReqs.cb_Crane !== "N/A") {
-            $scope.tempLicReqs.cm_Crane = true;
+        if (formparentState.formInfo.licReqs.cb_Crane !== "N/A") {
+            formparentState.formInfo.licReqs.cm_Crane = true;
         } else {
-            $scope.tempLicReqs.cm_Crane = false;
+            formparentState.formInfo.licReqs.cm_Crane = false;
         }
         
-        if ($scope.tempLicReqs.cb_HeavyEquip !== "N/A") {
-            $scope.tempLicReqs.cm_HeavyEquip = true;
+        if (formparentState.formInfo.licReqs.cb_HeavyEquip !== "N/A") {
+            formparentState.formInfo.licReqs.cm_HeavyEquip = true;
         } else {
-            $scope.tempLicReqs.cm_HeavyEquip = false;
+            formparentState.formInfo.licReqs.cm_HeavyEquip = false;
         }
         
-        if ($scope.tempLicReqs.tb_Other !== "") {
-            $scope.tempLicReqs.cm_Other = true;
+        if (formparentState.formInfo.licReqs.tb_Other !== "") {
+            formparentState.formInfo.licReqs.cm_Other = true;
         } else {
-            $scope.tempLicReqs.cm_Other = false;
+            formparentState.formInfo.licReqs.cm_Other = false;
         }
     }
     function checkLicReqs () {
-        formInfo.setLicReqsComplete(verifyLicReqs());
+        formparentState.formInfo.completedElements.LicReqs = verifyLicReqs();
         formatLicReqs();
-        formInfo.setLicReqs($scope.tempLicReqs);
     }
     
     function verifyAreaConcerns () {
-        if (($scope.AreaConcerns.lof_none === true || $scope.AreaConcerns.lineofFire.length > 0) &&
-           ($scope.AreaConcerns.sensequip_none === true || $scope.AreaConcerns.sensEquip.length > 0) &&
-           ($scope.AreaConcerns.fallhaz_none === true || $scope.AreaConcerns.fallHazards.length > 0)) {
+        if ((formparentState.formInfo.areaConcerns.lof_none === true || formparentState.formInfo.areaConcerns.lineofFire.length > 0) &&
+           (formparentState.formInfo.areaConcerns.sensequip_none === true || formparentState.formInfo.areaConcerns.sensEquip.length > 0) &&
+           (formparentState.formInfo.areaConcerns.fallhaz_none === true || formparentState.formInfo.areaConcerns.fallHazards.length > 0)) {
             return "valid";
         } else {
             return "invalid";
         }
     }
     function checkAreaConcerns () {
-        formInfo.setAreaConcernsComplete(verifyAreaConcerns());
-        formInfo.setAreaConcerns($scope.AreaConcerns);
+        formparentState.formInfo.completedElements.AreaConcerns = verifyAreaConcerns();
     }
     
     function verifyAddTraining () {
-        if($scope.Training.None === true || $scope.Training.AddTraining.length > 0) {
+        if(formparentState.formInfo.addTraining.None === true || formparentState.formInfo.addTraining.AddTraining.length > 0) {
             return "valid";
         } else {
             return "invalid";
         }
     }
     function checkAddTraining () {
-        formInfo.setAddTrainingComplete(verifyAddTraining());
-        formInfo.setAddTraining($scope.Training);
+        formparentState.formInfo.completedElements.AddTraining = verifyAddTraining();
     }
-    
-    
 });

@@ -1,6 +1,9 @@
 app.controller('LicReqCtrl', function ($rootScope, $scope, $ionicPopup, formInfo) {
     'use strict';
     
+    var licReqState = this;
+    licReqState.formInfo = formInfo;
+    
     $scope.craneOptions = ['N/A', 'Other'];
     $scope.heavyequipOptions = ['N/A', 'Other'];
     
@@ -17,18 +20,18 @@ app.controller('LicReqCtrl', function ($rootScope, $scope, $ionicPopup, formInfo
         };
     
     $scope.checkchanged = function () {
-        $scope.tempLicReqs.None = false;
+        licReqState.formInfo.licReqs.None = false;
     };
     
     $scope.otherTextChanged = function () {
-        if($scope.tempLicReqs.tb_Other != "") {
-            $scope.tempLicReqs.None = false;
+        if(licReqState.formInfo.licReqs.tb_Other != "") {
+            licReqState.formInfo.licReqs.None = false;
         }
     };
     
     $scope.checkchanged_none = function () {
-        if($scope.tempLicReqs.None === false) {
-            $scope.tempLicReqs = angular.copy(defaultLicReqs);
+        if(licReqState.formInfo.licReqs.None === false) {
+            licReqState.formInfo.licReqs = angular.copy(defaultLicReqs);
         }
     };
     
@@ -65,7 +68,7 @@ app.controller('LicReqCtrl', function ($rootScope, $scope, $ionicPopup, formInfo
     }
     
     $scope.craneTypeChanged = function () {
-        if($scope.tempLicReqs.cb_Crane == "Other") {
+        if(licReqState.formInfo.licReqs.cb_Crane == "Other") {
             var addToArray = true,
                 other = OtherPopup("Crane Type");
             other.then(function(res) {
@@ -79,22 +82,22 @@ app.controller('LicReqCtrl', function ($rootScope, $scope, $ionicPopup, formInfo
                     if(addToArray) {
                         $scope.craneOptions.splice($scope.craneOptions.length-1, 0, res);
                     }
-                    $scope.tempLicReqs.cb_Crane = res;
+                    licReqState.formInfo.licReqs.cb_Crane = res;
                     
                     if(res != "N/A") {
-                        $scope.tempLicReqs.None = false;
+                        licReqState.formInfo.licReqs.None = false;
                     }
                 }
             });
         }
         
-        if($scope.tempLicReqs.cb_Crane != "N/A") {
-            $scope.tempLicReqs.None = false;
+        if(licReqState.formInfo.licReqs.cb_Crane != "N/A") {
+            licReqState.formInfo.licReqs.None = false;
         }
     };
     
     $scope.heavyequipTypeChanged = function () {
-        if($scope.tempLicReqs.cb_HeavyEquip == "Other") {
+        if(licReqState.formInfo.licReqs.cb_HeavyEquip == "Other") {
             var addToArray = true,
                 other = OtherPopup("Heavy Equip. Type");
             other.then(function(res) {
@@ -108,17 +111,17 @@ app.controller('LicReqCtrl', function ($rootScope, $scope, $ionicPopup, formInfo
                     if(addToArray) {
                         $scope.heavyequipOptions.splice($scope.heavyequipOptions.length-1, 0, res);
                     }
-                    $scope.tempLicReqs.cb_HeavyEquip = res;
+                    licReqState.formInfo.licReqs.cb_HeavyEquip = res;
                     
                     if(res != "N/A") {
-                        $scope.tempLicReqs.None = false;
+                        licReqState.formInfo.licReqs.None = false;
                     }
                 }
             });
         }
         
-        if($scope.tempLicReqs.cb_HeavyEquip != "N/A") {
-            $scope.tempLicReqs.None = false;
+        if(licReqState.formInfo.licReqs.cb_HeavyEquip != "N/A") {
+            licReqState.formInfo.licReqs.None = false;
         }
     };
     

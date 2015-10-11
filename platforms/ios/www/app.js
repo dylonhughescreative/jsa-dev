@@ -71,27 +71,27 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         .state('formWizard.JobElements', {
             url: '/JobElements',
             templateUrl: './FormWizard/JobElements/JobElements.html',
-            controller: 'JobElementCtrl'
+            controller: 'JobElementCtrl as jobElementsState'
         })
         .state('formWizard.TrainReq', {
             url: '/TrainReq',
             templateUrl: './FormWizard/TrainingReq/TrainingReq.html',
-            controller: 'TrainReqCtrl'
+            controller: 'TrainReqCtrl as trainReqState'
         })
         .state('formWizard.LicReq', {
             url: '/LicReq',
             templateUrl: './FormWizard/LicenseReq/LicenseReq.html',
-            controller: 'LicReqCtrl'
+            controller: 'LicReqCtrl as licReqState'
         })
         .state('formWizard.AreaConcerns', {
             url: '/AreaConcerns',
             templateUrl: './FormWizard/AreaConcerns/AreaConcerns.html',
-            controller: 'AreaConcernsCtrl'
+            controller: 'AreaConcernsCtrl as areaConcernsState'
         })
         .state('formWizard.AddTraining', {
             url: '/AddTraining',
             templateUrl: './FormWizard/AddTraining/AddTraining.html',
-            controller: 'AddTrainingCtrl'
+            controller: 'AddTrainingCtrl as addTrainState'
         })
         .state('overview', {
             url: '/overview',
@@ -177,7 +177,11 @@ app.service('formInfo', function () {
             cm_Other: true,
             tb_Other: ''
         },
-        formInfo.areaConcerns = {},
+        formInfo.areaConcerns = {
+            lineofFire: [],
+            sensEquip: [],
+            fallHazards: []
+        },
         formInfo.addTraining = {
             AddTraining: [],     
             None: false
