@@ -1,9 +1,10 @@
-app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, $window, $ionicNavBarDelegate, formInfo, savedForms, jsPdfBuilder) {
+app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, $window, $ionicNavBarDelegate, $ionicPopup, formInfo, savedForms, jsPdfBuilder) {
     'use strict';
     
     var verifyState = this;
     verifyState.vForm = formInfo;
     verifyState.saved = savedForms;
+    $ionicNavBarDelegate.showBackButton(false);
     
     var stateController = { };
     $scope.NextButtonText = "Certify";
@@ -49,6 +50,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
         $scope.signatureModal.remove();
         $scope.certificationModal.remove();
         $scope.employeeModal.remove();
+        $ionicNavBarDelegate.showBackButton(false);
         $ionicModal.fromTemplateUrl('./FormWizard/SignatureModal.html', {
             id: "1",
             scope: $scope,
@@ -210,17 +212,37 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     
     $scope.actionClick = function(actionName) {
         if (actionName === "saveform") {
-            verifyState.saved.recentForms.push(verifyState.vForm);
+            verifyState.saved.forms.push(verifyState.vForm);
         }
         else if (actionName === "addemployee") {
-            
+            $scope.openCertModal();
         }
-        else if (actionName === "") {
-            
+        else if (actionName === "unlock") {
+            verifyState.vForm.locked = false;
+            verifyState.vForm.signatures = [];
+            $state.go('overview');
         }
     }
     
-    $scope.uploadFile = function () {
+    $scope.saveForm = function () {
+        // Save the form.
+    }
+    
+    $scope.submitForm = function () {
+        var confirmPopup = $ionicPopup.confirm({
+            title: "Submit JSA Form",
+            template: "Are you sure you want to submit this JSA? Doing so will not allow you to retrieve it once it has been sent."
+        });
+        confirmPopup.then(function(res) {
+            if(res) {
+                uploadFile();
+            } else {
+                console.log("");
+            }
+        });
+    };
+    
+    var uploadFile = function () {
         jsPdfBuilder.createPdf();
         //var url = "http://dylonhughes.com/uploads/upload.php",
         ////target path may be local or url

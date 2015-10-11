@@ -5,10 +5,10 @@
     <div class="list list-inset">
         <a class="item" ng-click="check('home')">Home</a>
         <div class="item item-divider">Actions</div>
-        <a class="item" ng-click="action()" ng-repeat="action in ActionItems">
+        <a class="item" ng-click="actionClick(action.verifyAction)" ng-repeat="action in ActionItems">
             {{action.title}}
         </a>
         <div class="item item-divider">Final Submission</div>
-        <a class="item" ng-click="check('overview')">Submit</a>
+        <a class="item" ng-click="submitForm()">Submit</a>
     </div>
 </ion-content>

@@ -215,5 +215,6 @@ app.service('formInfo', function () {
 
 app.service('savedForms', function () {
     var savedForms = this;
-    savedForms.recentForms = [];
+    savedForms.formNames = [];
+    savedForms.forms = [];
 });
