@@ -210,7 +210,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     
     $scope.actionClick = function(actionName) {
         if (actionName === "saveform") {
-            verifyState.saved.recentForms.push(
+            verifyState.saved.recentForms.push(verifyState.vForm);
         }
         else if (actionName === "addemployee") {
             
