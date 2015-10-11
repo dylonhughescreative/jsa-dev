@@ -10,7 +10,7 @@
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
         <button class="button button-clear" on-tap="openCertModal()" on-hold="uploadFile()" id="signbutton">
-            Certify
+            {{NextButtonText}}
         </button>
     </ion-nav-buttons>
     
@@ -175,6 +175,83 @@
                             <div class="Textbox" id="TrainDate">{{verifyState.vForm.addTraining.AddTraining[5].date | date:"MM/dd/yy"}}</div>
                         </div>
                     </div>
+                <div id="Commitment">
+                    <div id="Commitment1">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[1].name}}</div>
+                        <img data-ng-if="verifyState.vForm.signatures[1].signature" id="EmployeeSignature" src="{{verifyState.vForm.signatures[1].signature}}"/>
+                        <div class="Textbox" id="At-Risk">YES</div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[1].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment2">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[2].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[2].signature}}"/>
+                        <div class="Textbox" id="At-Risk">YES</div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[2].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment3">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[3].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[3].signature}}"/>
+                        <div class="Textbox" id="At-Risk">YES</div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[3].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment4">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[4].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[4].signature}}"/>
+                        <div class="Textbox" id="At-Risk">YES</div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[4].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment5">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[5].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[5].signature}}"/>
+                        <div class="Textbox" id="At-Risk">YES</div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[5].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment6">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[6].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[6].signature}}"/>
+                        <div class="Textbox" id="At-Risk">YES</div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[6].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment7">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[7].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[7].signature}}"/>
+                        <div class="Textbox" id="At-Risk">YES</div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[7].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment8">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[8].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[8].signature}}"/>
+                        <div class="Textbox" id="At-Risk">YES</div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[8].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment9">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[9].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[9].signature}}"/>
+                        <div class="Textbox" id="At-Risk">YES</div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[9].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment10">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[10].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[10].signature}}"/>
+                        <div class="Textbox" id="At-Risk">YES</div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[10].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment11">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[11].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[11].signature}}"/>
+                        <div class="Textbox" id="At-Risk">YES</div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[11].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment12">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[12].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[12].signature}}"/>
+                        <div class="Textbox" id="At-Risk">YES</div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[12].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                </div>
+                <img id="JSASignature" src="{{verifyState.vForm.signatures[0].signature}}"/>
+                <div class="Textbox" id="PrintedName">{{verifyState.vForm.signatures[0].name}}</div>
+                <div class="Textbox" id="CompletedDate">{{verifyState.vForm.signatures[0].date | date:"MM/dd/yyyy"}}</div>
             </ion-scroll>
         </ion-content>
     </ion-slide>

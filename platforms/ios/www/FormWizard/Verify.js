@@ -5,9 +5,20 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     verifyState.vForm = formInfo;
     
     var stateController = { };
+    $scope.NextButtonText = "Certify";
+    var lockForm = function() {
+        $scope.locked = true;
+        $scope.NextButtonText = "Add Signature";
+    }
+    
+    var unlockForm = function() {
+        $scope.locked = false;
+        $scope.NextButtonText = "Certify";
+    }
     
     $scope.commitment = { };
     $scope.emptySig = true;
+    $scope.locked = false;
     
     $ionicModal.fromTemplateUrl('./FormWizard/SignatureModal.html', {
         id: "1",
@@ -25,19 +36,18 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
         $scope.certificationModal = modal;
     });
     
-    // I found this call after kludging my way into making 2 signature modals.
-    // It's 1 AM so I don't feel like correcting it right now, but here's a 
-    // TODO
+    $ionicModal.fromTemplateUrl('./FormWizard/EmployeeAwarenessModal.html', {
+        id: "3",
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.employeeModal = modal;
+    });
+    
     $scope.$on('$stateChangeStart', function(){
         $scope.signatureModal.remove();
         $scope.certificationModal.remove();
-        $ionicModal.fromTemplateUrl('./FormWizard/CertificationAwarenessModal.html', {
-            id: "2",
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function (modal) {
-            $scope.certificationModal = modal;
-        });
+        $scope.employeeModal.remove();
         $ionicModal.fromTemplateUrl('./FormWizard/SignatureModal.html', {
             id: "1",
             scope: $scope,
@@ -45,6 +55,20 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
         }).then(function (modal) {
             $scope.signatureModal = modal;
         });
+        $ionicModal.fromTemplateUrl('./FormWizard/CertificationAwarenessModal.html', {
+            id: "2",
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.certificationModal = modal;
+        });
+        $ionicModal.fromTemplateUrl('./FormWizard/EmployeeAwarenessModal.html', {
+            id: "3",
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.employeeModal = modal;
+        });    
     });
     
     $scope.sigCanvas = {
@@ -96,7 +120,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     $scope.saveCanvas = function () {
         var sigImg = signaturePad.toDataURL();
         $scope.commitment.signature = sigImg;
-        $scope.signatures.push({
+        verifyState.vForm.signatures.push({
             name: $scope.commitment.name,
             date: $scope.commitment.date,
             signature: $scope.commitment.signature    
@@ -105,7 +129,9 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             var so = cordova.plugins.screenorientation;
             so.setOrientation('landscape');
         }
-        $state.go('completedForm');
+        if ($scope.locked != true)
+            lockForm();
+        $scope.commitment = {};
     }
     
     $scope.back = function () {
@@ -143,11 +169,17 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     $scope.openCertModal = function() {
         //var so = cordova.plugins.screenorientation;
         //so.setOrientation('unlocked');
-        $scope.certificationModal.show();
+        if ($scope.locked)
+            $scope.employeeModal.show();
+        else
+            $scope.certificationModal.show();
     }
     
     $scope.closeCertModal = function() {
-        $scope.certificationModal.hide();
+        if ($scope.locked)
+            $scope.employeeModal.hide();
+        else
+            $scope.certificationModal.hide();
     }
     
     $scope.closeCertModalAndBack = function() {
