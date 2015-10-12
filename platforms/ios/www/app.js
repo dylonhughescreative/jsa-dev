@@ -27,11 +27,22 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
             url: '/home',
             views: {
                 'sideMenu': {
-                    //templateUrl: 'templates/sidemenu.html',
+                    templateUrl: './LandingPage/LandingPage_SideMenu.html'
                 },
                 'menuContent': {
                     templateUrl: './LandingPage/LandingPage.html',
                     controller: 'HomeCtrl as homeState'
+                }
+            }
+        })
+        .state('savedForms', {
+            url: '/savedForms',
+            views: {
+                'sideMenu': {
+                },
+                'menuContent': {
+                    templateUrl: './SavedForms/SavedForms.html',
+                    controller: 'SavedFormsCtrl as savedFormsJs'
                 }
             }
         })
@@ -119,35 +130,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
                 }
             }
         })
-        .state('completedForm', {
-            url: '/completedForm',
-            templateUrl: './CompletedForms/CompletedForms.html',
-            controller: 'CompletedFormsCtrl'
-        })
-        .state('submitForm', {
-            url: '/submitForm',
-            templateUrl: 'SubmitForm.html',
-            controller: 'SubmitFormCtrl'
-        })
-        .state('signatureList', {
-            url: '/signatureList',
-            templateUrl: './CompletedForms/SignatureList.html',
-            controller: 'SignatureListCtrl',
-            cache: false
-        })
-        .state('signature', {
-            url: '/sign',
-            templateUrl: './FormWizard/Signature.html',
-            controller: 'SigCtrl'
-        })
-        .state('portrait', {
-            url: '/portrait',
-            templateUrl: 'templates/Portrait.html'
-        })
-        .state('landscape', {
-            url: '/landscape',
-            templateUrl: 'templates/Landscape.html'
-        });
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('home');
@@ -238,3 +220,23 @@ app.service('savedForms', function () {
     savedForms.formNames = [];
     savedForms.forms = [];
 });
+
+app.factory('$localstorage', ['$window', function($window) {
+  return {
+    set: function(key, value) {
+      $window.localStorage[key] = value;
+    },
+    get: function(key, defaultValue) {
+      return $window.localStorage[key] || defaultValue;
+    },
+    setObject: function(key, value) {
+      $window.localStorage[key] = JSON.stringify(value);
+    },
+    getObject: function(key) {
+      return JSON.parse($window.localStorage[key] || '{}');
+    },
+    removeObject: function(key) {
+      return $window.localStorage.removeItem(key);
+    }
+  }
+}]);

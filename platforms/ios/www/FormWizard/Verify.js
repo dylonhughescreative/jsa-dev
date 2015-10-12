@@ -1,4 +1,4 @@
-app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, $window, $ionicNavBarDelegate, $ionicPopup, $ionicSideMenuDelegate, formInfo, savedForms, jsPdfBuilder) {
+app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, $window, $ionicNavBarDelegate, $ionicPopup, $ionicSideMenuDelegate, $localstorage, formInfo, savedForms, jsPdfBuilder) {
     'use strict';
     
     var verifyState = this;
@@ -7,6 +7,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     $ionicNavBarDelegate.showBackButton(false);
     
     var stateController = { };
+    var signaturePad;
     var lockForm = function() {
         verifyState.vForm.locked = true;
         verifyState.vForm.NextButtonText = "Add Signature";
@@ -79,8 +80,6 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
         height: $window.innerHeight * 0.2
     };
     
-    var signaturePad;
-    
     $scope.closeSignatureModal = function() {
         //var so = cordova.plugins.screenorientation;
         //so.setOrientation('landscape');
@@ -137,14 +136,6 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
         $ionicNavBarDelegate.showBackButton(false);
     }
     
-    $scope.back = function () {
-        if (window.cordova) {
-            var so = cordova.plugins.screenorientation;
-            so.setOrientation('landscape');
-        }
-        $state.go('verify');
-    };
-    
     function refresh() {
         var ModalDimensions = document.getElementById('SignatureModal');
         if (ModalDimensions != null) {
@@ -154,20 +145,6 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
         }
     }
     angular.element($window).bind('resize', refresh);
-    
-    $scope.back = function () {
-        //var so = cordova.plugins.screenorientation;
-        //so.setOrientation('unlocked');
-        $state.go('overview');
-    };
-    
-    $scope.onclick = function(state) {
-        //var so = cordova.plugins.screenorientation;
-        //so.setOrientation('unlocked');
-        stateController.nextstate = "completedForm";
-        stateController.previoussate = "verify";
-        $state.go(state);
-    };
     
     $scope.openCertModal = function() {
         //var so = cordova.plugins.screenorientation;
@@ -213,14 +190,16 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
         if (actionName === "saveform") {
             saveForm();
         }
+        else if (actionName === "home") {
+            warnBeforeLeaving('home');
+        }
         else if (actionName === "addsignatures") {
             $scope.openCertModal();
         }
         else if (actionName === "unlock") {
-            verifyState.vForm.locked = false;
-            verifyState.vForm.signatures = [];
-            $state.go('overview');
+            warnBeforeLeaving('overview');
         }
+        $ionicSideMenuDelegate.toggleLeft(false);
     }
     
     var saveForm = function () {
@@ -233,7 +212,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
                 {text: 'Cancel'},
                 {
                     text: '<b>Save</b>',
-                    type: 'button-clear',
+                    type: 'button-positive',
                     onTap: function(e) {
                         if (!verifyState.vForm.formName) {
                             e.preventDefault();
@@ -245,11 +224,46 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             ]
         });
         saveFormPopup.then(function(res) {
-            verifyState.saved.formNames.push(verifyState.vForm.formName);
-            verifyState.saved.forms.push(verifyState.vForm);
+            if (verifyState.saved.formNames.indexOf(verifyState.vForm.formName) != -1)
+            {
+                var overwritePopup = $ionicPopup.confirm({
+                    title: 'Overwrite?',
+                    template: 'There is already a form with this name; if you continue, it will be overwritten. Continue?'
+                });
+                overwritePopup.then(function (res) {
+                    if (res) {
+                        verifyState.saved.formNames.push(verifyState.vForm.formName);
+                        verifyState.saved.forms.push(verifyState.vForm);
+                        $localstorage.set(verifyState.vForm.formName, verifyState.vForm);
+                    }
+                });
+            } else {
+                verifyState.saved.formNames.push(verifyState.vForm.formName);
+                verifyState.saved.forms.push(verifyState.vForm);
+                $localstorage.set(verifyState.vForm.formName, verifyState.vForm);
+            }
             // Decide if this form has already been saved and/or overwrite
             // Save to local storage.
         });
+    }
+    
+    var warnBeforeLeaving = function (state) {
+        if (verifyState.vForm.locked) {
+            var warningPopup = $ionicPopup.confirm({
+                title: 'Confirm Page Navigation',
+                template: 'Leaving this page will delete the form certification and all signatures attached.  Are you sure you want to continue?'
+            });
+            warningPopup.then(function (res) {
+                if (res) {
+                    verifyState.vForm.locked = false;
+                    verifyState.vForm.signatures = [];
+                    $state.go(state);
+                }
+            });
+        } else {
+            $state.go(state);
+        }
+        $ionicSideMenuDelegate.toggleLeft(false);
     }
     
     $scope.submitForm = function () {

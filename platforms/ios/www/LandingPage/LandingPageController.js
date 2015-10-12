@@ -1,7 +1,8 @@
-app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $cordovaSplashscreen, $ionicPlatform, formInfo, jsPdfBuilder) {
+app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $cordovaSplashscreen, $ionicPlatform, formInfo, savedForms, jsPdfBuilder) {
     'use strict';
     $scope.helpShow = false;
     var formInfo = formInfo;
+    var savedForms = savedForms;
     
     $scope.GoTo = function (state) {
         $state.go(state);
@@ -174,6 +175,9 @@ app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $co
             addTraining.date = "10/10/2015";
             formInfo.addTraining.AddTraining.push(addTraining);  
         }
+        
+        savedForms.formNames.push('Default Testing Form');
+        savedForms.forms.push(formInfo);
         
         jsPdfBuilder.createPdf();
     }

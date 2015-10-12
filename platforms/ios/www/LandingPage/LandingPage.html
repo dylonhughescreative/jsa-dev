@@ -1,4 +1,7 @@
 <ion-view view-title="JSA Form Dashboard">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-ios-list-outline"></button>
+    </ion-nav-buttons>
     <ion-content>
         <div id="BackgroundContainer">
             <img id="HomeBackgroundImage" src="./img/RAKSplash.png" />
@@ -8,11 +11,11 @@
                         <i class="icon ion-ios-compose-outline"></i>
                         Create New JSA Form
                     </a>
-                    <a nav-transition="ios" class="item item-icon-left" on-tap="TestingDefaults()">
+                    <a nav-transition="ios" class="item item-icon-left" on-tap="GoTo('savedForms')">
                         <i class="icon ion-ios-folder-outline"></i>
                         Saved JSA Forms
                     </a>
-                    <a nav-transition="ios" class="item item-icon-left" on-tap="GoTo('formWizard.GCorSub')">
+                    <a nav-transition="ios" class="item item-icon-left" on-tap="TestingDefaults()">
                         <i class="icon ion-ios-email-outline"></i><span class="badge badge-dark">3</span>
                         Outbox
                     </a>

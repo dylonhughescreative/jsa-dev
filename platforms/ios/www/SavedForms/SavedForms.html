@@ -1,0 +1,28 @@
+<ion-view view-title="Saved JSA Forms" hide-back-button="true">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-ios-home-outline" ng-click="GoTo('home')"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" on-tap="EditToggle();">
+            {{EditText}}
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <div id="SavedFormsContainer">
+            <img id="SavedFormsBackgroundImage" src="./img/RAKSplash.png" />
+            <div id="SavedFormsListContainer">
+                <ion-list show-delete="shouldEdit">
+                    <ion-item ng-repeat="form in savedFormsJs.saved.formNames track by $index">
+                        <ion-delete-button class="ion-minus-circled"
+                                           ng-click="savedFormsJs.saved.formNames.splice($index, 1)">    
+                        </ion-delete-button>
+                        <ion-option-button class=button-positive ng-click="Load(form)">
+                            Load
+                        </ion-option-button>
+                        {{form}}
+                    </ion-item>
+                </ion-list>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
