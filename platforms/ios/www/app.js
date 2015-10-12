@@ -160,7 +160,26 @@ app.service('formInfo', function () {
         gcorsub: ""
     },
     formInfo.jobelements = [],
-    formInfo.ppeinfo = { },
+    formInfo.ppeinfo = {
+        None: false,
+        cm_EyeProtection: false,
+        cm_ChemGoggles: false,
+        cm_HardHat: false,
+        cb_RespiratorType: 'N/A',
+        cm_RespiratorType: false,
+        cb_GlovesType: 'N/A',
+        cm_GlovesType: false,
+        cb_Clothing: 'N/A',
+        cm_Clothing: false,
+        cm_ProtectiveToe: false,
+        cm_HearingProtection: false,
+        cb_ChemClothing: 'N/A',
+        cm_ChemClothing: false,
+        cm_HarnessLanyard: false,
+        cm_FaceShield: false,
+        tb_Other: '',
+        cm_Other: false
+    },
     formInfo.trainReqs = {
         RedTag: false,
         ConfinedSpace: false,
