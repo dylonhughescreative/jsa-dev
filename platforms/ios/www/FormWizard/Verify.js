@@ -224,7 +224,8 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             ]
         });
         saveFormPopup.then(function(res) {
-            if (verifyState.saved.formNames.indexOf(verifyState.vForm.formName) != -1)
+            var nameIndex = verifyState.saved.formNames.indexOf(verifyState.vForm.formName);
+            if (nameIndex != -1)
             {
                 var overwritePopup = $ionicPopup.confirm({
                     title: 'Overwrite?',
@@ -232,8 +233,9 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
                 });
                 overwritePopup.then(function (res) {
                     if (res) {
-                        verifyState.saved.formNames.push(verifyState.vForm.formName);
-                        verifyState.saved.forms.push(verifyState.vForm);
+                        var formIndex = verifyState.saved.forms.map(function(e) {return e.formName}).indexOf(verifyState.vForm.formName);
+                        verifyState.saved.formNames.splice(nameIndex, 1, verifyState.vForm.formName);
+                        verifyState.saved.forms.splice(formIndex, 1, verifyState.vForm);
                         $localstorage.set(verifyState.vForm.formName, verifyState.vForm);
                     }
                 });
