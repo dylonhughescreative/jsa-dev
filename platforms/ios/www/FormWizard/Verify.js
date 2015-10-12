@@ -1,4 +1,4 @@
-app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, $window, $ionicNavBarDelegate, $ionicPopup, formInfo, savedForms, jsPdfBuilder) {
+app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, $window, $ionicNavBarDelegate, $ionicPopup, $ionicSideMenuDelegate, formInfo, savedForms, jsPdfBuilder) {
     'use strict';
     
     var verifyState = this;
@@ -7,15 +7,14 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     $ionicNavBarDelegate.showBackButton(false);
     
     var stateController = { };
-    $scope.NextButtonText = "Certify";
     var lockForm = function() {
         verifyState.vForm.locked = true;
-        $scope.NextButtonText = "Add Signature";
+        verifyState.vForm.NextButtonText = "Add Signature";
     }
     
     var unlockForm = function() {
         verifyState.vForm.locked = false;
-        $scope.NextButtonText = "Certify";
+        verifyState.vForm.NextButtonText = "Certify";
     }
     
     $scope.commitment = { };
@@ -201,8 +200,8 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
                verifyAction: 'saveform'
            },
            {
-               title: 'Add Employee Signature',
-               verifyAction: 'addemployee'
+               title: 'Add Signatures',
+               verifyAction: 'addsignatures'
            },
            {
                title: 'Edit Form',
@@ -212,9 +211,9 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     
     $scope.actionClick = function(actionName) {
         if (actionName === "saveform") {
-            verifyState.saved.forms.push(verifyState.vForm);
+            saveForm();
         }
-        else if (actionName === "addemployee") {
+        else if (actionName === "addsignatures") {
             $scope.openCertModal();
         }
         else if (actionName === "unlock") {
@@ -224,22 +223,70 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
         }
     }
     
-    $scope.saveForm = function () {
-        // Save the form.
+    var saveForm = function () {
+        var saveFormPopup = $ionicPopup.show({
+            template: '<input type="text" ng-model="verifyState.vForm.formName">',
+            title: 'Save Form As',
+            subTitle: 'Enter a name for this form.',
+            scope: $scope,
+            buttons: [
+                {text: 'Cancel'},
+                {
+                    text: '<b>Save</b>',
+                    type: 'button-clear',
+                    onTap: function(e) {
+                        if (!verifyState.vForm.formName) {
+                            e.preventDefault();
+                        } else {
+                            return verifyState.vForm.formName;
+                        }
+                    }
+                }
+            ]
+        });
+        saveFormPopup.then(function(res) {
+            verifyState.saved.formNames.push(verifyState.vForm.formName);
+            verifyState.saved.forms.push(verifyState.vForm);
+            // Decide if this form has already been saved and/or overwrite
+            // Save to local storage.
+        });
     }
     
     $scope.submitForm = function () {
-        var confirmPopup = $ionicPopup.confirm({
-            title: "Submit JSA Form",
-            template: "Are you sure you want to submit this JSA? Doing so will not allow you to retrieve it once it has been sent."
-        });
-        confirmPopup.then(function(res) {
-            if(res) {
-                uploadFile();
-            } else {
-                console.log("");
-            }
-        });
+        $ionicSideMenuDelegate.toggleLeft(false);
+        if (!verifyState.vForm.locked) {
+            var cantDoThatPopup = $ionicPopup.alert({
+                title: 'Form Uncertified',
+                template: 'You need to certify the form is valid and add signatures before continuing.'
+            });
+            cantDoThatPopup.then(function(res) {
+                $scope.openCertModal();
+            });
+            return;
+        }
+        if (verifyState.vForm.signatures.length < 2) {
+            var noSigsPopup = $ionicPopup.confirm({
+                title: "No Signatures Detected",
+                template: "You don't appear to have entered any employee signatures.  Employee signatures can be added using the Add Signatures button in the top right.  Continue?"
+            });
+            noSigsPopup.then(function (res) {
+                if (res) {
+                    var confirmPopup = $ionicPopup.confirm({
+                        title: "Submit JSA Form",
+                        template: "Are you sure you want to submit this JSA? Doing so will not allow you to retrieve it once it has been sent."
+                    });
+                    confirmPopup.then(function(res) {
+                        if(res) {
+                            uploadFile();
+                        } else {
+                            console.log("");
+                        }
+                    });
+                } else {
+                    console.log("");
+                }
+            });
+        }
     };
     
     var uploadFile = function () {

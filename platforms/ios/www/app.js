@@ -207,6 +207,7 @@ app.service('formInfo', function () {
     },
     formInfo.formComplete = false,
     formInfo.locked = false,
+    formInfo.NextButtonText = "Certify",
     formInfo.stateController = {
             nextstate: "",
             previousstate: ""
