@@ -179,6 +179,6 @@ app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $co
         savedForms.formNames.push('Default Testing Form');
         savedForms.forms.push(formInfo);
         
-        //jsPdfBuilder.createPdf();
+        jsPdfBuilder.createPdf();
     }
 });
