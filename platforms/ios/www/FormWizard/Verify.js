@@ -1,4 +1,4 @@
-app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, $window, $ionicNavBarDelegate, $ionicPopup, $ionicSideMenuDelegate, $localstorage, formInfo, savedForms, jsPdfBuilder) {
+app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, $window, $ionicNavBarDelegate, $ionicPopup, $ionicSideMenuDelegate, $localstorage, $cordovaFileTransfer, formInfo, savedForms, jsPdfBuilder) {
     'use strict';
     
     var verifyState = this;
@@ -329,7 +329,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             options.fileName = filename;
             options.chunkedMode = false;
             options.mimeType = "text/plain";
-        $cordovaFileTransfer.upload(url, targetPath, options).then(function(result) {
+            $cordovaFileTransfer.upload(url, targetPath, options).then(function(result) {
             console.log("SUCCESS: " + JSON.stringify(result.response));
             alert("success" + targetPath);
             alert(JSON.stringify(result.response));
