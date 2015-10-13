@@ -329,6 +329,10 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             options.fileName = filename;
             options.chunkedMode = false;
             options.mimeType = "text/plain";
+        var params = new Object();
+            params.companyName = verifyState.vForm.basicinfo.generalcontractor;
+            params.username = verifyState.vForm.basicinfo.username;
+            options.params = params;
             $cordovaFileTransfer.upload(url, targetPath, options).then(function(result) {
             console.log("SUCCESS: " + JSON.stringify(result.response));
             alert("success" + targetPath);
