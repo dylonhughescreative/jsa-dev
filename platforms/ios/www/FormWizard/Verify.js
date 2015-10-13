@@ -302,29 +302,40 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
                     console.log("");
                 }
             });
-        }
+        } else {
+            var confirmPopup = $ionicPopup.confirm({
+                title: "Submit JSA Form",
+                template: "Are you sure you want to submit this JSA? Doing so will not allow you to retrieve it once it has been sent."
+            });
+            confirmPopup.then(function(res) {
+                if(res) {
+                    uploadFile();
+                } else {
+                    console.log("");
+                }
+            });
+        }    
     };
     
     var uploadFile = function () {
         jsPdfBuilder.createPdf();
-        //var url = "http://dylonhughes.com/uploads/upload.php",
-        ////target path may be local or url
-        //filename = "JSA_Form.pdf",
-        //targetPath = cordova.file.documentsDirectory.concat(filename);
-        ////var filename = targetPath.split("/").pop();
-        //var options = {
-        //    fileKey: "file",
-        //    fileName: filename,
-        //    chunkedMode: false,
-        //    mimeType: "text/plain"
-        //};
-        //$cordovaFileTransfer.upload(url, targetPath, options).then(function(result) {
-        //    console.log("SUCCESS: " + JSON.stringify(result.response));
-        //    alert("success" + targetPath);
-        //    alert(JSON.stringify(result.response));
-        //}, function(err) {
-        //    console.log("ERROR: " + JSON.stringify(err));
-        //    alert(JSON.stringify(err));
-        //});
+        var url = "http://dylonhughes.com/uploads/upload.php",
+        //target path may be local or url
+        filename = "JSA_Form.pdf",
+        targetPath = cordova.file.documentsDirectory.concat(filename);
+        //var filename = targetPath.split("/").pop();
+        var options = new FileUploadOptions();
+            options.fileKey = "file";
+            options.fileName = filename;
+            options.chunkedMode = false;
+            options.mimeType = "text/plain";
+        $cordovaFileTransfer.upload(url, targetPath, options).then(function(result) {
+            console.log("SUCCESS: " + JSON.stringify(result.response));
+            alert("success" + targetPath);
+            alert(JSON.stringify(result.response));
+        }, function(err) {
+            console.log("ERROR: " + JSON.stringify(err));
+            alert(JSON.stringify(err));
+        });
     };
 });
