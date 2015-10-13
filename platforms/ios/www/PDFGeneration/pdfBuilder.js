@@ -493,8 +493,8 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
         //doc.output('dataurlnewwindow');
         pdfOutput = doc.output("blob");
         //why is doc.save here?
-        doc.save("JSA_Form.pdf");
-        //save("temp/JSA_Form.pdf");
+        //doc.save("JSA_Form.pdf");
+        save("temp/JSA_Form.pdf");
     }
     
     function convertImage2Base64 (url) {
