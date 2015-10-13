@@ -36,7 +36,8 @@ app.controller('FormWizardCtrl', function ($rootScope, $scope, $state, $ionicSid
            }
     ];
     
-    $scope.check = function (nextState) {  
+    $scope.check = function (nextState) {
+        $ionicSideMenuDelegate.toggleLeft(false);
         switch ($state.current.name) {
             case "formWizard.GCinfo":
                 checkGCinfo();
