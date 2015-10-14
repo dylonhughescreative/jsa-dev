@@ -35,7 +35,7 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
         if (formInfo.basicinfo.projectname)
             doc.text( 221, row1, formInfo.basicinfo.projectname);
         if (formInfo.basicinfo.startdate)    
-            doc.text( 207, row2, formInfo.basicinfo.startdate.toString()); // This doesn't work
+            doc.text( 207, row2, formInfo.basicinfo.startdate.toLocaleDateString("en-US")); // This doesn't work
         if (formInfo.basicinfo.jobscope)
             doc.text( 32, row3, formInfo.basicinfo.jobscope);
     }
@@ -88,8 +88,8 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
         
         var row = 64.5;
         
-        doc.text( 125, row, formInfo.basicinfo.startdate.toString());
-        doc.text( 200, row, formInfo.basicinfo.enddate.toString());
+        doc.text( 125, row, formInfo.basicinfo.startdate.toLocaleDateString("en-US"));
+        doc.text( 200, row, formInfo.basicinfo.enddate.toLocaleDateString("en-US"));
     }
     
     function JobElements () {
@@ -335,27 +335,27 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
         for (var i=0; i < formInfo.addTraining.AddTraining.length;i++) {
            if (i==0) {
                doc.text(column1, row1, formInfo.addTraining.AddTraining[0].name);
-               doc.text(column2, row1, formInfo.addTraining.AddTraining[0].date.toString());
+               doc.text(column2, row1, formInfo.addTraining.AddTraining[0].date.toLocaleDateString("en-US"));
            }
            if (i==1) {
                doc.text(column1, row2, formInfo.addTraining.AddTraining[1].name);
-               doc.text(column2, row2, formInfo.addTraining.AddTraining[1].date.toString());
+               doc.text(column2, row2, formInfo.addTraining.AddTraining[1].date.toLocaleDateString("en-US"));
            }
            if (i==2) {
                doc.text(column1, row3, formInfo.addTraining.AddTraining[2].name);
-               doc.text(column2, row3, formInfo.addTraining.AddTraining[2].date.toString());
+               doc.text(column2, row3, formInfo.addTraining.AddTraining[2].date.toLocaleDateString("en-US"));
            }
            if (i==3) {
                doc.text(column1, row4, formInfo.addTraining.AddTraining[3].name);
-               doc.text(column2, row4, formInfo.addTraining.AddTraining[3].date.toString());
+               doc.text(column2, row4, formInfo.addTraining.AddTraining[3].date.toLocaleDateString("en-US"));
            }
            if (i==4) {
                doc.text(column1, row5, formInfo.addTraining.AddTraining[4].name);
-               doc.text(column2, row5, formInfo.addTraining.AddTraining[4].date.toString());
+               doc.text(column2, row5, formInfo.addTraining.AddTraining[4].date.toLocaleDateString("en-US"));
            }
            if (i==5) {
                doc.text(column1, row6, formInfo.addTraining.AddTraining[5].name);
-               doc.text(column2, row6, formInfo.addTraining.AddTraining[5].date.toString()); 
+               doc.text(column2, row6, formInfo.addTraining.AddTraining[5].date.toLocaleDateString("en-US")); 
            }
            
        }  
@@ -401,79 +401,79 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
            if (i==0) {
                doc.text(65, 195, formInfo.signatures[0].name);
                doc.setFontSize(16);
-               doc.text(180, 190, formInfo.signatures[0].date.toString());
+               doc.text(180, 190, formInfo.signatures[0].date.toLocaleDateString("en-US"));
                doc.setFontSize(12);
                doc.addImage(formInfo.signatures[0].signature, 'PNG', 65, 180, 80, 10);
            }
            if (i==1) {
                doc.text(column1, row2, formInfo.signatures[1].name);
-               doc.text(column4,row2, formInfo.signatures[1].date.toString());
+               doc.text(column4,row2, formInfo.signatures[1].date.toLocaleDateString("en-US"));
                //doc.text(column3,row2, formInfo.signatures[1].tb_AtRisk);
                doc.addImage(formInfo.signatures[1].signature, 'PNG', column2, row2 - 4, 60, 4);
            }
            if (i==2) {
                doc.text(column1,row3, formInfo.signatures[2].name);
-               doc.text(column4,row3, formInfo.signatures[2].date.toString());
+               doc.text(column4,row3, formInfo.signatures[2].date.toLocaleDateString("en-US"));
                //doc.text(column3,row3, formInfo.signatures[2].tb_AtRisk);
                doc.addImage(formInfo.signatures[2].signature, 'PNG', column2, row3 - 4, 60, 4);
            }
            if (i==3) {
                doc.text(column1,row4, formInfo.signatures[3].name);
-               doc.text(column4,row4, formInfo.signatures[3].date.toString());
+               doc.text(column4,row4, formInfo.signatures[3].date.toLocaleDateString("en-US"));
                doc.text(column3,row4, formInfo.signatures[3].tb_AtRisk);
                doc.addImage(formInfo.signatures[3].signature, 'JPEG', column2, row4 - 4, 60, 4);
            }
            if (i==4) {
                doc.text(column1,row5, formInfo.signatures[4].name);
-               doc.text(column4,row5, formInfo.signatures[4].date.toString());
+               doc.text(column4,row5, formInfo.signatures[4].date.toLocaleDateString("en-US"));
                doc.text(column3,row5, formInfo.signatures[4].tb_AtRisk);
                doc.addImage(formInfo.signatures[4].signature, 'JPEG', column2, row5 - 4, 60, 4);
            }
            if (i==5) {
                doc.text(column1,row6, formInfo.signatures[5].name);
-               doc.text(column4,row6, formInfo.signatures[5].date.toString());
+               doc.text(column4,row6, formInfo.signatures[5].date.toLocaleDateString("en-US"));
                doc.text(column3,row6, formInfo.signatures[5].tb_AtRisk);
                doc.addImage(formInfo.signatures[5].signature, 'JPEG', column2, row6 - 4, 60, 4);
            }
             if (i==6) {
                doc.text(column1,row7, formInfo.signatures[6].name);
-               doc.text(column4,row7, formInfo.signatures[6].date.toString());
+               doc.text(column4,row7, formInfo.signatures[6].date.toLocaleDateString("en-US"));
                doc.text(column3,row7, formInfo.signatures[6].tb_AtRisk);
                doc.addImage(formInfo.signatures[6].signature, 'JPEG', column2, row7 - 4, 60, 4);
            }
            if (i==7) {
                doc.text(column1,row8, formInfo.signatures[7].name);
-               doc.text(column4,row8, formInfo.signatures[7].date.toString());
+               doc.text(column4,row8, formInfo.signatures[7].date.toLocaleDateString("en-US"));
                doc.text(column3,row8, formInfo.signatures[7].tb_AtRisk);
                doc.addImage(formInfo.signatures[7].signature, 'JPEG', column2, row8 - 4, 60, 4);
            }
            if (i==8) {
                doc.text(column1,row9, formInfo.signatures[8].name);
-               doc.text(column4,row9, formInfo.signatures[8].date.toString());
+               doc.text(column4,row9, formInfo.signatures[8].date.toLocaleDateString("en-US"));
                doc.text(column3,row9, formInfo.signatures[8].tb_AtRisk);
                doc.addImage(formInfo.signatures[8].signature, 'JPEG', column2, row9 - 4, 60, 4);
            }
            if (i==9) {
                doc.text(column1,row10, formInfo.signatures[9].name);
-               doc.text(column4,row10, formInfo.signatures[9].date.toString());
+               doc.text(column4,row10, formInfo.signatures[9].date.toLocaleDateString("en-US"));
                doc.text(column3,row10, formInfo.signatures[9].tb_AtRisk);
                doc.addImage(formInfo.signatures[9].signature, 'JPEG', column2, row10 - 4, 60, 4);
            }
            if (i==10) {
                doc.text(column1, row11, formInfo.signatures[10].name);
-               doc.text(column4, row11, formInfo.signatures[10].date.toString());
+               doc.text(column4, row11, formInfo.signatures[10].date.toLocaleDateString("en-US"));
                doc.text(column3, row11, formInfo.signatures[10].tb_AtRisk);
                doc.addImage(formInfo.signatures[10].signature, 'JPEG', column2, row11 - 4, 60, 4);
            }
            if (i==11) {
                doc.text(column1, row12, formInfo.signatures[11].name);
-               doc.text(column4, row12, formInfo.signatures[11].date.toString());
+               doc.text(column4, row12, formInfo.signatures[11].date.toLocaleDateString("en-US"));
                doc.text(column3, row12, formInfo.signatures[11].tb_AtRisk);
                doc.addImage(formInfo.signatures[11].signature, 'JPEG', column2, row12 - 4, 60, 4);
            }
            if (i==12) {
                doc.text(column1, row13, formInfo.signatures[12].name);
-               doc.text(column4, row13, formInfo.signatures[12].date.toString());
+               doc.text(column4, row13, formInfo.signatures[12].date.toLocaleDateString("en-US"));
                doc.text(column3, row13, formInfo.signatures[12].tb_AtRisk);
                doc.addImage(formInfo.signatures[12].signature, 'JPEG', column2, row13 - 4, 60, 4);
            }
