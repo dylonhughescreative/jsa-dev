@@ -500,7 +500,6 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
         //window.open(URL.createObjectURL(pdfOutput));
         //doc.save("JSA_Form.pdf");
         save("temp/JSA_Form.pdf");
-        return true;
     }
     
     function convertImage2Base64 (url) {

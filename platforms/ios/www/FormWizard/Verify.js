@@ -318,28 +318,29 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     };
     
     var uploadFile = function () {
-        var success = jsPdfBuilder.createPdf();
-        var url = "http://dylonhughes.com/uploads/upload.php",
-        //target path may be local or url
-        filename = "JSA_Form.pdf",
-        targetPath = cordova.file.documentsDirectory.concat(filename);
-        //var filename = targetPath.split("/").pop();
-        var options = new FileUploadOptions();
-            options.fileKey = "file";
-            options.fileName = filename;
-            options.chunkedMode = false;
-            options.mimeType = "text/plain";
-        var params = new Object();
-            params.companyName = verifyState.vForm.basicinfo.generalcontractor;
-            params.username = verifyState.vForm.basicinfo.username;
-            options.params = params;
-            $cordovaFileTransfer.upload(url, targetPath, options).then(function(result) {
-            console.log("SUCCESS: " + JSON.stringify(result.response));
-            alert("success" + targetPath);
-            alert(JSON.stringify(result.response));
-        }, function(err) {
-            console.log("ERROR: " + JSON.stringify(err));
-            alert(JSON.stringify(err));
+        jsPdfBuilder.createPdf().done(function () {;
+            var url = "http://dylonhughes.com/uploads/upload.php",
+            //target path may be local or url
+            filename = "JSA_Form.pdf",
+            targetPath = cordova.file.documentsDirectory.concat(filename);
+            //var filename = targetPath.split("/").pop();
+            var options = new FileUploadOptions();
+                options.fileKey = "file";
+                options.fileName = filename;
+                options.chunkedMode = false;
+                options.mimeType = "text/plain";
+            var params = new Object();
+                params.companyName = verifyState.vForm.basicinfo.generalcontractor;
+                params.username = verifyState.vForm.basicinfo.username;
+                options.params = params;
+                $cordovaFileTransfer.upload(url, targetPath, options).then(function(result) {
+                console.log("SUCCESS: " + JSON.stringify(result.response));
+                alert("success" + targetPath);
+                alert(JSON.stringify(result.response));
+            }, function(err) {
+                console.log("ERROR: " + JSON.stringify(err));
+                alert(JSON.stringify(err));
+            });
         });
     };
 });
