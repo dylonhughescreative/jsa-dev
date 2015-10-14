@@ -497,7 +497,7 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
         
         //doc.output('dataurlnewwindow');
         pdfOutput = doc.output("blob");
-        window.open(URL.createObjectURL(pdfOutput));
+        //window.open(URL.createObjectURL(pdfOutput));
         //doc.save("JSA_Form.pdf");
         save("temp/JSA_Form.pdf");
     }
