@@ -318,7 +318,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     };
     
     var uploadFile = function () {
-        jsPdfBuilder.createPdf();
+        var success = jsPdfBuilder.createPdf();
         var url = "http://dylonhughes.com/uploads/upload.php",
         //target path may be local or url
         filename = "JSA_Form.pdf",
