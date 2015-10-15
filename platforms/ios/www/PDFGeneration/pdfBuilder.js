@@ -520,11 +520,12 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
     }
     
     return {
-        createPdf: function () {
+        createPdf: function (callback) {
             doc = new jsPDF('landscape', 'mm', 'a4');
             page1 = convertImage2Base64('./img/page1.PNG');
             page2 = convertImage2Base64('./img/page2.PNG');
             buildPDF();
+            callback();
             return true;
         }
     };
