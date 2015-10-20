@@ -323,6 +323,8 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
                 //target path may be local or url
                 filename = verifyState.vForm.basicinfo.projectname + " - " + verifyState.vForm.basicinfo.startdate.toDateString();
             
+            var res = $cordovaFile.checkFile(cordova.file.documentsDirectory, filename)
+            
             if($cordovaFile.checkFile(cordova.file.documentsDirectory, filename)) {      
                 for( var i=0; i < 99; i++) { 
                     filename = filename + "_" + i;
