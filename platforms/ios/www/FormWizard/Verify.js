@@ -327,6 +327,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             targetPath = cordova.file.documentsDirectory.concat(filename);
             fileIdx = 0;
             basefilename = verifyState.vForm.basicinfo.projectname + " - " + verifyState.vForm.basicinfo.startdate.toDateString();
+            filename = basefilename;
             window.resolveLocalFileSystemURL(targetPath, incrementFilename, upload);    
         });
     };
@@ -343,17 +344,6 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             targetPath = cordova.file.documentsDirectory.concat(filename);
             upload();
         }
-    }
-    
-        function save (filepath, callback) {
-        $cordovaFile.createFile(cordova.file.documentsDirectory, "JSA_Form.pdf", true);
-        $cordovaFile.writeFile(cordova.file.documentsDirectory, "JSA_Form.pdf", pdfOutput, true)
-            .then(function (success) {
-                console.log("works");
-                callback();
-            }, function (error) {
-                console.log("doesnt work");
-            });
     }
     
     function upload () {
