@@ -329,7 +329,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             targetPath = cordova.file.documentsDirectory.concat(filename);
             fileIdx = 0;
             basefilename = verifyState.vForm.basicinfo.projectname + " - " + verifyState.vForm.basicinfo.startdate.toDateString();
-            window.resolveLocalFileSystemURL(targetPath, upload, incrementFilename);    
+            window.resolveLocalFileSystemURL(targetPath, incrementFilename, upload);    
         });
     };
     
@@ -338,7 +338,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             filename = basefilename + "_" + fileIdx;
             targetPath = cordova.file.documentsDirectory.concat(filename);
             fileIdx++;
-            window.resolveLocalFileSystemURL(targetPath, upload, incrementFilename);
+            window.resolveLocalFileSystemURL(targetPath, incrementFilename, upload);
         }
         else {
             filename = basefilename + "_" + fileIdx
@@ -347,7 +347,20 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
         }
     }
     
+        function save (filepath, callback) {
+        $cordovaFile.createFile(cordova.file.documentsDirectory, "JSA_Form.pdf", true);
+        $cordovaFile.writeFile(cordova.file.documentsDirectory, "JSA_Form.pdf", pdfOutput, true)
+            .then(function (success) {
+                console.log("works");
+                callback();
+            }, function (error) {
+                console.log("doesnt work");
+            });
+    }
+    
     function upload () {
+        jsPdfBuilder.save(filename);
+        
         var options = new FileUploadOptions();
                 options.fileKey = "file";
                 options.fileName = filename;
