@@ -323,9 +323,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     };
     
     var uploadFile = function () {
-        jsPdfBuilder.createPdf(function () {
-            var url = "http://dylonhughes.com/uploads/upload.php"; 
-            
+        jsPdfBuilder.createPdf(function () {        
             targetPath = cordova.file.documentsDirectory.concat(filename);
             fileIdx = 0;
             basefilename = verifyState.vForm.basicinfo.projectname + " - " + verifyState.vForm.basicinfo.startdate.toDateString();
@@ -384,6 +382,8 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
                     });
                 }
             }
+        
+            var url = "http://dylonhughes.com/uploads/upload.php"; 
         
             $cordovaFileTransfer.upload(url, targetPath, options).then(function(result) {
                 console.log("SUCCESS: " + JSON.stringify(result.response));
