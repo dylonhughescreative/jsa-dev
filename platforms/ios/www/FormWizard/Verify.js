@@ -6,8 +6,13 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     verifyState.saved = savedForms;
     $ionicNavBarDelegate.showBackButton(false);
     
-    var stateController = { };
-    var signaturePad;
+    var stateController = { },
+        signaturePad,
+        basefilename,
+        filename,
+        targetPath,
+        fileIdx;
+
     var lockForm = function() {
         verifyState.vForm.locked = true;
         verifyState.vForm.NextButtonText = "Add Signature";
@@ -319,29 +324,31 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     
     var uploadFile = function () {
         jsPdfBuilder.createPdf(function () {
-            var url = "http://dylonhughes.com/uploads/upload.php",
-                filename = {},
-                //target path may be local or url
-                basefilename = verifyState.vForm.basicinfo.projectname + " - " + verifyState.vForm.basicinfo.startdate.toDateString();
+            var url = "http://dylonhughes.com/uploads/upload.php"; 
             
-            var res = $cordovaFile.checkFile(cordova.file.documentsDirectory, filename)
-            
-            $cordovaFile.checkFile(cordova.file.documentsDirectory, filename).then( function (success) {
-                filename = basefilename;            
-            }, function (error) {
-                for( var i=0; i < 99; i++) { 
-                    filename = filename + "_" + i;
-                    
-                    $cordovaFile.checkFile(cordova.file.documentsDirectory, filename).then( function (success) {
-                    }, function (error) {
-                        i = 100;
-                    });
-                }
-            });
-            
-            var targetPath = cordova.file.documentsDirectory.concat(filename);
-            
-            var options = new FileUploadOptions();
+            targetPath = cordova.file.documentsDirectory.concat(filename);
+            fileIdx = 0;
+            basefilename = verifyState.vForm.basicinfo.projectname + " - " + verifyState.vForm.basicinfo.startdate.toDateString();
+            window.resolveLocalFileSystemURL(targetPath, upload, incrementFilename);    
+        });
+    };
+    
+    function incrementFilename () { 
+        if (fileIdx < 99) {
+            filename = basefilename + "_" + fileIdx;
+            targetPath = cordova.file.documentsDirectory.concat(filename);
+            fileIdx++;
+            window.resolveLocalFileSystemURL(targetPath, upload, incrementFilename);
+        }
+        else {
+            filename = basefilename + "_" + fileIdx
+            targetPath = cordova.file.documentsDirectory.concat(filename);
+            upload();
+        }
+    }
+    
+    function upload () {
+        var options = new FileUploadOptions();
                 options.fileKey = "file";
                 options.fileName = filename;
                 options.chunkedMode = false;
@@ -375,6 +382,5 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             });
         
             $ionicLoading.hide();
-        });
-    };
+    }
 });
