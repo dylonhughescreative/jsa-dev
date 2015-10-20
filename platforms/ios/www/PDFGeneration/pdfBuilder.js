@@ -509,6 +509,5 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
                 console.log("doesnt work");
             });
         }
-    }
     };
 });
