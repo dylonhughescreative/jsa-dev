@@ -318,10 +318,10 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     };
     
     var uploadFile = function () {
-        //jsPdfBuilder.createPdf(function () {
+        jsPdfBuilder.createPdf(function () {
             var url = "http://dylonhughes.com/uploads/upload.php",
                 //target path may be local or url
-                filename = verifyState.vForm.basicinfo.projectname + " - " + verifyState.vForm.basicinfo.startdate
+                filename = verifyState.vForm.basicinfo.projectname + " - " + verifyState.vForm.basicinfo.startdate.toDateString();
             
             if($cordovaFile.checkFile(cordova.file.documentsDirectory, filename)) {      
                 for( var i=0; i < 99; i++) { 
@@ -369,6 +369,6 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             });
         
             $ionicLoading.hide();
-        //});
+        });
     };
 });

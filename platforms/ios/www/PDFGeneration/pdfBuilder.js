@@ -36,7 +36,7 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
         if (formInfo.basicinfo.projectname)
             doc.text( 221, row1, formInfo.basicinfo.projectname);
         if (formInfo.basicinfo.startdate)    
-            doc.text( 207, row2, formInfo.basicinfo.startdate.toLocaleDateString("en-US")); // This doesn't work
+            doc.text( 207, row2, formInfo.basicinfo.startdate.toLocaleDateString("en-US"));
         if (formInfo.basicinfo.jobscope)
             doc.text( 32, row3, formInfo.basicinfo.jobscope);
     }
