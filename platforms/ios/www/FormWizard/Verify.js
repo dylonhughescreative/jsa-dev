@@ -320,20 +320,24 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     var uploadFile = function () {
         jsPdfBuilder.createPdf(function () {
             var url = "http://dylonhughes.com/uploads/upload.php",
+                filename = {},
                 //target path may be local or url
-                filename = verifyState.vForm.basicinfo.projectname + " - " + verifyState.vForm.basicinfo.startdate.toDateString();
+                basefilename = verifyState.vForm.basicinfo.projectname + " - " + verifyState.vForm.basicinfo.startdate.toDateString();
             
             var res = $cordovaFile.checkFile(cordova.file.documentsDirectory, filename)
             
-            if($cordovaFile.checkFile(cordova.file.documentsDirectory, filename)) {      
+            $cordovaFile.checkFile(cordova.file.documentsDirectory, filename).then( function (success) {
+                filename = basefilename;            
+            }, function (error) {
                 for( var i=0; i < 99; i++) { 
                     filename = filename + "_" + i;
                     
-                    if(!$cordovaFile.checkFile(cordova.file.documentsDirectory, filename)) {
+                    $cordovaFile.checkFile(cordova.file.documentsDirectory, filename).then( function (success) {
+                    }, function (error) {
                         break;
-                    }
+                    });
                 }
-            }
+            });
             
             var targetPath = cordova.file.documentsDirectory.concat(filename);
             
