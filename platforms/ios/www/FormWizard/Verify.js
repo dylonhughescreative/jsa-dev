@@ -334,7 +334,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
                     
                     $cordovaFile.checkFile(cordova.file.documentsDirectory, filename).then( function (success) {
                     }, function (error) {
-                        break;
+                        i = 100;
                     });
                 }
             });
