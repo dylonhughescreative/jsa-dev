@@ -323,17 +323,17 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
                 //target path may be local or url
                 filename = verifyState.vForm.basicinfo.projectname + " - " + verifyState.vForm.basicinfo.startdate
             
-            //if($cordovaFile.checkFile(cordova.file.documentsDirectory, filename)) {      
-            //    for( var i=0; i < 99; i++) { 
-            //        filename = filename + "_" + i;
-            //        
-            //        if(!$cordovaFile.checkFile(cordova.file.documentsDirectory, filename)) {
-            //            break;
-            //        }
-            //    }
-            //}
-            //
-            //var targetPath = cordova.file.documentsDirectory.concat(filename);
+            if($cordovaFile.checkFile(cordova.file.documentsDirectory, filename)) {      
+                for( var i=0; i < 99; i++) { 
+                    filename = filename + "_" + i;
+                    
+                    if(!$cordovaFile.checkFile(cordova.file.documentsDirectory, filename)) {
+                        break;
+                    }
+                }
+            }
+            
+            var targetPath = cordova.file.documentsDirectory.concat(filename);
             
             var options = new FileUploadOptions();
                 options.fileKey = "file";
@@ -350,7 +350,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             });
             
             if(window.Connection) {
-                if(navigator.connection.type != Connection.CELL_4G || navigator.connection.type != Connection.WIFI) {
+                if(navigator.connection.type != Connection.WIFI) {
                     $ionicLoading.hide();
                     var confirmPopup = $ionicPopup.confirm({
                         title: "No Network Connection",
@@ -359,14 +359,14 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
                 }
             }
         
-            //$cordovaFileTransfer.upload(url, targetPath, options).then(function(result) {
-            //    console.log("SUCCESS: " + JSON.stringify(result.response));
-            //    alert("success" + targetPath);
-            //    alert(JSON.stringify(result.response));
-            //}, function(err) {
-            //console.log("ERROR: " + JSON.stringify(err));
-            //    alert(JSON.stringify(err));
-            //});
+            $cordovaFileTransfer.upload(url, targetPath, options).then(function(result) {
+                console.log("SUCCESS: " + JSON.stringify(result.response));
+                alert("success" + targetPath);
+                alert(JSON.stringify(result.response));
+            }, function(err) {
+            console.log("ERROR: " + JSON.stringify(err));
+                alert(JSON.stringify(err));
+            });
         
             $ionicLoading.hide();
         //});
