@@ -347,6 +347,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     }
     
     function upload () {
+        filename = "JSAPDF";
         filename += ".pdf";
         targetPath = cordova.file.documentsDirectory.concat(filename);
         jsPdfBuilder.save( filename, function() {
