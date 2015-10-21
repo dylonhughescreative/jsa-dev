@@ -347,9 +347,9 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     }
     
     function upload () {
-        jsPdfBuilder.save(filename);
+        jsPdfBuilder.save( filename, function() {
         
-        var options = new FileUploadOptions();
+            var options = new FileUploadOptions();
                 options.fileKey = "file";
                 options.fileName = filename;
                 options.chunkedMode = false;
@@ -385,5 +385,6 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             });
         
             $ionicLoading.hide();
+        })
     }
 });

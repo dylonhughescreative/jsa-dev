@@ -499,7 +499,7 @@ app.factory('jsPdfBuilder', function ($ionicLoading, $cordovaFile, formInfo) {
             buildPDF(callback);
         },
         
-        save: function (filename) {
+        save: function (filename, callback) {
             $cordovaFile.createFile(cordova.file.documentsDirectory, filename, true);
             $cordovaFile.writeFile(cordova.file.documentsDirectory, filename, pdfOutput, true)
             .then(function (success) {
