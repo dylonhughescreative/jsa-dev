@@ -347,6 +347,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     }
     
     function upload () {
+        filename += ".pdf";
         jsPdfBuilder.save( filename, function() {
         
             var options = new FileUploadOptions();
