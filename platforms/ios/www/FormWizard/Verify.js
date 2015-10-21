@@ -347,7 +347,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     }
     
     function upload () {
-        filename = filename.replace(/\s/g,"_"); 
+        filename = "JSA PDF"; 
         jsPdfBuilder.save( filename, function() {
         
             var options = new FileUploadOptions();
