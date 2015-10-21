@@ -326,7 +326,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
         jsPdfBuilder.createPdf(function () {        
             targetPath = cordova.file.documentsDirectory.concat(filename);
             fileIdx = 0;
-            basefilename = verifyState.vForm.basicinfo.projectname + " - " + verifyState.vForm.basicinfo.startdate.toDateString();
+            basefilename = verifyState.vForm.basicinfo.projectname;
             filename = basefilename;
             window.resolveLocalFileSystemURL(targetPath, incrementFilename, upload);    
         });
@@ -347,9 +347,6 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     }
     
     function upload () {
-        filename = "JSAPDF";
-        filename += ".pdf";
-        targetPath = cordova.file.documentsDirectory.concat(filename);
         jsPdfBuilder.save( filename, function() {
         
             var options = new FileUploadOptions();
