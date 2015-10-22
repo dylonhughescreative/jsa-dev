@@ -46,6 +46,17 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
                 }
             }
         })
+        .state('outbox', {
+            url: '/outbox',
+            views: {
+                'sideMenu': {
+                },
+                'menuContent': {
+                    templateUrl: './Outbox/Outbox.html',
+                    controller: 'OutboxCtrl as OutboxJs'
+                }
+            }
+        })
         .state('formWizard', {
             url: '/formWizard',
             views: {
@@ -219,6 +230,11 @@ app.service('savedForms', function () {
     var savedForms = this;
     savedForms.formNames = [];
     savedForms.forms = [];
+});
+
+app.service('outbox', function () {
+    var outbox = this;
+    outbox.filenames = [];
 });
 
 app.factory('$localstorage', ['$window', function($window) {

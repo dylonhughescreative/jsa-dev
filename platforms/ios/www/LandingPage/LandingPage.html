@@ -15,11 +15,11 @@
                         <i class="icon ion-ios-folder-outline"></i>
                         Saved JSA Forms
                     </a>
-                    <a nav-transition="ios" class="item item-icon-left" on-tap="TestingDefaults()">
-                        <i class="icon ion-ios-email-outline"></i><span class="badge badge-dark">3</span>
+                    <a nav-transition="ios" class="item item-icon-left" on-tap="GoTo('outbox')">
+                        <i class="icon ion-ios-email-outline"></i><span class="badge badge-dark">{{pendingforms}}</span>
                         Outbox
                     </a>
-                    <a nav-transition="ios" class="item item-icon-left">
+                    <a nav-transition="ios" class="item item-icon-left" on-tap="TestingDefaults()">
                         <i class="icon ion-ios-gear-outline"></i>
                         Settings
                     </a>

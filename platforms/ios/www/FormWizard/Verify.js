@@ -1,4 +1,4 @@
-app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, $ionicLoading, $window, $ionicNavBarDelegate, $ionicPopup, $ionicSideMenuDelegate, $localstorage, $cordovaFileTransfer, $cordovaFile, formInfo, savedForms, jsPdfBuilder) {
+app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, $ionicLoading, $window, $ionicNavBarDelegate, $ionicPopup, $ionicSideMenuDelegate, $localstorage, $cordovaFileTransfer, $cordovaFile, formInfo, savedForms, outbox, jsPdfBuilder) {
     'use strict';
     
     var verifyState = this;
@@ -381,9 +381,16 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
                 console.log("SUCCESS: " + JSON.stringify(result.response));
                 alert("success" + targetPath);
                 alert(JSON.stringify(result.response));
+                
+                $cordovaFile.removeFile(cordova.file.documentsDirectory, filename);
+                
             }, function(err) {
-            console.log("ERROR: " + JSON.stringify(err));
+                console.log("ERROR: " + JSON.stringify(err));
                 alert(JSON.stringify(err));
+                
+                var outbox = outbox;
+                outbox.filenames.push(filename);
+                
             });
         
             $ionicLoading.hide();

@@ -1,6 +1,8 @@
-app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $cordovaSplashscreen, $ionicPlatform, formInfo, savedForms, jsPdfBuilder) {
+app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $cordovaSplashscreen, $ionicPlatform, formInfo, savedForms, outbox, jsPdfBuilder) {
     'use strict';
     $scope.helpShow = false;
+    $scope.outbox = outbox;
+    $scope.pendingforms = outbox.filenames.length;
     var formInfo = formInfo;
     var savedForms = savedForms;
     
@@ -73,6 +75,9 @@ app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $co
     }
     
     $scope.TestingDefaults = function () {
+        outbox.filenames.push("plus one");
+        $scope.pendingforms = outbox.filenames.length;
+        
         clearForm();
         
         //GENERAL INFO
@@ -179,6 +184,6 @@ app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $co
         savedForms.formNames.push('Default Testing Form');
         savedForms.forms.push(formInfo);
         
-        jsPdfBuilder.createPdf();
+        //jsPdfBuilder.createPdf();
     }
 });
