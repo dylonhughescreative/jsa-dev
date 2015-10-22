@@ -22,7 +22,6 @@ app.controller('OutboxCtrl', function ($scope, $state, $ionicSideMenuDelegate, $
     $scope.upload = function (filename, index) {
         if(window.Connection) {
             if(navigator.connection.type != Connection.WIFI) {
-                $ionicLoading.hide();
                 var confirmPopup = $ionicPopup.confirm({
                     title: "No Network Connection",
                     template: "JSA forms cannot be submited due to limited connectivity. Please resubmit from the outbox when a better connection is established."
