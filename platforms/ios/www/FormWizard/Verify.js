@@ -4,6 +4,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     var verifyState = this;
     verifyState.vForm = formInfo;
     verifyState.saved = savedForms;
+    verifyState.outbox = outbox;
     $ionicNavBarDelegate.showBackButton(false);
     
     var stateController = { },
@@ -388,8 +389,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
                 console.log("ERROR: " + JSON.stringify(err));
                 alert(JSON.stringify(err));
                 
-                var outbox = outbox;
-                outbox.filenames.push(filename);
+                verifyState.outbox.filenames.push(filename);
                 
             });
         
