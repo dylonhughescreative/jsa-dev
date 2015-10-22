@@ -29,6 +29,16 @@ app.controller('OutboxCtrl', function ($scope, $state, $ionicSideMenuDelegate, $
                 });
             }
         }
+        
+        var options = new FileUploadOptions();
+            options.fileKey = "file";
+            options.fileName = filename;
+            options.chunkedMode = false;
+            options.mimeType = "text/plain";
+        var params = new Object();
+            params.companyName = verifyState.vForm.basicinfo.generalcontractor;
+            params.username = verifyState.vForm.basicinfo.username;
+            options.params = params;
     
         var url = "http://dylonhughes.com/uploads/upload.php",
             targetPath = cordova.file.documentsDirectory.concat(filename);
