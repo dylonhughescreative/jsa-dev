@@ -1,10 +1,14 @@
-app.controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, $cordovaSplashscreen, $ionicPlatform, formInfo, savedForms, outbox, jsPdfBuilder) {
+app.controller('HomeCtrl', function ($rootScope, $scope, $state, $ionicSideMenuDelegate, $cordovaSplashscreen, $ionicPlatform, formInfo, savedForms, outbox, jsPdfBuilder) {
     'use strict';
     $scope.helpShow = false;
     $scope.outbox = outbox;
     $scope.pendingforms = outbox.filenames.length;
     var formInfo = formInfo;
     var savedForms = savedForms;
+    
+    $rootScope.$on('$viewContentLoading', function(event, viewConfig){
+        $scope.pendingforms = outbox.filenames.length;
+    });
     
     $scope.GoTo = function (state) {
         $state.go(state);
