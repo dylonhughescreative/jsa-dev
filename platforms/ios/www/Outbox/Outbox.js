@@ -1,4 +1,4 @@
-app.controller('OutboxCtrl', function ($scope, $state, $ionicSideMenuDelegate, $ionicPlatform, $cordovaFile, $cordovaFileTransfer, outbox) {
+app.controller('OutboxCtrl', function ($scope, $state, $ionicSideMenuDelegate, $ionicPlatform, $ionicPopup, $cordovaFile, $cordovaFileTransfer, outbox) {
     'use strict';
     
     var outbox = outbox;
@@ -35,8 +35,8 @@ app.controller('OutboxCtrl', function ($scope, $state, $ionicSideMenuDelegate, $
             options.chunkedMode = false;
             options.mimeType = "text/plain";
         var params = new Object();
-            params.companyName = verifyState.vForm.basicinfo.generalcontractor;
-            params.username = verifyState.vForm.basicinfo.username;
+            params.companyName = "bogus";
+            params.username = "params";
             options.params = params;
     
         var url = "http://dylonhughes.com/uploads/upload.php",
