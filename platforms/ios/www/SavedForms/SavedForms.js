@@ -38,6 +38,7 @@ app.controller('SavedFormsCtrl', function ($scope, $state, $ionicSideMenuDelegat
         var name = savedFormsJs.saved.formNames[index];
         savedFormsJs.saved.formNames.splice(index, 1);
         $localstorage.removeObject(name);
+        $localstorage.setObject("RAK_SAVED_FORMS", savedFormsJs.saved.formNames);
     }
     
     $scope.ShowInfoCard = function() {
