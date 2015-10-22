@@ -249,7 +249,7 @@ app.factory('$localstorage', ['$window', function($window) {
       $window.localStorage[key] = JSON.stringify(value);
     },
     getObject: function(key) {
-      return JSON.parse($window.localStorage[key] || '{}');
+      return JSON.parse($window.localStorage[key] || '[]');
     },
     removeObject: function(key) {
       return $window.localStorage.removeItem(key);

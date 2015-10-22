@@ -35,7 +35,7 @@
           </ion-item>
         </div>
     </ion-list>
-    <div class="fader" data-ng-if="jobElementState.formInfo.jobelements.length == 0">
+    <div class="fader ng-hide" ng-show="jobElementState.formInfo.jobelements.length == 0">
         <div class="card">
             <div class="item item-text-wrap half-opacity">
                 To add a task, press the + button above.

@@ -21,6 +21,11 @@
     height: 100%;
 }
 
+#InfoCard {
+    opacity: 0.5;
+    text-align: center;
+}
+
 /* Landscape-specific code */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     #SavedFormsBackgroundImage {

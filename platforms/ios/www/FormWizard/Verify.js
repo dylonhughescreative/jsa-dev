@@ -242,13 +242,14 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
                         var formIndex = verifyState.saved.forms.map(function(e) {return e.formName}).indexOf(verifyState.vForm.formName);
                         verifyState.saved.formNames.splice(nameIndex, 1, verifyState.vForm.formName);
                         verifyState.saved.forms.splice(formIndex, 1, verifyState.vForm);
-                        $localstorage.set(verifyState.vForm.formName, verifyState.vForm);
+                        $localstorage.setObject(verifyState.vForm.formName, verifyState.vForm);
                     }
                 });
             } else {
                 verifyState.saved.formNames.push(verifyState.vForm.formName);
                 verifyState.saved.forms.push(verifyState.vForm);
-                $localstorage.set(verifyState.vForm.formName, verifyState.vForm);
+                $localstorage.setObject(verifyState.vForm.formName, verifyState.vForm);
+                $localstorage.setObject("RAK_SAVED_FORMS", verifyState.saved.formNames);
             }
             // Decide if this form has already been saved and/or overwrite
             // Save to local storage.

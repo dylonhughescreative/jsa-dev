@@ -1,6 +1,6 @@
 <ion-view view-title="Saved JSA Forms" hide-back-button="true">
     <ion-nav-buttons side="left">
-        <button class="button button-icon icon ion-ios-home-outline" ng-click="GoTo('home')"></button>
+        <button class="button button-icon icon ion-ios-arrow-left" ng-click="GoTo('home')"></button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
         <button class="button button-clear" on-tap="EditToggle();">
@@ -11,10 +11,17 @@
         <div id="SavedFormsContainer">
             <img id="SavedFormsBackgroundImage" src="./img/RAKSplash.png" />
             <div id="SavedFormsListContainer">
+                <div class="ng-hide" ng-show="ShowInfoCard()">
+                    <div class="card">
+                        <div class="item item-text-wrap" id="InfoCard">
+                            Saved forms are displayed here, but it doesn't look like you have any saved right now.  To save a form, create a new form from the home page, then press "Save Form" in the side menu.  Any forms you save will appear here.
+                        </div>
+                    </div>
+                </div>
                 <ion-list show-delete="shouldEdit">
                     <ion-item ng-repeat="form in savedFormsJs.saved.formNames track by $index">
                         <ion-delete-button class="ion-minus-circled"
-                                           ng-click="savedFormsJs.saved.formNames.splice($index, 1)">    
+                                           ng-click="Delete($index)">    
                         </ion-delete-button>
                         <ion-option-button class=button-positive ng-click="Load(form)">
                             Load
