@@ -2,14 +2,23 @@ app.controller('HomeCtrl', function ($rootScope, $scope, $state, $ionicSideMenuD
     'use strict';
     $scope.helpShow = false;
     $scope.outbox = outbox;
-    $scope.pendingforms = outbox.filenames.length;
+    $scope.pendingforms = 0;
     var formInfo = formInfo;
     var savedForms = savedForms;
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){
         outbox.setOutbox($localstorage.getObject("outbox"));
-        $scope.pendingforms = outbox.filenames.length;
+        if(!angular.isUndefined(outbox.filenames.length)) {
+            $scope.pendingforms = outbox.filenames.length;
+        }
     });
+    
+    function pageloading () {
+        outbox.setOutbox($localstorage.getObject("outbox"));
+        if(!angular.isUndefined(outbox.filenames.length)) {
+           $scope.pendingforms = outbox.filenames.length;
+        }
+    }
     
     $scope.GoTo = function (state) {
         $state.go(state);
