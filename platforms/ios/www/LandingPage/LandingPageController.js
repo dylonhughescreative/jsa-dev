@@ -89,7 +89,7 @@ app.controller('HomeCtrl', function ($rootScope, $scope, $state, $ionicSideMenuD
     }
     
     $scope.TestingDefaults = function () {
-        outbox.filenames.push("plus one");
+        $scope.outbox.filenames.push("plus one");
         $scope.pendingforms = outbox.filenames.length;
         
         clearForm();
