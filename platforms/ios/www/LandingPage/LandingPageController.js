@@ -8,18 +8,11 @@ app.controller('HomeCtrl', function ($rootScope, $scope, $state, $ionicSideMenuD
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){
         var outbox = $localstorage.getObject("outbox");
-        if(!angular.isUndefined(outbox.filenames)) {
-            outbox.setOutbox(outbox);
+        if(!angular.isUndefined(outbox.filenames)) {         
+            $scope.outbox.setOutbox(outbox);
             $scope.pendingforms = outbox.filenames.length;
         }
     });
-    
-    function pageloading () {
-        outbox.setOutbox($localstorage.getObject("outbox"));
-        if(!angular.isUndefined(outbox.filenames.length)) {
-           $scope.pendingforms = outbox.filenames.length;
-        }
-    }
     
     $scope.GoTo = function (state) {
         $state.go(state);
