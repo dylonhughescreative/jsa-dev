@@ -4,6 +4,12 @@ app.controller('OutboxCtrl', function ($scope, $state, $ionicSideMenuDelegate, $
     var outbox = outbox;
     $scope.pendingfiles = outbox.filenames;
     
+    $rootScope.$on('$viewContentLoading', function(event, viewConfig){
+        if(!angular.isUndefined(outbox.filenames)) {         
+            $scope.pendingfiles = outbox.filenames;
+        }
+    });
+    
     $scope.shouldEdit = false;
     $scope.EditText = "Edit";
     
