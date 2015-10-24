@@ -1,4 +1,4 @@
-app.controller('HomeCtrl', function ($rootScope, $scope, $state, $ionicSideMenuDelegate, $cordovaSplashscreen, $ionicPlatform, formInfo, savedForms, outbox, jsPdfBuilder) {
+app.controller('HomeCtrl', function ($rootScope, $scope, $state, $ionicSideMenuDelegate, $cordovaSplashscreen, $localstorage, $ionicPlatform, formInfo, savedForms, outbox, jsPdfBuilder) {
     'use strict';
     $scope.helpShow = false;
     $scope.outbox = outbox;
