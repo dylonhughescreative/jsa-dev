@@ -391,6 +391,7 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
                 alert(JSON.stringify(err));
                 
                 verifyState.outbox.filenames.push(filename);
+                $localstorage.setObject("outbox", verifyState.outbox);
                 
             });
         

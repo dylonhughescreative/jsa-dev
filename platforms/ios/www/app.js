@@ -251,6 +251,10 @@ app.service('savedForms', function () {
 app.service('outbox', function () {
     var outbox = this;
     outbox.filenames = [];
+    
+    this.setOutbox = function (data) {
+        outbox.filenames = data.filenames;
+    }
 });
 
 app.factory('$localstorage', ['$window', function($window) {

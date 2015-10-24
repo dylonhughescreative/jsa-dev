@@ -7,6 +7,7 @@ app.controller('HomeCtrl', function ($rootScope, $scope, $state, $ionicSideMenuD
     var savedForms = savedForms;
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){
+        outbox.setOutbox($localstorage.getObject("outbox"));
         $scope.pendingforms = outbox.filenames.length;
     });
     

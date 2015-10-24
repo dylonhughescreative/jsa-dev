@@ -1,4 +1,4 @@
-app.controller('OutboxCtrl', function ($scope, $state, $ionicSideMenuDelegate, $ionicPlatform, $ionicPopup, $cordovaFile, $cordovaFileTransfer, outbox) {
+app.controller('OutboxCtrl', function ($scope, $state, $ionicSideMenuDelegate, $ionicPlatform, $ionicPopup, $localstorage, $cordovaFile, $cordovaFileTransfer, outbox) {
     'use strict';
     
     var outbox = outbox;
@@ -49,6 +49,7 @@ app.controller('OutboxCtrl', function ($scope, $state, $ionicSideMenuDelegate, $
             
             $cordovaFile.removeFile(cordova.file.documentsDirectory, filename);
             $scope.pendingfiles.splice(index, 1);
+            $localstorage.setObject("outbox", $scope.pendingfiles);
             
         }, function(err) {
             console.log("ERROR: " + JSON.stringify(err));
