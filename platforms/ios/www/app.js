@@ -224,6 +224,22 @@ app.service('formInfo', function () {
             nextstate: "",
             previousstate: ""
         };
+    
+    this.setFormInfo = function (data) {
+        formInfo.basicinfo = data.basicinfo;
+        formInfo.jobelements = data.jobelements;
+        formInfo.ppeinfo = data.ppeinfo;
+        formInfo.trainReqs = data.trainReqs;
+        formInfo.licReqs = data.licReqs;
+        formInfo.areaConcerns = data.areaConcerns;
+        formInfo.addTraining = data.addTraining;
+        formInfo.signatures = { };
+        formInfo.completedElements = data.completedElements;
+        formInfo.formComplete = data.formComplete;
+        formInfo.locked = false;
+        formInfo.NextButtonText = data.NextButtonText;
+        formInfo.stateController = data.stateController;
+    }
 });
 
 app.service('savedForms', function () {

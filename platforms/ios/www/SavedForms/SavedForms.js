@@ -49,6 +49,7 @@ app.controller('SavedFormsCtrl', function ($scope, $state, $ionicSideMenuDelegat
     }
     
     $scope.Load = function(name) {
-        savedFormsJs.formInfo = $localstorage.getObject(name);
+        //savedFormsJs.formInfo = $localstorage.getObject(name);
+        formInfo.setFormInfo($localstorage.getObject(name));
     }
 });
