@@ -7,8 +7,9 @@ app.controller('HomeCtrl', function ($rootScope, $scope, $state, $ionicSideMenuD
     var savedForms = savedForms;
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){
-        outbox.setOutbox($localstorage.getObject("outbox"));
+        var outbox = $localstorage.getObject("outbox");
         if(!angular.isUndefined(outbox.filenames)) {
+            outbox.setOutbox(outbox);
             $scope.pendingforms = outbox.filenames.length;
         }
     });
@@ -91,6 +92,7 @@ app.controller('HomeCtrl', function ($rootScope, $scope, $state, $ionicSideMenuD
     $scope.TestingDefaults = function () {
         $scope.outbox.filenames.push("plus one");
         $scope.pendingforms = outbox.filenames.length;
+        $localstorage.setObject("outbox", $scope.outbox);
         
         clearForm();
         
