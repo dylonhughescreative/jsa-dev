@@ -8,7 +8,7 @@ app.controller('HomeCtrl', function ($rootScope, $scope, $state, $ionicSideMenuD
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){
         outbox.setOutbox($localstorage.getObject("outbox"));
-        if(!angular.isUndefined(outbox.filenames.length)) {
+        if(!angular.isUndefined(outbox.filenames)) {
             $scope.pendingforms = outbox.filenames.length;
         }
     });
