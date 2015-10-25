@@ -1,4 +1,4 @@
-app.controller('OutboxCtrl', function ($scope, $state, $ionicSideMenuDelegate, $ionicPlatform, $ionicPopup, $localstorage, $cordovaFile, $cordovaFileTransfer, outbox) {
+app.controller('OutboxCtrl', function ($rootScope, $scope, $state, $ionicSideMenuDelegate, $ionicPlatform, $ionicPopup, $localstorage, $cordovaFile, $cordovaFileTransfer, outbox) {
     'use strict';
     
     var outbox = outbox;

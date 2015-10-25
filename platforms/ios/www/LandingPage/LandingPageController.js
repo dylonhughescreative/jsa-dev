@@ -3,12 +3,17 @@ app.controller('HomeCtrl', function ($rootScope, $scope, $state, $ionicSideMenuD
     $scope.helpShow = false;
     $scope.outbox = outbox;
     $scope.pendingforms = 0;
-    var formInfo = formInfo;
+    var formInfo = formInfo;   
     var savedForms = savedForms;
+    
+    if(!angular.isUndefined($scope.outbox.filenames)) {         
+        $scope.outbox.setOutbox(outbox);
+        $scope.pendingforms = outbox.filenames.length;
+    }
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){
         var outbox = $localstorage.getObject("outbox");
-        if(!angular.isUndefined(outbox.filenames)) {         
+        if(!angular.isUndefined($scope.outbox.filenames)) {         
             $scope.outbox.setOutbox(outbox);
             $scope.pendingforms = outbox.filenames.length;
         }
