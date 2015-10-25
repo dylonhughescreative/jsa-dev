@@ -234,7 +234,7 @@ app.service('formInfo', function () {
         formInfo.licReqs = data.licReqs;
         formInfo.areaConcerns = data.areaConcerns;
         formInfo.addTraining = data.addTraining;
-        formInfo.signatures = { };
+        formInfo.signatures = [];
         formInfo.completedElements = data.completedElements;
         formInfo.formComplete = data.formComplete;
         formInfo.locked = false;
