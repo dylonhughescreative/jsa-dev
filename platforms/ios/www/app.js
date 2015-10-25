@@ -21,6 +21,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     
     $ionicConfigProvider.scrolling.jsScrolling(true);
     $ionicConfigProvider.views.swipeBackEnabled(false);
+    $ionicConfigProvider.views.transition('none');
     
     $stateProvider
         .state('home', {
