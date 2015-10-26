@@ -228,12 +228,17 @@ app.service('formInfo', function () {
     
     this.setFormInfo = function (data) {
         formInfo.basicinfo = data.basicinfo;
+        formInfo.basicinfo.startdate = null;
+        formInfo.basicinfo.enddate = null;
         formInfo.jobelements = data.jobelements;
         formInfo.ppeinfo = data.ppeinfo;
         formInfo.trainReqs = data.trainReqs;
         formInfo.licReqs = data.licReqs;
         formInfo.areaConcerns = data.areaConcerns;
-        formInfo.addTraining = data.addTraining;
+        formInfo.addTraining = {
+            AddTraining: [],
+            None: false
+        }
         formInfo.signatures = [];
         formInfo.completedElements = data.completedElements;
         formInfo.formComplete = data.formComplete;

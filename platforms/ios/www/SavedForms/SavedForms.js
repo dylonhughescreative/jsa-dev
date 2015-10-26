@@ -1,4 +1,4 @@
-app.controller('SavedFormsCtrl', function ($scope, $state, $ionicSideMenuDelegate, $ionicPlatform, $localstorage, $rootScope, formInfo, savedForms, jsPdfBuilder) {
+app.controller('SavedFormsCtrl', function ($scope, $state, $ionicSideMenuDelegate, $ionicPlatform, $localstorage, $ionicListDelegate, $rootScope, formInfo, savedForms, jsPdfBuilder) {
     'use strict';
     var savedFormsJs = this;
     savedFormsJs.formInfo = formInfo;
@@ -51,5 +51,7 @@ app.controller('SavedFormsCtrl', function ($scope, $state, $ionicSideMenuDelegat
     $scope.Load = function(name) {
         //savedFormsJs.formInfo = $localstorage.getObject(name);
         formInfo.setFormInfo($localstorage.getObject(name));
+        $ionicListDelegate.closeOptionButtons();
+        $state.go("formWizard.GCinfo");
     }
 });
