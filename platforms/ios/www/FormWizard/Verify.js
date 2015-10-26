@@ -103,10 +103,10 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     
     $scope.openSignatureModal = function() {
         $scope.closeCertModal();
-        if (window.cordova) { 
-            var so = cordova.plugins.screenorientation;
-            so.setOrientation('landscape');
-        }
+        //if (window.cordova) { 
+        //    var so = cordova.plugins.screenorientation;
+        //    so.setOrientation('landscape');
+        //}
         $scope.signatureModal.show();
         var canvas = document.getElementById('signatureCanvas');
         var options = {
@@ -132,10 +132,10 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
             date: $scope.commitment.date,
             signature: $scope.commitment.signature    
         });
-        if (window.cordova) {
-            var so = cordova.plugins.screenorientation;
-            so.setOrientation('landscape');
-        }
+        //if (window.cordova) {
+        //    var so = cordova.plugins.screenorientation;
+        //    so.setOrientation('landscape');
+        //}
         if (!verifyState.vForm.locked)
             lockForm();
         $scope.commitment = {};
@@ -170,10 +170,10 @@ app.controller('VerifyCtrl', function ($rootScope, $scope, $state, $ionicModal, 
     
     $scope.closeCertModalAndBack = function() {
         $scope.certificationModal.hide();
-        if (window.cordova) {
-            var so = cordova.plugins.screenorientation;
-            so.setOrientation('landscape');
-        }
+        //if (window.cordova) {
+        //    var so = cordova.plugins.screenorientation;
+        //    so.setOrientation('landscape');
+        //}
         $state.go('verify');
     }
     
