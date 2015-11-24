@@ -1,0 +1,32 @@
+ <link href="FormWizard/Verify.css" rel="stylesheet">
+  <div class="modal">
+
+    <!-- Modal header bar -->
+    <ion-header-bar class="bar-secondary">
+      <button class="button button-clear button-positive" ng-click="closeCertModal()">Back</button>
+      <h1 class="title">Employee Signature</h1>
+      <button ng-disabled="!commitment.date || !commitment.name" class="button button-clear button-positive" on-tap="openSignatureModal()">Sign</button>
+    </ion-header-bar>
+
+    <!-- Modal content area -->
+    <ion-content direction="y" id="CertificationModal">
+        <div class="card list">
+            <div class="item item-divider">
+                <h1 style="text-align: center">Add Employee Signature</h1>
+            </div>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Printed Name</span>
+                <input type="text" ng-model="commitment.name" placeholder="Name (First, Last)">
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Date</span>
+                <input type="date" ng-model="commitment.date" placeholder="Today's Date">
+            </label>
+            <div class="item item-text-wrap">
+                <p>
+                    By signing this form, you agree that you are aware of the safety risks involved with the job elements set forth in this form, and you agree to follow the risk control methods described in this form.
+                </p>
+            </div>
+        </div>
+    </ion-content>
+  </div>

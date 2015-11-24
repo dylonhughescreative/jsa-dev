@@ -1,0 +1,33 @@
+#HomeBackgroundImage {
+    position: relative;
+    width: 100%;
+    height: auto;
+    opacity: 0.5;
+    top: 40%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -40%);    
+    transform: translate(-50%, -40%);
+}
+
+#BackgroundContainer {
+    height: 100%;
+    width: 100%;
+}
+
+#HomeListContainer {
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+}
+
+/* Landscape-specific code */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    #HomeBackgroundImage {
+        height: 100%;
+        width: auto;
+        top: 45%;
+        -webkit-transform: translate(-50%, -45%);
+        transform: translate(-50%, -45%);
+    }
+}

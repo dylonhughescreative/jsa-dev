@@ -1,0 +1,13 @@
+#BasicInfoForm {
+    bottom: 60px;
+}
+
+#basicinfosubmit {
+    position: fixed;
+    width: 98%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 1%;
+    padding: 0;
+}

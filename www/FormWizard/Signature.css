@@ -1,0 +1,59 @@
+#signatureCanvas{
+    margin: 1%;
+}
+
+#sigCanvas {
+    position: absolute;
+}
+
+#clearButton {
+    position: absolute;
+    top: 5%;
+    width: 5%;
+    height: 10%;
+    left: 0%;
+    z-index: 3;
+}
+
+#b_Submit{
+    position: fixed;
+    width: 98%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 1%;
+    padding: 0;
+}
+
+#infoCard {
+    position: fixed;
+    width: 98%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 1%;
+    padding: 0;
+    text-align: center;
+}
+
+#CertifyButton {
+    position: fixed;
+    width: 98%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 1%;
+    padding: 0;
+}
+
+.signature-fader {
+    opacity: 1;
+}
+
+.signature-fader.ng-hide-add, .signature-fader.ng-hide-remove {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.signature-fader.ng-hide {
+    opacity: 0;
+}

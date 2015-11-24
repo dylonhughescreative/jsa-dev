@@ -1,0 +1,41 @@
+<ion-view view-title="License Requirements">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-ios-list-outline"></button>
+    </ion-nav-buttons>
+    <ion-content direction="y" class="submission-content">  
+    <div class="checkboxlist">
+        <ul class="list">
+            <ion-checkbox class="item item-checkbox-right" ng-model="licReqState.formInfo.licReqs.None" on-tap="checkchanged_none()" on-hold="checkchanged_none()">
+                None
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="licReqState.formInfo.licReqs.ForkLift" on-tap="checkchanged()" on-hold="checkchanged_none()">                        
+                Fork Lift
+            </ion-checkbox>
+            <ion-checkbox class="item item-checkbox-right" ng-model="licReqState.formInfo.licReqs.AerialLift" on-tap="checkchanged()" on-hold="checkchanged_none()">                        
+                Aerial Lift
+            </ion-checkbox>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Crane
+                </div>
+                <select ng-options="options for options in craneOptions" ng-model="licReqState.formInfo.licReqs.cb_Crane" ng-change="craneTypeChanged()">
+                    <option selected>N/A</option>
+                </select>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Heavy Equiptment
+                </div>
+                <select ng-options="options for options in heavyequipOptions" ng-model="licReqState.formInfo.licReqs.cb_HeavyEquip" ng-change="heavyequipTypeChanged()">
+                    <option selected>N/A</option>
+                </select>
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Other</span>
+                <input type="text" placeholder="Enter any other License Requirements" ng-model="licReqState.formInfo.licReqs.tb_Other" ng-change="otherTextChanged()">
+            </label>
+        </ul>
+    </div>
+</ion-content>
+<button class="button button-block button-positive" id = "b_Submit" on-tap="check('formWizard.AreaConcerns')" on-hold="check('formWizard.AreaConcerns')">Next</button>
+</ion-view>

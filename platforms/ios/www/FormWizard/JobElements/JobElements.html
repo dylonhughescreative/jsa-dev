@@ -1,0 +1,49 @@
+<ion-view view-title="Job Elements">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-ios-plus-empty" ng-click="newTask()" ng-show="!reorderShowing"></button>
+        <button class="button button-clear ng-hide" ng-click="toggleReorder()" ng-show="reorderShowing">Done</button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-ios-list-outline"></button>
+    </ion-nav-buttons>
+<ion-content direction="y" class="submission-content">
+    <!-- our list and list tasks -->
+    <ion-list show-reorder="reorderShowing">
+        <div ng-repeat="element in jobElementsState.formInfo.jobelements track by $index">
+            <ion-item class="item-stable"
+                    on-tap="toggleGroup(element)"
+                    ng-class="{active: isGroupShown(element)}">
+                <i class="button-positive" ng-class="isGroupShown(element) ? 'ion-chevron-up' : 'ion-chevron-down'" ng-click="toggleGroup(element)"></i>
+                {{element.name}}
+                <ion-option-button class="button-positive" ng-click="openJobElement(element)">
+                    Edit
+                </ion-option-button>
+                <ion-option-button class="button-assertive" ng-click="deleteItem(element)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="item in element.tasks track by $index"
+                    ng-show="isGroupShown(element)">
+            {{item.title}}
+                <ion-option-button class="button-positive" ng-click="openTaskModal(element, item)">
+                    Edit
+                </ion-option-button>
+                <ion-option-button class="button-assertive" ng-click="deleteTask(element, item)">
+                    Delete
+                </ion-option-button>
+          </ion-item>
+        </div>
+    </ion-list>
+    <div class="ng-hide" ng-show="jobElementsState.formInfo.jobelements.length == 0">
+        <div class="card">
+            <div class="item item-text-wrap half-opacity">
+                To add a task, press the + button above.
+            </div>
+        </div>
+    </div>
+</ion-content>
+    <div>
+          <button class="button button-block button-positive" id = "b_Submit" data-ng-if="jobElementState.formInfo.jobelements.length != 0" on-tap="check('formWizard.TrainReq')" on-hold="check('overview')">Next</button>
+      </div>
+</ion-view>

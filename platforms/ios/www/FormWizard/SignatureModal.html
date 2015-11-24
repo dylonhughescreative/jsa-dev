@@ -1,0 +1,17 @@
+  <link href="FormWizard/Signature.css" rel="stylesheet">
+  <div class="modal">
+
+    <!-- Modal header bar -->
+    <ion-header-bar class="bar-secondary">
+      <button class='button button-clear button-positive' on-tap='clearCanvas()'>Clear</button>
+      <h1 class="title">Enter Your Signature</h1>
+      <button class="button button-clear button-positive" ng-click="closeSignatureModal()">Done</button>
+    </ion-header-bar>
+
+    <!-- Modal content area -->
+    <ion-content scroll="false" id="SignatureModal">
+        <div id="sigCanvas">
+            <canvas scroll="false" id='signatureCanvas' width={{sigCanvas.width}} height={{sigCanvas.height}} style='border: 1px solid black;'></canvas>
+        </div>
+    </ion-content>
+  </div>
