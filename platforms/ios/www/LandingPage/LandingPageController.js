@@ -14,8 +14,8 @@ app.controller('HomeCtrl', function ($rootScope, $scope, $state, $ionicSideMenuD
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){
         var outbox = $localstorage.getObject("outbox");
         if(!angular.isUndefined($scope.outbox.filenames)) {         
-            $scope.outbox.setOutbox(outbox);
-            $scope.pendingforms = outbox.filenames.length;
+            $scope.outbox.setOutbox($scope.outbox);
+            $scope.pendingforms = $scope.outbox.filenames.length;
         }
     });
     
