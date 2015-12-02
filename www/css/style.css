@@ -1,0 +1,59 @@
+/* Classes */
+.headerBar{
+    height: 3.5%;
+    width: 100%;
+    background-color: darkgrey;
+}
+
+.Image{
+    width: 100%;
+    height: auto;
+}
+
+.VertForm {
+    position: absolute;
+    width: 100%;
+    top: 64px;
+    height: 96.5%;
+}
+
+.input-label {
+    color: rgba(96,96,96,0.80);
+}
+
+/* Portrait IDs */
+
+#backButton {
+    font-size: 200%;
+    color: white;
+}
+
+#navbuttonback {
+  width: 25%;  
+}
+
+#backButton{
+    width: 100%;
+    offsetLeft: 100px;
+}
+
+#backButtonIcon.icon.ion-ios-arrow-back{
+    left: 0;
+}
+
+#signbutton{
+    width: 100%;
+}
+
+.submission-content {
+    bottom: 47px;
+    margin-bottom: 1%;
+}
+
+/* Landscape-specific code */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .headerBar {
+        height: 7%;
+    }
+
+}

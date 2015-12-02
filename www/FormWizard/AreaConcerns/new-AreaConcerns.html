@@ -1,0 +1,82 @@
+  <link href="FormWizard/JobElements/new-job-element.css" rel="stylesheet">
+  <div class="modal">
+
+    <!-- Modal header bar -->
+    <ion-header-bar class="bar-secondary">
+      <h1 class="title">{{ModalHeaderText}}</h1>
+      <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
+    </ion-header-bar>
+
+    <!-- Modal content area -->
+    <ion-content direction="y" id="ModalContentJobElement">
+
+      <form ng-submit="createTask(jobElement)" id="NewJobElementForm">
+            <div class="item item-divider">
+                Job Element Name
+            </div>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Element Title</span>
+              <input type="text" placeholder="What do you need to do?" ng-model="jobElement.title">
+            </label>
+            <div class="item item-divider">
+                How Many Tasks Are Required?
+            </div>
+            <div class="button-bar">
+                <a class="button button-light" 
+                   ng-repeat="item in numberList"
+                   ng-click="jobElement.number = item.number"
+                   ng-init="jobElement.number = 1">
+                    {{item.title}}
+                </a>
+            </div>
+            <div class="list">
+                <label class="item item-input item-stacked-label concern-fader" ng-show="jobElement.number > 0">
+                    <span class="input-label">Task 1</span>
+                    <input type="text" ng-model="jobElement.task1.title" placeholder="What do you need to do first?">
+                </label>
+                <label class="item item-input item-stacked-label concern-fader" ng-show="(jobElement.number > 0) && (jobElement.task1.title !== '' && jobElement.task1.title != null)">
+                    <span class="input-label">Potential Hazards</span>
+                    <input type="text" ng-model="jobElement.task1.hazards" placeholder="What are the hazards of this task?">
+                </label>
+                <label class="item item-input item-stacked-label concern-fader" ng-show="(jobElement.number > 0) && (jobElement.task1.title !== '' && jobElement.task1.title != null)">
+                    <span class="input-label">Hazard Control Methods</span>
+                    <input type="text" ng-model="jobElement.task1.control" placeholder="How will you mitigate these hazards?">
+                </label>
+                <label class="item item-input item-stacked-label concern-fader" ng-show="jobElement.number > 1">
+                    <span class="input-label">Task 2</span>
+                    <input type="text" ng-model="jobElement.task2.title" placeholder="What about after that?">
+                </label>
+                <label class="item item-input item-stacked-label concern-fader" ng-show="(jobElement.number > 1) && (jobElement.task2.title !== '' && jobElement.task2.title != null)">
+                    <span class="input-label">Potential Hazards</span>
+                    <input type="text" ng-model="jobElement.task2.hazards" placeholder="What are the hazards of this task?">
+                </label>
+                <label class="item item-input item-stacked-label concern-fader" ng-show="(jobElement.number > 1) && (jobElement.task2.title !== '' && jobElement.task2.title != null)">
+                    <span class="input-label">Hazard Control Methods</span>
+                    <input type="text" ng-model="jobElement.task2.control" placeholder="How will you mitigate these hazards?">
+                </label>
+                <label class="item item-input item-stacked-label concern-fader" ng-show="jobElement.number > 2">
+                    <span class="input-label">Task 3</span>
+                    <input type="text" ng-model="jobElement.task3.title" placeholder="And after that?">
+                </label>
+                <label class="item item-input item-stacked-label concern-fader" ng-show="(jobElement.number > 2) && (jobElement.task3.title !== '' && jobElement.task3.title != null)">
+                    <span class="input-label">Potential Hazards</span>
+                    <input type="text" ng-model="jobElement.task3.hazards" placeholder="What are the hazards of this task?">
+                </label>
+                <label class="item item-input item-stacked-label concern-fader" ng-show="(jobElement.number > 2) && (jobElement.task3.title !== '' && jobElement.task3.title != null)">
+                    <span class="input-label">Hazard Control Methods</span>
+                    <input type="text" ng-model="jobElement.task3.control" placeholder="How will you mitigate these hazards?">
+                </label>
+            </div>
+      </form>
+    </ion-content>
+      <div id="JobElementAddModal">
+          <button type="submit" form="NewJobElementForm" class="button button-block button-positive concern-fader" id="CreateTaskButton" ng-show="checkModal()">{{ModalButtonText}}</button>
+          <div id="HelpCard" class="concern-fader" ng-hide="checkModal()">
+            <div class="card">
+                <div class="item item-text-wrap">
+                    You need at least one task and an element title to continue.
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>

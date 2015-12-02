@@ -1,0 +1,258 @@
+<head>
+    <link href="FormWizard/Verify.css" rel="stylesheet"> 
+</head>
+
+<ion-view title="Form Verify">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-ios-list-outline"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" on-tap="openCertModal()" on-hold="uploadFile()" id="signbutton">
+            {{verifyState.vForm.NextButtonText}}
+        </button>
+    </ion-nav-buttons>
+    
+    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+    <ion-slide>
+        <ion-content>
+            <ion-scroll min-zoom="1" max-zoom="3" zooming="true" direction="xy" id="Form">
+                <img src="img/page1.PNG" id="Image"/>
+                <div class="overlayButton" id="BasicInfo">
+                    <div class="Textbox" id="companyname">{{verifyState.vForm.basicinfo.subcontractor}}</div>
+                    <div class="Textbox" id="crewleader">{{verifyState.vForm.basicinfo.username}}</div>
+                    <div class="Textbox" id="projectname">{{verifyState.vForm.basicinfo.projectname}}</div>
+                    <div class="Textbox" id="generalcontractor">{{verifyState.vForm.basicinfo.generalcontractor}}</div>
+                    <div class="Textbox" id="sitesuperintendent">{{verifyState.vForm.basicinfo.gcsuperintendent}}</div>
+                    <div class="Textbox" id="basicinfodate">{{verifyState.vForm.basicinfo.startdate | date:"MM/dd/yyyy"}}</div>
+                    <div class="Textbox" id="jobscope">{{verifyState.vForm.basicinfo.jobscope}}</div>
+                </div>
+                <div class="overlayButton" id="PPE">
+                    Double-Tap To Edit
+                    <i  data-ng-if="verifyState.vForm.ppeinfo.cm_EyeProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_EyeProtection"></i>
+                    <i  data-ng-if="verifyState.vForm.ppeinfo.cm_ChemGoggles" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemGoggles"></i>
+                    <i  data-ng-if="verifyState.vForm.ppeinfo.cm_HardHat" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HardHat"></i>
+                    <i  data-ng-if="verifyState.vForm.ppeinfo.cm_RespiratorType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_RespiratorType"></i>
+                    <div class="Textbox" id="tb_RespiratorType">{{verifyState.vForm.ppeinfo.cb_RespiratorType}}</div>
+                    <i  data-ng-if="verifyState.vForm.ppeinfo.cm_GlovesType" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_GlovesType"></i>
+                    <div class="Textbox" id="tb_GlovesType">{{verifyState.vForm.ppeinfo.cb_GlovesType}}</div>
+                    <i  data-ng-if="verifyState.vForm.ppeinfo.cm_Clothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Clothing"></i>
+                    <div class="Textbox" id="tb_Clothing">{{verifyState.vForm.ppeinfo.cb_Clothing}}</div>
+                    <i  data-ng-if="verifyState.vForm.ppeinfo.cm_ProtectiveToe" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ProtectiveToe"></i>
+                    <i  data-ng-if="verifyState.vForm.ppeinfo.cm_HearingProtection" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HearingProtection"></i>
+                    <i  data-ng-if="verifyState.vForm.ppeinfo.cm_ChemClothing" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_ChemClothing"></i>
+                    <div class="Textbox" id="tb_ChemClothing">{{verifyState.vForm.ppeinfo.cb_ChemClothing}}</div>
+                    <i  data-ng-if="verifyState.vForm.ppeinfo.cm_HarnessLanyard" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_HarnessLanyard"></i>
+                    <i  data-ng-if="verifyState.vForm.ppeinfo.cm_FaceShield" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_FaceShield"></i>
+                    <i  data-ng-if="verifyState.vForm.ppeinfo.cm_Other" class="icon ion-checkmark-circled PPE_Checkmark" id="cm_Other"></i>
+                    <div class="Textbox" id="tb_Other">{{verifyState.vForm.ppeinfo.tb_Other}}</div>
+                </div>
+                <div class="overlayButton" id="StartEndDate">
+                    <div class="Textbox" id="tb_StartDate">{{verifyState.vForm.basicinfo.startdate | date:"MM/dd/yyyy"}}</div>
+                    <div class="Textbox" id="tb_EndDate">{{verifyState.vForm.basicinfo.enddate | date:"MM/dd/yyyy"}}</div>
+                </div>
+                <div class="overlayButton" id="TaskOne">
+                    <div class="Textbox JobElement" id="tb_JobElement">{{verifyState.vForm.jobelements[0].name}}</div>
+                    <div class="Textbox Task"    id="tb_Task1">{{verifyState.vForm.jobelements[0].tasks[0].title}}</div>
+                    <div class="Textbox Hazard"  id="tb_Hazard1">{{verifyState.vForm.jobelements[0].tasks[0].hazards}}</div>
+                    <div class="Textbox Control" id="tb_Control1">{{verifyState.vForm.jobelements[0].tasks[0].control}}</div>
+                    <div class="Textbox Task"    id="tb_Task2">{{verifyState.vForm.jobelements[0].tasks[1].title}}</div>
+                    <div class="Textbox Hazard"  id="tb_Hazard2">{{verifyState.vForm.jobelements[0].tasks[1].hazards}}</div>
+                    <div class="Textbox Control" id="tb_Control2">{{verifyState.vForm.jobelements[0].tasks[1].control}}</div>
+                    <div class="Textbox Task"    id="tb_Task3">{{verifyState.vForm.jobelements[0].tasks[2].title}}</div>
+                    <div class="Textbox Hazard"  id="tb_Hazard3">{{verifyState.vForm.jobelements[0].tasks[2].hazards}}</div>
+                    <div class="Textbox Control" id="tb_Control3">{{verifyState.vForm.jobelements[0].tasks[2].control}}</div>
+                </div>
+                <div class="overlayButton" id="TaskTwo">
+                    <div class="Textbox JobElement" id="tb_JobElement">{{verifyState.vForm.jobelements[1].name}}</div>
+                    <div class="Textbox Task"    id="tb_Task1">{{verifyState.vForm.jobelements[1].tasks[0].title}}</div>
+                    <div class="Textbox Hazard"  id="tb_Hazard1">{{verifyState.vForm.jobelements[1].tasks[0].hazards}}</div>
+                    <div class="Textbox Control" id="tb_Control1">{{verifyState.vForm.jobelements[1].tasks[0].control}}</div>
+                    <div class="Textbox Task"    id="tb_Task2">{{verifyState.vForm.jobelements[1].tasks[1].title}}</div>
+                    <div class="Textbox Hazard"  id="tb_Hazard2">{{verifyState.vForm.jobelements[1].tasks[1].hazards}}</div>
+                    <div class="Textbox Control" id="tb_Control2">{{verifyState.vForm.jobelements[1].tasks[1].control}}</div>
+                    <div class="Textbox Task"    id="tb_Task3">{{verifyState.vForm.jobelements[1].tasks[2].title}}</div>
+                    <div class="Textbox Hazard"  id="tb_Hazard3">{{verifyState.vForm.jobelements[1].tasks[2].hazards}}</div>
+                    <div class="Textbox Control" id="tb_Control3">{{verifyState.vForm.jobelements[1].tasks[2].control}}</div>
+                </div>
+                <div class="overlayButton" id="TaskThree">
+                    <div class="Textbox JobElement" id="tb_JobElement">{{verifyState.vForm.jobelements[2].name}}</div>
+                    <div class="Textbox Task"    id="tb_Task1">{{verifyState.vForm.jobelements[2].tasks[0].title}}</div>
+                    <div class="Textbox Hazard"  id="tb_Hazard1">{{verifyState.vForm.jobelements[2].tasks[0].hazards}}</div>
+                    <div class="Textbox Control" id="tb_Control1">{{verifyState.vForm.jobelements[2].tasks[0].control}}</div>
+                    <div class="Textbox Task"    id="tb_Task2">{{verifyState.vForm.jobelements[2].tasks[1].title}}</div>
+                    <div class="Textbox Hazard"  id="tb_Hazard2">{{verifyState.vForm.jobelements[2].tasks[1].hazards}}</div>
+                    <div class="Textbox Control" id="tb_Control2">{{verifyState.vForm.jobelements[2].tasks[1].control}}</div>
+                    <div class="Textbox Task"    id="tb_Task3">{{verifyState.vForm.jobelements[2].tasks[2].title}}</div>
+                    <div class="Textbox Hazard"  id="tb_Hazard3">{{verifyState.vForm.jobelements[2].tasks[2].hazards}}</div>
+                    <div class="Textbox Control" id="tb_Control3">{{verifyState.vForm.jobelements[2].tasks[2].control}}</div>
+                </div>
+                <div class="overlayButton" id="TaskFour">
+                    <div class="Textbox JobElement" id="tb_JobElement">{{verifyState.vForm.jobelements[3].name}}</div>
+                    <div class="Textbox Task"    id="tb_Task1">{{verifyState.vForm.jobelements[3].tasks[0].title}}</div>
+                    <div class="Textbox Hazard"  id="tb_Hazard1">{{verifyState.vForm.jobelements[3].tasks[0].hazards}}</div>
+                    <div class="Textbox Control" id="tb_Control1">{{verifyState.vForm.jobelements[3].tasks[0].control}}</div>
+                    <div class="Textbox Task"    id="tb_Task2">{{verifyState.vForm.jobelements[3].tasks[1].title}}</div>
+                    <div class="Textbox Hazard"  id="tb_Hazard2">{{verifyState.vForm.jobelements[3].tasks[1].hazards}}</div>
+                    <div class="Textbox Control" id="tb_Control2">{{verifyState.vForm.jobelements[3].tasks[1].control}}</div>
+                    <div class="Textbox Task"    id="tb_Task3">{{verifyState.vForm.jobelements[3].tasks[2].title}}</div>
+                    <div class="Textbox Hazard"  id="tb_Hazard3">{{verifyState.vForm.jobelements[3].tasks[2].hazards}}</div>
+                    <div class="Textbox Control" id="tb_Control3">{{verifyState.vForm.jobelements[3].tasks[2].control}}</div>
+                </div>
+            </ion-scroll>
+        </ion-content>
+    </ion-slide>
+    <ion-slide>
+        <ion-content>
+            <ion-scroll min-zoom="1" max-zoom="3" zooming="true" direction="xy" id="Form">
+                <img src="img/page2.PNG" id="Image"/>
+                <div id="TrainingReqs">
+                    <i  data-ng-if="verifyState.vForm.trainReqs.RedTag" class="icon ion-checkmark-circled TrainReq_Checkmark" id="cm_RedTag"></i>
+                    <i  data-ng-if="verifyState.vForm.trainReqs.ConfinedSpace" class="icon ion-checkmark-circled TrainReq_Checkmark" id="cm_FireWatch"></i>
+                    <i  data-ng-if="verifyState.vForm.trainReqs.DriverSafety" class="icon ion-checkmark-circled TrainReq_Checkmark" id="cm_DriverSafety"></i>
+                    <i  data-ng-if="verifyState.vForm.trainReqs.Rigger" class="icon ion-checkmark-circled TrainReq_Checkmark" id="cm_Rigger"></i>
+                    <i  data-ng-if="verifyState.vForm.trainReqs.ConfinedSpace" class="icon ion-checkmark-circled TrainReq_Checkmark" id="cm_ConfinedSpace"></i>
+                    <i  data-ng-if="verifyState.vForm.trainReqs.Flagger" class="icon ion-checkmark-circled TrainReq_Checkmark" id="cm_Flagger"></i>
+                    <i  data-ng-if="verifyState.vForm.trainReqs.SWP" class="icon ion-checkmark-circled TrainReq_Checkmark" id="cm_SWP"></i>
+                    <i  data-ng-if="verifyState.vForm.trainReqs.ForkLift" class="icon ion-checkmark-circled TrainReq_Checkmark" id="cm_ForkLift_TR"></i>
+                    <i  data-ng-if="verifyState.vForm.trainReqs.Scaffold" class="icon ion-checkmark-circled TrainReq_Checkmark" id="cm_Scaffold"></i>
+                    <i  data-ng-if="verifyState.vForm.trainReqs.AerialLift" class="icon ion-checkmark-circled TrainReq_Checkmark" id="cm_AerialLift_TR"></i>
+                    <i  data-ng-if="verifyState.vForm.trainReqs.SPO" class="icon ion-checkmark-circled TrainReq_Checkmark" id="cm_SPO"></i>
+                    <i  data-ng-if="verifyState.vForm.trainReqs.Other" class="icon ion-checkmark-circled TrainReq_Checkmark" id="cm_Other_TR"></i>
+                    <div class="Textbox" id="tb_Other_TR">{{verifyState.vForm.trainReqs.tb_Other}}</div>
+                </div>
+                <div id="LicenseReqs">
+                    <i  data-ng-if="verifyState.vForm.licReqs.ForkLift" class="icon ion-checkmark-circled LicReq_Checkmark" id="cm_ForkLift_LR"></i>
+                    <i  data-ng-if="verifyState.vForm.licReqs.AerialLift" class="icon ion-checkmark-circled LicReq_Checkmark" id="cm_AerialLift_LR"></i>
+                    <i  data-ng-if="verifyState.vForm.licReqs.cm_Crane" class="icon ion-checkmark-circled LicReq_Checkmark" id="cm_Crane"></i>
+                    <div class="Textbox" id="tb_Crane">{{verifyState.vForm.licReqs.cb_Crane}}</div>
+                    <i  data-ng-if="verifyState.vForm.licReqs.cm_HeavyEquip" class="icon ion-checkmark-circled LicReq_Checkmark" id="cm_HeavyEquip"></i>
+                    <div class="Textbox" id="tb_HeavyEquip">{{verifyState.vForm.licReqs.cb_HeavyEquip}}</div>
+                    <i  data-ng-if="verifyState.vForm.licReqs.cm_Other" class="icon ion-checkmark-circled LicReq_Checkmark" id="cm_Other_LR"></i>
+                    <div class="Textbox" id="tb_Other_LR">{{verifyState.vForm.licReqs.tb_Other}}</div>
+                </div>
+                <div id="AreaConcerns">
+                    <div id="AreaRow1">
+                        <div class="Textbox" id="LOF">{{verifyState.vForm.areaConcerns.lineofFire[0]}}</div>
+                        <div class="Textbox" id="SensEquip">{{verifyState.vForm.areaConcerns.sensEquip[0]}}</div>
+                        <div class="Textbox" id="FallHaz">{{verifyState.vForm.areaConcerns.fallHazards[0]}}</div>
+                    </div>
+                    <div id="AreaRow2">
+                        <div class="Textbox" id="LOF">{{verifyState.vForm.areaConcerns.lineofFire[1]}}</div>
+                        <div class="Textbox" id="SensEquip">{{verifyState.vForm.areaConcerns.sensEquip[1]}}</div>
+                        <div class="Textbox" id="FallHaz">{{verifyState.vForm.areaConcerns.fallHazards[1]}}</div>
+                    </div>
+                    <div id="AreaRow3">
+                        <div class="Textbox" id="LOF">{{verifyState.vForm.areaConcerns.lineofFire[2]}}</div>
+                        <div class="Textbox" id="SensEquip">{{verifyState.vForm.areaConcerns.sensEquip[2]}}</div>
+                        <div class="Textbox" id="FallHaz">{{verifyState.vForm.areaConcerns.fallHazards[2]}}</div>
+                    </div>
+                </div>
+                    <div id="AdditionalTraining">
+                        <div id="AddTrain1">
+                            <div class="Textbox" id="TrainTopic">{{verifyState.vForm.addTraining.AddTraining[0].name}}</div>
+                            <div class="Textbox" id="TrainDate">{{verifyState.vForm.addTraining.AddTraining[0].date | date:"MM/dd/yy"}}</div>
+                        </div>
+                        <div id="AddTrain2">
+                            <div class="Textbox" id="TrainTopic">{{verifyState.vForm.addTraining.AddTraining[1].name}}</div>
+                            <div class="Textbox" id="TrainDate">{{verifyState.vForm.addTraining.AddTraining[1].date | date:"MM/dd/yy"}}</div>
+                        </div>
+                        <div id="AddTrain3">
+                            <div class="Textbox" id="TrainTopic">{{verifyState.vForm.addTraining.AddTraining[2].name}}</div>
+                            <div class="Textbox" id="TrainDate">{{verifyState.vForm.addTraining.AddTraining[2].date | date:"MM/dd/yy"}}</div>
+                        </div>
+                        <div id="AddTrain4">
+                            <div class="Textbox" id="TrainTopic">{{verifyState.vForm.addTraining.AddTraining[3].name}}</div>
+                            <div class="Textbox" id="TrainDate">{{verifyState.vForm.addTraining.AddTraining[3].date | date:"MM/dd/yy"}}</div>
+                        </div>
+                        <div id="AddTrain5">
+                            <div class="Textbox" id="TrainTopic">{{verifyState.vForm.addTraining.AddTraining[4].name}}</div>
+                            <div class="Textbox" id="TrainDate">{{verifyState.vForm.addTraining.AddTraining[4].date | date:"MM/dd/yy"}}</div>
+                        </div>
+                        <div id="AddTrain6">
+                            <div class="Textbox" id="TrainTopic">{{verifyState.vForm.addTraining.AddTraining[5].name}}</div>
+                            <div class="Textbox" id="TrainDate">{{verifyState.vForm.addTraining.AddTraining[5].date | date:"MM/dd/yy"}}</div>
+                        </div>
+                    </div>
+                <div id="Commitment">
+                    <div id="Commitment1">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[1].name}}</div>
+                        <img data-ng-if="verifyState.vForm.signatures[1].signature" id="EmployeeSignature" src="{{verifyState.vForm.signatures[1].signature}}"/>
+                        <div class="Textbox" id="At-Risk"></div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[1].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment2">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[2].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[2].signature}}"/>
+                        <div class="Textbox" id="At-Risk"></div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[2].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment3">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[3].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[3].signature}}"/>
+                        <div class="Textbox" id="At-Risk"></div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[3].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment4">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[4].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[4].signature}}"/>
+                        <div class="Textbox" id="At-Risk"></div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[4].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment5">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[5].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[5].signature}}"/>
+                        <div class="Textbox" id="At-Risk"></div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[5].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment6">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[6].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[6].signature}}"/>
+                        <div class="Textbox" id="At-Risk"></div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[6].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment7">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[7].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[7].signature}}"/>
+                        <div class="Textbox" id="At-Risk"></div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[7].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment8">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[8].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[8].signature}}"/>
+                        <div class="Textbox" id="At-Risk"></div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[8].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment9">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[9].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[9].signature}}"/>
+                        <div class="Textbox" id="At-Risk"></div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[9].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment10">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[10].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[10].signature}}"/>
+                        <div class="Textbox" id="At-Risk"></div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[10].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment11">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[11].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[11].signature}}"/>
+                        <div class="Textbox" id="At-Risk"></div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[11].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                    <div id="Commitment12">
+                        <div class="Textbox" id="EmployeeName">{{verifyState.vForm.signatures[12].name}}</div>
+                        <img id="EmployeeSignature" src="{{verifyState.vForm.signatures[12].signature}}"/>
+                        <div class="Textbox" id="At-Risk"></div>
+                        <div class="Textbox" id="At-RiskStartDate">{{verifyState.vForm.signatures[12].date | date:"MM/dd/yyyy"}}</div>
+                    </div>
+                </div>
+                <img id="JSASignature" src="{{verifyState.vForm.signatures[0].signature}}"/>
+                <div class="Textbox" id="PrintedName">{{verifyState.vForm.signatures[0].name}}</div>
+                <div class="Textbox" id="CompletedDate">{{verifyState.vForm.signatures[0].date | date:"MM/dd/yyyy"}}</div>
+            </ion-scroll>
+        </ion-content>
+    </ion-slide>
+</ion-slide-box>
+    
+</ion-view>

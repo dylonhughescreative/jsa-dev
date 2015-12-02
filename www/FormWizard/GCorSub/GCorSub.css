@@ -1,0 +1,126 @@
+#b_General{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 50%;
+    background-color: transparent;
+    color: black;
+    border:2px solid black;
+    border-botom: 1px solid black;
+}
+
+#b_Sub{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    bottom: 0;
+    background-color: transparent;
+    color: black;
+    border:2px solid black;
+    border-top: 1px solid black;
+}
+
+.customButton {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#gcButton {
+    background-color: transparent;
+    color: black;
+    border: 2px solid transparent;
+}
+
+#subButton {
+    background-color: transparent;
+    color: black;
+    border: 2px solid transparent;
+}
+
+#gcIcon {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    font-size: 72px;
+}
+
+#subIcon {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    font-size: 72px;
+}
+
+#subText {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#gcText {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+#subContractorText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: auto;
+    left: auto;
+    right: auto;
+}
+
+#generalContractorText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: auto;
+    left: auto;
+    right: auto;
+}
+
+/* Landscape-specific code */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    #b_General{
+        position: absolute;
+        width: 50%;
+        top: 0;
+        bottom: 0;
+        background-color: transparent;
+        color: black;
+        border:2px solid black;
+        border-right: 1px solid black;
+    }
+    
+    #b_Sub{
+        position: absolute;
+        width: 50%;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        background-color: transparent;
+        color: black;
+        border:2px solid black;
+        border-left: 1px solid black;
+    }
+
+    #gcIcon {
+        top: 35%;
+    }
+    
+    #subIcon {
+        top: 35%;
+    }
+}

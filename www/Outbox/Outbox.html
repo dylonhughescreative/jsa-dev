@@ -1,0 +1,23 @@
+<ion-view view-title="Pending Submission" hide-back-button="true">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-ios-home-outline" ng-click="GoTo('home')"></button>
+    </ion-nav-buttons>
+    <ion-content>
+        <div id="SavedFormsContainer">
+            <img id="SavedFormsBackgroundImage" src="./img/RAKSplash.png" />
+            <div id="SavedFormsListContainer">
+                <ion-list show-delete="shouldEdit">
+                    <ion-item ng-repeat="file in pendingfiles track by $index">
+                        <ion-delete-button class="ion-minus-circled"
+                                           ng-click="pendingfiles.splice($index, 1)">    
+                        </ion-delete-button>
+                        <ion-option-button class=button-positive ng-click="upload(file, $index)">
+                            Submit
+                        </ion-option-button>
+                        {{file}}
+                    </ion-item>
+                </ion-list>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
