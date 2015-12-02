@@ -5,68 +5,36 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-      
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
     <!-- ionic/angularjs js -->
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-
+    
     <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
-
+    <script src="js/ng-cordova.min.js"></script>
+    
     <!-- your app's js -->
-    <script src="js/app.js"></script>
+    <script src="app.js"></script>
+    
+    <script src="LandingPage/LandingPageController.js"></script>
+    <link href="LandingPage/LandingPage.css" rel="stylesheet">
+
   </head>
+    
   <body ng-app="starter">
-      <ion-view title="Home" hide-nav-bar="true">
-         <div class="bar bar-header bar-dark">
-         </div>
-          
-         <ion-scroll class="form" min-zoom="1" max-zoom="3" zooming="true" direction="xy">
-           <div id="ImageContainer" ng-controller="PopupCtrl">
-              <img class="image" src="img/page1.PNG"/>
-               <button ng-click="showAlert()" class="PPEAssessment button button-full">
-                   Overlay
-               </button>
-               <script id="popup-template.html" type="text/ng-template">
-                   <input ng-model="data.wifi" type="text" placeholder="Password">
-               </script>
-           </div>
-         </ion-scroll>
-      </ion-view>
-      
-      <!--<div class="checkboxlist">
-         <ul class="list">         
-             <li class="item item-checkbox">
-                 <label class="checkbox">
-                     <input type="checkbox">
-                 </label>
-                 My First Checkbox
-             </li>
-             <li class="item item-checkbox">
-                 <label class="checkbox">
-                     <input type="checkbox">
-                 </label>
-                 My Second Checkbox
-             </li>
-             <li class="item item-checkbox">
-                 <label class="checkbox">
-                     <input type="checkbox">
-                 </label>
-                 My Third Checkbox
-             </li>
-             <li class="item item-checkbox">
-                 <label class="checkbox">
-                     <input type="checkbox">
-                 </label>
-                 My Fourth Checkbox
-             </li>
-         </ul>
-      </div>-->
-      
-  </body>
+    <ion-side-menus enable-menu-with-back-views="false">
+        <ion-side-menu-content>
+            <ion-nav-bar class="bar-stable">
+                <ion-nav-back-button></ion-nav-back-button>  
+                <ion-nav-buttons side="left">
+                    <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+                </ion-nav-buttons>
+            </ion-nav-bar>
+            <ion-nav-view name="menuContent"></ion-nav-view>          
+        </ion-side-menu-content>
+            
+        <ion-side-menu side="left">
+            <ion-nav-view name="sideMenu"></ion-nav-view>
+        </ion-side-menu>
+    </ion-side-menus>
+</body>
 </html>
