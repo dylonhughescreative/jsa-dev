@@ -11,10 +11,10 @@
             {{verifyState.vForm.NextButtonText}}
         </button>
     </ion-nav-buttons>
-    
-    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+	
+	<ion-content scroll=false>
+    <ion-slide-box id="SlideBox" on-slide-changed="slideHasChanged($index)">
     <ion-slide>
-        <ion-content>
             <ion-scroll min-zoom="1" max-zoom="3" zooming="true" direction="xy" id="Form">
                 <img src="img/page1.PNG" id="Image"/>
                 <div class="overlayButton" id="BasicInfo">
@@ -99,10 +99,8 @@
                     <div class="Textbox Control" id="tb_Control3">{{verifyState.vForm.jobelements[3].tasks[2].control}}</div>
                 </div>
             </ion-scroll>
-        </ion-content>
     </ion-slide>
     <ion-slide>
-        <ion-content>
             <ion-scroll min-zoom="1" max-zoom="3" zooming="true" direction="xy" id="Form">
                 <img src="img/page2.PNG" id="Image"/>
                 <div id="TrainingReqs">
@@ -251,8 +249,8 @@
                 <div class="Textbox" id="PrintedName">{{verifyState.vForm.signatures[0].name}}</div>
                 <div class="Textbox" id="CompletedDate">{{verifyState.vForm.signatures[0].date | date:"MM/dd/yyyy"}}</div>
             </ion-scroll>
-        </ion-content>
     </ion-slide>
 </ion-slide-box>
+</ion-content>
     
 </ion-view>

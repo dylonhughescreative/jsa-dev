@@ -15,7 +15,6 @@
     
         <!-- cordova script (this will be a 404 during development) -->
         <script src="js/ng-cordova.min.js"></script>
-        <script src="cordova.js"></script>
         
         <!-- your app's js -->
         <script src="app.js"></script>
@@ -78,21 +77,30 @@
 
   </head>
     
-  <body ng-app="starter">
-    <ion-side-menus enable-menu-with-back-views="false">
-        <ion-side-menu-content>
-            <ion-nav-bar class="bar-stable">
-                <ion-nav-back-button></ion-nav-back-button>  
-                <ion-nav-buttons side="left">
-                    <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
-                </ion-nav-buttons>
-            </ion-nav-bar>
-            <ion-nav-view name="menuContent"></ion-nav-view>          
-        </ion-side-menu-content>
+  <body ng-app="starter" ng-controller="MainCtrl">
+	<div ng-switch="loading">
+	  <div ng-switch-when=true>
+		 <ion-content id="Loading" ng-show="!renderContent">
+        	<i id="Icon" class="icon ion-load-c fa-spin"></i>
+    	</ion-content>
+	  </div>
+	  <div ng-switch-when=false>
+    	<ion-side-menus enable-menu-with-back-views="false">
+        	<ion-side-menu-content>
+            	<ion-nav-bar class="bar-stable">
+                	<ion-nav-back-button></ion-nav-back-button>  
+                	<ion-nav-buttons side="left">
+                    	<button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+                	</ion-nav-buttons>
+            	</ion-nav-bar>
+            	<ion-nav-view name="menuContent" ng-show=false></ion-nav-view>          
+        	</ion-side-menu-content>
             
-        <ion-side-menu side="left">
-            <ion-nav-view name="sideMenu"></ion-nav-view>
-        </ion-side-menu>
-    </ion-side-menus>
+        	<ion-side-menu side="left">
+            	<ion-nav-view name="sideMenu"></ion-nav-view>
+        	</ion-side-menu>
+    	</ion-side-menus>
+	  </div>
+	</div>
 </body>
 </html>
