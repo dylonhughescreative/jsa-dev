@@ -286,7 +286,7 @@ app.factory('$localstorage', ['$window', function($window) {
 app.controller('MainCtrl', function ($rootScope, $scope, outbox) {
 	$scope.loading = false;
 	
-	$scope.$on('$ionicView.leave', function ()
+	$scope.$on('$ionicView.beforeLeave', function ()
 	{
 		$scope.loading = true;
 	});
