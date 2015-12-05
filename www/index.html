@@ -78,13 +78,12 @@
   </head>
     
   <body ng-app="starter" ng-controller="MainCtrl">
-	<div ng-switch="loading">
-	  <div ng-switch-when=true>
+	  <div ng-show="loading">
 		 <ion-content id="Loading" ng-show="!renderContent">
         	<i id="Icon" class="icon ion-load-c fa-spin"></i>
     	</ion-content>
 	  </div>
-	  <div ng-switch-when=false>
+      <div ng-show="!loading">
     	<ion-side-menus enable-menu-with-back-views="false">
         	<ion-side-menu-content>
             	<ion-nav-bar class="bar-stable">
@@ -101,6 +100,5 @@
         	</ion-side-menu>
     	</ion-side-menus>
 	  </div>
-	</div>
 </body>
 </html>
