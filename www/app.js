@@ -71,17 +71,33 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
                 }
             } 
         })
-        .state('formWizard.GCorSub', {
+        .state('GCorSub', {
             url: '/GCorSub',
-            templateUrl: './FormWizard/GCorSub/GCorSub.html',
-            controller: 'GCorSub as gcorsubSelect',
+            views: {
+                'sideMenu': {
+                    controller: 'FormWizardCtrl as formparentState',
+                    templateUrl: './FormWizard/FormWizard_SideMenu.html'
+                },
+                'menuContent': {
+                    controller: 'GCorSub as gcorsubSelect',
+                    templateUrl: './FormWizard/GCorSub/GCorSub.html'
+                }
+            }
         })
-        .state('formWizard.GCinfo', {
+        .state('GCinfo', {
             url: '/GCinfo',
-            templateUrl: './FormWizard/GCInfo/GCinfo.html',
-            controller: 'GCinfoCtrl as gcinfoState'
+            views: {
+                'sideMenu': {
+                    controller: 'FormWizardCtrl as formparentState',
+                    templateUrl: './FormWizard/FormWizard_SideMenu.html'
+                },
+                'menuContent': {
+                    controller: 'GCinfoCtrl as gcinfoState',
+                    templateUrl: './FormWizard/GCInfo/GCinfo.html'
+                }
+            }
         })
-        .state('formWizard.Subinfo', {
+        .state('Subinfo', {
             url: '/Subinfo',
             templateUrl: './FormWizard/SubInfo/Subinfo.html',
             controller: 'SubinfoCtrl as subinfoState'

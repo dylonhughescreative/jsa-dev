@@ -1,4 +1,4 @@
-app.controller('GCorSub', function ($scope, $rootScope, formInfo) {
+app.controller('GCorSub', function ($scope, $state, $rootScope, formInfo) {
     'use strict';
     var gcorsubSelect = this;
     
@@ -7,6 +7,10 @@ app.controller('GCorSub', function ($scope, $rootScope, formInfo) {
     $scope.onclick = function (state) {
         gcorsubSelect.formInfo.basicinfo.gcorsub = state;
         $scope.next(state);
+    };
+    
+    $scope.next = function (state) {
+        $state.go(state);
     };
     
     $rootScope.$on('$viewContentLoading', function(event, viewConfig){ 

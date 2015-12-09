@@ -74,7 +74,6 @@
         
         <script src="SavedForms/SavedForms.js"></script>
         <link href="SavedForms/SavedForms.css" rel="stylesheet">
-
   </head>
     
   <body ng-app="starter" ng-controller="MainCtrl">
@@ -87,11 +86,10 @@
     	<ion-side-menus enable-menu-with-back-views="false">
         	<ion-side-menu-content>
             	<ion-nav-bar class="bar-stable">
-                	<ion-nav-back-button></ion-nav-back-button>  
-                	<ion-nav-buttons side="left">
-                    	<button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
-                	</ion-nav-buttons>
-            	</ion-nav-bar>
+                    <ion-nav-buttons side="left">
+                        <button menu-toggle="left" class="button button-icon icon ion-ios-list-outline"></button>
+                    </ion-nav-buttons>
+                </ion-nav-bar>
             	<ion-nav-view name="menuContent"></ion-nav-view>          
         	</ion-side-menu-content>
             
