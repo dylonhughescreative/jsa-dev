@@ -300,4 +300,9 @@ app.controller('MainCtrl', function ($rootScope, $scope, $timeout, outbox) {
     {
         $scope.loading = true; 
     });
+    
+    $scope.$on('$ionicView.beforeLeave', function()
+    {
+        $scope.loading = true; 
+    });
 });
