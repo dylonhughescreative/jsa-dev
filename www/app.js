@@ -287,12 +287,14 @@ app.controller('MainCtrl', function ($rootScope, $scope, $timeout, outbox) {
 	$scope.loading = false;
 	
 	$scope.$on('$ionicView.beforeEnter', function ()
-	{
-		$scope.loading = true;
+	{   
+        $scope.loading = true;
 	});
 	
 	$scope.$on('$ionicView.afterEnter', function ()
 	{
-		$scope.loading = false;
+		$timeout( function () {      
+		  $scope.loading = false;
+        }, 5000);
 	});
 });
