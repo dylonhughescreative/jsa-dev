@@ -284,7 +284,7 @@ app.factory('$localstorage', ['$window', function($window) {
 }]);
 
 app.controller('MainCtrl', function ($rootScope, $scope, $timeout, outbox) {
-	$scope.loading = false;
+	$scope.loading = true;
 	
 	$scope.$on('$ionicView.beforeEnter', function ()
 	{   
@@ -292,9 +292,7 @@ app.controller('MainCtrl', function ($rootScope, $scope, $timeout, outbox) {
 	});
 	
 	$scope.$on('$ionicView.afterEnter', function ()
-	{
-		$timeout( function () {      
-		  $scope.loading = false;
-        }, 5000);
+	{     
+        $scope.loading = false;
 	});
 });
