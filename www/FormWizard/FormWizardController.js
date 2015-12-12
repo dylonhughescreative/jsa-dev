@@ -3,6 +3,17 @@ app.controller('FormWizardCtrl', function ($rootScope, $scope, $state, $ionicSid
     
     var formparentState = this;
     
+    $scope.loading = true;
+    $scope.$on('$ionicView.beforeEnter', function ()
+	{   
+        $scope.loading = true;
+	});
+	
+	$scope.$on('$ionicView.afterEnter', function ()
+	{     
+        $scope.loading = false;
+	});
+    
     formparentState.formInfo = formInfo;
   
     $scope.wizardSteps = [
