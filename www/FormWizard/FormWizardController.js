@@ -88,6 +88,7 @@ app.controller('FormWizardCtrl', function ($rootScope, $scope, $state, $ionicSid
     };
     
     $scope.next = function (state) {
+        $scope.loading = true;
         $state.go(state);
     };
     
